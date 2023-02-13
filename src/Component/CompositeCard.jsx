@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, CardHeader, CardText, CardTitle, Col } from 'reactstrap'
+import { Card, CardBody, CardText, Col } from 'reactstrap'
 
 export default function CompositeCard(props) {
   return (

@@ -10,8 +10,8 @@ function App() {
 
   return (
     // <CustomerReg />
-    // <HotelReg />
-    <StatusUpdate />
+    <HotelReg />
+    // <StatusUpdate />
   )
 }
 
