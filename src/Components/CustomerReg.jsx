@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD:src/Components/CustomerReg.jsx
 import { Button, Card, Col, Input, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm';
+=======
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { Button, Card, Col, Label, Row } from 'reactstrap'
+import InputForm from './Component/InputForm'
+>>>>>>> d496e06ca2ebae687e75613a0a9f1b66bb46905e:src/CustomerReg.jsx
 
 export default function CustomerReg() {
     const [form, setForm] = useState({
@@ -10,6 +16,28 @@ export default function CustomerReg() {
         date_to: '',
         agent_name: ''
     })
+<<<<<<< HEAD:src/Components/CustomerReg.jsx
+=======
+    const [multiSelections, setMultiSelections] = useState([]);
+
+    // const handleAdd = (e) => {
+    //     e.preventDefault()
+    //     if( 
+    //         form.name_of_cus === '' ||
+    //         form.agent_name === '' ||
+    //         form.no_of_rooms === ''
+    //      ){
+    //         alert('Input All values')
+    //      }
+    //      if (form.name_of_cus&&form.agent_name&&form.no_of_rooms) {
+    //         setForm({
+    //             name_of_cus: '',
+    //             no_of_rooms: '',
+    //             agent_name: ''
+    //         })
+    //      }
+    // }
+>>>>>>> d496e06ca2ebae687e75613a0a9f1b66bb46905e:src/CustomerReg.jsx
 
     const handleChange = ({ target: { name, value } }) => {
         setForm((p) => ({ ...p, [name]: value }));
@@ -26,12 +54,17 @@ export default function CustomerReg() {
                     onChange={handleChange}
                     name= 'name_of_cus'
                 />
-                <InputForm 
-                    label='No. of Rooms'
-                    type= 'number'
-                    value= {form.no_of_rooms}
-                    onChange={handleChange}
-                    name= 'no_of_rooms'
+                <Label className='Label1'>No of Rooms</Label>
+                <Typeahead md= {5}
+                    id="basic-typeahead-multiple"
+                    labelKey="name"
+                    multiple
+                    onChange={setMultiSelections}
+                    options={['Number 1']}
+                    placeholder="Room Number"
+                    selected={multiSelections}
+                    name="no_of_rooms"
+                    className="input_field p-2"
                 />
                 <InputForm 
                     label='From'

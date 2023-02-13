@@ -42,7 +42,25 @@
 } */
 
 .Label{
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 15px;
+  /* font-weight: 500; */
+  margin-top: 10px;
+}
+.input_field {
+  border: none;
+  width: 105%;
+  margin-left: -8px;
+  /* border: 1px solid #002147; */
+  /* background-color: rgb(242, 242, 242); */
+  margin-top: -14px;
+  margin-bottom: -9px;
+  border-radius: 5px;
+}
+.input_form{
+  margin-top: -5px;
+}
+
+.Label1 {
+  font-size: 15px;
   margin-top: 10px;
 }
