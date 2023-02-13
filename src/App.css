@@ -64,3 +64,49 @@
   font-size: 15px;
   margin-top: 10px;
 }
+.card_body{
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  border-radius: 5px;
+}
+.card_tittle{
+  margin-top: 26px;
+  font-size: 20px;
+}
+
+.card_button,
+.card_button1,
+.card_button2{
+  padding: 6px;
+  width: 30%;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card_button:hover{
+  border: 2px solid white;
+  outline: 1px solid red;
+}
+.card_button1:hover{
+  border: 2px solid white;
+  outline: 1px solid green;
+}
+.card_button2:hover{
+  border: 2px solid white;
+  outline: 1px solid orange;
+}
+
+.card_button{
+  background-color: red;
+  margin-right: 8px;
+}
+.card_button1{
+  background-color: green;
+  margin-right: 8px;
+}
+.card_button2{
+  background-color: orange;
+}
