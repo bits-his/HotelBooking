@@ -5,7 +5,7 @@ export default function InputForm(props) {
   return (
     <div>
         {props.label&&<Label className='Label'> {props.label} </Label>}
-        <Input {...props} />
+        <Input {...props} className= "input_form"/>
     </div>
   )
 }

@@ -8,8 +8,8 @@ import HotelReg from './HotelReg'
 function App() {
 
   return (
-    // <CustomerReg />
-    <HotelReg />
+    <CustomerReg />
+    // <HotelReg />
   )
 }
 

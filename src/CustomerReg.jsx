@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Card, Col, Input, Row } from 'reactstrap'
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { Button, Card, Col, Label, Row } from 'reactstrap'
 import InputForm from './Component/InputForm'
 
 export default function CustomerReg() {
@@ -10,6 +11,8 @@ export default function CustomerReg() {
         date_to: '',
         agent_name: ''
     })
+    const [multiSelections, setMultiSelections] = useState([]);
+
     // const handleAdd = (e) => {
     //     e.preventDefault()
     //     if( 
@@ -43,12 +46,17 @@ export default function CustomerReg() {
                     onChange={handleChange}
                     name= 'name_of_cus'
                 />
-                <InputForm 
-                    label='No. of Rooms'
-                    type= 'number'
-                    value= {form.no_of_rooms}
-                    onChange={handleChange}
-                    name= 'no_of_rooms'
+                <Label className='Label1'>No of Rooms</Label>
+                <Typeahead md= {5}
+                    id="basic-typeahead-multiple"
+                    labelKey="name"
+                    multiple
+                    onChange={setMultiSelections}
+                    options={['Number 1']}
+                    placeholder="Room Number"
+                    selected={multiSelections}
+                    name="no_of_rooms"
+                    className="input_field p-2"
                 />
                 <InputForm 
                     label='From'
