@@ -5,14 +5,65 @@
   width: 140px;
 }
 .clean_button {
-  background-color: rgb(99, 175, 99);
-  color: white;
+  background-color: rgba(99, 175, 99, 0.5);
+  /* font-weight: bold; */
+  color: green;
 }
 .occupied_button {
-  background-color: rgb(255, 108, 108);
-  color: white;
+  background-color: rgba(255, 108, 108, .5);
+  /* font-weight: bold; */
+  color: red;
 }
 .checkout_button {
+  background-color: rgba(255, 166, 0, 0.5);
+  /* font-weight: bold; */
+  color: rgba(164, 107, 0, 0.626);
+}
+.search_button {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dd {
+  width: 100% !important;
+}
+.green {
+  background-color: rgb(99, 175, 99);
+  padding: 5px;
+  width: 20px;
+  transition: 200ms;
+  cursor: pointer;
+}
+.green:hover {
+  width: 30px;
+}
+.red {
+  background-color: rgb(255, 108, 108);
+  padding: 5px;
+  width: 20px;
+  transition: 200ms;
+  cursor: pointer;
+}
+.red:hover {
+  width: 30px;
+}
+.orange {
   background-color: orange;
-  color: white;
+  padding: 5px;
+  width: 20px;
+  transition: 200ms;
+  cursor: pointer;
+}
+.orange:hover {
+  width: 30px;
+}
+
+.green_td:hover {
+  cursor: pointer;
+}
+.red_td:hover {
+  cursor: pointer;
+}
+.orange_td :hover {
+  cursor: pointer;
 }
