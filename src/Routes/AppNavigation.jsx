@@ -8,13 +8,12 @@ function AppNavigation() {
   let element = useRoutes([
     {
       path: '/',
-      element: <HotelReg />,
+      element: <AppIndex />,
       children: [{ index: true }],
     },
     {
       element: <AppIndex />,
       children: [
-        { index: true, element: <HotelReg /> },
         {
           path: '/dashboard',
           element: <Dashboard />,
@@ -23,6 +22,10 @@ function AppNavigation() {
           path: '/customer-registration',
           element: <CustomerReg />,
         },
+        {
+          path:'/hotel-registration',
+          element:<HotelReg/>
+        }
       ],
     },
   ])
