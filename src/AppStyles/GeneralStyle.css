@@ -10,7 +10,7 @@
   color: green;
 }
 .occupied_button {
-  background-color: rgba(255, 108, 108, .5);
+  background-color: rgba(255, 108, 108, 0.5);
   /* font-weight: bold; */
   color: red;
 }
@@ -23,6 +23,11 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+}
+.app_card {
+  border: none !important;
+  border-radius: 0 !important;
+  border-top: 3px solid salmon !important;
 }
 .dd {
   width: 100% !important;
@@ -66,4 +71,42 @@
 }
 .orange_td :hover {
   cursor: pointer;
+}
+.app_button {
+  background-color: rgb(250, 128, 114);
+  border: none;
+  color: white;
+  /* font-weight: bold; */
+}
+.app_input {
+  border-radius: none !important;
+  border: 1px solid rgb(197, 197, 197);
+  width: 100%;
+  padding: 8px;
+}
+.app_input:focus {
+  outline: 1px salmon solid;
+  border: none;
+}
+.app_title {
+  color: saddlebrown;
+}
+label {
+  font-size: 12px;
+  margin: 0 !important;
+}
+
+/* navbar styles */
+.navbarr {
+  background-color: red;
+  width: 100%;
+}
+
+.sidebar{
+  background-color: salmon;
+  height: 100vh;
+  
+}
+.dashboard_card{
+  height: 95vh !important;
 }

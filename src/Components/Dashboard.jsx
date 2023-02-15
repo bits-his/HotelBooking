@@ -11,73 +11,70 @@ export default function Dashboard() {
   }
   return (
     <div>
-      <Row className="m-0">
-        <Col md={3}></Col>
-        <Col md={6}>
-          <Card className="shadow p-3 mt-3">
-            <div className="status_button_div text-center mb-3">
-              <button className="clean_button status_button">Cleaned (0)</button>
-              <button className="occupied_button status_button">
-                Occupied (0)
-              </button>
-              <button className="checkout_button status_button">
-                Checkout (0)
-              </button>
-            </div>
-            <div className="search_button">
-              <Input id="exampleSelect" name="select" type="select">
-                <option>Select Hotel</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </Input>
-              <Input id="" name="search" placeholder="Search" type="search" />
-            </div>
-            <Table striped size="sm" responsive className="mt-4">
-              <thead>
-                <tr>
-                  <th>S/N</th>
-                  <th>Room Number</th>
-                  <th>Status</th>
-                  <th>Comments</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>123</td>
-                  <td onClick={toggle} className="green_td">
-                    <div className="green"></div>
-                  </td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>123</td>
-                  <td onClick={toggle} className="red_td">
-                    <div className="red"></div>
-                  </td>
+      <Card className="app_card dashboard_card shadow p-3 m-3">
+      <h5 className='app_title'>Dashboard</h5>
 
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>123</td>
-                  <td onClick={toggle} className="orange_td">
-                    <div className="orange"></div>
-                  </td>
+        <div className="status_button_div mt-3 mb-3">
+          <button className="clean_button status_button">Cleaned (0)</button>
+          <button className="occupied_button status_button">
+            Occupied (0)
+          </button>
+          <button className="checkout_button status_button">
+            Checkout (0)
+          </button>
+        </div>
+        <div className="search_button">
+          <select id="exampleSelect" className='app_input' name="select" type="select">
+            <option>Select Hotel</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <input className='app_input' id="" name="search" placeholder="Search" type="search" />
+        </div>
+        <Table striped size="sm" responsive className="mt-4" style={{fontSize:13}}>
+          <thead>
+            <tr>
+              <td>S/N</td>
+              <td>Room Number</td>
+              <td>Status</td>
+              <td>Comments</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>123</td>
+              <td onClick={toggle} className="green_td">
+                <div className="green"></div>
+              </td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>123</td>
+              <td onClick={toggle} className="red_td">
+                <div className="red"></div>
+              </td>
 
-                  <td>@mdo</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Card>
-        </Col>
-        <Col md={3}></Col>
-      </Row>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>123</td>
+              <td onClick={toggle} className="orange_td">
+                <div className="orange"></div>
+              </td>
+
+              <td>@mdo</td>
+            </tr>
+          </tbody>
+        </Table>
+      </Card>
+
       <Modal toggle={toggle} isOpen={open}>
-        <StatusUpdate/>
+        <StatusUpdate />
       </Modal>
     </div>
   )
