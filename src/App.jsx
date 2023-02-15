@@ -9,9 +9,12 @@ import StatusUpdate from './StatusUpdate'
 function App() {
 
   return (
-    // <CustomerReg />
-    <HotelReg />
-    // <StatusUpdate />
+    <div>
+        <CustomerReg />
+        <HotelReg />
+        <StatusUpdate />
+
+    </div>
   )
 }
 
