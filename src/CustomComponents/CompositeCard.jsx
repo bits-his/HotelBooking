@@ -5,7 +5,7 @@ export default function CompositeCard(props) {
   return (
     <div>
         <Col md= {12}>
-            <Card body style={{display: 'flex', flexDirection: 'row', padding: 30, marginBottom: 10}}>
+            <Card body style={{}}>
                 {props.title&&<CardText className='card_tittle'>{props.title}</CardText>}
                 <CardBody>
                     {props.children}
