@@ -3,6 +3,7 @@ import { Card, Col, Input, Row, Table } from 'reactstrap'
 import '../AppStyles/GeneralStyle.css'
 import InputForm from '../CustomComponents/InputForm'
 import { Modal } from 'reactstrap'
+import StatusUpdate from './StatusUpdate'
 export default function Dashboard() {
   const [open, setOpen] = useState(false)
   const toggle = () => {
@@ -76,7 +77,7 @@ export default function Dashboard() {
         <Col md={3}></Col>
       </Row>
       <Modal toggle={toggle} isOpen={open}>
-        fdas
+        <StatusUpdate/>
       </Modal>
     </div>
   )

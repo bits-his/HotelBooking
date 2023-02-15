@@ -1,11 +1,9 @@
-
 import AppNavigation from './Routes/AppNavigation'
 
 function App() {
-
   return (
     <div>
-     <AppNavigation/>
+      <AppNavigation />
     </div>
   )
 }

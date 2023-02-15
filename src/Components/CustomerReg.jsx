@@ -23,6 +23,7 @@ export default function CustomerReg() {
     <Row className="m-0 p-0">
       <Col md={5} style={{ margin: 'auto' }}>
         <Card body className="mt-4">
+        <h3>Customer Registration</h3>
           <InputForm
             label="Name of Customer"
             value={form.name_of_cus}

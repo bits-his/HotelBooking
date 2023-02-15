@@ -20,6 +20,7 @@ export default function HotelReg() {
     <Row className='m-0 p-0'>
         <Col md= {5} style={{margin: 'auto'}}>
             <Card body className='mt-4' >
+                <h3>Hotel Registration</h3>
                 <InputForm 
                     label='Name'
                     value= {form.name}
