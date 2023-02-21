@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Col, Input, Label } from 'reactstrap'
+import {  Input, Label } from 'reactstrap'
 import CompositeCard from '../CustomComponents/CompositeCard'
 export default function StatusUpdate() {
   return (

@@ -1,6 +1,6 @@
 import moment from 'moment/moment'
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Modal, Row, Table } from 'reactstrap'
+import { Card, Col, Modal, Row, Table } from 'reactstrap'
 // import InputForm from '../CustomComponents/InputForm'
 import { _get } from '../Utils/Helper'
 import CustomerReg from './CustomerReg'

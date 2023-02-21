@@ -113,43 +113,47 @@ export default function HotelReg() {
         <Col md={6}></Col>
       </Row>
       <Modal toggle={toggle} isOpen={open}>
-        <div className="p-3">
-          <h5 className="app_title">Create New Hotel</h5>
-          <InputForm
-            className="app_input"
-            label="Name"
-            value={form.name}
-            onChange={handleChange}
-            name="name"
-          />
-          <InputForm
-            className="app_input"
-            label="Address"
-            value={form.address}
-            onChange={handleChange}
-            name="address"
-          />
-          <InputForm
-            className="app_input"
-            label="Floor"
-            type="number"
-            value={form.floor}
-            onChange={handleChange}
-            name="floor"
-          />
-          <div>
-            {loading ? (
-              <button className="app_button mt-3 p-2 shadow">Loading...</button>
-            ) : (
-              <button
-                className="app_button mt-3 p-2 shadow"
-                onClick={handleSubmit}
-              >
-                Register
-              </button>
-            )}
+        <Card body className="app_card shadow mt-3">
+          <div className="p-3">
+            <h5 className="app_title">Create New Hotel</h5>
+            <InputForm
+              className="app_input"
+              label="Name"
+              value={form.name}
+              onChange={handleChange}
+              name="name"
+            />
+            <InputForm
+              className="app_input"
+              label="Address"
+              value={form.address}
+              onChange={handleChange}
+              name="address"
+            />
+            <InputForm
+              className="app_input"
+              label="Floor"
+              type="number"
+              value={form.floor}
+              onChange={handleChange}
+              name="floor"
+            />
+            <div>
+              {loading ? (
+                <button style={{width:'100%'}} className="app_button mt-3 p-2 shadow">
+                  Loading...
+                </button>
+              ) : (
+                <button
+                  style={{width:'100%'}} className="app_button mt-3 p-2 shadow"
+                  onClick={handleSubmit}
+                >
+                  Create
+                </button>
+              )}
+            </div>
           </div>
-        </div>
+        </Card>
       </Modal>
     </Card>
   )
