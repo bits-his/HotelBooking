@@ -4,6 +4,7 @@ import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
 import HotelReg from '../Components/HotelReg'
+import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
 import RoomReg from '../Components/RoomReg'
 import AppIndex from './AppIndex'
@@ -11,7 +12,7 @@ function AppNavigation() {
   let element = useRoutes([
     {
       path: '/',
-      element: <AppIndex />,
+      element: <Landing />,
       children: [{ index: true }],
     },
     {
