@@ -2,7 +2,7 @@
   border: none;
   border-radius: 0;
   padding: 10px;
-  width: 140px;
+  /* width: 140px; */
 }
 .clean_button {
   background-color: rgba(99, 175, 99, 0.5);
@@ -27,7 +27,7 @@
 .app_card {
   border: none !important;
   border-radius: 0 !important;
-  border-top: 3px solid salmon !important;
+  border-top: 3px solid rgb(12, 134, 103) !important;
 }
 .dd {
   width: 100% !important;
@@ -73,7 +73,8 @@
   cursor: pointer;
 }
 .app_button {
-  background-color: rgb(250, 128, 114);
+  /* background-color: rgb(250, 128, 114); */
+  background-color: rgb(12, 134, 103);
   border: none;
   color: white;
   /* font-weight: bold; */
@@ -85,12 +86,12 @@
   padding: 8px;
 }
 .app_input:focus {
-  outline: 1px salmon solid;
+  outline: 1px rgb(12, 134, 103) solid;
   border: none;
 }
 .app_title {
-  color: saddlebrown;
-  text-align: center;
+  color: rgb(12, 134, 103);
+  /* text-align: center; */
   /* margin-top: 60px; */
 }
 label {
@@ -104,62 +105,99 @@ label {
   width: 100%;
 }
 
-.sidebar{
-  background-color: salmon;
+.sidebar {
+  /* background-color: salmon; */
+  background-color: rgb(12, 134, 103);
   height: 100vh;
-  
 }
-.dashboard_card{
+.dashboard_card {
   height: 95vh !important;
+  overflow-y: auto;
 }
-.link{
-  margin-top: 100px;
+.link {
+  margin-top: 20px;
   width: 115%;
   margin-left: -25px;
 }
-.link_item{
+.link_item {
   text-decoration: none;
   color: #fff;
   list-style: none;
   margin-left: 10px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-size: 15px;
+  /* font-weight: 500; */
+  /* letter-spacing: 1px; */
   padding: 10px 15px;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
   padding-top: 6px;
   cursor: pointer;
 }
-.link_item:hover{
-  background-color: #b30000;
+.link_item:hover {
+  background-color: rgb(10, 104, 79);
   color: #fff;
-  transition: all 0.5s;
-  border-right: 5px solid white;
+  /* transition: all 0.5s; */
+  /* border-right: 5px solid white; */
+  width: 100%;
 }
-.active{
-  background-color: #b30000;
+.active {
+  background-color: rgb(12, 134, 103);
+  /* background-color: #b30000; */
   color: #fff;
 }
-.logo{
-  font-size: 28px;
-  margin-right: 10px;
+.logo {
+  font-size: 23px;
+  margin-right: 5px;
+  background-color: rgb(5, 85, 65);
+  /* border-radius: 5px; */
+  padding: 2px;
+}
+.grp_btn {
+  /* width: fit-content; */
+  display: flex;
+  /* justify-content: flex-end; */
+}
+.checkout_btn {
+  background-color: rgba(255, 166, 0, 0.627);
+}
+.occupied_btn {
+  background-color: rgba(255, 0, 0, 0.623);
+}
+.cleaned_btn {
+  background-color: rgba(0, 128, 0, 0.612);
 }
 
+.checkout_btn,
+.occupied_btn,
+.cleaned_btn {
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+.inactive {
+  background-color: rgb(195, 195, 195);
+  font-size: 12px;
+  color: white;
+  border: none;
+}
 @media only screen and (max-width: 600px) {
-  .sidebar_div{
+  .customer-page {
     display: none;
   }
-  .sidebar{
+  .sidebar_div {
     display: none;
   }
-  .mobile_menu{
+  .sidebar {
+    display: none;
+  }
+  .mobile_menu {
     position: fixed;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     /* height: 70px; */
-    border-top: 2px solid #b30000;
-    background-color: rgb(250, 128, 114);
+    border-top: 2px solid rgb(10, 104, 79);
+    background-color: rgb(12, 134, 103);
     padding-bottom: 10px;
     /* padding: 10px; */
     color: white;
@@ -169,8 +207,7 @@ label {
   }
 }
 @media only screen and (min-width: 600px) {
-.mobile_menu{
-  display: none;
-}
-
+  .mobile_menu {
+    display: none;
+  }
 }
