@@ -14,6 +14,7 @@ export default function Customers() {
   const [hotelList, setHotelList] = useState([])
   const [loading1, setLoading1] = useState(false)
   const [loading, setLoading] = useState(false)
+
   const toggle = () => {
     setOpen(!open)
   }
@@ -172,7 +173,8 @@ export default function Customers() {
               <p>
                 Hotel:{' '}
                 <span style={{ fontWeight: 'bold' }}>
-                  {custData?.customer?.hotel}
+                  {hotelName(custData?.customer?.hotel)}
+                  {/* {hotelName(parseInt(item.hotel))} */}
                 </span>
               </p>
               <p>
