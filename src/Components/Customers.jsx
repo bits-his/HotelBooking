@@ -7,7 +7,7 @@ import CustomerReg from './CustomerReg'
 
 export default function Customers() {
   const [customersList, setCustomersList] = useState([])
-  const [customerObj, setCustomerObj] = useState({})
+  // const [customerObj, setCustomerObj] = useState({})
   const [custData, setCustData] = useState([])
   const [open, setOpen] = useState(false)
   const [open2, setOpen2] = useState(false)

@@ -140,12 +140,16 @@ export default function HotelReg() {
             />
             <div>
               {loading ? (
-                <button style={{width:'100%'}} className="app_button mt-3 p-2 shadow">
+                <button
+                  style={{ width: '100%' }}
+                  className="app_button mt-3 p-2 shadow"
+                >
                   Loading...
                 </button>
               ) : (
                 <button
-                  style={{width:'100%'}} className="app_button mt-3 p-2 shadow"
+                  style={{ width: '100%' }}
+                  className="app_button mt-3 p-2 shadow"
                   onClick={handleSubmit}
                 >
                   Create
