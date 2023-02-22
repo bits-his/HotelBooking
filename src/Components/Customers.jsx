@@ -6,31 +6,64 @@ import { _get } from '../Utils/Helper'
 import CustomerReg from './CustomerReg'
 
 export default function Customers() {
-  const [customersData, setCustomersData] = useState([])
+  const [customersList, setCustomersList] = useState([])
+  const [customerObj, setCustomerObj] = useState({})
+  const [custData, setCustData] = useState([])
   const [open, setOpen] = useState(false)
+  const [open2, setOpen2] = useState(false)
   const [hotelList, setHotelList] = useState([])
+  const [loading1, setLoading1] = useState(false)
+  const [loading, setLoading] = useState(false)
   const toggle = () => {
     setOpen(!open)
   }
 
-const customerLists=()=>{
-  _get(
-    `customers`,
-    (resp) => {
-      console.log(resp)
-      if (resp && resp.length) {
-        setCustomersData(resp)
-      }
-    },
-    (e) => {
-      console.log(e)
-    },
-  )
-}
+  const toggle2 = () => {
+    setOpen2(!open2)
+  }
+
+  const customerLists = () => {
+    setLoading(true)
+    _get(
+      `customers/`,
+      (resp) => {
+        console.log(resp)
+        setLoading(false)
+        if (resp && resp.length) {
+          setCustomersList(resp)
+        }
+      },
+      (e) => {
+        setLoading(false)
+        console.log(e)
+      },
+    )
+  }
 
   useEffect(() => {
-  customerLists()
+    customerLists()
   }, [])
+
+  const customerData = (id) => {
+    setLoading1(true)
+    _get(
+      `customer/${id}`,
+      (resp) => {
+        console.log(resp)
+        setLoading1(false)
+        // if (resp && resp.length) {
+        setCustData(resp)
+        // }
+      },
+      (e) => {
+        setLoading1(false)
+        console.log(e)
+      },
+    )
+  }
+  // useEffect(() => {
+  //   customerData()
+  // }, [customerData.id])
 
   useEffect(() => {
     _get(
@@ -53,7 +86,7 @@ const customerLists=()=>{
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(hotelList)} */}
+      {/* {JSON.stringify(customersList)} */}
       <Row>
         <Col md={12}>
           <Row>
@@ -81,29 +114,90 @@ const customerLists=()=>{
               <tr>
                 <td>Name</td>
                 <td>Hotel</td>
-                <td>Room(s)</td>
+                {/* <td>Room(s)</td> */}
                 <td>Ch-in</td>
                 <td>Ch-out</td>
                 {/* <td>Price</td> */}
               </tr>
             </thead>
             <tbody>
-              {customersData.map((item, index) => (
-                <tr>
-                  <td>{item.name}</td>
-                  <td>{hotelName(parseInt(item.hotel))}</td>
-                  <td>fdsaf</td>
-                  <td>{moment(item.from_date).format('DD/MM/YYYY')}</td>
-                  <td>{moment(item.to_date).format('DD/MM/YYYY')}</td>
-                  {/* <td>200</td> */}
-                </tr>
-              ))}
+              {loading ? (
+                <span>Loading customers...</span>
+              ) : (
+                customersList.map((item, index) => (
+                  <tr
+                    onClick={() => {
+                      toggle2()
+                      // setCustomerObj(item)
+                      customerData(item.id)
+                    }}
+                  >
+                    <td>{item.name}</td>
+                    <td>{hotelName(parseInt(item.hotel))}</td>
+                    {/* <td>fdsaf</td> */}
+                    <td>{moment(item.from_date).format('DD/MM/YYYY')}</td>
+                    <td>{moment(item.to_date).format('DD/MM/YYYY')}</td>
+                    {/* <td>200</td> */}
+                  </tr>
+                ))
+              )}
+              {!loading && customersList.length === 0 ? (
+                <span>No Data</span>
+              ) : (
+                ''
+              )}
             </tbody>
           </Table>
         </Col>
       </Row>
       <Modal toggle={toggle} isOpen={open}>
-        <CustomerReg toggle={toggle} fetchCustomers={customerLists}/>
+        <CustomerReg toggle={toggle} fetchCustomers={customerLists} />
+      </Modal>
+
+      <Modal toggle={toggle2} isOpen={open2}>
+        <Card body className="app_card shadow mt-3">
+          <h5 className="app_title">Customer Details</h5>
+          {/* {JSON.stringify(customerObj)} */}
+          {/* {JSON.stringify(custData)} */}
+          {loading1 ? (
+            <span>Loading...</span>
+          ) : (
+            <div>
+              <p>
+                Name:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {custData?.customer?.name}
+                </span>
+              </p>
+              <p>
+                Hotel:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {custData?.customer?.hotel}
+                </span>
+              </p>
+              <p>
+                Room No:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {custData?.rooms?.map((item) => item.room_number)}
+                </span>
+              </p>
+              <p>
+                Chk-in:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {/* {custData?.customer?.from_date} */}
+                  {moment(custData?.customer?.from_date).format('DD/MM/YYYY')}
+                </span>
+              </p>
+              <p>
+                Chk-out:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {moment(custData?.customer?.to_date).format('DD/MM/YYYY')}
+                  {/* {custData?.customer?.to_date} */}
+                </span>
+              </p>
+            </div>
+          )}
+        </Card>
       </Modal>
     </Card>
   )

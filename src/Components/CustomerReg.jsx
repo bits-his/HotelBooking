@@ -94,7 +94,7 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
   const totalDays = timeDiff / (1000 * 3600 * 24)
 
   return (
-    <Card body className="app_card shadow mt-3">
+    <Card body className="app_card reg_card shadow mt-3">
       {/* {JSON.stringify(customerData)} */}
       {/* {JSON.stringify(roomData)} */}
       {/* {JSON.stringify(selectedRoom)} */}
@@ -127,16 +127,16 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
         name="no_of_rooms"
         className="app_input"
       />
-      <p style={{ fontSize: 12 }}>
+      <p style={{margin:0, fontSize: 12 }}>
         Price:{' '}
         <span style={{ fontWeight: 'bold' }}>{selectedRoom[0]?.price}</span>
       </p>
 
-      <p style={{ fontSize: 12 }}>
+      <p style={{margin:0, fontSize: 12 }}>
         Number of rooms:{' '}
         <span style={{ fontWeight: 'bold' }}>{selectedRoom?.length}</span>
       </p>
-      <p style={{ fontSize: 12 }}>
+      <p style={{margin:0, fontSize: 12 }}>
         Number of days:{' '}
         <span style={{ fontWeight: 'bold' }}>
           {timeDiff > 0 ? totalDays : ''}

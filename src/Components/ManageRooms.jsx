@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Row, Table } from 'reactstrap'
+import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import { _get, _put } from '../Utils/Helper'
 
 const statusBtn = (status, handleUpdate, roomId) => {
@@ -36,21 +36,22 @@ const statusBtn = (status, handleUpdate, roomId) => {
 }
 
 export default function ManageRooms() {
+
   const [hotelList, setHotelList] = useState([])
   const [selectedRoom, setSelectedRoom] = useState(0)
   const [roomList, setRoomList] = useState([])
-
+  const [loading, setLoading] = useState(false)
   // const [updateStatus, setUpdateStatus] = useState('')
   const handleSelected = ({ target: { name, value } }) => {
     // console.log({ target })
     setSelectedRoom((p) => ({ ...p, [name]: value }))
   }
   useEffect(() => {
-    // setLoading(true)
+    setLoading(true)
     _get(
       `hotel-room/${selectedRoom.hotel}`,
       (resp) => {
-        // setLoading(false)
+        setLoading(false)
         console.log(resp)
         if (resp && resp.length) {
           setRoomList(resp)
@@ -60,7 +61,7 @@ export default function ManageRooms() {
       },
       (e) => {
         console.log(e)
-        // setLoading(false)
+        setLoading(false)
       },
     )
   }, [selectedRoom])
@@ -181,8 +182,8 @@ export default function ManageRooms() {
             </tr>
           </thead>
           <tbody>
-            {roomList.length === 0 ? (
-              <span className="mt-5">No rooms</span>
+            {loading ? (
+              <span className="mt-5">Loading rooms...</span>
             ) : (
               roomList.map((item) => (
                 <tr>
@@ -208,8 +209,10 @@ export default function ManageRooms() {
                 </tr>
               ))
             )}
+            {!loading && roomList.length == 0 ? <span>No rooms</span> : ''}
           </tbody>
         </Table>
+      
       </Card>
     </div>
   )

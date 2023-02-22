@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card,Table } from 'reactstrap'
+import { Card, Table } from 'reactstrap'
 import '../AppStyles/GeneralStyle.css'
 // import InputForm from '../CustomComponents/InputForm'
 import { Modal } from 'reactstrap'
@@ -10,14 +10,17 @@ export default function Dashboard() {
   const [roomList, setRoomList] = useState([])
   const [selectedRoom, setSelectedRoom] = useState([])
   const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
   const toggle = () => {
     setOpen(!open)
   }
 
   useEffect(() => {
+    setLoading(true)
     _get(
       'hotels/',
       (resp) => {
+        setLoading(false)
         console.log(resp)
         if (resp && resp.length) {
           setHotelList(resp)
@@ -27,6 +30,7 @@ export default function Dashboard() {
         }
       },
       (e) => {
+        setLoading(false)
         console.log(e)
       },
     )
@@ -72,13 +76,14 @@ export default function Dashboard() {
         <div className="search_button">
           <select
             id="exampleSelect"
+            // bbbbb{JSON.stringify(selectedRoom)}
             className="app_input"
             name="hotel"
             type="select"
             onChange={handleSelected}
             // value={selectedRoom.id}
           >
-            {selectedRoom.hotel > 0 ? (
+            {selectedRoom.id > 0 ? (
               <option>{selectedRoom.name}</option>
             ) : (
               <option>Select Hotel</option>
@@ -120,8 +125,8 @@ export default function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            {roomList.length === 0 ? (
-              <span>No rooms</span>
+            {loading ? (
+              <span>Loading rooms...</span>
             ) : (
               roomList.map((item, index) => (
                 <tr>
