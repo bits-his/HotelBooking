@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Table } from 'reactstrap'
+import { Card, Col, Row, Table } from 'reactstrap'
 import '../AppStyles/GeneralStyle.css'
 // import InputForm from '../CustomComponents/InputForm'
 import { Modal } from 'reactstrap'
@@ -71,9 +71,16 @@ export default function Dashboard() {
       {/* {JSON.stringify(selectedRoom)}
       {JSON.stringify(roomList)} */}
       <Card className="app_card dashboard_card shadow p-3 m-3">
-        <h5 className="app_title">Dashboard</h5>
+        <div
+          className="p-2"
+          style={{ backgroundColor: 'rgb(12, 134, 103)', color:'white' }}
+        >
+          <h5 className="m-0">Dashboard</h5>
+        </div>
 
         <div className="search_button">
+          <label className="Label mt-2">Select Hotel</label>
+
           <select
             id="exampleSelect"
             // bbbbb{JSON.stringify(selectedRoom)}
@@ -101,14 +108,37 @@ export default function Dashboard() {
           className="app_input mt-2"
           id=""
           name="search"
-          placeholder="Search"
+          placeholder="Search room"
           type="search"
         />
-        {/* <div className="status_button_div mt-3 mb-3">
-          <button className="clean_button status_button">Cln (0)</button>
-          <button className="occupied_button status_button">Ocp (0)</button>
-          <button className="checkout_button status_button">Chkt (0)</button>
-        </div> */}
+        <div className="status_button_div mt-3 mb-3">
+          <Row>
+            <Col md={4} sm={4} xs={4} className="">
+              <button
+                className="clean_button status_button"
+                style={{ width: '100%' }}
+              >
+                Cln (0)
+              </button>
+            </Col>
+            <Col md={4} sm={4} xs={4} className="">
+              <button
+                className="occupied_button status_button"
+                style={{ width: '100%' }}
+              >
+                Ocp (0)
+              </button>
+            </Col>
+            <Col md={4} sm={4} xs={4} className="">
+              <button
+                className="checkout_button status_button"
+                style={{ width: '100%' }}
+              >
+                Chkt (0)
+              </button>
+            </Col>
+          </Row>
+        </div>
         <Table
           striped
           size="sm"

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { Typeahead } from 'react-bootstrap-typeahead'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _get, _post } from '../Utils/Helper'
+import { Floors } from './Floors'
 
 export default function HotelReg() {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     name: '',
     address: '',
-    floor: '',
+    floors: '',
   })
 
   const [open, setOpen] = useState(false)
@@ -17,20 +19,31 @@ export default function HotelReg() {
   }
 
   const [hotelList, setHotelList] = useState([])
+
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
+  const [selected, setSelected] = useState([])
+  const handleSelected = (s) => {
+    setSelected(s)
+  }
+
 
   const handleSubmit = () => {
+    let finalObj = {
+      name: form.name,
+      address: form.address,
+      floors: selected,
+    }
     setLoading(true)
     _post(
-      'create-hotel/',
-      form,
+      'api/create/hotel',
+      finalObj,
       (res) => {
-        setForm((p) => ({ ...p, name: '', address: '', floor: '' }))
+        setForm((p) => ({ ...p, name: '', address: '', floors: '' }))
         setLoading(false)
         console.log(res)
-        getHotels()
+        // getHotels()
         toggle()
       },
       (err) => {
@@ -38,22 +51,24 @@ export default function HotelReg() {
         console.log(err)
       },
     )
-    console.log(form)
+    console.log(finalObj)
   }
 
   const getHotels = () => {
-    _get(
-      'hotels/',
+    _get( 
+      'api/get/hotels',
       (resp) => {
         // setLoading(false)
         console.log(resp)
         if (resp && resp.length) {
           setHotelList(resp)
+         alert('dfasfsadf'+resp)
         }
       },
       (e) => {
         console.log(e)
         // setLoading(false)
+        alert(e)
       },
     )
   }
@@ -64,7 +79,7 @@ export default function HotelReg() {
   }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(hotelList)} */}
+      {JSON.stringify(hotelList)}
       <Row>
         <Col md={6}>
           <Row>
@@ -103,7 +118,7 @@ export default function HotelReg() {
                   <tr>
                     <td>{item.name}</td>
                     <td>{item.address}</td>
-                    <td>{item.floor}</td>
+                    <td>{item.floors}</td>
                   </tr>
                 ))
               )}
@@ -114,6 +129,8 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
+          {JSON.stringify(form)}
+
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>
             <InputForm
@@ -130,14 +147,26 @@ export default function HotelReg() {
               onChange={handleChange}
               name="address"
             />
-            <InputForm
+            <label className="Label mt-2">Selelct no of floors</label>
+            <Typeahead
+              id="basic-typeahead-multiple"
+              multiple
+              labelKey={(e)=>`${e.floor_no}`}
+              onChange={handleSelected}
+              options={[{'floor_no':1}, {'floor_no':2},{'floor_no':3},{'floor_no':4}]}
+              placeholder="Room Number"
+              selected={selected}
+              name="no_of_rooms"
               className="app_input"
-              label="Floor"
+            />
+            {/* <InputForm
+              className="app_input"
+              label="Select Number of Floors"
               type="number"
               value={form.floor}
               onChange={handleChange}
               name="floor"
-            />
+            /> */}
             <div>
               {loading ? (
                 <button

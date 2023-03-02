@@ -8,6 +8,7 @@
   background-color: rgba(99, 175, 99, 0.5);
   /* font-weight: bold; */
   color: green;
+  /* width: 100%; */
 }
 .occupied_button {
   background-color: rgba(255, 108, 108, 0.5);
@@ -20,9 +21,9 @@
   color: rgba(164, 107, 0, 0.626);
 }
 .search_button {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 10px; */
 }
 .app_card {
   border: none !important;

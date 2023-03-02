@@ -116,38 +116,17 @@ export default function ManageRooms() {
     )
   }
 
-  // const handleCheckout = () => {
-  //   _put(
-  //     `hotelroom/update${selectedRoom}`,
-  //     { status: 'checkout' },
-  //     // setCheckout({ status: 'checkout' })
-  //     (resp) => {
-  //       console.log(resp)
-  //     },
-  //     (e) => {
-  //       console.log(e)
-  //     },
-  //   )
-  //   console.log(checkout)
-  // }
 
   return (
     <div>
-      {/* {JSON.stringify(hotelList)}
-      {JSON.stringify(selectedRoom)}
-      {JSON.stringify(roomList)} */}
       <Card className="app_card dashboard_card shadow p-3 m-3">
         <h5 className="app_title">Manage Rooms</h5>
-        {/* {JSON.stringify({ selectedRoom: selectedRoom?.hotel })} */}
-        {/* {JSON.stringify(selectedRoom)} */}
-        {/* {JSON.stringify(hotelList.name)} */}
         <Row>
           <Col md={6}>
             <div className="mt-2">
               <p className="m-0" style={{ fontSize: 13 }}>
                 Filter Rooms By:
               </p>
-              {/* {JSON.stringify(hotelList)} */}
               <select
                 name="hotel"
                 className="app_input mb-3"
@@ -176,8 +155,6 @@ export default function ManageRooms() {
           <thead>
             <tr>
               <td>Room No</td>
-              {/* <td>Hotel</td>
-              <td>Price</td> */}
               <td>Status</td>
             </tr>
           </thead>
@@ -188,20 +165,9 @@ export default function ManageRooms() {
               roomList.map((item) => (
                 <tr>
                   <td>{item.room_number}</td>
-                  {/* <td>{hotel_name}</td>
-                  <td>{item.price}</td> */}
                   <td>
                     <div
                       className="grp_btn"
-                      // onClick={() => handleUpdate(item.status)
-                      //   // item.status === 'checkout'
-                      //   //   ? handleCheckout
-                      //   //   : item.status === 'occupied'
-                      //   //   ? handleOccupied
-                      //   //   : item.status === 'cleaned'
-                      //   //   ? handleCleaned
-                      //   //   : ''
-                      // }
                     >
                       {statusBtn(item.status, handleUpdate, item.id)}
                     </div>
