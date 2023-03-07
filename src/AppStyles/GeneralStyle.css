@@ -95,9 +95,18 @@
   /* text-align: center; */
   /* margin-top: 60px; */
 }
+.app_titleI{
+  margin-top: 20px;
+  background-color: rgb(12, 134, 103);
+  color: #fff;
+  padding: 6px 10px;
+}
 label {
   font-size: 12px;
   margin: 0 !important;
+}
+.label1{
+  margin-top: 20px;
 }
 
 /* navbar styles */
@@ -117,7 +126,7 @@ label {
 }
 .link {
   margin-top: 20px;
-  width: 115%;
+  width: 111%;
   margin-left: -25px;
 }
 .link_item {

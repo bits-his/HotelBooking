@@ -1,11 +1,14 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
+import Allotment from '../Components/Allotment'
+import BankDetails from '../Components/BankDetails'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
 import HotelReg from '../Components/HotelReg'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
+import NewAgent from '../Components/NewAgent'
 import RoomReg from '../Components/RoomReg'
 import AppIndex from './AppIndex'
 function AppNavigation() {
@@ -41,6 +44,18 @@ function AppNavigation() {
         {
           path:'/customers',
           element:<Customers/>
+        },
+        {
+          path:'/new-agent',
+          element:<NewAgent/>
+        },
+        {
+          path:'bank-details',
+          element:<BankDetails/>
+        },
+        {
+          path:'allotment',
+          element:<Allotment/>
         }
 
       ],
