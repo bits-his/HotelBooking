@@ -108,7 +108,7 @@ export default function Allotment() {
             </Col>
         </Row>
         <Row>
-            <table>
+            <table style={{border: '1px solid #ccc', padding: 12}} className= 'mt-5'>
                 <thead>
                     <th>head</th>
                     <th>head</th>
