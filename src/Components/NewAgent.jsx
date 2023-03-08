@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { Card, Col, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import { _post } from '../Utils/Helper'
 
 export default function NewAgent() {
 const [form, setForm] = useState({
     agent_name: '',
     arabic_name: '',
-    phone_no: '',
-    extention: '',
+    phone: '',
+    extension: '',
     country: '',
     city: '',
-    zip_code: '',
+    zipcode: '',
     state: '',
-    personal_contact: '',
+    contact_person: '',
     email: '',
     web_address: '',
     address: '',
@@ -24,7 +25,27 @@ const [form, setForm] = useState({
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }))
+  } 
+  const [loading, setLoading] = useState(false)
+  const handleSubmit = () => {
+    setLoading(true)
+    _post(
+      'api/agent_supplier',
+      form,
+      (res) => {
+        // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
+
+        setLoading(false)
+        console.log(res)
+      },
+      (err) => {
+        setLoading(false)
+        console.log(err)
+      },
+    )
+    // console.log(form)
   }
+
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -42,9 +63,9 @@ const [form, setForm] = useState({
                 <InputForm
                     className="app_input"
                     label="Telephone No"
-                    value={form.phone_no}
+                    value={form.phone}
                     onChange={handleChange}
-                    name="phone_no"
+                    name="phone"
                     required
                 />
                 <label className="Label mt-2">Country <span className='text-danger'>*</span></label>
@@ -57,7 +78,7 @@ const [form, setForm] = useState({
                     onClick={handleChange}
                     value={form.country}
                 >
-                    <option></option>
+                    <option>hello</option>
                 </select>
                 {/* <InputForm
                     className="app_input"
@@ -70,9 +91,9 @@ const [form, setForm] = useState({
                 <InputForm
                     className="app_input"
                     label="Zip Code"
-                    value={form.agent_name}
+                    value={form.zipcode}
                     onChange={handleChange}
-                    name="agent_name"
+                    name="zipcode"
                 />
             </Col>
             <Col md={6} style={{marginTop: 32}}>
@@ -86,24 +107,24 @@ const [form, setForm] = useState({
                 />
                 <InputForm
                     className="app_input"
-                    label="Extention"
-                    value={form.agent_name}
+                    label="extension"
+                    value={form.extension}
                     onChange={handleChange}
-                    name="agent_name"
+                    name="extension"
                 />
                 <InputForm
                     className="app_input"
                     label="City"
-                    value={form.agent_name}
+                    value={form.city}
                     onChange={handleChange}
-                    name="agent_name"
+                    name="city"
                 />
                 <InputForm
                     className="app_input"
                     label="State"
-                    value={form.agent_name}
+                    value={form.state}
                     onChange={handleChange}
-                    name="agent_name"
+                    name="state"
                 />
             </Col>
         </Row>
@@ -117,9 +138,9 @@ const [form, setForm] = useState({
                 <InputForm
                     className="app_input"
                     label="Contact Person"
-                    value={form.personal_contact}
+                    value={form.contact_person}
                     onChange={handleChange}
-                    name="personal_contact"
+                    name="contact_person"
                 />
                 <InputForm
                     className="app_input"
@@ -136,13 +157,12 @@ const [form, setForm] = useState({
                     onChange={handleChange}
                     name="web_address"
                 />
-                <label>Address</label>
-                <textarea
-                    className='app_input'
-                    placeholder='While............'
-                    name='adress'
+                  <InputForm
+                    className="app_input"
+                    label="Adress"
                     value={form.address}
-                    onClick={handleChange}
+                    onChange={handleChange}
+                    name="address"
                 />
             </Col>
             <Col md={6}>
@@ -170,6 +190,20 @@ const [form, setForm] = useState({
                 />
             </Col>
         </Row>
+        <div>
+            {loading ? (
+              <button className="app_button  mt-3 p-2 shadow">
+                Loading...
+              </button>
+            ) : (
+              <button
+                className="app_button mt-3 p-2 shadow"
+                onClick={handleSubmit}
+              >
+                Register Room
+              </button>
+            )}
+          </div>
     </Card>
 
   )
