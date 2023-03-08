@@ -164,6 +164,13 @@ const [form, setForm] = useState({
                     onChange={handleChange}
                     name="address"
                 />
+                <button
+                    className="app_button p-4"
+                    style={{ width: 200}}
+                    // onClick={() => goto('/sign-ip')}
+                    >
+                    Add Agent
+                </button>
             </Col>
             <Col md={6}>
                 {/* <h5 className="app_title"></h5> */}
@@ -189,6 +196,7 @@ const [form, setForm] = useState({
                     name="fax"
                 />
             </Col>
+            
         </Row>
         <div>
             {loading ? (

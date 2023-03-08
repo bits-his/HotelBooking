@@ -9,6 +9,7 @@ import HotelReg from '../Components/HotelReg'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
 import NewAgent from '../Components/NewAgent'
+import Reservation from '../Components/Reservation'
 import RoomReg from '../Components/RoomReg'
 import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
@@ -67,6 +68,10 @@ function AppNavigation() {
         {
           path:'allotment',
           element:<Allotment/>
+        },
+        {
+          path:'/reservation',
+          element:<Reservation/>
         }
 
       ],
