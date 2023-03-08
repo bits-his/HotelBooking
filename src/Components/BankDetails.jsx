@@ -28,7 +28,7 @@ export default function BankDetails() {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }))
     }
-    
+
     function handleFileChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -62,7 +62,7 @@ export default function BankDetails() {
             <Col md={6}>
                 <InputForm
                     className="app_input"
-                    label="Account Name"
+                    label="Beneficiary Name"
                     value={form.beneficiary_name}
                     onChange={handleChange}
                     name= "beneficiary_name"
