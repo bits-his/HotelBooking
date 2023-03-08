@@ -108,14 +108,50 @@ export default function Allotment() {
             </Col>
         </Row>
         <Row>
+            <Col md= {4}>
+                <button
+                    className="app_button p-1"
+                    style={{ width: 200, backgroundColor: 'rgb(12, 134, 103)', height: 40, marginTop: 30}}
+                    // onClick={() => goto('/sign-ip')}
+                    >
+                    Save
+                </button>
+            </Col>
+            <Col md= {4}>
+                <button
+                    className="app_button bg-danger p-1"
+                    style={{ width: 200, backgroundColor: 'rgb(12, 134, 103)', height: 40, marginTop: 30}}
+                    // onClick={() => goto('/sign-ip')}
+                    >
+                    Cancel
+                </button>
+            </Col>
+            <Col md= {4}>
+                <button
+                    className="app_button  p-1"
+                    style={{ width: 200, backgroundColor: 'orange', height: 40, marginTop: 30}}
+                    // onClick={() => goto('/sign-ip')}
+                    >
+                    Add Row
+                </button>
+            </Col>
+        </Row>
+        <Row>
             <table style={{border: '1px solid #ccc', padding: 12}} className= 'mt-5'>
                 <thead>
-                    <th>head</th>
-                    <th>head</th>
-                    <th>head</th>
-                    <th>head</th>
-                    <th>head</th>
+                    <th style={{border: '1px solid #ccc'}}>head</th>
+                    <th style={{border: '1px solid #ccc'}}>head</th>
+                    <th style={{border: '1px solid #ccc'}}>head</th>
+                    <th style={{border: '1px solid #ccc'}}>head</th>
+                    <th style={{border: '1px solid #ccc'}}>head</th>
                 </thead>
+                <tbody>
+                    <td style={{border: '1px solid #ccc'}}>head</td>
+                    <td style={{border: '1px solid #ccc'}}>head</td>
+                    <td style={{border: '1px solid #ccc'}}>head</td>
+                    <td style={{border: '1px solid #ccc'}}>head</td>
+                    <td style={{border: '1px solid #ccc'}}>head</td>
+                </tbody>
             </table>
         </Row>
     </Card>

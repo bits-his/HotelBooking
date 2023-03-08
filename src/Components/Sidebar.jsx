@@ -19,6 +19,7 @@ export default function Sidebar() {
         <li onClick={()=>goto('/new-agent')} className= 'link_item'><MdRoomPreferences className='logo shadow'/>New Agent</li>
         <li onClick={()=>goto('/bank-details')} className= 'link_item'><MdRoomPreferences className='logo shadow'/>Bank Details</li>
         <li onClick={()=>goto('/allotment')} className= 'link_item'><ImUsers className='logo shadow'/>Allotment</li>
+        <li onClick={()=>goto('/reservation')} className= 'link_item'><ImUsers className='logo shadow'/>Reservation</li>
       </div>
     </div>
   )

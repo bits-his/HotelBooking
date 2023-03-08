@@ -28,7 +28,8 @@ export default function BankDetails() {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }))
     }
-  function handleFileChange(e) {
+    
+    function handleFileChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
@@ -247,7 +248,15 @@ export default function BankDetails() {
                     onChange={handleChange}
                     name="a_s_type"
                 /> */}
+                
             </Col>
+            <button
+                className="app_button p-4"
+                style={{ width: 200, marginLeft: 15, marginTop: 20}}
+                // onClick={() => goto('/sign-ip')}
+                >
+                Submit
+            </button>
         </Row>
         
     </Card>
