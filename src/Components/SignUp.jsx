@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import { _post } from '../Utils/Helper'
 
 export default function SignUp() {
+    const [loading, setLoading] = useState(false)
     const [form, setForm] = useState({
-        fullname: '',
+        name: '',
         email: '',
         address: '',
         password: '',
+        phone1:"",
         confirm_passworm: ''
     })
     const handleChange = ({ target: { name, value } }) => {
@@ -15,10 +18,50 @@ export default function SignUp() {
     console.log(form)
     }
 
-    const handleAdd = (e) =>{
+    const submit = (e) => {
         e.preventDefault()
-        console.log(form)
-    }
+        setLoading(true)
+    
+        _post(
+          `api/users/create`,
+          form,
+          (resp) => {
+            // alert(JSON.stringify(resp))
+            if (resp.user && resp.user.id) {
+              // setLoading(false)
+              dispatch(
+                login(
+                    form,
+                  (resp) => {
+                    if (resp.success) {
+                      setLoading(false)
+                      goto('/profile')
+                    } else {
+                      setLoading(false)
+                      alert(resp.success)
+                      setNameResult(resp.name)
+                      setPhoneResult(resp.phone1)
+                      setEmailResult(resp.email)
+                      setPasswordResult(resp.password)
+                    }
+                  },
+                  (error) => {
+                    console.log(error)
+                  },
+                ),
+              )
+            } else {
+              setLoading(false)
+              setError(resp)
+            }
+          },
+          (e) => {
+            setLoading(false)
+            console.log(e)
+          },
+        )
+        // }
+      }
 
   return (
     <div
@@ -30,7 +73,7 @@ export default function SignUp() {
       }}
     >
     <Card className="app_card shadow p-3 m-3" style={{width: 350}}>
-        <Row onSubmit={handleAdd}>
+        <Row >
             <Col md={12}>
                 <center><h5 className="app_title">SignUp</h5></center>
             </Col>
@@ -38,9 +81,9 @@ export default function SignUp() {
                 <InputForm
                     className="app_input"
                     label="Full Name"
-                    value={form.fullname}
+                    value={form.name}
                     onChange={handleChange}
-                    name="fullname"
+                    name="name"
                     required
                 />
             </Col>
@@ -52,6 +95,16 @@ export default function SignUp() {
                     onChange={handleChange}
                     name="email"
                     type= 'email'
+                />
+            </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Phone"
+                    value={form.phone1}
+                    onChange={handleChange}
+                    name="phone1"
+                    type= 'number'
                 />
             </Col>
             <Col md={12}>
@@ -84,7 +137,14 @@ export default function SignUp() {
                 />
             </Col>
             <Col md={12}>
-                <button className="app_button mt-3 p-2 shadow" style={{width: '100%'}} onSubmit= {handleAdd}>SignUp</button>
+                <button className="app_button mt-3 p-2 shadow" style={{width: '100%'}} onClick={submit}> {loading ? (
+                      <span>Loading...</span>
+                    ) : (
+                      <span>
+                        Register
+                        {/* <BiChevronRight size={20} /> */}
+                      </span>
+                    )}</button>
             </Col>
         </Row>
 

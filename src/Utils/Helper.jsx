@@ -8,13 +8,15 @@
 
 // export const server_url = 'http://yge.wvi.mybluehost.me:9090/api'
 // export const server_url = ' http://localhost:8000/api'
-export const server_url = 'https://e055-102-91-4-132.eu.ngrok.io'
+export const server_url = 'http://localhost:6678'
 
 export const _post = (url, data, success = (f) => f, error = (f) => f) => {
+  const token = localStorage.getItem('@@token')
   fetch(`${server_url}/${url}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      authorization: `${token}`,
     },
     body: JSON.stringify(data),
   })

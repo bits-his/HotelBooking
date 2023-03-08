@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
-
+import { login } from '../redux/actions/authActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 export default function SignIn() {
+    const goto = useNavigate()
+  const {
+    auth: { errors },
+  } = useSelector((s) => s)
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+  const [display, setDisplay] = useState(false)
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -12,10 +21,34 @@ export default function SignIn() {
     console.log(form)
     }
 
-    const handleAdd = (e) =>{
+    const submit = (e) => {
         e.preventDefault()
         console.log(form)
-    }
+        setLoading(true)
+        dispatch(
+          login(
+            form,
+            (resp) => {
+              if (resp.success) {
+                setLoading(false)
+                goto('/dashboard')
+              } else {
+                setLoading(false)
+                alert(resp.email ? resp.email : resp.password)
+                setEmailResult(resp.email)
+                setPasswordResult(resp.password)
+              }
+              console.log(resp)
+            },
+            (e) => {
+              setLoading(false)
+              // alert(JSON.stringify(e))
+              console.log(e)
+            },
+          ),
+        )
+      }
+      
 
   return (
     <div
@@ -27,7 +60,7 @@ export default function SignIn() {
       }}
     >
     <Card className="app_card shadow p-3 m-3" style={{width: 350, height: 400}}>
-        <Row onSubmit={handleAdd}>
+        <Row >
             <Col md={12}>
                 <center><h5 className="app_title">Sign IN</h5></center>
             </Col>
@@ -52,7 +85,13 @@ export default function SignIn() {
                 />
             </Col>
             <Col md={12}>
-                <button className="app_button mt-3 p-2 shadow" style={{width: '100%'}} onSubmit= {handleAdd}>Log In</button>
+                <button className="app_button mt-3 p-2 shadow" style={{width: '100%'}} onClick= {submit}> {loading ? (
+                        <span>Loading...</span>
+                      ) : (
+                        <span>
+                          Login
+                        </span>
+                      )}</button>
             </Col>
         </Row>
     </Card>  

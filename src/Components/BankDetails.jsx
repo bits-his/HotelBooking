@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import { _post } from '../Utils/Helper'
 
 export default function BankDetails() {
     const [file, setFile] = useState()
     const [form, setForm] = useState({
-        account_number: '',
-        account_name: '',
+        bank_acc_no: '',
+        bank_name: '',
         beneficiary_name: '',
-        branch_address: '',
+        branch_and_address: '',
         credit_limit: '',
-        gl_account_no_sales: '',
-        gl_account_no_suppliers: '',
+        gl_acc_no_sales: '',
+        gl_acc_no_supplier: '',
         price_category: '',
         payment_method: '',
-        l_c_d: '',
+        local_contact_details: '',
         vat_reg_no: '',
-        mofa: '',
+        mofa_file_no: '',
         region: '',
         agent_type: '',
-        cash_gruaranty: '',
-        bank_granty: '',
-        a_s_type: ''
+        cash_guarantee: '',
+        bank_guarantee: '',
+        agent_supplier: ''
     })
 
     const handleChange = ({ target: { name, value } }) => {
@@ -32,6 +33,25 @@ export default function BankDetails() {
     function handleFileChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
+    }
+    const [loading, setLoading] = useState(false)
+    const handleSubmit = () => {
+      setLoading(true)
+      _post(
+        'api/bank_account_details',
+        form,
+        (res) => {
+          // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
+  
+          setLoading(false)
+          console.log(res)
+        },
+        (err) => {
+          setLoading(false)
+          console.log(err)
+        },
+      )
+      // console.log(form)
     }
 
   return (
@@ -46,17 +66,17 @@ export default function BankDetails() {
                 <InputForm
                     className="app_input"
                     label="Account Number"
-                    value={form.account_number}
+                    value={form.bank_acc_no}
                     onChange={handleChange}
-                    name="account_number"
+                    name="bank_acc_no"
                     type= 'number'
                 />
                 <InputForm
                     className="app_input"
                     label="Account Name"
-                    value={form.account_name}
+                    value={form.bank_name}
                     onChange={handleChange}
-                    name="account_name"
+                    name="bank_name"
                 />
             </Col>
             <Col md={6}>
@@ -67,13 +87,13 @@ export default function BankDetails() {
                     onChange={handleChange}
                     name= "beneficiary_name"
                 />
-                <label>Branch & Address</label>
-                <textarea
-                    className='app_input'
-                    placeholder='While............'
-                    name='branch_address'
-                    value={form.branch_address}
-                    onClick={handleChange}
+                {/* <label>Branch & Address</label> */}
+                <InputForm
+                    className="app_input"
+                    label="Branch Address"
+                    value={form.branch_and_address}
+                    onChange={handleChange}
+                    name= "branch_and_address"
                 />
             </Col>
             <hr className='mt-2 mb-3'/>
@@ -83,26 +103,26 @@ export default function BankDetails() {
                 <InputForm
                     className="app_input"
                     label="Credit Limit"
-                    value={form.personal_contact}
+                    value={form.credit_limit}
                     onChange={handleChange}
-                    name="personal_contact"
+                    name="credit_limit"
                     type= 'number'
                 />
                 <InputForm
                     className="app_input"
                     label="GL Account No.(Sales)"
-                    value={form.personal_contact}
+                    value={form.gl_acc_no_sales}
                     onChange={handleChange}
-                    name="personal_contact"
+                    name="gl_acc_no_sales"
                 />
             </Col>
             <Col md={6}>
                 <InputForm
                     className="app_input"
                     label="GL Account No.(Supplier)"
-                    value={form.beneficiary_name}
+                    value={form.gl_acc_no_supplier}
                     onChange={handleChange}
-                    name= "beneficiary_name"
+                    name= "gl_acc_no_supplier"
                 />
             </Col>
         </Row>
@@ -120,13 +140,14 @@ export default function BankDetails() {
                 >
                     <option>Select </option>
                 </select>
-                <label>Local Contact Details</label>
-                <textarea
-                    className='app_input'
-                    placeholder='While............'
-                    name='branch_address'
-                    value={form.branch_address}
-                    onClick={handleChange}
+                {/* <label>Local Contact Details</label> */}
+                <InputForm
+                    className="app_input"
+                    label="Local Contact Details"
+                    value={form.local_contact_details}
+                    onChange={handleChange}
+                    name="local_contact_details"
+                    // type= "file"
                 />
                 <InputForm
                     className="app_input"
@@ -165,9 +186,9 @@ export default function BankDetails() {
                 <InputForm
                     className="app_input"
                     label="MOFA File No."
-                    value={form.mofa}
+                    value={form.mofa_file_no}
                     onChange={handleChange}
-                    name="mofa"
+                    name="mofa_file_no"
                 />
                 <label className="Label mt-2">Agent Type </label>
                 <select
@@ -191,9 +212,9 @@ export default function BankDetails() {
                 <InputForm
                     className="app_input"
                     label="Bank Guarantee"
-                    value={form.bank_granty}
+                    value={form.bank_guarantee}
                     onChange={handleChange}
-                    name="bank_granty"
+                    name="bank_guarantee"
                 />
                 <Label>
                     <Input 
@@ -213,7 +234,7 @@ export default function BankDetails() {
                     onClick={handleChange}
                     value={form.region}
                 >
-                    <option></option>
+                    <option>kano</option>
                 </select>
                 {/* <InputForm
                     className="app_input"
@@ -225,28 +246,28 @@ export default function BankDetails() {
                 <InputForm
                     className="app_input"
                     label="Cash Guarantee"
-                    value={form.cash_gruaranty}
+                    value={form.cash_guarantee}
                     onChange={handleChange}
-                    name="cash_gruaranty"
+                    name="cash_guarantee"
                 />
                 <label className="Label mt-2">Agent/Supplier Type</label>
                 <select
                     id="exampleSelect"
                     // bbbbb{JSON.stringify(selectedRoom)}
                     className="app_input"
-                    name="a_s_type"
+                    name="agent_supplier"
                     type="select"
                     onClick={handleChange}
-                    value={form.a_s_type}
+                    value={form.agent_supplier}
                 >
                     <option></option>
                 </select>
                 {/* <InputForm
                     className="app_input"
                     label="Agent/Supplier Type"
-                    value={form.a_s_type}
+                    value={form.agent_supplier}
                     onChange={handleChange}
-                    name="a_s_type"
+                    name="agent_supplier"
                 /> */}
                 
             </Col>
@@ -258,6 +279,20 @@ export default function BankDetails() {
                 Submit
             </button>
         </Row>
+        <div>
+            {loading ? (
+              <button className="app_button  mt-3 p-2 shadow">
+                Loading...
+              </button>
+            ) : (
+              <button
+                className="app_button mt-3 p-2 shadow"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            )}
+          </div>
         
     </Card>
   )
