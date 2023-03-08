@@ -36,6 +36,45 @@ export default function BankDetails() {
     }
     const [loading, setLoading] = useState(false)
     const handleSubmit = () => {
+        if (
+            form.bank_acc_no&&
+            form.bank_name&&
+            form.beneficiary_name&&
+            form.branch_and_address&&
+            form.credit_limit&&
+            form.gl_acc_no_sales&&
+            form.gl_acc_no_supplier&&
+            form.price_category&&
+            form.payment_method&&
+            form.local_contact_details&&
+            form.vat_reg_no&&
+            form.mofa_file_no&&
+            form.region&&
+            form.agent_type&&
+            form.cash_guarantee&&
+            form.bank_guarantee&&
+            form.agent_supplier
+        ) {
+            setForm({
+                bank_acc_no: '',
+                bank_name: '',
+                beneficiary_name: '',
+                branch_and_address: '',
+                credit_limit: '',
+                gl_acc_no_sales: '',
+                gl_acc_no_supplier: '',
+                price_category: '',
+                payment_method: '',
+                local_contact_details: '',
+                vat_reg_no: '',
+                mofa_file_no: '',
+                region: '',
+                agent_type: '',
+                cash_guarantee: '',
+                bank_guarantee: '',
+                agent_supplier: ''
+            })
+        }
       setLoading(true)
       _post(
         'api/bank_account_details',
