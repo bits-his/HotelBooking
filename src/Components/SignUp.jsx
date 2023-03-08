@@ -30,7 +30,7 @@ export default function SignUp() {
       }}
     >
     <Card className="app_card shadow p-3 m-3" style={{width: 350}}>
-        <Row>
+        <Row onSubmit={handleAdd}>
             <Col md={12}>
                 <center><h5 className="app_title">SignUp</h5></center>
             </Col>

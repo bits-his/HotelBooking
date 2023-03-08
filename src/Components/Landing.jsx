@@ -16,7 +16,7 @@ export default function Landing() {
         <button
           className="app_button p-4"
           style={{ width: 200 }}
-          onClick={() => goto('/sign-up')}
+          onClick={() => goto('/sign-ip')}
         >
           Get In
         </button>

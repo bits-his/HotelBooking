@@ -10,6 +10,7 @@ import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
 import NewAgent from '../Components/NewAgent'
 import RoomReg from '../Components/RoomReg'
+import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import AppIndex from './AppIndex'
 function AppNavigation() {
@@ -22,6 +23,10 @@ function AppNavigation() {
     {
       path: 'sign-up',
       element: <SignUp />
+    },
+    {
+      path: 'sign-ip',
+      element: <SignIn />
     },
     {
       element: <AppIndex />,
