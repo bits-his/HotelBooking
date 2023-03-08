@@ -2,25 +2,9 @@ import React, { useState } from 'react'
 import { Card, Col, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _post } from '../Utils/Helper'
+// import FormWrapper from '../tab-wrapper/FormaWrapper'
+export default function NewAgent({form={},setForm=(f)=>f}) {
 
-export default function NewAgent() {
-const [form, setForm] = useState({
-    agent_name: '',
-    arabic_name: '',
-    phone: '',
-    extension: '',
-    country: '',
-    city: '',
-    zipcode: '',
-    state: '',
-    contact_person: '',
-    email: '',
-    web_address: '',
-    address: '',
-    job_title: '',
-    mobile: '',
-    fax: ''
-  })
 
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
@@ -48,7 +32,8 @@ const [form, setForm] = useState({
 
 
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
+    <Card className="app_card dashboard_card shadow p-3 m-3 mt-0">
+      
         <Row>
             <Col md={6}>
                 <h5 className="app_title">Create New Agent/Supplier</h5>
@@ -164,13 +149,7 @@ const [form, setForm] = useState({
                     onChange={handleChange}
                     name="address"
                 />
-                <button
-                    className="app_button p-4"
-                    style={{ width: 200}}
-                    // onClick={() => goto('/sign-ip')}
-                    >
-                    Add Agent
-                </button>
+               
             </Col>
             <Col md={6}>
                 {/* <h5 className="app_title"></h5> */}
@@ -198,20 +177,7 @@ const [form, setForm] = useState({
             </Col>
             
         </Row>
-        <div>
-            {loading ? (
-              <button className="app_button  mt-3 p-2 shadow">
-                Loading...
-              </button>
-            ) : (
-              <button
-                className="app_button mt-3 p-2 shadow"
-                onClick={handleSubmit}
-              >
-                Submit
-              </button>
-            )}
-          </div>
+        
     </Card>
 
   )
