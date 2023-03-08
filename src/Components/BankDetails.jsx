@@ -27,7 +27,7 @@ export default function BankDetails() {
     const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }))
-  }
+    }
   function handleFileChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -249,6 +249,7 @@ export default function BankDetails() {
                 /> */}
             </Col>
         </Row>
+        
     </Card>
   )
 }
