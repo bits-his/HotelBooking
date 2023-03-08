@@ -200,7 +200,7 @@ const [form, setForm] = useState({
                 className="app_button mt-3 p-2 shadow"
                 onClick={handleSubmit}
               >
-                Register Room
+                Submit
               </button>
             )}
           </div>

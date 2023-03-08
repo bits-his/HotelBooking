@@ -60,7 +60,7 @@ export function signup(objs = {}, success = (f) => f, error = (f) => f) {
 export function login({ email, password }, success = (f) => f, error = (f) => f) {
   return (dispatch) => {
     //   dispatch({ type: types.LOADING });
-    fetch(`${server_url}/users/login`, {
+    fetch(`${server_url}/api/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export function login({ email, password }, success = (f) => f, error = (f) => f)
 export async function getUserProfile(_token) {
   try {
     // console.log(_token);
-    let response = await fetch(`${server_url}/users/verify-token`, {
+    let response = await fetch(`${server_url}/api/users/verify-token`, {
       method: "GET",
       headers: {
         authorization: _token,
