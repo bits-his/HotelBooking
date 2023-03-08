@@ -249,6 +249,7 @@ export default function BankDetails() {
                 /> */}
             </Col>
         </Row>
+        
     </Card>
   )
 }
