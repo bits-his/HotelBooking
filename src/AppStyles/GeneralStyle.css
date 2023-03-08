@@ -20,11 +20,11 @@
   /* font-weight: bold; */
   color: rgba(164, 107, 0, 0.626);
 }
-.search_button {
+/* .search_button { */
   /* display: flex;
   justify-content: space-between;
   gap: 10px; */
-}
+/* } */
 .app_card {
   border: none !important;
   border-radius: 0 !important;
@@ -85,6 +85,19 @@
   border: 1px solid rgb(197, 197, 197);
   width: 100%;
   padding: 8px;
+}
+.app_input2{
+  width: 90%;
+  padding: 3px 10px;
+  border: none !important;
+  border-radius: 8px;
+  outline: none;
+}
+.search{
+  margin-left: 30px;
+  border-radius: 8px;
+  width: 50%;
+  border: 1px solid rgb(197, 197, 197);
 }
 .app_input:focus {
   outline: 1px rgb(12, 134, 103) solid;

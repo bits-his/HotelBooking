@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRoutes } from 'react-router-dom'
+import Agent from '../Components/Agent'
 import Allotment from '../Components/Allotment'
 import BankDetails from '../Components/BankDetails'
 import CustomerReg from '../Components/CustomerReg'
@@ -57,6 +58,11 @@ function AppNavigation() {
           path:'/customers',
           element:<Customers/>
         },
+        {
+          path:'/agent',
+          element:<Agent/>
+        },
+        
         {
           path:'/new-agent',
           element:<NewAgent/>
