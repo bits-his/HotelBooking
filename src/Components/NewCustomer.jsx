@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import { _post } from '../Utils/Helper'
 
-export default function Agent() {
+export default function NewCustomer() {
   const goto = useNavigate()
 const [data,setData]=useState([])
 
@@ -28,7 +28,7 @@ const [data,setData]=useState([])
   
   useEffect(() => {
     getAgent()
-  }, [])
+  }, [getAgent])
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -37,9 +37,9 @@ const [data,setData]=useState([])
                 <button
                     className="app_button p-3"
                     style={{ width: 200}}
-                    onClick={() => goto('/new-agent')}
+                    onClick={() => goto('/create-new-costomer')}
                     >
-                    Add Agent
+                    Create New Customer
                 </button>
             </Col>
         </Row>
@@ -63,7 +63,6 @@ const [data,setData]=useState([])
         <Row>
             <table style={{border: '1px solid #ccc', padding: 12}} className= 'mt-5'>
                 <thead>
-                    <th style={{border: '1px solid #ccc'}}>Action</th>
                     <th style={{border: '1px solid #ccc'}}>Agent Id</th>
                     <th style={{border: '1px solid #ccc'}}>Name</th>
                     <th style={{border: '1px solid #ccc'}}>Phone</th>
@@ -74,15 +73,16 @@ const [data,setData]=useState([])
                 </thead>
               
                     {data&&data.map((i)=>  <tbody>
-                      <td style={{border: '1px solid #ccc'}}><center><button onClick={() => goto(`/new-agent/${i.agent_id}`)} className='app_button '>edit</button></center></td>
                          <td style={{border: '1px solid #ccc'}}>{i.agent_id}</td>
-                         <td style={{border: '1px solid #ccc'}}>{i.arabic_name}</td>
+                         <td style={{border: '1px solid #ccc'}}>{i.agent_name}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.phone}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.country}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.state}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.city}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.zipcode}</td> </tbody>
                     )}
+                   
+               
             </table>
         </Row>
 
