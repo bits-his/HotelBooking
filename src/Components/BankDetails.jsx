@@ -3,27 +3,27 @@ import { Card, Col, Input, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _post } from '../Utils/Helper'
 
-export default function BankDetails() {
+export default function BankDetails({form={},setForm=(f)=>f}) {
     const [file, setFile] = useState()
-    const [form, setForm] = useState({
-        bank_acc_no: '',
-        bank_name: '',
-        beneficiary_name: '',
-        branch_and_address: '',
-        credit_limit: '',
-        gl_acc_no_sales: '',
-        gl_acc_no_supplier: '',
-        price_category: '',
-        payment_method: '',
-        local_contact_details: '',
-        vat_reg_no: '',
-        mofa_file_no: '',
-        region: '',
-        agent_type: '',
-        cash_guarantee: '',
-        bank_guarantee: '',
-        agent_supplier: ''
-    })
+    // const [form, setForm] = useState({
+    //     bank_acc_no: '',
+    //     bank_name: '',
+    //     beneficiary_name: '',
+    //     branch_and_address: '',
+    //     credit_limit: '',
+    //     gl_acc_no_sales: '',
+    //     gl_acc_no_supplier: '',
+    //     price_category: '',
+    //     payment_method: '',
+    //     local_contact_details: '',
+    //     vat_reg_no: '',
+    //     mofa_file_no: '',
+    //     region: '',
+    //     agent_type: '',
+    //     cash_guarantee: '',
+    //     bank_guarantee: '',
+    //     agent_supplier: ''
+    // })
 
     const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
@@ -94,7 +94,8 @@ export default function BankDetails() {
     }
 
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
+    <Card className="app_card dashboard_card shadow p-3 m-3 mt-0 ">
+        
         <Row>
             <Col md={12}>
                 <h5 className="app_title">Bank Account Details</h5>
@@ -310,15 +311,15 @@ export default function BankDetails() {
                 /> */}
                 
             </Col>
-            <button
+            {/* <button
                 className="app_button p-4"
                 style={{ width: 200, marginLeft: 15, marginTop: 20}}
                 // onClick={() => goto('/sign-ip')}
                 >
                 Submit
-            </button>
+            </button> */}
         </Row>
-        <div>
+        {/* <div>
             {loading ? (
               <button className="app_button  mt-3 p-2 shadow">
                 Loading...
@@ -331,7 +332,7 @@ export default function BankDetails() {
                 Submit
               </button>
             )}
-          </div>
+          </div> */}
         
     </Card>
   )

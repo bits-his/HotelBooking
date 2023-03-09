@@ -9,6 +9,7 @@ import Dashboard from '../Components/Dashboard'
 import HotelReg from '../Components/HotelReg'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
+import Master from '../Components/Master'
 import NewAgent from '../Components/NewAgent'
 import Reservation from '../Components/Reservation'
 import RoomReg from '../Components/RoomReg'
@@ -65,7 +66,7 @@ function AppNavigation() {
         
         {
           path:'/new-agent',
-          element:<NewAgent/>
+          element:<Master/>
         },
         {
           path:'bank-details',
