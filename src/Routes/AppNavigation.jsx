@@ -28,7 +28,7 @@ function AppNavigation() {
       element: <SignUp />
     },
     {
-      path: 'sign-ip',
+      path: 'sign-in',
       element: <SignIn />
     },
     {

@@ -1,14 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Col, Row } from 'reactstrap'
+import SignIn from './SignIn'
+// import
 
 export default function Landing() {
   const goto = useNavigate()
   return (
-    // <Row>
-    //   <Col>
-
-    //   </Col>
     <div
       style={{
         display: 'flex',
@@ -17,25 +14,7 @@ export default function Landing() {
         height: '100vh',
       }}
     >
-      {/* <Col>
-        
-      </Col> */}
-      <div>
-        <button
-          className="app_button p-4"
-          style={{ width: 200 }}
-          onClick={() => goto('/sign-up')}
-        >
-          Sign Up
-        </button>
-        <button
-          className="app_button p-4"
-          style={{ width: 200, marginLeft: 20}}
-          onClick={() => goto('/sign-ip')}
-        >
-          Sign In
-        </button>
-      </div>
+      <SignIn />
     </div>
     // </Row>
   )
