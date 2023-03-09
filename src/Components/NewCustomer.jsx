@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import { _post } from '../Utils/Helper'
 
-export default function Agent() {
+export default function NewCustomer() {
   const goto = useNavigate()
 const [data,setData]=useState([])
 
@@ -37,9 +37,9 @@ const [data,setData]=useState([])
                 <button
                     className="app_button p-3"
                     style={{ width: 200}}
-                    onClick={() => goto('/new-agent')}
+                    onClick={() => goto('/create-new-costomer')}
                     >
-                    Add Agent
+                    Create New Customer
                 </button>
             </Col>
         </Row>
@@ -81,6 +81,8 @@ const [data,setData]=useState([])
                          <td style={{border: '1px solid #ccc'}}>{i.city}</td>
                          <td style={{border: '1px solid #ccc'}}>{i.zipcode}</td> </tbody>
                     )}
+                   
+               
             </table>
         </Row>
 
