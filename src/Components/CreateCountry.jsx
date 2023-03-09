@@ -6,7 +6,7 @@ export default function CreacteCountry() {
     const [form, setForm] = useState({
         country_id: '',
         country_name: '',
-        country_type: ''
+        nationalism: ''
     })
 
     const handleChange = ({ target: { name, value } }) => {
@@ -38,17 +38,25 @@ export default function CreacteCountry() {
                     onChange={handleChange}
                     name="country_name"
                 />
-                <label className="Label mt-2">Country Type</label>
+                <InputForm
+                    className="app_input"
+                    label="Nationalism"
+                    value={form.nationalism}
+                    // value={form.country_name}
+                    onChange={handleChange}
+                    name="nationalism"
+                />
+                {/* <label className="Label mt-2">Country Type</label>
                 <select
                     id="exampleSelect"
                     className="app_input"
-                    value={form.country_type}
-                    name="country_type"
+                    value={form.nationalism}
+                    name="nationalism"
                     type="select"
                     onChange={handleChange}
                 >
                     <option>Select </option>
-                </select>
+                </select> */}
             </Col>
         </Row>
         <Row className='mt-3'>
