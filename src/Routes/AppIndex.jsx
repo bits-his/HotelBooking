@@ -44,12 +44,12 @@ export default function AppIndex() {
         <Col md={10} className="">
           {/* <Navbar /> */}
           <Row>
-            <Col md={9} className="p-0 m-0 _outlet">
+            <Col md={12} className="p-0 m-0 _outlet">
               <Outlet />
             </Col>
-            <Col md={3} className="customer-page">
+            {/* <Col md={3} className="customer-page">
               <CustomerReg />
-            </Col>
+            </Col> */}
           </Row>
         </Col>
       </Row>

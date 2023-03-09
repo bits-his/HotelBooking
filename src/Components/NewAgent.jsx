@@ -39,10 +39,11 @@ export default function NewAgent({form={},setForm=(f)=>f}) {
                 <h5 className="app_title">Create New Agent/Supplier</h5>
                 <InputForm
                     className="app_input"
-                    label="Room Number"
+                    label="Agent Id"
                     value={form.agent_name}
                     onChange={handleChange}
                     name="agent_name"
+                    type="number"
                     required
                 />
                 <InputForm
