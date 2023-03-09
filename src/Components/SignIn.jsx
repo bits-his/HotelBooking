@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Col, Row } from 'reactstrap'
+import { Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { login } from '../redux/actions/authActions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -59,8 +59,8 @@ export default function SignIn() {
         height: '90vh',
       }}
     >
-    <Card className="app_card shadow p-3 m-3" style={{width: 350, height: 400}}>
-        <Row >
+    {/* <Card className="app_card shadow p-3 m-3" style={{width: 350, height: 400}}> */}
+        {/* <Row >
             <Col md={12}>
                 <center><h5 className="app_title">Sign IN</h5></center>
             </Col>
@@ -93,8 +93,62 @@ export default function SignIn() {
                         </span>
                       )}</button>
             </Col>
-        </Row>
-    </Card>  
+        </Row> */}
+        <div className='sign-in-div1'>
+          <div className='sign-in-div2'>
+            <div className='sign-in-div3' style={{display: 'flex', justifyContent: 'space-between'}}>
+              <p 
+                className='sign-in-para'
+                onClick={()=>goto('/sign-in')}
+              >Sign in </p>
+              <p style={{
+                border: '1px solid #fff',
+                marginTop: 15
+              }}></p>
+              <p 
+                className='sign-in-para'
+                onClick={()=>goto('/sign-up')}
+              >Register </p>
+            </div>
+            <div className='sign-in-div4'>
+                <input 
+                  className='sign-in-input' 
+                  type='email' 
+                  placeholder='Email'
+                  value={form.email} 
+                  name="email"
+                  onChange={handleChange}
+                />
+                <input 
+                  className='sign-in-input' 
+                  type='password' 
+                  placeholder='Password' 
+                  value={form.password}
+                  onChange={handleChange}
+                  name="password"
+                />
+                <FormGroup switch className='sign-in-switch'>
+                  <Label className='sign-in-label'>
+                    <Input type="switch" role="switch" />
+                    Remember Me</Label>
+                </FormGroup>
+                <button className='sign-in-bottom'onClick= {submit}> {loading ? (
+                  <span>Loading...</span>
+                    ) : (
+                      <span>
+                          Login
+                      </span>
+                      )}
+                </button>
+                <div>
+                  <p className='sign-in-para1'>Don't have an account?<a href='#' className='sign-in-href'
+                    onClick={()=>goto('/sign-up')}
+                  > Sign Up</a></p>
+                </div>
+            </div>
+          </div>
+        </div>
+    {/* </Card>   */}
     </div>
   )
 }
