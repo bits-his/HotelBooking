@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { FaArrowLeft } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { Card, Col, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 
 export default function CreacteView() {
+    const goto = useNavigate()
     const [form, setForm] = useState({
         view_id: '',
         view_name: '',
@@ -16,6 +19,13 @@ export default function CreacteView() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+        <button
+            className="app_button p-3 mb-3"
+            style={{ width: 150, fontSize: 16, fontWeight: 500}} 
+            onClick={() => goto('/view')}
+        >
+            <FaArrowLeft style={{marginRight: 10}} /> Back
+        </button>
         <Row>
             <Col md={12}>
                 <h5 className="app_title">Create Room View</h5>
@@ -38,6 +48,8 @@ export default function CreacteView() {
                     onChange={handleChange}
                     name="view_name"
                 />
+            </Col>
+            <Col>
                 <label className="Label mt-2">View Type</label>
                 <select
                     id="exampleSelect"
@@ -58,7 +70,7 @@ export default function CreacteView() {
                     style={{ width: 150, float: 'right'}} 
                     onClick={() => goto('/creact-room-type')}
                     >
-                    Add +
+                    Submit
                 </button>
             </Col>
         </Row>
