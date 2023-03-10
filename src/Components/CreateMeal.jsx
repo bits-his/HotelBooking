@@ -70,10 +70,17 @@ const [data,setData]=useState()
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(data)} */}
       <Row>
-        <Col md={12}>
-          <h5 className="app_title">Create Meal</h5>
-        </Col>
-      </Row>
+            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
+                <button
+                    className="app_button p-3 mb-3"
+                    style={{ width: 150, fontSize: 16, fontWeight: 500}} 
+                    onClick={() => navigate('/meal')}
+                >
+                    <FaArrowLeft style={{marginRight: 10}} /> Back
+                </button>
+                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Meal</h5>
+            </Col>
+        </Row>
       <Row>
         <Col md={6}>
           {/* <InputForm
@@ -91,9 +98,11 @@ const [data,setData]=useState()
             onChange={handleChange}
             name="meal_name"
           />
-          <label className="Label mt-2">meal Type</label>
+          </Col>
+          <Col>
           <InputForm
             id="exampleSelect"
+            label= "Meal Type"
             className="app_input"
             value={form.meal_type}
             name="meal_type"
