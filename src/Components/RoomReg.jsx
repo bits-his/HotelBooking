@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Col, Row } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
-import { _get, _post } from '../Utils/Helper'
+import React, { useEffect, useState } from "react";
+import { Card, Col, Row } from "reactstrap";
+import InputForm from "../CustomComponents/InputForm";
+import { _get, _post } from "../Utils/Helper";
 
 export default function RoomReg() {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    hotel: '',
-    room_number: '',
-    price: '',
-  })
-  const [hotelList, setHotelList] = useState([])
+    hotel: "",
+    room_number: "",
+    price: "",
+  });
+  const [hotelList, setHotelList] = useState([]);
   // const [roomList, setRoomList] = useState([])
   // const [selectedRoom, setSelectedRoom] = useState([])
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
-    setForm((p) => ({ ...p, [name]: value }))
-  }
+    setForm((p) => ({ ...p, [name]: value }));
+  };
 
   useEffect(() => {
     // setLoading(true)
     _get(
-      'hotels/',
+      "hotels/",
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         if (resp && resp.length) {
-          setHotelList(resp)
+          setHotelList(resp);
         }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
-      },
-    )
-  }, [])
+      }
+    );
+  }, []);
 
   // useEffect(() => {
   //   // setLoading(true)
@@ -55,23 +55,23 @@ export default function RoomReg() {
   // }, [selectedRoom])
 
   const handleSubmit = () => {
-    setLoading(true)
+    setLoading(true);
     _post(
-      'create-hotel-room/',
+      "create-hotel-room/",
       form,
       (res) => {
-        setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
+        setForm((p) => ({ ...p, hotel: "", address: "", price: "" }));
 
-        setLoading(false)
-        console.log(res)
+        setLoading(false);
+        console.log(res);
       },
       (err) => {
-        setLoading(false)
-        console.log(err)
-      },
-    )
+        setLoading(false);
+        console.log(err);
+      }
+    );
     // console.log(form)
-  }
+  };
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(roomList)} */}
@@ -150,5 +150,5 @@ export default function RoomReg() {
         </Col>
       </Row>
     </Card>
-  )
+  );
 }
