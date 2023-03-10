@@ -6,29 +6,31 @@ import { _post } from '../Utils/Helper'
 
 export default function CreacteNewRoom() {
   const goto = useNavigate()
-const [data,setData]=useState([])
-
-  const getAgent = ()=>{
-    _post(
-        'api/bank_account_details',
-        {},
-        (res) => {
-          
-        //   navigate(`/agent`)
-          console.log(res)
-          setData(res.results)
-        },
-        (err) => {
-          // setLoading(false)
-          console.log(err)
-        },
-      )
-      // console.log(form)
-    }
-  
-  useEffect(() => {
-    getAgent()
-  }, [getAgent])
+  const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/room_tables?in_query_type=select-all',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
+  useEffect(
+    ()=>{
+      getHotels()
+    },[0]
+  )
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -72,13 +74,13 @@ const [data,setData]=useState([])
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Type</th>
                   </thead>
                 
-                      {data&&data.map((i)=>  <tbody>
+                      {hotel&&hotel.map((i)=>  <tbody>
                           {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td> */}
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.hotel_id}</td>
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_no}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.state}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.city}</td>
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.floor}</td>
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_type}</td>
                         </tbody>
                       )}
               </table>

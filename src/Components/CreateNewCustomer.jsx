@@ -37,6 +37,7 @@ export default function CreateNewCustomer() {
     const [view,setView]=useState([])
     const [hotel,setHotel]=useState([])
     const [meal,setMeal]=useState([])
+    const [room,setRoom]=useState([])
 
   const getAgent = ()=>{
     _post(
@@ -121,11 +122,31 @@ export default function CreateNewCustomer() {
           }
         );
       }, [0]);
+      const getRooms = () => {
+        _post( 
+          'api/room_tables?in_query_type=select-all',
+          {},
+          (resp) => {
+            // setLoading(false)
+            console.log(resp)
+            // if (resp ) {
+              setRoom(resp.results)
+            //  alert('dfasfsadf'+resp)
+            // }
+          },
+          (e) => {
+            console.log(e)
+            // setLoading(false)
+            // alert(e)
+          },
+        )
+      }
   useEffect(() => {
     getAgent();
     getHotels();
     getViews();
-    getMeals_table()
+    getMeals_table();
+    getRooms();
   }, [])
 
   return (
@@ -139,7 +160,7 @@ export default function CreateNewCustomer() {
                 >
                     <FaArrowLeft style={{marginRight: 10}} /> Back
                 </button>
-                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Agent/Supplier</h5>
+                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Client Registration Form</h5>
             </Col>
         </Row>
         <Row>
@@ -159,7 +180,7 @@ export default function CreateNewCustomer() {
                 </select>
                 <InputForm
                     className="app_input"
-                    label="Costomer Name"
+                    label="Client Name"
                     value={form.customer_name}
                     onChange={handleChange}
                     name="customer_name"
@@ -191,7 +212,9 @@ export default function CreateNewCustomer() {
                     onChange={handleChange}
                     name="date_from"
                     type= 'date'
-                />
+                /><labe>NO. Days....</labe><br />
+                <labe>NO. Night....</labe>
+                
                 <InputForm
                     className="app_input"
                     label="Status"
@@ -201,7 +224,7 @@ export default function CreateNewCustomer() {
                 />
                 <InputForm
                     className="app_input"
-                    label="Agent Image"
+                    label="Upload Client ID"
                     value={file}
                     onChange={(e)=> handleFileChange(e)}
                     name="file"
@@ -244,9 +267,7 @@ export default function CreateNewCustomer() {
                     onChange={handleChange}
                     value={form.room_type}
                 >
-                    <option>Select</option>
-                    <option value="adult">Adult</option>
-                    <option value="adult_children">Adult / Children</option>
+                   {room&&room.map(i=><option>{i.room_type}</option>)}
                 </select>
                 <label className="Label mt-2">Room View</label>
                 <select
@@ -274,6 +295,7 @@ export default function CreateNewCustomer() {
                     name="date_to"
                     type= 'date'
                 />
+                
                 <label className="Label mt-2">Meal</label>
                 <select
                     id="exampleSelect"

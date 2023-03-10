@@ -9,9 +9,10 @@ export default function RoomReg() {
   const goto = useNavigate()
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    hotel: "",
-    room_number: "",
-    price: "",
+    floor: "",
+    room_no:"",
+    room_type:"",
+    hotel_id:""
   });
   const [hotelList, setHotelList] = useState([]);
   // const [roomList, setRoomList] = useState([])
@@ -21,23 +22,31 @@ export default function RoomReg() {
     setForm((p) => ({ ...p, [name]: value }));
   };
 
-  useEffect(() => {
-    // setLoading(true)
-    _get(
-      "hotels/",
+  const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/hotels?in_query_type=select-all',
+      {},
       (resp) => {
         // setLoading(false)
-        console.log(resp);
-        if (resp && resp.length) {
-          setHotelList(resp);
-        }
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.resp)
+        //  alert('dfasfsadf'+resp)
+        // }
       },
       (e) => {
-        console.log(e);
+        console.log(e)
         // setLoading(false)
-      }
-    );
-  }, []);
+        // alert(e)
+      },
+    )
+  }
+  useEffect(
+    ()=>{
+      getHotels()
+    },[0]
+  )
 
   // useEffect(() => {
   //   // setLoading(true)
@@ -58,15 +67,23 @@ export default function RoomReg() {
   // }, [selectedRoom])
 
   const handleSubmit = () => {
+    if (form.room_name && form.room_type && form.no_of_pax) {
+      setForm({
+        // id,
+        floor: "",
+    room_no:"",
+    room_type:"",
+    hotel_id:""
+      });
+    }
     setLoading(true);
     _post(
-      "create-hotel-room/",
+      "api/room_tables?in_query_type=create",
       form,
       (res) => {
-        setForm((p) => ({ ...p, hotel: "", address: "", price: "" }));
-
+        // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
         setLoading(false);
-        console.log(res);
+        goto(-1)
       },
       (err) => {
         setLoading(false);
@@ -95,20 +112,23 @@ export default function RoomReg() {
                 <label className="Label mt-2">Hotel Select</label>
                 <select
                     id="exampleSelect"
-                    className="app_input"
-                    value={form.enter_floor}
-                    onChange={handleChange}
-                    name="enter_floor"
+                    className="app_input mt-4"
+                    name="hotel_n"
                     type="select"
+                    onChange={handleChange}
+                    value={form.hotel_n}
+                    // className="mt-3"
+                    
                 >
-                    <option>Select </option>
+                    {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
+                   
                 </select>
                 <InputForm
                     className="app_input"
                     label="Enter Floor"
-                    value={form.select_hotel}
+                    value={form.floor}
                     onChange={handleChange}
-                    name="select_hotel"
+                    name="floor"
                     type= 'number'
                 />
             </Col>
@@ -121,17 +141,14 @@ export default function RoomReg() {
                     name="room_no"
                     type= 'number'
                 />
-                <label className="Label mt-2">Room Type</label>
-                <select
-                    id="exampleSelect"
+                <InputForm
                     className="app_input"
+                    label="Room Type"
                     value={form.room_type}
                     onChange={handleChange}
                     name="room_type"
-                    type="select"
-                >
-                    <option>Select </option>
-                </select>
+                    // type= 'te'
+                />
             </Col>
         </Row>
         <Row className='mt-3'>
@@ -140,7 +157,7 @@ export default function RoomReg() {
                     <button
                         className="app_button p-3"
                         style={{ width: 150}} 
-                        // onClick={() => goto('/creact-room-type')}
+                        onClick={() =>handleSubmit()}
                         >
                         Submit
                     </button>
