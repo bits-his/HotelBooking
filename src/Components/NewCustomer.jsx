@@ -42,60 +42,62 @@ export default function NewCustomer() {
           </button>
         </Col>
       </Row>
-      <Col md={12}>
-        <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-          {/* {JSON.stringify(data)} */}
-          <label
-            style={{
-              fontSize: 20,
-              display: "flex",
-              marginRight: 20,
-              width: "100%",
-            }}
+      <div className='card_div'>
+        <Col md={12}>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label
+              style={{
+                fontSize: 20,
+                display: "flex",
+                marginRight: 20,
+                width: "100%",
+              }}
+            >
+              Search
+              <div className="search">
+                <CiSearch style={{ fontSize: 30 }} />
+                <input
+                  className="app_input2"
+                  type="text"
+                  placeholder="Search"
+                  name="Search"
+                  // value={}
+                />
+              </div>
+            </label>
+          </div>
+        </Col>
+        <Row>
+          <table
+            style={{ border: "1px solid #ccc", padding: 12 }}
+            className="mt-5"
           >
-            Search
-            <div className="search">
-              <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                placeholder="Search"
-                name="Search"
-                // value={}
-              />
-            </div>
-          </label>
-        </div>
-      </Col>
-      <Row>
-        <table
-          style={{ border: "1px solid #ccc", padding: 12 }}
-          className="mt-5"
-        >
-          <thead>
-            <th style={{ border: "1px solid #ccc" }}>Agent Id</th>
-            <th style={{ border: "1px solid #ccc" }}>Name</th>
-            <th style={{ border: "1px solid #ccc" }}>Phone</th>
-            <th style={{ border: "1px solid #ccc" }}>Country</th>
-            <th style={{ border: "1px solid #ccc" }}>State</th>
-            <th style={{ border: "1px solid #ccc" }}>City</th>
-            <th style={{ border: "1px solid #ccc" }}>Zip</th>
-          </thead>
+            <thead>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Name</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Phone</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Country</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>State</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Zip</th>
+            </thead>
 
-          {data &&
-            data.map((i) => (
-              <tbody>
-                <td style={{ border: "1px solid #ccc" }}>{i.agent_id}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.agent_name}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.phone}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.country}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.state}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.city}</td>
-                <td style={{ border: "1px solid #ccc" }}>{i.zipcode}</td>{" "}
-              </tbody>
-            ))}
-        </table>
-      </Row>
+            {data &&
+              data.map((i) => (
+                <tbody>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.state}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.city}</td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.zipcode}</td>{" "}
+                </tbody>
+              ))}
+          </table>
+        </Row>
+      </div>
     </Card>
   );
 }

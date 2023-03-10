@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import { _post } from '../Utils/Helper'
 
-export default function Agent() {
+export default function CreacteNewRoom() {
   const goto = useNavigate()
 const [data,setData]=useState([])
 
@@ -28,7 +28,7 @@ const [data,setData]=useState([])
   
   useEffect(() => {
     getAgent()
-  }, [])
+  }, [getAgent])
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -37,9 +37,9 @@ const [data,setData]=useState([])
                 <button
                     className="app_button p-3"
                     style={{ width: 200}}
-                    onClick={() => goto('/new-agent')}
+                    onClick={() => goto('/creact-new-room')}
                     >
-                    Add Agent
+                    Create New Room
                 </button>
             </Col>
         </Row>
@@ -62,25 +62,24 @@ const [data,setData]=useState([])
               </div>
           </Col>
           <Row>
-                <table style={{border: '1px solid rgb(12, 134, 103)', padding: 12}} className= 'mt-5'>
+              <table style={{border: '1px solid rgb(12, 134, 103)', padding: 12}} className= 'mt-5'>
                   <thead>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Name</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Phone</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Country</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>State</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</th>
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Zip</th>
+                      {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th>
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Id</th>
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room</th>
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Floor</th>
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Type</th>
                   </thead>
                 
                       {data&&data.map((i)=>  <tbody>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td>
+                          {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td> */}
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.state}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.city}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.zipcode}</td> </tbody>
+                        </tbody>
                       )}
               </table>
           </Row>

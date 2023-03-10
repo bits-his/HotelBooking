@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { FaArrowLeft } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 import { Card, Col, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 
 export default function CreateNewCustomer() {
+    const goto = useNavigate()
     const [form, setForm] = useState({
         hotel_n: '',
         select_agent: '',
@@ -32,8 +35,19 @@ export default function CreateNewCustomer() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3 mt-3">
         <Row>
+            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
+                <button
+                    className="app_button p-3 mb-3"
+                    style={{ width: 150, fontSize: 16, fontWeight: 500}} 
+                    onClick={() => goto('/costomer')}
+                >
+                    <FaArrowLeft style={{marginRight: 10}} /> Back
+                </button>
+                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Country</h5>
+            </Col>
+        </Row>
+        <Row>
             <Col md={6}>
-                <h5 className="app_title">Create New Agent/Supplier</h5>
                 <InputForm
                     className="app_input"
                     label="Hotel Name"
@@ -87,7 +101,7 @@ export default function CreateNewCustomer() {
                     type= "file"
                 />
             </Col>
-            <Col md={6} style={{marginTop: 32}}>
+            <Col md={6}>
                 {/* <h5 className="app_title"></h5> */}
                 <label className="Label mt-2">Select Agent </label>
                 <select
@@ -167,6 +181,16 @@ export default function CreateNewCustomer() {
                     <option value="adult">Adult</option>
                     <option value="adult_children">Adult / Children</option>
                 </select>
+            </Col>
+        </Row>
+        <Row className='mt-3'>
+            <Col md= {6}>
+                <button
+                    className="app_button p-3"
+                    style={{ width: 150, float: 'right'}} 
+                >
+                    Save
+                </button>
             </Col>
         </Row>
     </Card>

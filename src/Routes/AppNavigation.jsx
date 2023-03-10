@@ -4,6 +4,7 @@ import Agent from '../Components/Agent'
 import Allotment from '../Components/Allotment'
 import BankDetails from '../Components/BankDetails'
 import Country from '../Components/Country'
+import CreacteNewRoom from '../Components/CreacteNewRoom'
 import CreacteRoomType from '../Components/CreacteRoomType'
 import CreacteView from '../Components/CreacteView'
 import CreacteCountry from '../Components/CreateCountry'
@@ -58,8 +59,12 @@ function AppNavigation() {
           element:<HotelReg/>
         },
         {
-          path:'/room-registration',
+          path:'/creact-new-room',
           element:<RoomReg/>
+        },
+        {
+          path:'/room-registration',
+          element:<CreacteNewRoom/>
         },
         {
           path:'/manage-rooms',

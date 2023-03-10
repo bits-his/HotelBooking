@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 export default function SignIn() {
     const goto = useNavigate()
-  const {
+   const {
     auth: { errors },
   } = useSelector((s) => s)
   const dispatch = useDispatch()
