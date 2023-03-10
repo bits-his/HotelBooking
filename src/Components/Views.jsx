@@ -42,8 +42,7 @@ export default function View() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
-
+      <div className="card_div">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
@@ -75,13 +74,28 @@ export default function View() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 View Name
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 View Type
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Action
               </th>
             </thead>
@@ -89,14 +103,31 @@ export default function View() {
             {data &&
               data.map((i) => (
                 <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.view_name}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.view_type}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                  <Button size="sm">Edit</Button>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <center>
+                      <Button size="sm">Edit</Button>
+                    </center>
                   </td>
                 </tbody>
               ))}

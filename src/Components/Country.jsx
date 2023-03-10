@@ -36,7 +36,7 @@ export default function Country() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className="card_div">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
@@ -69,14 +69,29 @@ export default function Country() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Country Name
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Nationality
               </th>
               {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Number of Pax</th> */}
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Action
               </th>
               {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
@@ -86,22 +101,41 @@ export default function Country() {
             {data &&
               data.map((i) => (
                 <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.country_name}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.nationality}
                   </td>
                   {/* <td style={{border: '1px solid #ccc', padding: "5px 10px"}}>{i.country}</td> */}
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button
-                    size="sm"
-                      onClick={() =>
-                        navigate(`/create-country?country_name=${i.country_name}&id=${i.id}`)
-                      }
-                    >
-                      Edit
-                    </Button>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <center>
+                      <Button
+                        size="sm"
+                        onClick={() =>
+                          navigate(
+                            `/create-country?country_name=${i.country_name}&id=${i.id}`
+                          )
+                        }
+                      >
+                        Edit
+                      </Button>
+                    </center>
                   </td>
                   {/* <td style={{border: '1px solid #ccc'}}>{i.city}</td>
                           <td style={{border: '1px solid #ccc'}}>{i.zipcode}</td>*/}{" "}

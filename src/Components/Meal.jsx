@@ -96,7 +96,7 @@ export default function Meal() {
                     {i.meal_type}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button size="sm">Edit</Button>
+                   <center><Button size="sm">Edit</Button></center> 
                   </td>{" "}
                 </tbody>
               ))}

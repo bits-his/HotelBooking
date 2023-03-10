@@ -8,7 +8,6 @@ import { RiReservedLine } from 'react-icons/ri'
 import Dropdowns from './Dropdown/Dropdown'
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false)
   const goto = useNavigate()
   // const toggle = setIsOpen(!isOpen)
 
