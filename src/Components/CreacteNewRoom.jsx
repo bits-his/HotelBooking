@@ -65,7 +65,7 @@ const [data,setData]=useState([])
               <table style={{border: '1px solid rgb(12, 134, 103)', padding: 12}} className= 'mt-5'>
                   <thead>
                       {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th>
+                      {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th> */}
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Id</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Floor</th>
@@ -74,7 +74,7 @@ const [data,setData]=useState([])
                 
                       {data&&data.map((i)=>  <tbody>
                           {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td> */}
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td>
+                          {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td> */}
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.state}</td>
