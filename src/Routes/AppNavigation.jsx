@@ -73,6 +73,10 @@ function AppNavigation() {
           path:'/agent',
           element:<Agent/>
         },
+        {
+          path:'/new-agent/:agent_id',
+          element:<Master/>
+        },
         
         {
           path:'/new-agent',
