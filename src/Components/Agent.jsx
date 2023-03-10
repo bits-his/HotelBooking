@@ -28,7 +28,7 @@ const [data,setData]=useState([])
   
   useEffect(() => {
     getAgent()
-  }, [getAgent])
+  }, [])
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">

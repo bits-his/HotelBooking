@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
-import { _post } from '../Utils/Helper'
+import { _get, _post } from '../Utils/Helper'
 import BankDetails from './BankDetails'
 import NewAgent from './NewAgent'
 
 export default function Master() {
+  const params = useParams()
+  const agent_id = params.agent_id;
+  const type = agent_id? 'update':'create'
     const navigate = useNavigate()
     const [form,setForm]=useState({
         agent_name: '',
@@ -44,7 +47,7 @@ export default function Master() {
     const handleSubmit = () => {
         // setLoading(true)
         _post(
-          'api/agent_supplier?query_type=create',
+          `api/agent_supplier?query_type=${type}&agent_id=${agent_id}`,
           form,
           (res) => {
             
@@ -58,9 +61,31 @@ export default function Master() {
         )
         // console.log(form)
       }
+     
+      const [data,setData]=useState([])
+      const getAgents = ()=>{
+        _get(
+            `api/get_agents?agent_id=${agent_id}`,
+            // {},
+            (res) => {
+              console.log(res)
+              setForm(res.results[0])
+            },
+            (err) => {
+              // setLoading(false)
+              console.log(err)
+            },
+          )
+          // console.log(form)
+        }
+      
+      useEffect(() => {
+        getAgents()
+      }, [])
+      
   return (
     <div>
-        {/* {JSON.stringify(form)} */}
+        {JSON.stringify(type)}
           <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}
                 >
                   <NewAgent form={form} setForm={setForm} />
