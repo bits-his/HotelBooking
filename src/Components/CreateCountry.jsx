@@ -15,7 +15,7 @@ export default function CreacteCountry() {
     id, 
     country_name,
     nationalism: "",
-    query_type:country_name?"update":"create"
+    // query_type:country_name?"update":"create"
   });
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
@@ -24,7 +24,8 @@ export default function CreacteCountry() {
 
   const [Loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
+  const type = country_name ? 'update' : 'create'
+  const handleSubmit = () => { 
     if (form.country_name && form.nationalism) {
       setForm({
         id,
@@ -34,7 +35,7 @@ export default function CreacteCountry() {
     }
     setLoading(true);
     _post(
-      "api/countries",
+      `api/countries?query_type=${type}`,
       form,
       (res) => {
 
@@ -55,6 +56,7 @@ export default function CreacteCountry() {
       <Row>
         <Col md={12}>
           <h5 className="app_title">Create Country</h5>
+          {JSON.stringify(type)}
         </Col>
       </Row>
       <Row>

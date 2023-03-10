@@ -85,7 +85,7 @@ export default function Master() {
       
   return (
     <div>
-        {JSON.stringify(type)}
+        {/* {JSON.stringify(type)} */}
           <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}
                 >
                   <NewAgent form={form} setForm={setForm} />

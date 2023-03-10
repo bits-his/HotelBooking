@@ -111,11 +111,11 @@ function AppNavigation() {
           element: <CreacteView />
         },
         {
-          path: '/meal',
+          path: '/meals',
           element: <Meal />
         },
         {
-          path: 'create-meal',
+          path: '/create-meal',
           element: <CreacteMeal />
         },
         {
