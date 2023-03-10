@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card, Col, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import { _get, _post } from '../Utils/Helper'
 
 export default function CreateNewCustomer() {
     const goto = useNavigate()
@@ -31,6 +32,101 @@ export default function CreateNewCustomer() {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
+    const [data,setData]=useState([])
+    const [country,setCountry]=useState([])
+    const [view,setView]=useState([])
+    const [hotel,setHotel]=useState([])
+    const [meal,setMeal]=useState([])
+
+  const getAgent = ()=>{
+    _post(
+        'api/bank_account_details',
+        {},
+        (res) => {
+          
+        //   navigate(`/agent`)
+          console.log(res)
+          setData(res.results)
+        },
+        (err) => {
+          // setLoading(false)
+          console.log(err)
+        },
+      )
+      // console.log(form)
+    }
+    const getHotels = () => {
+        _post( 
+          'api/hotels?in_query_type=select-all',
+          {},
+          (resp) => {
+            // setLoading(false)
+            console.log(resp)
+            // if (resp ) {
+              setHotel(resp.resp)
+            //  alert('dfasfsadf'+resp)
+            // }
+          },
+          (e) => {
+            console.log(e)
+            // setLoading(false)
+            // alert(e)
+          },
+        )
+      }
+    
+      const getViews = () => {
+        _get(
+          "api/get_views",
+          (res) => {
+            //   navigate(`/agent`)
+            console.log(res);
+            setView(res.results[0]);
+          },
+          (err) => {
+            // setLoading(false)
+            console.log(err);
+          }
+        );
+        // console.log(form)
+      };
+      const getMeals_table = () => {
+        _get(
+          "api/meals_tables",
+          (res) => {
+              // navigate(-1)
+            console.log(res);
+            setMeal(res.results[0]);
+          },
+          (err) => {
+            // setLoading(false)
+            console.log(err);
+          }
+        );
+        // console.log(form)
+      };
+    
+     
+      useEffect(() => {
+        _get(
+          "api/get_countries",
+          (res) => {
+            //   navigate(`/agent`)
+            console.log(res);
+            setCountry(res.results[0]);
+          },
+          (err) => {
+            // setLoading(false)
+            console.log(err);
+          }
+        );
+      }, [0]);
+  useEffect(() => {
+    getAgent();
+    getHotels();
+    getViews();
+    getMeals_table()
+  }, [])
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3 mt-3">
@@ -43,18 +139,24 @@ export default function CreateNewCustomer() {
                 >
                     <FaArrowLeft style={{marginRight: 10}} /> Back
                 </button>
-                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Country</h5>
+                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Agent/Supplier</h5>
             </Col>
         </Row>
         <Row>
             <Col md={6}>
-                <InputForm
+                {/* <h5 className="app_title">Create New Agent/Supplier</h5> */}
+                <label className="Label mt-2">Hotel Name</label>
+                <select
+                    id="exampleSelect"
                     className="app_input"
-                    label="Hotel Name"
-                    value={form.hotel_n}
-                    onChange={handleChange}
                     name="hotel_n"
-                />
+                    type="select"
+                    onChange={handleChange}
+                    value={form.hotel_n}
+                >
+                    {hotel.map(i=> <option value='select'>{i.hotel_name}</option>)}
+                   
+                </select>
                 <InputForm
                     className="app_input"
                     label="Costomer Name"
@@ -62,13 +164,18 @@ export default function CreateNewCustomer() {
                     onChange={handleChange}
                     name="customer_name"
                 />
-                <InputForm
+               <label className="Label mt-2">Country </label>
+                <select
+                    id="exampleSelect"
                     className="app_input"
-                    label="Country"
-                    value={form.country}
-                    onChange={handleChange}
                     name="country"
-                />
+                    type="select"
+                    onChange={handleChange}
+                    value={form.country}
+                >
+                    {country.map(i=> <option value='select'>{i.country_name}</option>)}
+                   
+                </select>
                 <InputForm
                     className="app_input"
                     label="Room Number"
@@ -112,7 +219,8 @@ export default function CreateNewCustomer() {
                     onChange={handleChange}
                     value={form.select_agent}
                 >
-                    <option value='select'>Select</option>
+                    {data.map(i=> <option value='select'>{i.arabic_name}</option>)}
+                   
                 </select>
                 <label className="Label mt-2">Guest Type</label>
                 <select
@@ -149,9 +257,7 @@ export default function CreateNewCustomer() {
                     onChange={handleChange}
                     value={form.room_view}
                 >
-                    <option>Select</option>
-                    <option value="adult">Adult</option>
-                    <option value="adult_children">Adult / Children</option>
+                  {view&&view.map(i=><option>{i.view_name}</option>)}
                 </select>
                 {/* <InputForm
                     className="app_input"
@@ -177,9 +283,7 @@ export default function CreateNewCustomer() {
                     type="select"
                     onChange={handleChange}
                 >
-                    <option>Select</option>
-                    <option value="adult">Adult</option>
-                    <option value="adult_children">Adult / Children</option>
+                    {meal&&meal.map(i=><option>{i.meal_name}</option>)}
                 </select>
             </Col>
         </Row>
