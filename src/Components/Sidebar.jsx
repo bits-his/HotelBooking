@@ -19,7 +19,7 @@ export default function Sidebar() {
         <Dropdowns title = 'SetUp'>
           <li onClick={()=>goto('/room-type')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Room type</li>
           <li onClick={()=>goto('/view')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Room View</li>
-          <li onClick={()=>goto('/meal')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Meal</li>
+          <li onClick={()=>goto('/table-meal')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Meal</li>
           <li onClick={()=>goto('/country')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Country</li>
         </Dropdowns>
         <li onClick={()=>goto('/costomer')} className= 'link_item'><BiUserPlus className='logo shadow'/>Create new Customer</li>
