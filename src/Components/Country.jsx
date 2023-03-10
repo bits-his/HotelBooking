@@ -25,7 +25,7 @@ export default function Country() {
   }, [0]);
 
   return (
-    <Card className="app_card dashboard_card shadow p-4 m-3">
+    <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
         <Col md={12}>
           <button
@@ -38,29 +38,20 @@ export default function Country() {
       </Row>
       <div className="card_div">
         <Col md={12}>
-          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {/* {JSON.stringify(data)} */}
-            <label
-              style={{
-                fontSize: 20,
-                display: "flex",
-                marginRight: 20,
-                width: "100%",
-              }}
-            >
-              Search
-              <div className="search">
-                <CiSearch style={{ fontSize: 30 }} />
-                <input
-                  className="app_input2"
-                  type="text"
-                  placeholder="Search"
-                  name="Search"
-                  // value={}
-                />
+          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
+                  {/* {JSON.stringify(data)} */}
+                  <label className='label_title' >Search</label>
+                  <div className='search'>
+                    <CiSearch style={{fontSize: 30}}/>
+                      <input 
+                          className='app_input2'
+                          type='text'
+                          placeholder='Search'
+                          name='Search'
+                          // value={}
+                      />
+                  </div>
               </div>
-            </label>
-          </div>
         </Col>
         <Row>
           {/* {JSON.stringify(data)} */}

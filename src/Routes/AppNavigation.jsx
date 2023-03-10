@@ -10,6 +10,7 @@ import CreacteView from '../Components/CreacteView'
 import CreacteCountry from '../Components/CreateCountry'
 import CreacteMeal from '../Components/CreateMeal'
 import CreateNewCustomer from '../Components/CreateNewCustomer'
+import CreateNewHotel from '../Components/CreateNewHotel'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
@@ -57,6 +58,10 @@ function AppNavigation() {
         {
           path:'/hotel-registration',
           element:<HotelReg/>
+        },
+        {
+          path:'/create-hotel',
+          element:<CreateNewHotel/>
         },
         {
           path:'/creact-new-room',

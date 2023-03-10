@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
+import { CiSearch } from 'react-icons/ci'
+import { useNavigate } from 'react-router-dom'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _get, _post } from '../Utils/Helper'
 import { Floors } from './Floors'
 
 export default function HotelReg() {
+  const goto = useNavigate()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     hotel_in: '',
@@ -91,7 +94,7 @@ export default function HotelReg() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(hotelList)} */}
-      <Row>
+      {/* <Row>
         <Col md={10}>
           <Row>
             <Col md={6} sm={6} xs={6}>
@@ -148,13 +151,12 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
-          {/* {JSON.stringify(form)} */}
 
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>
             <InputForm
               className="app_input"
-              label="Hotel In"
+              label="Hotel Id"
               value={form.hotel_in}
               onChange={handleChange}
               name="hotel_in"
@@ -200,14 +202,14 @@ export default function HotelReg() {
               onChange={handleChange}
               name="website"
             />
-            {/* <InputForm
+            <InputForm
               className="app_input"
               label="Select Number of Floors"
               type="number"
               value={form.floor}
               onChange={handleChange}
               name="floor"
-            /> */}
+            />
             <div>
               {loading ? (
                 <button
@@ -228,7 +230,81 @@ export default function HotelReg() {
             </div>
           </div>
         </Card>
-      </Modal>
+      </Modal> */}
+       <Row>
+        <Col md={12}>
+          <button
+            className="app_button p-3"
+            style={{ width: 150 }}
+            onClick={() => goto("/create-hotel")}
+          >
+            Add Hotel +
+          </button>
+        </Col>
+      </Row>
+      <div className='card_div'>
+        <Col md={12}>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label
+              style={{
+                fontSize: 20,
+                display: "flex",
+                marginRight: 20,
+                width: "100%",
+              }}
+            >
+              Search
+              <div className="search">
+                <CiSearch style={{ fontSize: 30 }} />
+                <input
+                  className="app_input2"
+                  type="text"
+                  placeholder="Search"
+                  name="Search"
+                  // value={}
+                />
+              </div>
+            </label>
+          </div>
+        </Col>
+        <Row>
+          <table
+            style={{ border: "1px solid #ccc", padding: 12 }}
+            className="mt-5"
+          >
+            <thead>
+              <tr>
+                {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Name</td>
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Address</td>
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</td>
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Phone</td>
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Email</td>
+                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Website</td>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {JSON.stringify(hotelList)} */}
+              {hotelList.length === 0 ? (
+                <span>Loading Rooms...</span>
+              ) : (
+                hotelList.map((item, index) => (
+                  <tr>
+                    {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_name}</td>
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.address}</td>
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.city}</td>
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.phone}</td>
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.email}</td>
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.website}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+      </Row>
+      </div>
     </Card>
   )
 }

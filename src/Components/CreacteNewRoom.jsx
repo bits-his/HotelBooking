@@ -49,7 +49,7 @@ export default function CreacteNewRoom() {
           <Col md={12}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
-                  <label style={{fontSize: 20, display: 'flex', marginRight: 20, width: '100%'}} >Search
+                  <label className='label_title' >Search</label>
                   <div className='search'>
                     <CiSearch style={{fontSize: 30}}/>
                       <input 
@@ -60,14 +60,13 @@ export default function CreacteNewRoom() {
                           // value={}
                       />
                   </div>
-                  </label>
               </div>
           </Col>
           <Row>
               <table style={{border: '1px solid rgb(12, 134, 103)', padding: 12}} className= 'mt-5'>
                   <thead>
                       {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th>
+                      {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th> */}
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Id</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Floor</th>
@@ -76,8 +75,8 @@ export default function CreacteNewRoom() {
                 
                       {hotel&&hotel.map((i)=>  <tbody>
                           {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td> */}
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.hotel_id}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_no}</td>
+                          {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td> */}
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.floor}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_type}</td>
