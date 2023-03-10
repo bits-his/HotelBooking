@@ -27,8 +27,8 @@
 /* } */
 .app_card {
   border: none !important;
-  border-radius: 0 !important;
-  border-top: 3px solid rgb(12, 134, 103) !important;
+  border-radius: 5px ;
+  border: 3px solid rgb(12, 134, 103) !important;
 }
 .dd {
   width: 100% !important;
@@ -82,7 +82,7 @@
 }
 .app_input {
   border-radius: none !important;
-  border: 1px solid rgb(197, 197, 197);
+  border: 1px solid rgb(12, 134, 103);
   width: 100%;
   padding: 8px;
 }
@@ -91,15 +91,16 @@
   padding: 3px 10px;
   border: none !important;
   border-radius: 8px;
+  font-size: 20px;
   outline: none;
 }
 .search{
   padding: 3px 10px;
-  margin-left: 50px;
+  margin-left: 30px;
   border-radius: 5px;
   margin-top: -8px;
   width: 100%;
-  border: 1px solid rgb(197, 197, 197);
+  border: 1px solid rgb(12, 134, 103);
 }
 .app_input:focus {
   outline: 1px rgb(12, 134, 103) solid;
@@ -107,8 +108,11 @@
 }
 .app_title {
   color: rgb(12, 134, 103);
-  /* text-align: center; */
-  /* margin-top: 60px; */
+  text-align: center;
+  /* font-size: 28px; */
+  /* width: 100%; */
+  /* background-color: #b3b3b3; */
+  /* margin-top: -60px; */
 }
 .app_titleI{
   margin-top: 20px;
@@ -136,13 +140,25 @@ label {
   height: 100vh;
 }
 .dashboard_card {
-  height: 90vh !important;
+  height: 96vh !important;
+  overflow-y: auto;
+}
+.card_div{
+  border: 1px solid rgb(12, 134, 103);
+  padding: 20px;
+  margin-top: 20px;
+  height: 96vh;
+  border-radius: 5px;
   overflow-y: auto;
 }
 .link {
   margin-top: 20px;
   width: 111%;
   margin-left: -25px;
+}
+.table-div{
+  height: 96vh;
+
 }
 .link_item {
   text-decoration: none;

@@ -92,7 +92,7 @@ export default function HotelReg() {
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(hotelList)} */}
       <Row>
-        <Col md={8}>
+        <Col md={10}>
           <Row>
             <Col md={6} sm={6} xs={6}>
               <h5 className="app_title">Hotels</h5>
