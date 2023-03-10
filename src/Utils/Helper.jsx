@@ -5,7 +5,7 @@
 // process.env.NODE_ENV === 'development'
 // ? 'http://yge.wvi.mybluehost.me:9090/api'
 // : 'https://yge.wvi.mybluehost.me:9090/api'
-
+import { useLocation } from "react-router";
 // export const server_url = 'http://yge.wvi.mybluehost.me:9090/api'
 export const server_url = " http://localhost:6678";
 // export const server_url = 'http://localhost:6678'
@@ -59,3 +59,11 @@ export const _put = (url, data, success = (f) => f, error = (f) => f) => {
       error(err);
     });
 };
+
+export function useQuery() {
+  
+    return new URLSearchParams(useLocation().search);
+  }
+  export default useQuery;
+  
+  
