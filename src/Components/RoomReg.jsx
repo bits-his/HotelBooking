@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
@@ -18,6 +19,82 @@ export default function RoomReg() {
     setForm((p) => ({ ...p, [name]: value }))
     }
 
+=======
+import React, { useEffect, useState } from "react";
+import { Card, Col, Row } from "reactstrap";
+import InputForm from "../CustomComponents/InputForm";
+import { _get, _post } from "../Utils/Helper";
+
+export default function RoomReg() {
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    hotel: "",
+    room_number: "",
+    price: "",
+  });
+  const [hotelList, setHotelList] = useState([]);
+  // const [roomList, setRoomList] = useState([])
+  // const [selectedRoom, setSelectedRoom] = useState([])
+  const handleChange = ({ target: { name, value } }) => {
+    // console.log({ target })
+    setForm((p) => ({ ...p, [name]: value }));
+  };
+
+  useEffect(() => {
+    // setLoading(true)
+    _get(
+      "hotels/",
+      (resp) => {
+        // setLoading(false)
+        console.log(resp);
+        if (resp && resp.length) {
+          setHotelList(resp);
+        }
+      },
+      (e) => {
+        console.log(e);
+        // setLoading(false)
+      }
+    );
+  }, []);
+
+  // useEffect(() => {
+  //   // setLoading(true)
+  //   _get(
+  //     `hotel-room/${selectedRoom}`,
+  //     (resp) => {
+  //       // setLoading(false)
+  //       console.log(resp)
+  //       if (resp && resp.length) {
+  //         setRoomList(resp)
+  //       }
+  //     },
+  //     (e) => {
+  //       console.log(e)
+  //       // setLoading(false)
+  //     },
+  //   )
+  // }, [selectedRoom])
+
+  const handleSubmit = () => {
+    setLoading(true);
+    _post(
+      "create-hotel-room/",
+      form,
+      (res) => {
+        setForm((p) => ({ ...p, hotel: "", address: "", price: "" }));
+
+        setLoading(false);
+        console.log(res);
+      },
+      (err) => {
+        setLoading(false);
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+>>>>>>> 81a13d2acaa687baaa38aab3f7a7ae8a2a5086bf
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
         <Row>
@@ -91,6 +168,10 @@ export default function RoomReg() {
             </Col>
         </Row>
     </Card>
+<<<<<<< HEAD
     
   )
+=======
+  );
+>>>>>>> 81a13d2acaa687baaa38aab3f7a7ae8a2a5086bf
 }
