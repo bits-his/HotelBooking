@@ -13,7 +13,7 @@ export default function CreacteRoomType() {
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
-  };
+  };    
   const [Loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
