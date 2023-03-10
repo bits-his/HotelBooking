@@ -13,7 +13,7 @@ export default function Meal() {
     _get(
       "api/meals_tables",
       (res) => {
-          navigate(-1)
+          // navigate(-1)
         console.log(res);
         setData(res.results[0]);
       },
@@ -27,7 +27,7 @@ export default function Meal() {
 
   useEffect(() => {
     getMeals_table();
-  }, [getMeals_table]);
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-4 m-3">
@@ -95,7 +95,7 @@ export default function Meal() {
                   {i.meal_type}
                 </td>
                 <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  <Button size="sm">Edit</Button>
+                  <Button size="sm" onClick={()=>goto(`/create-meal/${i.id}`)}>Edit</Button>
                 </td>{" "}
               </tbody>
             ))}
