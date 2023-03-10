@@ -116,11 +116,15 @@ function AppNavigation() {
           element: <CreacteView />
         },
         {
-          path: '/meal',
+          path: '/table-meal',
           element: <Meal />
         },
         {
-          path: 'create-meal',
+          path: '/create-meal',
+          element: <CreacteMeal />
+        },
+        {
+          path: '/create-meal/:id',
           element: <CreacteMeal />
         },
         {

@@ -13,7 +13,7 @@ export default function Meal() {
     _get(
       "api/meals_tables",
       (res) => {
-          navigate(-1)
+          // navigate(-1)
         console.log(res);
         setData(res.results[0]);
       },
@@ -27,7 +27,7 @@ export default function Meal() {
 
   useEffect(() => {
     getMeals_table();
-  }, [getMeals_table]);
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -86,23 +86,22 @@ export default function Meal() {
               </th>
             </thead>
 
-            {data &&
-              data.map((i) => (
-                <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.meal_name}
-                  </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.meal_type}
-                  </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                   <center><Button size="sm">Edit</Button></center> 
-                  </td>{" "}
-                </tbody>
-              ))}
-          </table>
-        </Row>
-      </div>
+          {data &&
+            data.map((i) => (
+              <tbody>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.meal_name}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.meal_type}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  <Button size="sm" onClick={()=>goto(`/create-meal/${i.id}`)}>Edit</Button>
+                </td>{" "}
+              </tbody>
+            ))}
+        </table>
+      </Row>
     </Card>
   );
 }

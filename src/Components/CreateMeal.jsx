@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
 
 export default function CreacteMeal() {
+  const params = useParams()
+  const id = params.id
   const navigate = useNavigate();
   const [form, setForm] = useState({
     // meal_id: "",
@@ -17,6 +18,7 @@ export default function CreacteMeal() {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
   };
+  const type = id ? 'update':'create'
   const [Loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
@@ -28,7 +30,7 @@ export default function CreacteMeal() {
     }
     setLoading(true);
     _post(
-      "api/meals_tables",
+      `api/meals_tables?in_query_type=${type}`,
       form,
       (res) => {
         // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
@@ -43,8 +45,30 @@ export default function CreacteMeal() {
     );
     // console.log(form)
   };
+const [data,setData]=useState()
+  const getMeals =()=>{
+    _post(
+      `api/meals_tables?in_query_type=select&id=${id}`,
+      {},
+      (res) => {
+        if(res.success){
+      setForm(res.results[0])
+    }
+      },
+      (err) => {
+        // setLoading(false);
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  
+  }
+  useEffect(()=>{
+    getMeals()
+  },[])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(data)} */}
       <Row>
             <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                 <button
