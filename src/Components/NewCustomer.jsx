@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Input, Label, Row } from "reactstrap";
-import { _post } from "../Utils/Helper";
+import { _get, _post } from "../Utils/Helper";
 
 export default function NewCustomer() {
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
-  const getAgent = () => {
-    _post(
-      "api/bank_account_details",
-      {},
+  const getCustomer = () => {
+    _get(
+      "api/get_customer",
+      // {},
       (res) => {
         //   navigate(`/agent`)
         console.log(res);
-        setData(res.results);
+        setData(res.resp[0]);
       },
       (err) => {
         // setLoading(false)
@@ -26,11 +26,12 @@ export default function NewCustomer() {
   };
 
   useEffect(() => {
-    getAgent();
-  }, [getAgent]);
+    getCustomer();
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {JSON.stringify(data)}
       <Row>
         <Col md={12}>
           <button
@@ -42,7 +43,7 @@ export default function NewCustomer() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className="card_div">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
@@ -74,25 +75,78 @@ export default function NewCustomer() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Name</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Phone</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Country</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>State</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Zip</th>
+              {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Costomer Name
+              </th>
+
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Country
+              </th>
+
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Room View
+              </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Select Room Type
+              </th>
             </thead>
 
             {data &&
               data.map((i) => (
                 <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.state}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.city}</td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.zipcode}</td>{" "}
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.customer_name}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.country}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.room_view}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.room_type}
+                  </td>{" "}
                 </tbody>
               ))}
           </table>
