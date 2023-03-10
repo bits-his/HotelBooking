@@ -184,6 +184,7 @@ export default function Dashboard() {
             )}
           </tbody>
         </Table>
+        <center><h1 className='mt-5' style={{color:"red"}}><b>COMING SOON !!!</b></h1></center> 
       </Card>
 
       <Modal toggle={toggle} isOpen={open}>

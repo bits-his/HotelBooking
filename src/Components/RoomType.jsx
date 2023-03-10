@@ -11,7 +11,7 @@ export default function RoomType() {
  const [hotel,setHotel]=useState([])
   const getHotels = () => {
     _post( 
-      'api/room_tables?in_query_type=select-all',
+      'api/room_type?query_type=select',
       {},
       (resp) => {
         // setLoading(false)
@@ -92,13 +92,13 @@ export default function RoomType() {
               hotel.map((i) => (
                 <tbody>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.floor}
+                    {i.room_name}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     {i.room_type}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_no}
+                    {i.no_pax}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     <Button size="sm">Edit</Button>

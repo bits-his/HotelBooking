@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Input, Label, Row } from 'reactstrap'
+import { Button, Card, Col, Input, Label, Row } from 'reactstrap'
 import { _post } from '../Utils/Helper'
 
 export default function CreacteNewRoom() {
@@ -67,19 +67,21 @@ export default function CreacteNewRoom() {
                   <thead>
                       {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
                       {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Id</th> */}
-                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Id</th>
+                      {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Id</th> */}
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Floor</th>
                       <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Room Type</th>
+                      <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}} className="text-center">Action</th>
                   </thead>
                 
                       {hotel&&hotel.map((i)=>  <tbody>
                           {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_id}</td> */}
                           {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.agent_name}</td> */}
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td>
-                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.country}</td>
+                          {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.phone}</td> */}
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_no}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.floor}</td>
                           <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{i.room_type}</td>
+                          <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}><center><Button color='success'>Edit</Button></center></td>
                         </tbody>
                       )}
               </table>

@@ -8,10 +8,9 @@ import { _post } from "../Utils/Helper";
 export default function CreacteRoomType() {
     const goto = useNavigate()
     const [form, setForm] = useState({
-      floor: "",
-      room_no:"",
-      room_type:"",
-      hotel_id:""
+    room_type:"",
+    room_name:"",
+    no_pax:""
   });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -24,20 +23,19 @@ const navigate = useNavigate()
     if (form.room_name && form.room_type && form.no_of_pax) {
       setForm({
         // id,
-        room_name: "",
-        room_type: "",
-        no_of_pax: "",
-        hotel_id:""
+        room_type:"",
+        room_name:"",
+        no_pax:""
       });
     }
     setLoading(true);
     _post(
-      "api/room_tables?in_query_type=create",
+      "api/room_type?query_type=create",
       form,
       (res) => {
         // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
-        setLoading(false);
         navigate(-1)
+        setLoading(false);
       },
       (err) => {
         setLoading(false);
@@ -75,7 +73,7 @@ const navigate = useNavigate()
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
             <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                 <button
                     className="app_button p-3 mb-3"
@@ -120,9 +118,9 @@ const navigate = useNavigate()
           <InputForm
             className="app_input"
             label="Number of Pax"
-            value={form.no_of_pax}
+            value={form.no_pax}
             onChange={handleChange}
-            name="no_of_pax"
+            name="no_pax"
             // type="number"
           />
         </Col>

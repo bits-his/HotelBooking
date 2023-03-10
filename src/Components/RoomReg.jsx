@@ -42,9 +42,30 @@ export default function RoomReg() {
       },
     )
   }
+  const [room,setRoom]=useState([])
+  const getRooms = () => {
+    _post( 
+      'api/room_type?query_type=select',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setRoom(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
   useEffect(
     ()=>{
       getHotels()
+      getRooms()
     },[0]
   )
 
@@ -94,6 +115,7 @@ export default function RoomReg() {
   };
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(form)} */}
         <Row>
             <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                 <button
@@ -112,7 +134,7 @@ export default function RoomReg() {
                 <label className="Label mt-2">Hotel Select</label>
                 <select
                     id="exampleSelect"
-                    className="app_input mt-4"
+                    className="app_input "
                     name="hotel_n"
                     type="select"
                     onChange={handleChange}
@@ -120,7 +142,7 @@ export default function RoomReg() {
                     // className="mt-3"
                     
                 >
-                    {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
+                    {hotel.map(i=> <option value={i.hotel_name} onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
                    
                 </select>
                 <InputForm
@@ -141,14 +163,20 @@ export default function RoomReg() {
                     name="room_no"
                     type= 'number'
                 />
-                <InputForm
-                    className="app_input"
-                    label="Room Type"
-                    value={form.room_type}
-                    onChange={handleChange}
+                 <label className="Label mt-2">Room Type</label>
+                <select
+                    id="exampleSelect"
+                    className="app_input "
                     name="room_type"
-                    // type= 'te'
-                />
+                    type="select"
+                    onChange={handleChange}
+                    value={form.room_type}
+                    // className="mt-3"
+                    
+                >
+                    {room.map(i=> <option value={i.room_type} >{i.room_type}</option>)}
+                   
+                </select>
             </Col>
         </Row>
         <Row className='mt-3'>
