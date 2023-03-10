@@ -8,7 +8,7 @@ export default function CreacteMeal() {
     const goto = useNavigate()
 
     const [form, setForm] = useState({
-        meal_id: '',
+        // meal_id: '',
         meal_name: '',
         meal_type: ''
     })
@@ -20,28 +20,26 @@ export default function CreacteMeal() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-         <button
-            className="app_button p-3 mb-3"
-            style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-            onClick={() => goto('/meal')}
-        >
-            <FaArrowLeft style={{marginRight: 10}} /> Back
-        </button>
-        <Row>
-            <Col md={12}>
-                <h5 className="app_title">Create Meal</h5>
-            </Col>
-        </Row>
+        <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
+            <button
+                className="app_button p-3 mb-3"
+                style={{ width: 150, fontSize: 16, fontWeight: 500}} 
+                onClick={() => goto('/meal')}
+            >
+                <FaArrowLeft style={{marginRight: 10}} /> Back
+            </button>
+            <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create Meal</h5>
+        </Col>
         <Row>
             <Col md={6}>
-                <InputForm
+                {/* <InputForm
                     className="app_input"
                     label="meal Id"
                     value={form.meal_id}
                     onChange={handleChange}
                     name="meal_id"
                     type= 'number'
-                />
+                /> */}
                 <InputForm
                     className="app_input"
                     label="meal Name"

@@ -7,7 +7,6 @@ import InputForm from '../CustomComponents/InputForm'
 export default function CreacteRoomType() {
     const goto = useNavigate()
     const [form, setForm] = useState({
-        room_id: '',
         room_name: '',
         room_type: '',
         no_of_pax: ''
@@ -20,34 +19,43 @@ export default function CreacteRoomType() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-        <button
-            className="app_button p-3 mb-3"
-            style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-            onClick={() => goto('/room-type')}
-        >
-            <FaArrowLeft style={{marginRight: 10}} /> Back
-        </button>
         <Row>
-            <Col md={12}>
-                <h5 className="app_title">Create Room Type</h5>
+            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
+                <button
+                    className="app_button p-3 mb-3"
+                    style={{ width: 150, fontSize: 16, fontWeight: 500}} 
+                    onClick={() => goto('/room-type')}
+                >
+                    <FaArrowLeft style={{marginRight: 10}} /> Back
+                </button>
+                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create Room Type</h5>
+                
             </Col>
         </Row>
         <Row>
             <Col md={6}>
-                <InputForm
+                {/* <InputForm
                     className="app_input"
                     label="Room Id"
                     value={form.room_id}
                     onChange={handleChange}
                     name="room_id"
                     type= 'number'
-                />
+                /> */}
                 <InputForm
                     className="app_input"
                     label="Room Name"
                     value={form.room_name}
                     onChange={handleChange}
                     name="room_name"
+                />
+                <InputForm
+                    className="app_input"
+                    label="Number of Pax"
+                    value={form.no_of_pax}
+                    onChange={handleChange}
+                    name="no_of_pax"
+                    type= 'number'
                 />
             </Col>
             <Col>
@@ -62,14 +70,6 @@ export default function CreacteRoomType() {
                 >
                     <option>Select </option>
                 </select>
-                <InputForm
-                    className="app_input"
-                    label="Number of Pax"
-                    value={form.no_of_pax}
-                    onChange={handleChange}
-                    name="no_of_pax"
-                    type= 'number'
-                />
             </Col>
         </Row>
         <Row className='mt-3'>
