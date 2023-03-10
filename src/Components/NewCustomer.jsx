@@ -31,7 +31,7 @@ export default function NewCustomer() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(data)}
+      {/* {JSON.stringify(data)} */}
       <Row>
         <Col md={12}>
           <button
@@ -111,7 +111,6 @@ export default function NewCustomer() {
                 Select Room Type
               </th>
             </thead>
-
             {data &&
               data.map((i) => (
                 <tbody>

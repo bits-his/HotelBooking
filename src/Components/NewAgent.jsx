@@ -15,7 +15,6 @@ export default function NewAgent({ form = {}, setForm = (f) => f }) {
       "api/agent_supplier",
       form,
       (res) => {
-        // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
 
         setLoading(false);
         console.log(res);
@@ -64,14 +63,7 @@ export default function NewAgent({ form = {}, setForm = (f) => f }) {
           >
             <option>hello</option>
           </select>
-          {/* <InputForm
-                    className="app_input"
-                    label="Country"
-                    value={form.country}
-                    onChange={handleChange}
-                    name="country"
-                    required
-                /> */}
+
           <InputForm
             className="app_input"
             label="Zip Code"
