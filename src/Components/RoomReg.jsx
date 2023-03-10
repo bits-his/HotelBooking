@@ -1,31 +1,12 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-import { FaArrowLeft } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import { Card, Col, Row } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
-
-export default function RoomReg() {
-    const goto = useNavigate()
-    const [form, setForm] = useState({
-        select_hotel: '',
-        enter_floor: '',
-        room_no: '',
-        room_type: ''
-    })
-
-    const handleChange = ({ target: { name, value } }) => {
-    // console.log({ target })
-    setForm((p) => ({ ...p, [name]: value }))
-    }
-
-=======
 import React, { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { _get, _post } from "../Utils/Helper";
 
 export default function RoomReg() {
+  const goto = useNavigate()
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     hotel: "",
@@ -94,7 +75,6 @@ export default function RoomReg() {
     );
     // console.log(form)
   };
->>>>>>> 81a13d2acaa687baaa38aab3f7a7ae8a2a5086bf
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
         <Row>
@@ -102,7 +82,7 @@ export default function RoomReg() {
                 <button
                     className="app_button p-3 mb-3"
                     style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-                    onClick={() => goto('/room-type')}
+                    onClick={() => goto('/room-registration')}
                 >
                     <FaArrowLeft style={{marginRight: 10}} /> Back
                 </button>
@@ -168,10 +148,5 @@ export default function RoomReg() {
             </Col>
         </Row>
     </Card>
-<<<<<<< HEAD
-    
-  )
-=======
   );
->>>>>>> 81a13d2acaa687baaa38aab3f7a7ae8a2a5086bf
 }

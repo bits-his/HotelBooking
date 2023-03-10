@@ -29,64 +29,6 @@ export default function View() {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <Card className="app_card dashboard_card shadow p-3 m-3">
-        <Row>
-            <Col md= {12}>
-                <button
-                    className="app_button p-3"
-                    style={{ width: 150}}
-                    onClick={() => goto('/create-view')}
-                    >
-                   Add View +
-                </button>
-            </Col>
-        </Row>
-        <div className='card_div'>
-            <Col md={12}>
-                <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-                    {/* {JSON.stringify(data)} */}
-                    <label style={{fontSize: 25, display: 'flex', marginRight: 20, width: '100%'}}>Search
-                    <div className='search'>
-                        <CiSearch style={{fontSize: 30}}/>
-                        <input 
-                            className='app_input2'
-                            type='text'
-                            placeholder='Search'
-                            name='Search'
-                            // value={}
-                        />
-                    </div>
-                    </label>
-                </div>
-            </Col>
-            <Row>
-                <table style={{border: '1px solid #ccc', padding: 12}} className= 'mt-5'>
-                    <thead>
-                        {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>View Id</th> */}
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>View Name</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>View Type</th>
-                        {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>Number of Pax</th> */}
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>Action</th>
-                        {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>City</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>Zip</th> */}
-                    </thead>
-                
-                        {data&&data.map((i)=>  <tbody>
-                            <tr>
-                                {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>{i.agent_id}</td> */}
-                                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>{i.agent_name}</td>
-                                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>{i.phone}</td>
-                                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px",}}>Action</td>
-                            </tr>
-                    </tbody> 
-                    )}
-                    
-                
-                </table>
-            </Row>
-        </div>
-=======
     <Card className="app_card dashboard_card shadow p-4 m-3">
       {/* {JSON.stringify(data)} */}
       <Row>
@@ -100,65 +42,67 @@ export default function View() {
           </button>
         </Col>
       </Row>
-      <Col md={12}>
-        <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-          {/* {JSON.stringify(data)} */}
-          <label
-            style={{
-              fontSize: 20,
-              display: "flex",
-              marginRight: 20,
-              width: "100%",
-            }}
-          >
-            Search
-            <div className="search">
-              <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                placeholder="Search"
-                name="Search"
-                // value={}
-              />
-            </div>
-          </label>
-        </div>
-      </Col>
-      <Row>
-        <table
-          style={{ border: "1px solid #ccc", padding: 12 }}
-          className="mt-5"
-        >
-          <thead>
-            <th style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-              View Name
-            </th>
-            <th style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-              View Type
-            </th>
-            <th style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-              Action
-            </th>
-          </thead>
+      <div className='card_div'>
 
-          {data &&
-            data.map((i) => (
-              <tbody>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.view_name}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.view_type}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                 <Button size="sm">Edit</Button>
-                </td>
-              </tbody>
-            ))}
-        </table>
-      </Row>
->>>>>>> 81a13d2acaa687baaa38aab3f7a7ae8a2a5086bf
+        <Col md={12}>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label
+              style={{
+                fontSize: 20,
+                display: "flex",
+                marginRight: 20,
+                width: "100%",
+              }}
+            >
+              Search
+              <div className="search">
+                <CiSearch style={{ fontSize: 30 }} />
+                <input
+                  className="app_input2"
+                  type="text"
+                  placeholder="Search"
+                  name="Search"
+                  // value={}
+                />
+              </div>
+            </label>
+          </div>
+        </Col>
+        <Row>
+          <table
+            style={{ border: "1px solid #ccc", padding: 12 }}
+            className="mt-5"
+          >
+            <thead>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                View Name
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                View Type
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Action
+              </th>
+            </thead>
+
+            {data &&
+              data.map((i) => (
+                <tbody>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.view_name}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.view_type}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <Button size="sm">Edit</Button>
+                  </td>
+                </tbody>
+              ))}
+          </table>
+        </Row>
+      </div>
     </Card>
   );
 }
