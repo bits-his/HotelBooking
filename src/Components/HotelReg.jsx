@@ -8,9 +8,9 @@ import { Floors } from './Floors'
 export default function HotelReg() {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
-    name: '',
+    hotel_name: '',
     address: '',
-    floors: '',
+    floor: '',
   })
 
   const [open, setOpen] = useState(false)
@@ -29,18 +29,18 @@ export default function HotelReg() {
   }
 
 
+  let finalObj = {
+    hotel_name: form.hotel_name,
+    address: form.address,
+    floor: form.floor,
+  }
   const handleSubmit = () => {
-    let finalObj = {
-      name: form.name,
-      address: form.address,
-      floors: selected,
-    }
     setLoading(true)
     _post(
-      'api/create/hotel',
+      'api/hotels?query_type=create',
       finalObj,
       (res) => {
-        setForm((p) => ({ ...p, name: '', address: '', floors: '' }))
+        setForm((p) => ({ ...p, hotel_name: '', address: '', floors: '' }))
         setLoading(false)
         console.log(res)
         // getHotels()
@@ -55,20 +55,19 @@ export default function HotelReg() {
   }
 
   const getHotels = () => {
-    _get( 
-      'api/get/hotels',
+    _post( 
+      'api/hotels?query_type=select',
+      {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-         alert('dfasfsadf'+resp)
-        }
+        setHotelList(resp.resp)
+        
       },
       (e) => {
         console.log(e)
         // setLoading(false)
-        alert(e)
+        // alert(e)
       },
     )
   }
@@ -79,7 +78,7 @@ export default function HotelReg() {
   }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(hotelList)}
+      {/* {JSON.stringify(finalObj)} */}
       <Row>
         <Col md={6}>
           <Row>
@@ -116,9 +115,9 @@ export default function HotelReg() {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
-                    <td>{item.name}</td>
+                    <td>{item.hotel_name}</td>
                     <td>{item.address}</td>
-                    <td>{item.floors}</td>
+                    <td>{item.floor}</td>
                   </tr>
                 ))
               )}
@@ -129,16 +128,16 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
-          {JSON.stringify(form)}
+          {JSON.stringify(finalObj)}
 
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>
             <InputForm
               className="app_input"
               label="Name"
-              value={form.name}
+              value={form.hotel_name}
               onChange={handleChange}
-              name="name"
+              name="hotel_name"
             />
             <InputForm
               className="app_input"
@@ -147,17 +146,13 @@ export default function HotelReg() {
               onChange={handleChange}
               name="address"
             />
-            <label className="Label mt-2">Selelct no of floors</label>
-            <Typeahead
-              id="basic-typeahead-multiple"
-              multiple
-              labelKey={(e)=>`${e.floor_no}`}
-              onChange={handleSelected}
-              options={[{'floor_no':1}, {'floor_no':2},{'floor_no':3},{'floor_no':4}]}
-              placeholder="Room Number"
-              selected={selected}
-              name="no_of_rooms"
+            {/* <label className="Label mt-2">Selelct no of floors</label> */}
+            <InputForm
               className="app_input"
+              label="Number Of Floor"
+              value={form.floor}
+              onChange={handleChange}
+              name="floor"
             />
             {/* <InputForm
               className="app_input"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
-import { _get, _put } from '../Utils/Helper'
+import { _get, _post, _put } from '../Utils/Helper'
 
 const statusBtn = (status, handleUpdate, roomId) => {
   return (
@@ -48,55 +48,62 @@ export default function ManageRooms() {
   }
   useEffect(() => {
     setLoading(true)
-    _get(
-      `hotel-room/${selectedRoom.hotel}`,
-      (resp) => {
+    _post(
+      'api/room_tables?query_type=select-by-id',
+    {hotel_id:selectedRoom.hotel},
+      (res) => {
         setLoading(false)
-        console.log(resp)
-        if (resp && resp.length) {
-          setRoomList(resp)
-        } else {
-          setRoomList([])
-        }
+        setRoomList(res.results)
+        console.log(res)
       },
-      (e) => {
-        console.log(e)
+      (err) => {
+        // setLoading(false)
         setLoading(false)
+        console.log(err)
       },
     )
   }, [selectedRoom])
-
-  useEffect(() => {
-    // setLoading(true)
-    _get(
-      'hotels/',
+  const getHotels = () => {
+    _post( 
+      'api/hotels?query_type=select',
+      {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-          setSelectedRoom({ ...resp[0], hotel: resp[0].id })
-        }
+        setHotelList(resp.resp)
+        setSelectedRoom({ ...resp.resp[0], hotel: resp.resp[0].id })
       },
       (e) => {
         console.log(e)
         // setLoading(false)
+        // alert(e)
       },
     )
+  }
+
+  useEffect(() => {
+    // setLoading(true)
+    getHotels()
   }, [])
+
+  
 
   const handleUpdate = (status, roomId) => {
     console.log(status)
-    _put(
-      `hotelroom/update/${roomId}`,
-      { status },
+
+    _post(
+      `api/room_tables?query_type=update&id=${roomId}&status=${status}`,
+      {  },
       // setCheckout({ status: 'checkout' })
       (resp) => {
+        getHotels()
         console.log(resp)
         _get(
           `hotel-room/${selectedRoom.hotel}`,
           (resp) => {
             // setLoading(false)
+            getHotels()
+            alert('success')
             console.log(resp)
             if (resp && resp.length) {
               setRoomList(resp)
@@ -109,6 +116,7 @@ export default function ManageRooms() {
             // setLoading(false)
           },
         )
+     
       },
       (e) => {
         console.log(e)
@@ -121,6 +129,7 @@ export default function ManageRooms() {
     <div>
       <Card className="app_card dashboard_card shadow p-3 m-3">
         <h5 className="app_title">Manage Rooms</h5>
+        {/* {JSON.stringify(roomList)} */}
         <Row>
           <Col md={6}>
             <div className="mt-2">
@@ -133,12 +142,12 @@ export default function ManageRooms() {
                 onChange={handleSelected}
               >
                 {selectedRoom.hotel > 0 ? (
-                  <option>{selectedRoom.name}</option>
+                  <option>{selectedRoom.hotel_name}</option>
                 ) : (
                   <option>Select Hotel</option>
                 )}
                 {hotelList.map((item) => (
-                  <option value={item.id}>{item.name}</option>
+                  <option value={item.id}>{item.hotel_name}</option>
                 ))}
               </select>
             </div>

@@ -9,6 +9,7 @@ export default function RoomReg() {
     hotel: '',
     room_number: '',
     price: '',
+    hotel_id:"",
   })
   const [hotelList, setHotelList] = useState([])
   // const [roomList, setRoomList] = useState([])
@@ -17,23 +18,28 @@ export default function RoomReg() {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }))
   }
-
-  useEffect(() => {
-    // setLoading(true)
-    _get(
-      'hotels/',
+  // const [hotelList, setHotelList] = useState([])
+  const getHotels = () => {
+    _post( 
+      'api/hotels?query_type=select',
+      {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-        }
+        setHotelList(resp.resp)
+        
       },
       (e) => {
         console.log(e)
         // setLoading(false)
+        // alert(e)
       },
     )
+  }
+
+  useEffect(() => {
+    // setLoading(true)
+    getHotels()
   }, [])
 
   // useEffect(() => {
@@ -57,12 +63,13 @@ export default function RoomReg() {
   const handleSubmit = () => {
     setLoading(true)
     _post(
-      'create-hotel-room/',
+      'api/room_tables?query_type=create',
       form,
       (res) => {
-        setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
+        setForm((p) => ({ ...p, hotel_id: '', address: '', price: '' }))
 
         setLoading(false)
+        alert('room resgiter successfully')
         console.log(res)
       },
       (err) => {
@@ -74,7 +81,7 @@ export default function RoomReg() {
   }
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(roomList)} */}
+      {/* {JSON.stringify(form)} */}
       <Row>
         {/* <Col md={6}>
           <h5 className="app_title">Rooms</h5>
@@ -117,10 +124,10 @@ export default function RoomReg() {
             name="room_number"
           />
           <label className="Label mt-2">Hotel</label>
-          <select name="hotel" onChange={handleChange} className="app_input">
+          <select name="hotel_id" onChange={handleChange} className="app_input">
             <option>Select Hotel</option>
             {hotelList.map((item, index) => (
-              <option value={item.id}>{item.name}</option>
+              <option value={item.id}>{item.hotel_name}</option>
             ))}
           </select>
 
