@@ -8,28 +8,35 @@ export default function RoomType() {
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
-  const getRoom_table = () => {
-    _get(
-      "api/get_room_tables",
-      (res) => {
-        //   navigate(`/agent`)
-        console.log(res);
-        setData(res.results[0]);
-      },
-      (err) => {
+ const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/room_type?query_type=select',
+      {},
+      (resp) => {
         // setLoading(false)
-        console.log(err);
-      }
-    );
-    // console.log(form)
-  };
-
-  useEffect(() => {
-    getRoom_table();
-  }, []);
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
+  useEffect(
+    ()=>{
+      getHotels()
+    },[0]
+  )
 
   return (
     <Card className="app_card dashboard_card shadow p-4 m-3">
+      {/* {JSON.stringify(hotel)} */}
       <Row>
         <Col md={12}>
           <button
@@ -81,17 +88,17 @@ export default function RoomType() {
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
             </thead>
 
-            {data &&
-              data.map((i) => (
+            {hotel &&
+              hotel.map((i) => (
                 <tbody>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.name}
+                    {i.room_name}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     {i.room_type}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_of_pix}
+                    {i.no_pax}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     <Button size="sm">Edit</Button>

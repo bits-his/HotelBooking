@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "reactstrap";
@@ -8,9 +8,9 @@ import { _post } from "../Utils/Helper";
 export default function CreacteRoomType() {
     const goto = useNavigate()
     const [form, setForm] = useState({
-    room_name: "",
-    room_type: "",
-    no_of_pax: "",
+    room_type:"",
+    room_name:"",
+    no_pax:""
   });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -18,24 +18,24 @@ export default function CreacteRoomType() {
     setForm((p) => ({ ...p, [name]: value }));
   };    
   const [Loading, setLoading] = useState(false);
-
+const navigate = useNavigate()
   const handleSubmit = () => {
     if (form.room_name && form.room_type && form.no_of_pax) {
       setForm({
-        id,
-        room_name: "",
-        room_type: "",
-        no_of_pax: "",
+        // id,
+        room_type:"",
+        room_name:"",
+        no_pax:""
       });
     }
     setLoading(true);
     _post(
-      "api/room_table",
+      "api/room_type?query_type=create",
       form,
       (res) => {
         // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
+        navigate(-1)
         setLoading(false);
-        // navigate(-1)
       },
       (err) => {
         setLoading(false);
@@ -44,10 +44,36 @@ export default function CreacteRoomType() {
     );
     // console.log(form)
   };
+  const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/hotels?in_query_type=select-all',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.resp)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
+  useEffect(
+    ()=>{
+      getHotels()
+    },[0]
+  )
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
+      {/* {JSON.stringify(form)} */}
             <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                 <button
                     className="app_button p-3 mb-3"
@@ -69,6 +95,19 @@ export default function CreacteRoomType() {
             name="room_id"
             type="number"
           /> */}
+           <select
+                    id="exampleSelect"
+                    className="app_input mt-4"
+                    name="hotel_n"
+                    type="select"
+                    onChange={handleChange}
+                    value={form.hotel_n}
+                    // className="mt-3"
+                    
+                >
+                    {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
+                   
+                </select>
           <InputForm
             className="app_input"
             label="Room Name"
@@ -79,24 +118,21 @@ export default function CreacteRoomType() {
           <InputForm
             className="app_input"
             label="Number of Pax"
-            value={form.no_of_pax}
+            value={form.no_pax}
             onChange={handleChange}
-            name="no_of_pax"
-            type="number"
+            name="no_pax"
+            // type="number"
           />
         </Col>
         <Col md= {6}>
-          <label className="Label mt-2">Room Type</label>
-          <select
-            id="exampleSelect"
+        <InputForm
             className="app_input"
+            label="Room Type"
             value={form.room_type}
             onChange={handleChange}
             name="room_type"
-            type="select"
-          >
-            <option>Select </option>
-          </select></Col>
+            // type="number"
+          /></Col>
       </Row>
       <Row className="mt-3">
         <Col md={6}>

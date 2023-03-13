@@ -154,6 +154,7 @@ export default function Allotment() {
                 </tbody>
             </table>
         </Row>
+        <center><h1 className='mt-5' style={{color:"red"}}><b>COMING SOON !!!</b></h1></center> 
     </Card>
   )
 }
