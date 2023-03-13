@@ -117,9 +117,9 @@ export default function Dashboard() {
   const checkouts = roomList.filter((i)=>i.status === 'checkout')
   return (
     <div>
-      {JSON.stringify(occupieds.length)}
-      {JSON.stringify(cleaneds.length)}
-      {JSON.stringify(checkouts.length)}
+      {/* {JSON.stringify(occupieds.length)} */}
+      {/* {JSON.stringify(cleaneds.length)} */}
+      {/* {JSON.stringify(checkouts.length)} */}
     {/* {JSON.stringify(id?occupieds.length:occupied&&occupied[0].occupied)} */}
     
       <Card className="app_card dashboard_card shadow p-3 m-3">

@@ -85,7 +85,7 @@ export default function RoomReg() {
   }
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(selected)}
+      {/* {JSON.stringify(selected)} */}
       <Row>
         {/* <Col md={6}>
           <h5 className="app_title">Rooms</h5>
