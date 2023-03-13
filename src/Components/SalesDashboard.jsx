@@ -275,7 +275,7 @@ export default function SalesDashboard() {
         </Row>
       </Card>
       {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
-      <div className="mt-3">
+      <Card className="mt-3 p-3">
         <p style={{ fontWeight: 'bold' }}>Logistics</p>
         <Row>
           <Col md={3} className="mb-3">
@@ -288,7 +288,10 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <GiAirplaneArrival />
+                        <GiAirplaneArrival
+                          className="dashboard_icon"
+                          size="2rem"
+                        />
                       </span>
                     </Col>
                   </Row>
@@ -315,7 +318,7 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <IoIosPeople />
+                        <IoIosPeople className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
                   </Row>
@@ -342,7 +345,10 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <GiAirplaneDeparture />
+                        <GiAirplaneDeparture
+                          className="dashboard_icon"
+                          size="2rem"
+                        />
                       </span>
                     </Col>
                   </Row>
@@ -369,7 +375,7 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <IoIosPeople />
+                        <IoIosPeople className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
                   </Row>
@@ -396,7 +402,10 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <BsCheck2Circle />
+                        <BsCheck2Circle
+                          className="dashboard_icon"
+                          size="2rem"
+                        />
                       </span>
                     </Col>
                   </Row>
@@ -423,7 +432,10 @@ export default function SalesDashboard() {
                     </Col>
                     <Col md={6}>
                       <span style={{ float: 'right' }}>
-                        <AiOutlineCloseCircle />
+                        <AiOutlineCloseCircle
+                          className="dashboard_icon"
+                          size="2rem"
+                        />
                       </span>
                     </Col>
                   </Row>
@@ -441,7 +453,7 @@ export default function SalesDashboard() {
             </Card>
           </Col>
         </Row>
-      </div>
+      </Card>
     </div>
   )
 }
