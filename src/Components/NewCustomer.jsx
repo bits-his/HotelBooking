@@ -44,7 +44,11 @@ export default function NewCustomer() {
         </Col>
       </Row>
       <div className="card_div">
+<<<<<<< HEAD
         <Col md={12}>
+=======
+      <Col md={12}>
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
           <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
                   <label className='label_title' >Search</label>
@@ -66,6 +70,17 @@ export default function NewCustomer() {
             className="mt-5"
           >
             <thead>
+<<<<<<< HEAD
+=======
+                  <th
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Hotel
+                  </th>
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
               {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
               <th
                 style={{
@@ -75,6 +90,69 @@ export default function NewCustomer() {
               >
                 Costomer Name
               </th>
+<<<<<<< HEAD
+=======
+
+                      <th
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                    Country
+                      </th>
+                  <th
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                 Room No.
+                  </th>
+
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Room View
+              </th>
+                  <th
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+               Room Type
+                  </th>
+                  <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+           Meal
+              </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+            Arrival Date
+              </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+            Depart Date
+              
+              </th>
+            </thead>
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
 
               <th
                 style={{
@@ -111,6 +189,17 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
+<<<<<<< HEAD
+=======
+                    {i.hotel}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                     {i.customer_name}
                   </td>
                   <td
@@ -127,6 +216,17 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
+<<<<<<< HEAD
+=======
+                    {i.room_no}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                     {i.room_view}
                   </td>
                   <td
@@ -136,7 +236,37 @@ export default function NewCustomer() {
                     }}
                   >
                     {i.room_type}
+<<<<<<< HEAD
                   </td>{" "}
+=======
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.meal}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.arrival_date}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.departure_date}
+                  </td>
+                  {
+                  " "}
+>>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                 </tbody>
               ))}
           </table>

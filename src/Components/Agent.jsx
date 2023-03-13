@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, Col, Input, Label, Row } from "reactstrap";
 import { _post } from "../Utils/Helper";
 
+
 export default function Agent() {
   const goto = useNavigate();
   const [data, setData] = useState([]);
