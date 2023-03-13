@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
 import { _get, _post } from '../Utils/Helper'
 import BankDetails from './BankDetails'
@@ -84,13 +85,11 @@ export default function Master() {
       }, [])
       
   return (
-    <div>
-        {JSON.stringify(type)}
-          <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}
-                >
-                  <NewAgent form={form} setForm={setForm} />
-                  <BankDetails form={form} setForm={setForm}  />
-                </FormWrapper>
-    </div>
+    <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
+      <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}>
+        <NewAgent form={form} setForm={setForm} />
+        <BankDetails form={form} setForm={setForm}  />
+      </FormWrapper>
+    </Card>
   )
 }
