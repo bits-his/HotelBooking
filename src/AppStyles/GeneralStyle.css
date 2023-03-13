@@ -154,7 +154,7 @@ label {
   height: 100vh;
 }
 .dashboard_card {
-  height: 96vh !important;
+  height: 95vh !important;
   overflow-y: auto;
 }
 .card_div{
@@ -364,4 +364,35 @@ label {
 }
 .sign-in-href:hover{
   color: rgb(12, 134, 103);
+}
+
+.login_register {
+  /* font-weight: bold; */
+  color: #002147;
+  font-size: 20px;
+}
+
+.auth_logo {
+  width: 200px;
+}
+.switch_div {
+  display: flex;
+  /* justify-content: center; */
+  /* height: 20px; */
+  /* width: 100%; */
+}
+.auth_info {
+  font-size: 12px;
+}
+
+
+.dashboard_icon{
+  color: rgb(12, 134, 103);
+  background-color: rgba(12, 134, 103, 0.198);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.gov_card{
+  border: none !important;
 }

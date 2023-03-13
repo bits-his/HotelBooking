@@ -35,7 +35,6 @@ export default function HotelReg() {
     setSelected(s)
   }
 
-
   const handleSubmit = () => {
     let finalObj = {
       name: form.name,
@@ -47,13 +46,16 @@ export default function HotelReg() {
       'api/hotels?in_query_type=create',
       form,
       (res) => {
-        setForm((p) => ({ ...p, hotel_in: '',
-        hotel_name: '',
-        address: '',
-        city: '',
-        phone: '',
-        email: '',
-        website: '',}))
+        setForm((p) => ({
+          ...p,
+          hotel_in: '',
+          hotel_name: '',
+          address: '',
+          city: '',
+          phone: '',
+          email: '',
+          website: '',
+        }))
         setLoading(false)
         console.log(res)
         getHotels()
@@ -68,14 +70,14 @@ export default function HotelReg() {
   }
 
   const getHotels = () => {
-    _post( 
+    _post(
       'api/hotels?in_query_type=select-all',
       {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
         // if (resp ) {
-          setHotelList(resp.resp)
+        setHotelList(resp.resp)
         //  alert('dfasfsadf'+resp)
         // }
       },
@@ -231,27 +233,27 @@ export default function HotelReg() {
           </div>
         </Card>
       </Modal> */}
-       <Row>
+      <Row>
         <Col md={12}>
           <button
             className="app_button p-3"
             style={{ width: 150 }}
-            onClick={() => goto("/create-hotel")}
+            onClick={() => goto('/create-hotel')}
           >
             Add Hotel +
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className="card_div">
         <Col md={12}>
-          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+          <div style={{ display: 'flex', flexDirection: 'row', marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
             <label
               style={{
                 fontSize: 20,
-                display: "flex",
+                display: 'flex',
                 marginRight: 20,
-                width: "100%",
+                width: '100%',
               }}
             >
               Search
@@ -270,18 +272,60 @@ export default function HotelReg() {
         </Col>
         <Row>
           <table
-            style={{ border: "1px solid #ccc", padding: 12 }}
+            style={{ border: '1px solid #ccc', padding: 12 }}
             className="mt-5"
           >
             <thead>
               <tr>
                 {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Name</td>
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Address</td>
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</td>
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Phone</td>
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Email</td>
-                <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Website</td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Hotel Name
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Address
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  City
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Phone
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Email
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Website
+                </td>
               </tr>
             </thead>
             <tbody>
@@ -292,18 +336,60 @@ export default function HotelReg() {
                 hotelList.map((item, index) => (
                   <tr>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_name}</td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.address}</td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.city}</td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.phone}</td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.email}</td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.website}</td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.hotel_name}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.address}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.city}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.phone}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.email}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.website}
+                    </td>
                   </tr>
                 ))
               )}
             </tbody>
           </table>
-      </Row>
+        </Row>
       </div>
     </Card>
   )
