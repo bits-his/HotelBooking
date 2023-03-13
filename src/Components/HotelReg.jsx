@@ -128,7 +128,7 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
-          {JSON.stringify(finalObj)}
+          {/* {JSON.stringify(finalObj)} */}
 
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>

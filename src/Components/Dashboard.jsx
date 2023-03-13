@@ -115,9 +115,38 @@ export default function Dashboard() {
   const occupieds = roomList.filter((i)=>i.status === 'occupied')
   const cleaneds = roomList.filter((i)=>i.status === 'cleaned')
   const checkouts = roomList.filter((i)=>i.status === 'checkout')
+
+  const [hello, setHello] = useState ('')
+  
+  const rows = []
+  roomList.forEach((item,i) => {
+    if (item.room_number
+        .toString()
+        .toLowerCase()
+        .indexOf(hello.toLowerCase())=== -1 
+        
+      ) {
+      return
+    }
+    rows.push(
+      <tr key={i} className="p-0 m-0">
+      <th  className=''style={{background: item.status.toLowerCase() === 'cleaned'
+                    ? 'rgba(255, 108, 108, 0.5)'
+                    : item.status.toLowerCase() === 'occupied'
+                    ? 'rgba(255, 166, 0, 0.5)'
+                    : item.status.toLowerCase() === 'checkout'
+                    ? 'rgba(99, 175, 99, 0.5)'
+                    : '',width :"25px"}} scope="row ">{i + 1}</th>
+                  <td className='text-center'>{hotelName(parseInt(item.hotel_id))}</td>
+                  <td className='text-center'>{item.room_number}</td>
+   
+  </tr>
+    )
+  })
+
   return (
     <div>
-      {/* {JSON.stringify(occupieds.length)} */}
+      {/* {JSON.stringify(hello)} */}
       {/* {JSON.stringify(cleaneds.length)} */}
       {/* {JSON.stringify(checkouts.length)} */}
     {/* {JSON.stringify(id?occupieds.length:occupied&&occupied[0].occupied)} */}
@@ -159,9 +188,10 @@ export default function Dashboard() {
         <input
           className="app_input mt-2"
           id=""
-          name="search"
-          placeholder="Search room"
+          ame="hello" value={hello}
+          placeholder="Search for room by room number"
           type="search"
+          onChange={(e) =>setHello(e.target.value)} 
         />
         <div className="status_button_div mt-3 ">
           <Row>
@@ -209,29 +239,9 @@ export default function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-              <span>Loading rooms...</span>
-            ) : (
-              roomList.map((item, index) => (
-                <tr className={
-                  item.status.toLowerCase() === 'cleaned'
-                    ? 'green'
-                    : item.status.toLowerCase() === 'occupied'
-                    ? 'red'
-                    : item.status.toLowerCase() === 'checkout'
-                    ? 'orange'
-                    : ''
-                }>
-                  <th className='text-center' scope="row">{index + 1}</th>
-                  <td className='text-center'>{hotelName(parseInt(item.hotel_id))}</td>
-                  <td className='text-center'>{item.room_number}</td>
-                 
-                  {/* <td onClick={toggle} className="green_td">
-                <div className="green"></div>
-              </td> */}
-                </tr>
-              ))
-            )}
+          {/* {loading  ?<span>Loading rooms...</span>: */}
+          {rows}
+          
           </tbody>
         </Table>
       </Card>
