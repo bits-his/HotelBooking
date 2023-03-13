@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import { _get, _post, _put } from '../Utils/Helper'
+import SearchBar from './search/SearchBar'
 
 const statusBtn = (status, handleUpdate, roomId) => {
   return (
@@ -152,6 +153,7 @@ export default function ManageRooms() {
               </select>
             </div>
           </Col>
+          <SearchBar />
           <Col md={6}></Col>
         </Row>
         <Table

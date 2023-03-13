@@ -4,6 +4,7 @@ import { Card, Col, Modal, Row, Table } from 'reactstrap'
 // import InputForm from '../CustomComponents/InputForm'
 import { _get, _post } from '../Utils/Helper'
 import CustomerReg from './CustomerReg'
+import SearchBar from './search/SearchBar'
 
 export default function Customers() {
   const [customersList, setCustomersList] = useState([])
@@ -114,6 +115,7 @@ export default function Customers() {
               </button>
             </Col>
           </Row>
+          <SearchBar />
           <Table
             striped
             size="sm"

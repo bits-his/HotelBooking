@@ -4,7 +4,8 @@ import '../AppStyles/GeneralStyle.css'
 // import InputForm from '../CustomComponents/InputForm'
 import { Modal } from 'reactstrap'
 import StatusUpdate from './StatusUpdate'
-import { _get, _post } from '../Utils/Helper'
+import useQuery, { _get, _post } from '../Utils/Helper'
+import { useNavigate } from 'react-router'
 export default function Dashboard() {
   const [hotelList, setHotelList] = useState([])
   const [roomList, setRoomList] = useState([])
@@ -14,7 +15,8 @@ export default function Dashboard() {
   const toggle = () => {
     setOpen(!open)
   }
-
+  const navigate = useNavigate()
+  const query = useQuery();
   const getHotels = () => {
     _post( 
       'api/hotels?query_type=select',
@@ -51,7 +53,7 @@ export default function Dashboard() {
   const getCleaned= ()=>{
     _post(
       'api/room_tables?query_type=cleaned',
-      {},
+      {hotel_id:selectedRoom.hotel},
       (resp) => {
        
         setCleaned(resp.results)
@@ -65,7 +67,7 @@ export default function Dashboard() {
   const getOccupied= ()=>{
     _post(
       'api/room_tables?query_type=occupied',
-      {},
+      {hotel_id:selectedRoom.hotel},
       (resp) => {
        
         setOccupied(resp.results)
@@ -79,7 +81,7 @@ export default function Dashboard() {
   const getCheckout= ()=>{
     _post(
       'api/room_tables?query_type=checkout',
-      {},
+      {hotel_id:selectedRoom.hotel},
       (resp) => {
        
         setCheckout(resp.results)
@@ -90,10 +92,11 @@ export default function Dashboard() {
       },
     )
   }
-
+  const id = query.get("id");
+  const type = id?"select-by-id":"select"
  useEffect(() => {
     _post(
-      'api/room_tables?query_type=select-by-id',
+      `api/room_tables?query_type=${type}`,
       {hotel_id:selectedRoom.hotel},
       (resp) => {
        
@@ -102,17 +105,22 @@ export default function Dashboard() {
       },
       (e) => {
         console.log(e)
-      },
+      },  
     )
-  }, [selectedRoom.hotel])
+  }, [selectedRoom.hotel,type])
 
   const hotelName = (hotelId) => {
     return hotelList.filter((h) => h.id === hotelId)[0]?.hotel_name
   }
+  const occupieds = roomList.filter((i)=>i.status === 'occupied')
+  const cleaneds = roomList.filter((i)=>i.status === 'cleaned')
+  const checkouts = roomList.filter((i)=>i.status === 'checkout')
   return (
     <div>
-      {/* {JSON.stringify(hotelList.map((item) => item.id))} */}
-    {/* {JSON.stringify(cleaned[0].cleaned)} */}
+      {JSON.stringify(occupieds.length)}
+      {JSON.stringify(cleaneds.length)}
+      {JSON.stringify(checkouts.length)}
+    {/* {JSON.stringify(id?occupieds.length:occupied&&occupied[0].occupied)} */}
     
       <Card className="app_card dashboard_card shadow p-3 m-3">
         <div
@@ -140,7 +148,7 @@ export default function Dashboard() {
               <option>Select Hotel</option>
             )}
             {hotelList.map((item) => (
-              <option value={item.id}>{item.hotel_name}</option>
+              <option onClick={()=>navigate(`/dashboard?id=${item.id}`)} value={item.id}>{item.hotel_name}</option>
             ))}
             {/* <option>Select Hotel</option>
             {hotelList.map((item) => (
@@ -162,7 +170,7 @@ export default function Dashboard() {
                 className="clean_button status_button"
                 style={{ width: '100%' }}
               >
-                Cleaned ({cleaned&&cleaned[0].cleaned})
+                Cleaned ({cleaneds.length})
               </button>
             </Col>
             <Col md={4} sm={4} xs={4} className="">
@@ -170,7 +178,7 @@ export default function Dashboard() {
                 className="occupied_button status_button"
                 style={{ width: '100%' }}
               >
-                Occupied ({occupied&&occupied[0].occupied})
+                Occupied ({occupieds.length})
               </button>
             </Col>
             <Col md={4} sm={4} xs={4} className="">
@@ -178,7 +186,7 @@ export default function Dashboard() {
                 className="checkout_button status_button"
                 style={{ width: '100%' }}
               >
-                Chek Out ({checkout&&checkout[0].checkout})
+                Chek Out ({checkouts.length})
               </button>
             </Col>
           </Row>

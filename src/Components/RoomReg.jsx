@@ -9,7 +9,7 @@ export default function RoomReg() {
     hotel: '',
     room_number: '',
     price: '',
-    hotel_id:"",
+    hotel_id: "",
   })
   const [hotelList, setHotelList] = useState([])
   // const [roomList, setRoomList] = useState([])
@@ -20,14 +20,14 @@ export default function RoomReg() {
   }
   // const [hotelList, setHotelList] = useState([])
   const getHotels = () => {
-    _post( 
+    _post(
       'api/hotels?query_type=select',
       {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
         setHotelList(resp.resp)
-        
+
       },
       (e) => {
         console.log(e)
@@ -79,9 +79,13 @@ export default function RoomReg() {
     )
     // console.log(form)
   }
+  const [selected, setSelected] = useState([])
+  const getSelected = (item)=>{
+    setSelected(item)
+  }
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(form)} */}
+      {JSON.stringify(selected)}
       <Row>
         {/* <Col md={6}>
           <h5 className="app_title">Rooms</h5>
@@ -116,6 +120,20 @@ export default function RoomReg() {
         </Col> */}
         <Col md={6}>
           <h5 className="app_title">Create New Room</h5>
+          <label className="Label mt-2">Hotel</label>
+          <select name="hotel_id" onChange={handleChange} className="app_input">
+            <option>Select Hotel</option>
+            {hotelList && hotelList.map((item, index) => (
+              <option onClick={() => getSelected(item)} value={item.id}>{item.hotel_name}</option>
+            ))}
+          </select>
+          <label className="Label mt-2">Floor</label>
+          <select name="hotel_id" onChange={handleChange} className="app_input">
+            <option>Select Hotel</option>
+            {selected&&[selected].map((item) => (
+              <option value={item.floor}>{item.floor}</option>
+            ))}
+          </select>
           <InputForm
             className="app_input"
             label="Room Number"
@@ -123,13 +141,6 @@ export default function RoomReg() {
             onChange={handleChange}
             name="room_number"
           />
-          <label className="Label mt-2">Hotel</label>
-          <select name="hotel_id" onChange={handleChange} className="app_input">
-            <option>Select Hotel</option>
-            {hotelList.map((item, index) => (
-              <option value={item.id}>{item.hotel_name}</option>
-            ))}
-          </select>
 
           <InputForm
             className="app_input"
