@@ -10,7 +10,7 @@ export default function Dropdowns(props) {
       <div onClick={toggle} className= 'link_item'>
         <MdSettings className='logo shadow' />
         {props.title}
-         {open?<BiUpArrow style={{marginLeft: 130}}/> : <BiDownArrow style={{marginLeft: 130}}/>}</div>
+         {open?<BiUpArrow style={{marginLeft: 30}}/> : <BiDownArrow style={{marginLeft: 30}}/>}</div>
      { open &&<div> {props.children}</div> }
     </div>
   )
