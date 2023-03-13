@@ -62,7 +62,7 @@ export default function CreacteNewRoom() {
                   type="text"
                   placeholder="Search"
                   name="Search"
-                  // value={} 
+                  // value={}
                 />
               </div>
             </label>

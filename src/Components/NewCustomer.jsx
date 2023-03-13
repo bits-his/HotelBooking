@@ -44,11 +44,7 @@ export default function NewCustomer() {
         </Col>
       </Row>
       <div className="card_div">
-<<<<<<< HEAD
-        <Col md={12}>
-=======
       <Col md={12}>
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
           <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
                   <label className='label_title' >Search</label>
@@ -70,8 +66,6 @@ export default function NewCustomer() {
             className="mt-5"
           >
             <thead>
-<<<<<<< HEAD
-=======
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -80,7 +74,6 @@ export default function NewCustomer() {
                   >
                     Hotel
                   </th>
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
               {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
               <th
                 style={{
@@ -90,8 +83,6 @@ export default function NewCustomer() {
               >
                 Costomer Name
               </th>
-<<<<<<< HEAD
-=======
 
                       <th
                         style={{
@@ -152,8 +143,7 @@ export default function NewCustomer() {
               
               </th>
             </thead>
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
-
+            <thead>
               <th
                 style={{
                   border: "1px solid rgb(12, 134, 103)",
@@ -189,8 +179,6 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
-<<<<<<< HEAD
-=======
                     {i.hotel}
                   </td>
                   <td
@@ -199,7 +187,6 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                     {i.customer_name}
                   </td>
                   <td
@@ -216,8 +203,6 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
-<<<<<<< HEAD
-=======
                     {i.room_no}
                   </td>
                   <td
@@ -226,7 +211,6 @@ export default function NewCustomer() {
                       padding: "5px 10px",
                     }}
                   >
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                     {i.room_view}
                   </td>
                   <td
@@ -236,9 +220,6 @@ export default function NewCustomer() {
                     }}
                   >
                     {i.room_type}
-<<<<<<< HEAD
-                  </td>{" "}
-=======
                   </td>
                   <td
                     style={{
@@ -266,7 +247,6 @@ export default function NewCustomer() {
                   </td>
                   {
                   " "}
->>>>>>> 0b2ffd119415084dc254f3310204ee1c5f68ae34
                 </tbody>
               ))}
           </table>
