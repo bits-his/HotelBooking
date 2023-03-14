@@ -93,7 +93,7 @@ export default function Meal() {
             ))}
         </table>
       </Row>
-      </div>
+    </div>
     </Card>
   );
 }

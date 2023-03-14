@@ -11,6 +11,7 @@ import CreacteCountry from '../Components/CreateCountry'
 import CreacteMeal from '../Components/CreateMeal'
 import CreateNewCustomer from '../Components/CreateNewCustomer'
 import CreateNewHotel from '../Components/CreateNewHotel'
+import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
@@ -22,6 +23,7 @@ import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
 import Reservation from '../Components/Reservation'
+import ReservationDetails from '../Components/ReservationDetails'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
 import SignIn from '../Components/SignIn'
@@ -103,6 +105,14 @@ function AppNavigation() {
         {
           path:'/reservation',
           element:<Reservation/>
+        },
+        {
+          path:'/reservation-details',
+          element:<ReservationDetails/>
+        },
+        {
+          path:'/new-reservation-details',
+          element:<CreateReservationDetail/>
         },
         {
           path: '/room-type',

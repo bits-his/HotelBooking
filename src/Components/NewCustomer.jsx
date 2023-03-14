@@ -143,7 +143,33 @@ export default function NewCustomer() {
               
               </th>
             </thead>
+            <thead>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Country
+              </th>
 
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Room View
+              </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Select Room Type
+              </th>
+            </thead>
             {data &&
               data.map((i) => (
                 <tbody>

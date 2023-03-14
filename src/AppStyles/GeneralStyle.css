@@ -94,6 +94,32 @@
   font-size: 20px;
   outline: none;
 }
+.app_input3{
+  border-radius: none !important;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  outline: none !important;
+}
+.search_input_form{
+  display: flex;
+  border: 1px solid rgb(12, 134, 103);
+}
+.search_icon{
+  font-size: 30px;
+  padding: 5px;
+  font-weight: bold;
+  width: 50px;
+  background-color: rgb(12, 134, 103);
+  color: #fff;
+  height: 40px;
+}
+.search_icon:hover{
+  cursor: pointer;
+}
+.modal_div{
+  height: 1000px;
+}
 .search{
   padding: 3px 10px;
   /* margin-left: 30px; */

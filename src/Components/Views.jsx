@@ -29,7 +29,7 @@ export default function View() {
   }, []);
 
   return (
-    <Card className="app_card dashboard_card shadow p-4 m-3">
+    <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(data)} */}
       <Row>
         <Col md={12}>

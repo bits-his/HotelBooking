@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
 import { _get, _post } from '../Utils/Helper'
 import BankDetails from './BankDetails'
@@ -12,37 +13,37 @@ export default function Master() {
     const navigate = useNavigate()
     const [form,setForm]=useState({
         agent_name: '',
-    arabic_name: '',
-    phone: '',
-    extension: '',
-    country: '',
-    city: '',
-    zipcode: '',
-    state: '',
-    contact_person: '',
-    email: '',
-    web_address: '',
-    address: '',
-    job_title: '',
-    mobile: '',
-    fax: '',
-    bank_acc_no: '',
-    bank_name: '',
-    beneficiary_name: '',
-    branch_and_address: '',
-    credit_limit: '',
-    gl_acc_no_sales: '',
-    gl_acc_no_supplier: '',
-    price_category: '',
-    payment_method: '',
-    local_contact_details: '',
-    vat_reg_no: '',
-    mofa_file_no: '',
-    region: '',
-    agent_type: '',
-    cash_guarantee: '',
-    bank_guarantee: '',
-    agent_supplier: ''
+        arabic_name: '',
+        phone: '',
+        extension: '',
+        country: '',
+        city: '',
+        zipcode: '',
+        state: '',
+        contact_person: '',
+        email: '',
+        web_address: '',
+        address: '',
+        job_title: '',
+        mobile: '',
+        fax: '',
+        bank_acc_no: '',
+        bank_name: '',
+        beneficiary_name: '',
+        branch_and_address: '',
+        credit_limit: '',
+        gl_acc_no_sales: '',
+        gl_acc_no_supplier: '',
+        price_category: '',
+        payment_method: '',
+        local_contact_details: '',
+        vat_reg_no: '',
+        mofa_file_no: '',
+        region: '',
+        agent_type: '',
+        cash_guarantee: '',
+        bank_guarantee: '',
+        agent_supplier: ''
     })
     const handleSubmit = () => {
         // setLoading(true)
@@ -84,13 +85,11 @@ export default function Master() {
       }, [])
       
   return (
-    <div>
-        {JSON.stringify(type)}
-          <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}
-                >
-                  <NewAgent form={form} setForm={setForm} />
-                  <BankDetails form={form} setForm={setForm}  />
-                </FormWrapper>
-    </div>
+    <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
+      <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}>
+        <NewAgent form={form} setForm={setForm} />
+        <BankDetails form={form} setForm={setForm}  />
+      </FormWrapper>
+    </Card>
   )
 }

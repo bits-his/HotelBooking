@@ -128,8 +128,7 @@ export default function Country() {
                       </Button>
                     </center>
                   </td>
-                  {/* <td style={{border: '1px solid #ccc'}}>{i.city}</td>
-                          <td style={{border: '1px solid #ccc'}}>{i.zipcode}</td>*/}{" "}
+                 {" "}
                 </tbody>
               ))}
           </table>
