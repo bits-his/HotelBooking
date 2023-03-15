@@ -6,10 +6,12 @@ import { Card, Col, Modal, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
+import ReservationModal from './Modal/ReservationModal'
 
 export default function CreateReservationDetail() {
     const [modal, setModal] = useState(false)
     const [modal1, setModal1] = useState(false)
+    const [modal2, setModal2] = useState(false)
     const navigate = useNavigate()
     const [check, setCheck] = useState(false)
     const [form, setForm] = useState({
@@ -22,6 +24,7 @@ export default function CreateReservationDetail() {
 
     const toggle = () => setModal(!modal);
     const toggle1 = () => setModal1(!modal1);
+    const toggle2 = () => setModal2(!modal2);
     
     return (
         <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -50,8 +53,11 @@ export default function CreateReservationDetail() {
                         />
                         <CiSearch 
                             className='search_icon'
-                            // onClick={}
+                            onClick={toggle2}
                         />
+                        <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                            <ReservationModal />
+                        </Modal>
                     </div>
                     <InputForm
                         className="app_input"

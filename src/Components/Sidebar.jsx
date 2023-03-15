@@ -20,7 +20,7 @@ export default function Sidebar() {
         <li onClick={()=>goto('/agent')} className= 'link_item'><ImUsers className='logo shadow'/>Agent/Supplier Registration Form</li>
         <li onClick={()=>goto('/hotel-registration')} className= 'link_item'><FaHotel className='logo shadow'/>Hotel Registration Form</li>
         <li onClick={()=>goto('/room-registration')} className= 'link_item'><MdOutlineBedroomParent className='logo shadow'/>Rooms Registration Form</li>
-        <Dropdowns title = 'SetUp Forms'>
+        <Dropdowns title = 'Basic Data'>
           <li onClick={()=>goto('/room-type')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Room type</li>
           <li onClick={()=>goto('/view')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Room View</li>
           <li onClick={()=>goto('/table-meal')} className= 'link_item' style={{marginLeft: 45, width: "87%"}}>Create Meal</li>

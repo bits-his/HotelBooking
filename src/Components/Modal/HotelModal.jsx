@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
 import { CiSearch } from 'react-icons/ci'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Modal, Row, Table } from 'reactstrap'
+import { Button, Card, Col, Modal, Row, Table } from 'reactstrap'
 import { _post } from '../../Utils/Helper'
 // import { Floors } from './Floors'
 
@@ -120,6 +120,7 @@ export default function HotelReg() {
             <thead>
               <tr>
                 {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
+                <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Action</th>
                 <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel Name</th>
                 <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Address</th>
                 <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>City</th>
@@ -136,6 +137,11 @@ export default function HotelReg() {
                 hotelList.map((item, index) => (
                   <tr>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
+                    <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                        <Button 
+                            // onClick={}
+                        > Select</Button>
+                    </td>
                     <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_name}</td>
                     <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.address}</td>
                     <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.city}</td>

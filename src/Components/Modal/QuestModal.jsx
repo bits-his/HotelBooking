@@ -59,6 +59,14 @@ export default function QuestModal() {
                       padding: "5px 10px",
                     }}
                   >
+                    Action
+                  </th>
+                  <th
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     Hotel
                   </th>
               {/* <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Agent Id</th> */}
@@ -134,7 +142,12 @@ export default function QuestModal() {
             {data &&
               data.map((i) => (
                 <tbody>
-                  <td
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                      <Button 
+                        // onClick={}
+                      > Select</Button>
+                  </td>
+                  <td 
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
