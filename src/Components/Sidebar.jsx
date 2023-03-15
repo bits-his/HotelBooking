@@ -15,6 +15,7 @@ export default function Sidebar() {
   const [showSubMenuF, setShowSubMenuF] = useState(false)
   const [showSubMenuA, setShowSubMenuA] = useState(false)
   const [showSubMenuO, setShowSubMenuO] = useState(false)
+  const [showSubMenuS, setShowSubMenuS] = useState(false)
 
   const drop = () => {
     setShowSubMenu((p) => !p)
@@ -27,6 +28,9 @@ export default function Sidebar() {
   }
   const dropO = () => {
     setShowSubMenuO((p) => !p)
+  }
+  const dropS = () => {
+    setShowSubMenuS((p) => !p)
   }
   return (
     <div className="sidebar_div">
@@ -72,10 +76,12 @@ export default function Sidebar() {
             >
               Reservation Details View
             </li>
-            <li onClick={() => goto('/agent')}    className={`link_item ${
-                location.pathname === '/agent' &&
-                'active_side_menu'
-              }`}>
+            <li
+              onClick={() => goto('/agent')}
+              className={`link_item ${
+                location.pathname === '/agent' && 'active_side_menu'
+              }`}
+            >
               Create Agent/Supplier
             </li>
           </div>
@@ -119,10 +125,12 @@ export default function Sidebar() {
         </li>
         {showSubMenuA ? (
           <div className="sub_menu">
-            <li onClick={() => goto('/allotment')}    className={`link_item ${
-                location.pathname === '/allotment' &&
-                'active_side_menu'
-              }`}>
+            <li
+              onClick={() => goto('/allotment')}
+              className={`link_item ${
+                location.pathname === '/allotment' && 'active_side_menu'
+              }`}
+            >
               Add Allotment
             </li>
             <li onClick={() => goto('')} className="link_item">
@@ -163,6 +171,59 @@ export default function Sidebar() {
         ) : (
           ''
         )}
+
+        <li onClick={dropS} className="link_item">
+          <span>
+            <MdDashboard className="logo shadow" /> SetUp Forms
+            {showSubMenuS ? (
+              <TiArrowSortedUp size="1.4rem" />
+            ) : (
+              <TiArrowSortedDown size="1.4rem" />
+            )}
+          </span>
+        </li>
+        {showSubMenuS ? (
+          <div className="sub_menu">
+            <li
+              onClick={() => goto('/room-type')}
+              className="link_item"
+              
+            >
+              Create Room type
+            </li>
+            <li
+              onClick={() => goto('/view')}
+              className="link_item"
+              
+            >
+              Create Room View
+            </li>
+            <li
+              onClick={() => goto('/table-meal')}
+              className="link_item"
+              
+            >
+              Create Meal
+            </li>
+            <li
+              onClick={() => goto('/country')}
+              className="link_item"
+              
+            >
+              Country
+            </li>
+            {/* <li
+              onClick={() => goto('/reservation-details')}
+              className="link_item"
+              
+            >
+              Reservation Details
+            </li> */}
+          </div>
+        ) : (
+          ''
+        )}
+
         {/* <li onClick={() => goto('/dashboard')} className="link_item">
           <MdDashboard className="logo shadow" /> Dashboard
           </li>
