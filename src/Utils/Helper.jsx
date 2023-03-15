@@ -2,7 +2,7 @@
 // export const server_url = 'https://5101-102-89-44-54.eu.ngrok.io/api'
 // export const server_url = 'https://hotelbooking-production.up.railway.app/api'
 // export const server_url =
-// process.env.NODE_ENV === 'development'
+// process.env.NODE_ENV === 'development' 
 // ? 'http://yge.wvi.mybluehost.me:9090/api'
 // : 'https://yge.wvi.mybluehost.me:9090/api'
 import { useLocation } from "react-router";
@@ -28,6 +28,7 @@ export const _post = (url, data, success = (f) => f, error = (f) => f) => {
       error(err);
     });
 };
+
 
 export const _get = (url, success = (f) => f, error = (f) => f) => {
   fetch(`${server_url}/${url}`, {

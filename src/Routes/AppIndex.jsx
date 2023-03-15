@@ -19,7 +19,7 @@ export default function AppIndex() {
   return (
     <div>
       <Row className="m-0">
-        <Col md={2} className="sidebar">
+        <Col md={2} className="m-0 sidebar">
           <Sidebar />
         </Col>
         <div className="mobile_menu">
@@ -27,7 +27,10 @@ export default function AppIndex() {
             <MdDashboard onClick={() => goto('/dashboard')} />
           </div>
           <div>
-            <FaHotel size='1.7rem' onClick={() => goto('/hotel-registration')} />
+            <FaHotel
+              size="1.7rem"
+              onClick={() => goto('/hotel-registration')}
+            />
           </div>
           <div>
             <MdOutlineBedroomParent
