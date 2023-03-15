@@ -157,7 +157,7 @@ function AppNavigation() {
         {
           path: 'create-new-costomer',
           element: <CreateNewCustomer />
-        },
+        }
       ],
     },
   ])

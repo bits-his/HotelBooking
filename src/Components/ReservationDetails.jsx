@@ -35,7 +35,7 @@ export default function ReservationDetails() {
   )
 
   return (
-    <Card className="app_card dashboard_card shadow p-4 m-3">
+    <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(hotel)} */}
       <Row>
         <Col md={12}>
