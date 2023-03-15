@@ -197,6 +197,5 @@ export default function NewAgent({form={},setForm=(f)=>f}) {
         </Row>
         
     </Card>
-
-  )
+  );
 }

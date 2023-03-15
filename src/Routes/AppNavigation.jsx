@@ -39,16 +39,15 @@ function AppNavigation() {
     },
     {
       path: 'sign-up',
-      element: <SignUp />
+      element: <SignUp />,
     },
     {
       path: 'sign-in',
-      element: <SignIn />
+      element: <SignIn />,
     },
     {
       element: <AppIndex />,
       children: [
-        
         {
           path: '/dashboard',
           element: <Dashboard />,
@@ -58,101 +57,101 @@ function AppNavigation() {
           element: <CustomerReg />,
         },
         {
-          path:'/hotel-registration',
-          element:<HotelReg/>
+          path: '/hotel-registration',
+          element: <HotelReg />,
         },
         {
-          path:'/create-hotel',
-          element:<CreateNewHotel/>
+          path: '/create-hotel',
+          element: <CreateNewHotel />,
         },
         {
-          path:'/creact-new-room',
-          element:<RoomReg/>
+          path: '/creact-new-room',
+          element: <RoomReg />,
         },
         {
-          path:'/room-registration',
-          element:<CreacteNewRoom/>
+          path: '/room-registration',
+          element: <CreacteNewRoom />,
         },
         {
-          path:'/manage-rooms',
-          element:<ManageRooms  />
+          path: '/manage-rooms',
+          element: <ManageRooms />,
         },
         {
-          path:'/customers',
-          element:<Customers/>
+          path: '/customers',
+          element: <Customers />,
         },
         {
-          path:'/agent',
-          element:<Agent/>
+          path: '/agent',
+          element: <Agent />,
         },
         {
-          path:'/new-agent/:agent_id',
-          element:<Master/>
+          path: '/new-agent/:agent_id',
+          element: <Master />,
         },
-        
+
         {
-          path:'/new-agent',
-          element:<Master/>
-        },
-        {
-          path:'bank-details',
-          element:<BankDetails/>
+          path: '/new-agent',
+          element: <Master />,
         },
         {
-          path:'allotment',
-          element:<Allotment/>
+          path: 'bank-details',
+          element: <BankDetails />,
         },
         {
-          path:'/reservation',
-          element:<Reservation/>
+          path: 'allotment',
+          element: <Allotment />,
         },
         {
-          path:'/reservation-details',
-          element:<ReservationDetails/>
+          path: '/reservation',
+          element: <Reservation />,
         },
         {
-          path:'/new-reservation-details',
-          element:<CreateReservationDetail/>
+          path: '/reservation-details',
+          element: <ReservationDetails />,
+        },
+        {
+          path: '/new-reservation-details',
+          element: <CreateReservationDetail />,
         },
         {
           path: '/room-type',
-          element: <RoomType />
+          element: <RoomType />,
         },
         {
           path: '/creact-room-type',
-          element: <CreacteRoomType />
+          element: <CreacteRoomType />,
         },
         {
           path: '/view',
-          element: <View />
+          element: <View />,
         },
         {
           path: 'create-view',
-          element: <CreacteView />
+          element: <CreacteView />,
         },
         {
           path: '/table-meal',
-          element: <Meal />
+          element: <Meal />,
         },
         {
           path: '/create-meal',
-          element: <CreacteMeal />
+          element: <CreacteMeal />,
         },
         {
           path: '/create-meal/:id',
-          element: <CreacteMeal />
+          element: <CreacteMeal />,
         },
         {
           path: '/country',
-          element: <Country />
+          element: <Country />,
         },
         {
           path: 'create-country',
-          element: <CreacteCountry />
+          element: <CreacteCountry />,
         },
         {
           path: 'costomer',
-          element: <NewCustomer />
+          element: <NewCustomer />,
         },
         {
           path: 'create-new-costomer',
