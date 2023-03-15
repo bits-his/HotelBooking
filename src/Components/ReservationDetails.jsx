@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
-export default function RoomType() {
+export default function ReservationDetails() {
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
@@ -41,10 +41,10 @@ export default function RoomType() {
         <Col md={12}>
           <button
             className="app_button p-3"
-            style={{ width: 200 }}
-            onClick={() => goto("/creact-room-type")}
+            // style={{ width: 200 }}
+            onClick={() => goto("/new-reservation-details")}
           >
-            Add New Room +
+            Add Reservation Details
           </button>
         </Col>
       </Row>
@@ -73,19 +73,26 @@ export default function RoomType() {
           >
             <thead>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Room Name
+                Hotel Name
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Type
+                Room Type
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Number of Pax
+                Veiw
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Check In
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Night
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Check Out
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                 Action
               </th>
-              {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
-                      <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
             </thead>
 
             {hotel &&
@@ -101,6 +108,15 @@ export default function RoomType() {
                     {i.no_pax}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.no_pax}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.no_pax}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.no_pax}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     <Button size="sm">Edit</Button>
                   </td>{" "}
                 </tbody>
@@ -111,3 +127,4 @@ export default function RoomType() {
     </Card>
   );
 }
+

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import { _post } from '../Utils/Helper'
 
+
 export default function Agent() {
   const goto = useNavigate()
 const [data,setData]=useState([])
@@ -47,7 +48,7 @@ const [data,setData]=useState([])
           <Col md={12}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
-                  <label style={{fontSize: 20, display: 'flex', marginRight: 20, width: '100%'}} >Search
+                  <label className='label_title' >Search</label>
                   <div className='search'>
                     <CiSearch style={{fontSize: 30}}/>
                       <input 
@@ -58,7 +59,6 @@ const [data,setData]=useState([])
                           // value={}
                       />
                   </div>
-                  </label>
               </div>
           </Col>
           <Row>

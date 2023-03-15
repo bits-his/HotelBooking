@@ -21,13 +21,13 @@
   color: rgba(164, 107, 0, 0.626);
 }
 /* .search_button { */
-  /* display: flex;
+/* display: flex;
   justify-content: space-between;
   gap: 10px; */
 /* } */
 .app_card {
   border: none !important;
-  border-radius: 5px ;
+  border-radius: 5px;
   border: 3px solid rgb(12, 134, 103) !important;
 }
 .dd {
@@ -86,7 +86,7 @@
   width: 100%;
   padding: 8px;
 }
-.app_input2{
+.app_input2 {
   width: 90%;
   padding: 3px 10px;
   border: none !important;
@@ -94,13 +94,53 @@
   font-size: 20px;
   outline: none;
 }
-.search{
+.app_input3 {
+  border-radius: none !important;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  outline: none !important;
+}
+.search_input_form {
+  display: flex;
+  border: 1px solid rgb(12, 134, 103);
+}
+.search_icon {
+  font-size: 30px;
+  padding: 5px;
+  font-weight: bold;
+  width: 50px;
+  background-color: rgb(12, 134, 103);
+  color: #fff;
+  height: 40px;
+}
+.search_icon:hover {
+  cursor: pointer;
+}
+.modal_div {
+  height: 1000px;
+}
+.search {
   padding: 3px 10px;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   border-radius: 5px;
-  margin-top: -8px;
+  margin-left: -2px;
   width: 100%;
   border: 1px solid rgb(12, 134, 103);
+}
+.label_title {
+  font-size: 20px;
+  background-color: rgb(12, 134, 103);
+  margin-right: 20px;
+  width: 10%;
+  color: #fff;
+  padding: 6px;
+  border: 1px solid rgb(12, 134, 103);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  margin-top: -18px;
+  /* height: 70px; */
 }
 .app_input:focus {
   outline: 1px rgb(12, 134, 103) solid;
@@ -108,23 +148,23 @@
 }
 .app_title {
   color: rgb(12, 134, 103);
-  text-align: center;
+  /* text-align: center; */
   /* font-size: 28px; */
   /* width: 100%; */
   /* background-color: #b3b3b3; */
   /* margin-top: -60px; */
 }
-.app_titleI{
+.app_titleI {
   margin-top: 20px;
   background-color: rgb(12, 134, 103);
   color: #fff;
-  padding: 6px 10px;
+  /* padding: 6px 10px; */
 }
 label {
   font-size: 12px;
   margin: 0 !important;
 }
-.label1{
+.label1 {
   margin-top: 20px;
 }
 
@@ -138,12 +178,38 @@ label {
   /* background-color: salmon; */
   background-color: rgb(12, 134, 103);
   height: 100vh;
+  overflow-y: auto;
+  margin: 0;
+  width: 100%;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  /* border-radius: 10px; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aeaeae;
+}
+
 .dashboard_card {
-  height: 96vh !important;
+  height: 95vh !important;
   overflow-y: auto;
 }
-.card_div{
+.card_div {
   border: 1px solid rgb(12, 134, 103);
   padding: 20px;
   margin-top: 20px;
@@ -156,23 +222,37 @@ label {
   width: 111%;
   margin-left: -25px;
 }
-.table-div{
+.table-div {
   height: 96vh;
-
 }
 .link_item {
   text-decoration: none;
   color: #fff;
   list-style: none;
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 14px;
   /* font-weight: 500; */
   /* letter-spacing: 1px; */
   padding: 10px 15px;
   /* transition: all 0.5s; */
   padding-top: 6px;
   cursor: pointer;
+  
+  width: 100%;
 }
+
+.active_side_menu {
+  background-color: rgb(10, 104, 79);
+
+  /* color: rgb(10, 104, 79); */
+  border-right: 5px solid white;
+}
+
+.active_side_menu:hover {
+  background-color: #eaeef0;
+  color: var(--primaryColor2);
+}
+
 .link_item:hover {
   background-color: rgb(10, 104, 79);
   color: #fff;
@@ -226,7 +306,7 @@ label {
     display: none;
   }
   .sidebar_div {
-    display: none;
+    /* display: none; */
   }
   .sidebar {
     display: none;
@@ -251,15 +331,14 @@ label {
   .mobile_menu {
     display: none;
   }
-  .reg_card{
+  .reg_card {
     height: 95vh;
   }
 }
 
-
 /* SignIn */
 
-.sign-in-div1{
+.sign-in-div1 {
   /* height: 97.9vh; */
   /* width: 100vw; */
   margin: 0;
@@ -272,12 +351,12 @@ label {
   border: 1px solid #ccc;
   border-radius: 15px;
 }
-.sign-in-div2{
+.sign-in-div2 {
   background-color: #fff;
   color: black;
   border-radius: 15px;
 }
-.sign-in-div3{
+.sign-in-div3 {
   background-color: rgb(12, 134, 103);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   width: 300px;
@@ -287,11 +366,11 @@ label {
   margin-bottom: 40px;
   border-radius: 15px;
 }
-.sign-in-div4{
+.sign-in-div4 {
   display: flex;
   flex-direction: column;
 }
-.sign-in-input{
+.sign-in-input {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -301,33 +380,33 @@ label {
   border-radius: 10px;
   outline: none;
 }
-.sign-in-para{
+.sign-in-para {
   text-align: center;
   width: 80px;
   color: #fff;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin: 2px 20px;
-  font-size: 20px;
+  font-size: 17px;
   padding: 8px;
   height: 45px;
   cursor: pointer;
 }
-.sign-in-para:hover{
+.sign-in-para:hover {
   border-bottom: 2px solid #fff;
 }
-.border{
+.border {
   border-bottom: 2px solid #fff;
 }
-.sign-in-switch{
+.sign-in-switch {
   margin-left: 20px;
   outline: transparent;
 }
-.sign-in-label{
+.sign-in-label {
   color: #b3b3b3;
   font-weight: bold;
   cursor: pointer;
 }
-.sign-in-bottom{
+.sign-in-bottom {
   background-color: rgb(12, 134, 103);
   color: #fff;
   margin: 20px;
@@ -339,15 +418,52 @@ label {
   border: transparent;
   border-radius: 10px;
 }
-.sign-in-para1{
+.sign-in-para1 {
   color: #b3b3b3;
   text-align: center;
 }
-.sign-in-href{
+.sign-in-href {
   color: rgb(12, 134, 103);
   text-decoration: none;
   font-weight: bold;
 }
-.sign-in-href:hover{
+.sign-in-href:hover {
   color: rgb(12, 134, 103);
+}
+
+.login_register {
+  /* font-weight: bold; */
+  color: #002147;
+  font-size: 20px;
+}
+
+.auth_logo {
+  width: 200px;
+}
+.switch_div {
+  display: flex;
+  /* justify-content: center; */
+  /* height: 20px; */
+  /* width: 100%; */
+}
+.auth_info {
+  font-size: 12px;
+}
+
+.dashboard_icon {
+  color: rgb(12, 134, 103);
+  background-color: rgba(12, 134, 103, 0.198);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.gov_card {
+  border: none !important;
+}
+
+.sub_menu {
+  margin-left: 20px;
+}
+.sub_menu > li {
+  font-size: 12px;
 }

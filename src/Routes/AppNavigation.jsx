@@ -10,6 +10,8 @@ import CreacteView from '../Components/CreacteView'
 import CreacteCountry from '../Components/CreateCountry'
 import CreacteMeal from '../Components/CreateMeal'
 import CreateNewCustomer from '../Components/CreateNewCustomer'
+import CreateNewHotel from '../Components/CreateNewHotel'
+import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
@@ -21,6 +23,7 @@ import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
 import Reservation from '../Components/Reservation'
+import ReservationDetails from '../Components/ReservationDetails'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
 import SignIn from '../Components/SignIn'
@@ -36,16 +39,15 @@ function AppNavigation() {
     },
     {
       path: 'sign-up',
-      element: <SignUp />
+      element: <SignUp />,
     },
     {
       path: 'sign-in',
-      element: <SignIn />
+      element: <SignIn />,
     },
     {
       element: <AppIndex />,
       children: [
-        
         {
           path: '/dashboard',
           element: <Dashboard />,
@@ -55,89 +57,105 @@ function AppNavigation() {
           element: <CustomerReg />,
         },
         {
-          path:'/hotel-registration',
-          element:<HotelReg/>
+          path: '/hotel-registration',
+          element: <HotelReg />,
         },
         {
-          path:'/creact-new-room',
-          element:<RoomReg/>
+          path: '/create-hotel',
+          element: <CreateNewHotel />,
         },
         {
-          path:'/room-registration',
-          element:<CreacteNewRoom/>
+          path: '/creact-new-room',
+          element: <RoomReg />,
         },
         {
-          path:'/manage-rooms',
-          element:<ManageRooms  />
+          path: '/room-registration',
+          element: <CreacteNewRoom />,
         },
         {
-          path:'/customers',
-          element:<Customers/>
+          path: '/manage-rooms',
+          element: <ManageRooms />,
         },
         {
-          path:'/agent',
-          element:<Agent/>
+          path: '/customers',
+          element: <Customers />,
         },
         {
-          path:'/new-agent/:agent_id',
-          element:<Master/>
-        },
-        
-        {
-          path:'/new-agent',
-          element:<Master/>
+          path: '/agent',
+          element: <Agent />,
         },
         {
-          path:'bank-details',
-          element:<BankDetails/>
+          path: '/new-agent/:agent_id',
+          element: <Master />,
+        },
+
+        {
+          path: '/new-agent',
+          element: <Master />,
         },
         {
-          path:'allotment',
-          element:<Allotment/>
+          path: 'bank-details',
+          element: <BankDetails />,
         },
         {
-          path:'/reservation',
-          element:<Reservation/>
+          path: 'allotment',
+          element: <Allotment />,
+        },
+        {
+          path: '/reservation',
+          element: <Reservation />,
+        },
+        {
+          path: '/reservation-details',
+          element: <ReservationDetails />,
+        },
+        {
+          path: '/new-reservation-details',
+          element: <CreateReservationDetail />,
         },
         {
           path: '/room-type',
-          element: <RoomType />
+          element: <RoomType />,
         },
         {
           path: '/creact-room-type',
-          element: <CreacteRoomType />
+          element: <CreacteRoomType />,
         },
         {
           path: '/view',
-          element: <View />
+          element: <View />,
         },
         {
           path: 'create-view',
-          element: <CreacteView />
+          element: <CreacteView />,
         },
         {
-          path: '/meal',
-          element: <Meal />
+          path: '/table-meal',
+          element: <Meal />,
         },
         {
-          path: 'create-meal',
-          element: <CreacteMeal />
+          path: '/create-meal',
+          element: <CreacteMeal />,
+        },
+        {
+          path: '/create-meal/:id',
+          element: <CreacteMeal />,
         },
         {
           path: '/country',
-          element: <Country />
+          element: <Country />,
         },
         {
           path: 'create-country',
-          element: <CreacteCountry />
+          element: <CreacteCountry />,
         },
         {
           path: 'costomer',
-          element: <NewCustomer />
+          element: <NewCustomer />,
         },
         {
           path: 'create-new-costomer',
-          element: <CreateNewCustomer />
+          element: <CreateNewCustomer />,
         },
       ],
     },

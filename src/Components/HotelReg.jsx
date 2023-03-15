@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
+import { CiSearch } from 'react-icons/ci'
+import { useNavigate } from 'react-router-dom'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _get, _post } from '../Utils/Helper'
 import { Floors } from './Floors'
 
 export default function HotelReg() {
+  const goto = useNavigate()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
+    hotel_in: '',
     hotel_name: '',
     address: '',
-    floor: '',
+    city: '',
+    phone: '',
+    email: '',
+    website: '',
   })
 
   const [open, setOpen] = useState(false)
@@ -28,19 +35,22 @@ export default function HotelReg() {
     setSelected(s)
   }
 
-
-  let finalObj = {
-    hotel_name: form.hotel_name,
-    address: form.address,
-    floor: form.floor,
-  }
   const handleSubmit = () => {
     setLoading(true)
     _post(
-      'api/hotels?query_type=create',
-      finalObj,
+      'api/hotels?in_query_type=create',
+      form,
       (res) => {
-        setForm((p) => ({ ...p, hotel_name: '', address: '', floors: '' }))
+        setForm((p) => ({
+          ...p,
+          hotel_in: '',
+          hotel_name: '',
+          address: '',
+          city: '',
+          phone: '',
+          email: '',
+          website: '',
+        }))
         setLoading(false)
         console.log(res)
         getHotels()
@@ -55,14 +65,16 @@ export default function HotelReg() {
   }
 
   const getHotels = () => {
-    _post( 
-      'api/hotels?query_type=select',
+    _post(
+      'api/hotels?in_query_type=select-all',
       {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
+        // if (resp ) {
         setHotelList(resp.resp)
-        
+        //  alert('dfasfsadf'+resp)
+        // }
       },
       (e) => {
         console.log(e)
@@ -78,8 +90,8 @@ export default function HotelReg() {
   }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(finalObj)} */}
-      <Row>
+      {/* {JSON.stringify(hotelList)} */}
+      {/* <Row>
         <Col md={10}>
           <Row>
             <Col md={6} sm={6} xs={6}>
@@ -119,9 +131,13 @@ export default function HotelReg() {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
+                    <td>{item.hotel_in}</td>
                     <td>{item.hotel_name}</td>
                     <td>{item.address}</td>
-                    <td>{item.floor}</td>
+                    <td>{item.city}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.email}</td>
+                    <td>{item.website}</td>
                   </tr>
                 ))
               )}
@@ -132,40 +148,65 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
-          {/* {JSON.stringify(finalObj)} */}
 
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>
             <InputForm
               className="app_input"
-              label="Name"
-              value={form.hotel_name}
+              label="Hotel Id"
+              value={form.hotel_in}
               onChange={handleChange}
-              name="hotel_name"
+              name="hotel_in"
             />
             <InputForm
               className="app_input"
               label="Hotel Name"
               value={form.hotel_name}
               onChange={handleChange}
-              name="address"
-            />
-            {/* <label className="Label mt-2">Selelct no of floors</label> */}
-            <InputForm
+              name="hotel_name"
+            /> <InputForm
+            className="app_input"
+            label="Address"
+            value={form.address}
+            onChange={handleChange}
+            name="address"
+          /> 
+         <InputForm
+        className="app_input"
+        label="City"
+        value={form.city}
+        onChange={handleChange}
+        name="city"
+      />
+      <InputForm
+          className="app_input"
+          label="Phone"
+          value={form.phone}
+          onChange={handleChange}
+          name="phone"
+        />
+             <InputForm
               className="app_input"
-              label="Number Of Floor"
-              value={form.floor}
+              label="Email"
+              value={form.email}
               onChange={handleChange}
-              name="floor"
+              name="email"
             />
-            {/* <InputForm
+              <InputForm
+              className="app_input"
+              label="Website"
+              value={form.website}
+              onChange={handleChange}
+              name="website"
+            />
+            <InputForm
               className="app_input"
               label="Select Number of Floors"
               type="number"
               value={form.floor}
               onChange={handleChange}
               name="floor"
-            /> */}
+            />
             <div>
               {loading ? (
                 <button
@@ -186,7 +227,156 @@ export default function HotelReg() {
             </div>
           </div>
         </Card>
-      </Modal>
+      </Modal> */}
+      <Row>
+        <Col md={12}>
+          <button
+            className="app_button p-3"
+            style={{ width: 150 }}
+            onClick={() => goto('/create-hotel')}
+          >
+            Add Hotel +
+          </button>
+        </Col>
+      </Row>
+      <div className="card_div">
+        <Col md={12}>
+          <div style={{ display: 'flex', flexDirection: 'row', marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label className="label_title">Search</label>
+            <div className="search">
+              <CiSearch style={{ fontSize: 30 }} />
+              <input
+                className="app_input2"
+                type="text"
+                placeholder="Search"
+                name="Search"
+                // value={}
+              />
+            </div>
+          </div>
+        </Col>
+        <Row>
+          <table
+            style={{ border: '1px solid #ccc', padding: 12 }}
+            className="mt-5"
+          >
+            <thead>
+              <tr>
+                {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Hotel Name
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Address
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  City
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Phone
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Email
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
+                  Website
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {JSON.stringify(hotelList)} */}
+              {hotelList.length === 0 ? (
+                <span>Loading Rooms...</span>
+              ) : (
+                hotelList.map((item, index) => (
+                  <tr>
+                    {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.hotel_name}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.address}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.city}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.phone}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.email}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.website}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </Row>
+      </div>
     </Card>
   )
 }
