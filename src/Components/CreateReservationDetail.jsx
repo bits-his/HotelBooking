@@ -29,6 +29,16 @@ export default function CreateReservationDetail() {
     return (
         <Card className="app_card dashboard_card shadow p-3 m-3">
             <Row>
+            <Col md={6}>
+                <div className='list_item_div'>
+                    <button className='btn_div' style={{borderBottom: '2px solid rgb(12, 134, 103)'}}> Reservation Details </button>
+                    <button className='btn_div'>Policy</button>
+                    <button className='btn_div'> Visa Details</button>
+                </div>
+            </Col>
+            {/* <hr /> */}
+        </Row>
+            <Row>
                 <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                     <button
                         className="app_button p-3 mb-3"
