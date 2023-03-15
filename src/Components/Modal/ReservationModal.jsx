@@ -3,7 +3,7 @@ import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Row } from 'reactstrap'
 import { _post } from '../../Utils/Helper';
 
-export default function AgentModal() {
+export default function ReservationModal() {
      const [data, setData] = useState([]);
 
     const [hotel,setHotel]=useState([])
@@ -34,7 +34,7 @@ export default function AgentModal() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
         <Col md= {12}>
-            <h5 className="app_title">Agent List</h5> 
+            <h5 className="app_title">Reservation List</h5> 
             <hr />
         </Col>
         <Col md={12}>
@@ -62,25 +62,31 @@ export default function AgentModal() {
                 Action
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                IDD
+                Hotel Name
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Agent Namex
+                Hotel City
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Country
+                Status
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                City
+                Category
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Email
+                Filter Type
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Account No.
+                View
               </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Telephone No
+                Print View
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Date From
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Date To
               </th>
               {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
@@ -113,8 +119,14 @@ export default function AgentModal() {
                     {i.no_pax}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button size="sm">Edit</Button>
-                  </td>{" "}
+                    {i.no_pax}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.no_pax}
+                  </td>
+                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                    {i.no_pax}
+                  </td>
                 </tbody>
               ))}
           </table>
@@ -123,3 +135,4 @@ export default function AgentModal() {
     </Card>
   )
 }
+

@@ -467,3 +467,19 @@ label {
 .sub_menu > li {
   font-size: 12px;
 }
+.list_item_div{ 
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.btn_div{
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: rgb(12, 134, 103);
+  width: 200px;
+}
+.btn_div:hover{
+  border-bottom: 2px solid rgb(12, 134, 103);
+  width: 200px;
+}

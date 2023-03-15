@@ -100,13 +100,13 @@ export default function Sidebar() {
         </li>
         {showSubMenuF ? (
           <div className="sub_menu">
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Confirmation Pending
             </li>
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Option Date Warning
             </li>{' '}
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Audit Booking
             </li>
           </div>
@@ -133,13 +133,13 @@ export default function Sidebar() {
             >
               Add Allotment
             </li>
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Pending Purchase Request
             </li>{' '}
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Rack
             </li>
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Check Reservation & Availability
             </li>{' '}
             <li onClick={() => goto('/reservation')} className="link_item">
@@ -161,10 +161,10 @@ export default function Sidebar() {
         </li>
         {showSubMenuO ? (
           <div className="sub_menu">
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Reservation Report
             </li>
-            <li onClick={() => goto('')} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Reports By Agent
             </li>{' '}
           </div>
