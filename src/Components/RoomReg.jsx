@@ -41,7 +41,7 @@ export default function RoomReg() {
   }
 
   const [hotel,setHotel]=useState([])
-  const getHotels = () => {
+  const _getHotels = () => {
     _post( 
       'api/hotels?in_query_type=select-all',
       {},
@@ -84,6 +84,7 @@ export default function RoomReg() {
     ()=>{
       getHotels()
       getRooms()
+      _getHotels()
     },[0]
   )
 
