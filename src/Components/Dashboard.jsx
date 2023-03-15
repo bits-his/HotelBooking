@@ -4,7 +4,8 @@ import '../AppStyles/GeneralStyle.css'
 // import InputForm from '../CustomComponents/InputForm'
 import { Modal } from 'reactstrap'
 import StatusUpdate from './StatusUpdate'
-import { _get } from '../Utils/Helper'
+import useQuery, { _get, _post } from '../Utils/Helper'
+import { useNavigate } from 'react-router'
 export default function Dashboard() {
   const [hotelList, setHotelList] = useState([])
   const [roomList, setRoomList] = useState([])
@@ -14,62 +15,142 @@ export default function Dashboard() {
   const toggle = () => {
     setOpen(!open)
   }
-
-  useEffect(() => {
-    setLoading(true)
-    _get(
-      'hotels/',
-      (resp) => {
-        setLoading(false)
-        console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-          // console.log(resp[0],'fdfdf')
-          getRooms(resp[0].id)
-          setSelectedRoom(resp[0])
-        }
-      },
-      (e) => {
-        setLoading(false)
-        console.log(e)
-      },
-    )
-  }, [])
-
-  const handleSelected = ({ target: { name, value } }) => {
-    // console.log({ target })
-    setSelectedRoom((p) => ({ ...p, [name]: value }))
-  }
-
-  const getRooms = (s) => {
-    _get(
-      `hotel-room/${s}`,
+  const navigate = useNavigate()
+  const query = useQuery();
+  const getHotels = () => {
+    _post( 
+      'api/hotels?query_type=select',
+      {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
-        if (resp && resp.length) {
-          setRoomList(resp)
-        } else {
-          setRoomList([])
-        }
+        setHotelList(resp.resp)
+        // setSelectedRoom({ ...resp.resp[0], hotel: resp.resp[0].id })
       },
       (e) => {
         console.log(e)
         // setLoading(false)
+        // alert(e)
       },
     )
   }
 
   useEffect(() => {
     // setLoading(true)
-    getRooms(selectedRoom.hotel)
-  }, [selectedRoom])
+    getHotels();
+    getCleaned();
+    getCheckout();
+    getOccupied()
+  }, [])
+
+  const handleSelected = ({ target: { name, value } }) => {
+    // console.log({ target })
+    setSelectedRoom((p) => ({ ...p, [name]: value }))
+  }
+  const [cleaned,setCleaned]=useState()
+  const [occupied,setOccupied]=useState()
+  const [checkout,setCheckout]=useState()
+  const getCleaned= ()=>{
+    _post(
+      'api/room_tables?query_type=cleaned',
+      {hotel_id:selectedRoom.hotel},
+      (resp) => {
+       
+        setCleaned(resp.results)
+      
+      },
+      (e) => {
+        console.log(e)
+      },
+    )
+  }
+  const getOccupied= ()=>{
+    _post(
+      'api/room_tables?query_type=occupied',
+      {hotel_id:selectedRoom.hotel},
+      (resp) => {
+       
+        setOccupied(resp.results)
+      
+      },
+      (e) => {
+        console.log(e)
+      },
+    )
+  }
+  const getCheckout= ()=>{
+    _post(
+      'api/room_tables?query_type=checkout',
+      {hotel_id:selectedRoom.hotel},
+      (resp) => {
+       
+        setCheckout(resp.results)
+      
+      },
+      (e) => {
+        console.log(e)
+      },
+    )
+  }
+  const id = query.get("id");
+  const type = id?"select-by-id":"select"
+ useEffect(() => {
+    _post(
+      `api/room_tables?query_type=${type}`,
+      {hotel_id:selectedRoom.hotel},
+      (resp) => {
+       
+          setRoomList(resp.results)
+      
+      },
+      (e) => {
+        console.log(e)
+      },  
+    )
+  }, [selectedRoom.hotel,type])
+
+  const hotelName = (hotelId) => {
+    return hotelList.filter((h) => h.id === hotelId)[0]?.hotel_name
+  }
+  const occupieds = roomList.filter((i)=>i.status === 'occupied')
+  const cleaneds = roomList.filter((i)=>i.status === 'cleaned')
+  const checkouts = roomList.filter((i)=>i.status === 'checkout')
+
+  const [hello, setHello] = useState ('')
+  
+  const rows = []
+  roomList.forEach((item,i) => {
+    if (item.room_number
+        .toString()
+        .toLowerCase()
+        .indexOf(hello.toLowerCase())=== -1 
+        
+      ) {
+      return
+    }
+    rows.push(
+      <tr key={i} className="p-0 m-0">
+      <th  className=''style={{background: item.status.toLowerCase() === 'cleaned'
+                    ? 'rgba(255, 108, 108, 0.5)'
+                    : item.status.toLowerCase() === 'occupied'
+                    ? 'rgba(255, 166, 0, 0.5)'
+                    : item.status.toLowerCase() === 'checkout'
+                    ? 'rgba(99, 175, 99, 0.5)'
+                    : '',width :"25px"}} scope="row ">{i + 1}</th>
+                  <td className='text-center'>{hotelName(parseInt(item.hotel_id))}</td>
+                  <td className='text-center'>{item.room_number}</td>
+   
+  </tr>
+    )
+  })
 
   return (
     <div>
-      {/* {JSON.stringify(hotelList.map((item) => item.id))} */}
-      {/* {JSON.stringify(selectedRoom)}
-      {JSON.stringify(roomList)} */}
+      {/* {JSON.stringify(hello)} */}
+      {/* {JSON.stringify(cleaneds.length)} */}
+      {/* {JSON.stringify(checkouts.length)} */}
+    {/* {JSON.stringify(id?occupieds.length:occupied&&occupied[0].occupied)} */}
+    
       <Card className="app_card dashboard_card shadow p-3 m-3">
         <div
           className="p-2"
@@ -96,7 +177,7 @@ export default function Dashboard() {
               <option>Select Hotel</option>
             )}
             {hotelList.map((item) => (
-              <option value={item.id}>{item.name}</option>
+              <option onClick={()=>navigate(`/dashboard?id=${item.id}`)} value={item.id}>{item.hotel_name}</option>
             ))}
             {/* <option>Select Hotel</option>
             {hotelList.map((item) => (
@@ -107,18 +188,19 @@ export default function Dashboard() {
         <input
           className="app_input mt-2"
           id=""
-          name="search"
-          placeholder="Search room"
+          ame="hello" value={hello}
+          placeholder="Search for room by room number"
           type="search"
+          onChange={(e) =>setHello(e.target.value)} 
         />
-        <div className="status_button_div mt-3 mb-3">
+        <div className="status_button_div mt-3 ">
           <Row>
             <Col md={4} sm={4} xs={4} className="">
               <button
                 className="clean_button status_button"
                 style={{ width: '100%' }}
               >
-                Cln (0)
+                Cleaned ({cleaneds.length})
               </button>
             </Col>
             <Col md={4} sm={4} xs={4} className="">
@@ -126,7 +208,7 @@ export default function Dashboard() {
                 className="occupied_button status_button"
                 style={{ width: '100%' }}
               >
-                Ocp (0)
+                Occupied ({occupieds.length})
               </button>
             </Col>
             <Col md={4} sm={4} xs={4} className="">
@@ -134,54 +216,32 @@ export default function Dashboard() {
                 className="checkout_button status_button"
                 style={{ width: '100%' }}
               >
-                Chkt (0)
+                Chek Out ({checkouts.length})
               </button>
             </Col>
           </Row>
         </div>
         <Table
-          striped
+          bordered
           size="sm"
           responsive
-          className="mt-4"
-          style={{ fontSize: 13 }}
+          className="mt-3"
+
+          style={{ fontSize: 13,border:"black" }}
         >
           <thead>
             <tr>
-              <td>S/N</td>
-              <td>Room Number</td>
-              <td>Status</td>
+              <td className='text-center'>S/N</td>
+              <td className='text-center'>Hotel Name</td>
+              <td className='text-center'>Room No.</td>
+              {/* <td>Status</td> */}
               {/* <td>Comments</td> */}
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-              <span>Loading rooms...</span>
-            ) : (
-              roomList.map((item, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.room_number}</td>
-                  <td className={item.status === 'occupied' ? 'green_td' : ''}>
-                    {/* {item.status} */}
-                    <div
-                      className={
-                        item.status.toLowerCase() === 'cleaned'
-                          ? 'green'
-                          : item.status.toLowerCase() === 'occupied'
-                          ? 'red'
-                          : item.status.toLowerCase() === 'checkout'
-                          ? 'orange'
-                          : ''
-                      }
-                    ></div>
-                  </td>
-                  {/* <td onClick={toggle} className="green_td">
-                <div className="green"></div>
-              </td> */}
-                </tr>
-              ))
-            )}
+          {/* {loading  ?<span>Loading rooms...</span>: */}
+          {rows}
+          
           </tbody>
         </Table>
       </Card>

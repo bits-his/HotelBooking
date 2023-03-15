@@ -5,10 +5,12 @@
 // process.env.NODE_ENV === 'development'
 // ? 'http://yge.wvi.mybluehost.me:9090/api'
 // : 'https://yge.wvi.mybluehost.me:9090/api'
-import { useLocation } from "react-router";
+
+import { useLocation } from "react-router"
+
 // export const server_url = 'http://yge.wvi.mybluehost.me:9090/api'
-export const server_url = " http://localhost:6678";
-// export const server_url = 'http://localhost:6678'
+// export const server_url = ' http://localhost:6678'
+export const server_url = 'https://new-hotel-server-production.up.railway.app'
 
 export const _post = (url, data, success = (f) => f, error = (f) => f) => {
   const token = localStorage.getItem("@@token");
@@ -56,14 +58,12 @@ export const _put = (url, data, success = (f) => f, error = (f) => f) => {
       success(result);
     })
     .catch((err) => {
-      error(err);
-    });
-};
+      error(err)
+    })
+}
 
 export function useQuery() {
   
-    return new URLSearchParams(useLocation().search);
-  }
-  export default useQuery;
-  
-  
+  return new URLSearchParams(useLocation().search);
+}
+export default useQuery;

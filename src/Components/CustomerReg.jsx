@@ -3,17 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
 import { Card, Label } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
-import { _get, _post } from '../Utils/Helper'
+import { _get,_post } from '../Utils/Helper'
 
 export default function CustomerReg({ toggle, fetchCustomers }) {
   const today = moment().format('YYYY-MM-DD')
   const nextDay = moment(today).add('days', 1).format('YYYY-MM-DD')
   const [customerData, setCustomerData] = useState({
-    name: '',
-    hotel: '',
-    from_date: today,
-    to_date: nextDay,
+    customer_name: '',
+    hotel_id: '',
+    check_in: today,
+    check_out: nextDay,
     agent_name: '',
+    room_number:""
   })
 
   // const [roomData, setRoomData] = useState([])
@@ -29,57 +30,65 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
 
   const handleRoom = (s) => {
     setSelectedRoom(s)
+    setCustomerData((p)=>({...p,room_number:s[0].room_number}))
   }
 
   useEffect(() => {
-    _get(
-      `hotelrooms/available/${customerData.hotel}`,
+    _post(
+      'api/room_tables?query_type=select-by-id',
+      {hotel_id:customerData.hotel_id},
       (resp) => {
-        console.log(resp)
-        if (resp && resp.length) {
-          setRoomList(resp)
-        } else {
-          setRoomList([])
-        }
+       
+          setRoomList(resp.results)
+      
       },
       (e) => {
         console.log(e)
       },
     )
-  }, [customerData.hotel])
+  }, [customerData.hotel_id])
+
+  const getHotels = () => {
+    _post( 
+      'api/hotels?query_type=select',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        setHotelList(resp.resp)
+        // setSelectedRoom({ ...resp.resp[0], hotel: resp.resp[0].id })
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
 
   useEffect(() => {
-    _get(
-      'hotels/',
-      (resp) => {
-        console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-        }
-      },
-      (e) => {
-        console.log(e)
-      },
-    )
+    // setLoading(true)
+    getHotels()
   }, [])
 
+  let finalObj = {
+    customer: customerData,
+    rooms: selectedRoom.map((item) => ({
+      id: item.id,
+      room_number: item.room_number,
+    })),
+  }
   const handleSubmit = () => {
-    let finalObj = {
-      customer: customerData,
-      rooms: selectedRoom.map((item) => ({
-        id: item.id,
-        room_number: item.room_number,
-      })),
-    }
-    console.log(finalObj)
+    // console.log(finalObj)
     _post(
-      'create-customer/',
-      finalObj,
+      'api/customer?query_type=create',
+      customerData,
       (res) => {
         setLoading(false)
         console.log(res)
         fetchCustomers()
         toggle()
+        alert(success)
       },
       (err) => {
         setLoading(false)
@@ -88,8 +97,8 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
     )
   }
 
-  const dateIn = new Date(customerData.from_date)
-  const dateOut = new Date(customerData.to_date)
+  const dateIn = new Date(customerData.check_in)
+  const dateOut = new Date(customerData.check_out)
   const timeDiff = dateOut - dateIn
   const totalDays = timeDiff / (1000 * 3600 * 24)
 
@@ -103,23 +112,23 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
       <h5 className="app_title">Customer Registration</h5>
       <InputForm
         label="Name of Customer"
-        value={customerData.name}
+        value={customerData.customer_name}
         onChange={handleChange}
-        name="name"
+        name="customer_name"
         className="mb-2"
       />
       <Label className="Label1 mt-2">Select Hotel</Label>
-      <select name="hotel" className="app_input mb-3" onChange={handleChange}>
+      <select name="hotel_id" className="app_input mb-3" onChange={handleChange}>
         <option>Select Hotel</option>
         {hotelList.map((item) => (
-          <option value={item.id}>{item.name}</option>
+          <option value={item.id}>{item.hotel_name}</option>
         ))}
       </select>
       <Label className="Label1 mt-2">Select Room(s)</Label>
       <Typeahead
         id="basic-typeahead-multiple"
         labelKey={(e) => `${e.room_number}`}
-        multiple
+        // multiple
         onChange={handleRoom}
         options={roomList}
         placeholder="Room Number"
@@ -148,14 +157,14 @@ export default function CustomerReg({ toggle, fetchCustomers }) {
       <InputForm
         label="Check-in"
         type="date"
-        value={customerData.from_date}
+        value={customerData.check_in}
         onChange={handleChange}
         name="from_date"
       />
       <InputForm
         label="Check-out"
         type="date"
-        value={customerData.to_date}
+        value={customerData.check_out}
         onChange={handleChange}
         name="to_date"
       />

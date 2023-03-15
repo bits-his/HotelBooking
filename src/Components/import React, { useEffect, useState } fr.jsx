@@ -8,9 +8,13 @@ import { Floors } from './Floors'
 export default function HotelReg() {
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
+    hotel_in: '',
     hotel_name: '',
     address: '',
-    floor: '',
+    city: '',
+    phone: '',
+    email: '',
+    website: '',
   })
 
   const [open, setOpen] = useState(false)
@@ -29,18 +33,24 @@ export default function HotelReg() {
   }
 
 
-  let finalObj = {
-    hotel_name: form.hotel_name,
-    address: form.address,
-    floor: form.floor,
-  }
   const handleSubmit = () => {
+    let finalObj = {
+      name: form.name,
+      address: form.address,
+      floors: selected,
+    }
     setLoading(true)
     _post(
-      'api/hotels?query_type=create',
-      finalObj,
+      'api/hotels?in_query_type=create',
+      form,
       (res) => {
-        setForm((p) => ({ ...p, hotel_name: '', address: '', floors: '' }))
+        setForm((p) => ({ ...p, hotel_in: '',
+        hotel_name: '',
+        address: '',
+        city: '',
+        phone: '',
+        email: '',
+        website: '',}))
         setLoading(false)
         console.log(res)
         getHotels()
@@ -56,13 +66,15 @@ export default function HotelReg() {
 
   const getHotels = () => {
     _post( 
-      'api/hotels?query_type=select',
+      'api/hotels?in_query_type=select-all',
       {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
-        setHotelList(resp.resp)
-        
+        // if (resp ) {
+          setHotelList(resp.resp)
+        //  alert('dfasfsadf'+resp)
+        // }
       },
       (e) => {
         console.log(e)
@@ -78,7 +90,7 @@ export default function HotelReg() {
   }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(finalObj)} */}
+      {/* {JSON.stringify(hotelList)} */}
       <Row>
         <Col md={10}>
           <Row>
@@ -119,9 +131,13 @@ export default function HotelReg() {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
+                    <td>{item.hotel_in}</td>
                     <td>{item.hotel_name}</td>
                     <td>{item.address}</td>
-                    <td>{item.floor}</td>
+                    <td>{item.city}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.email}</td>
+                    <td>{item.website}</td>
                   </tr>
                 ))
               )}
@@ -132,31 +148,57 @@ export default function HotelReg() {
       </Row>
       <Modal toggle={toggle} isOpen={open}>
         <Card body className="app_card shadow mt-3">
-          {/* {JSON.stringify(finalObj)} */}
+          {/* {JSON.stringify(form)} */}
 
           <div className="p-3">
             <h5 className="app_title">Create New Hotel</h5>
             <InputForm
               className="app_input"
-              label="Name"
-              value={form.hotel_name}
+              label="Hotel In"
+              value={form.hotel_in}
               onChange={handleChange}
-              name="hotel_name"
+              name="hotel_in"
             />
             <InputForm
               className="app_input"
               label="Hotel Name"
               value={form.hotel_name}
               onChange={handleChange}
-              name="address"
-            />
-            {/* <label className="Label mt-2">Selelct no of floors</label> */}
-            <InputForm
+              name="hotel_name"
+            /> <InputForm
+            className="app_input"
+            label="Address"
+            value={form.address}
+            onChange={handleChange}
+            name="address"
+          /> 
+         <InputForm
+        className="app_input"
+        label="City"
+        value={form.city}
+        onChange={handleChange}
+        name="city"
+      />
+      <InputForm
+          className="app_input"
+          label="Phone"
+          value={form.phone}
+          onChange={handleChange}
+          name="phone"
+        />
+             <InputForm
               className="app_input"
-              label="Number Of Floor"
-              value={form.floor}
+              label="Email"
+              value={form.email}
               onChange={handleChange}
-              name="floor"
+              name="email"
+            />
+              <InputForm
+              className="app_input"
+              label="Website"
+              value={form.website}
+              onChange={handleChange}
+              name="website"
             />
             {/* <InputForm
               className="app_input"

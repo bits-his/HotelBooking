@@ -2,8 +2,9 @@ import moment from 'moment/moment'
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 // import InputForm from '../CustomComponents/InputForm'
-import { _get } from '../Utils/Helper'
+import { _get, _post } from '../Utils/Helper'
 import CustomerReg from './CustomerReg'
+import SearchBar from './search/SearchBar'
 
 export default function Customers() {
   const [customersList, setCustomersList] = useState([])
@@ -25,18 +26,19 @@ export default function Customers() {
 
   const customerLists = () => {
     setLoading(true)
-    _get(
-      `customers/`,
-      (resp) => {
-        console.log(resp)
+    _post (
+      'api/customer?query_type=select',
+      {},
+      (res) => {
         setLoading(false)
-        if (resp && resp.length) {
-          setCustomersList(resp)
-        }
+        console.log(res)
+        setCustomersList(res.resp)
+        // toggle()
+        alert(success)
       },
-      (e) => {
+      (err) => {
         setLoading(false)
-        console.log(e)
+        console.log(err)
       },
     )
   }
@@ -66,24 +68,33 @@ export default function Customers() {
   //   customerData()
   // }, [customerData.id])
 
-  useEffect(() => {
-    _get(
-      'hotels/',
+  const getHotels = () => {
+    _post( 
+      'api/hotels?query_type=select',
+      {},
       (resp) => {
+        // setLoading(false)
         console.log(resp)
-        if (resp && resp.length) {
-          setHotelList(resp)
-        }
+        setHotelList(resp.resp)
+        // setSelectedRoom({ ...resp.resp[0], hotel: resp.resp[0].id })
       },
       (e) => {
         console.log(e)
+        // setLoading(false)
+        // alert(e)
       },
     )
+  }
+
+  useEffect(() => {
+    // setLoading(true)
+    getHotels()
   }, [])
 
   const hotelName = (hotelId) => {
-    return hotelList.filter((h) => h.id === hotelId)[0]?.name
+    return hotelList.filter((h) => h.id === hotelId)[0]?.hotel_name
   }
+
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -104,6 +115,7 @@ export default function Customers() {
               </button>
             </Col>
           </Row>
+          <SearchBar />
           <Table
             striped
             size="sm"
@@ -133,8 +145,8 @@ export default function Customers() {
                       customerData(item.id)
                     }}
                   >
-                    <td>{item.name}</td>
-                    <td>{hotelName(parseInt(item.hotel))}</td>
+                    <td>{item.customer_name}</td>
+                    <td>{hotelName(parseInt(item.hotel_id))}</td>
                     {/* <td>fdsaf</td> */}
                     <td>{moment(item.from_date).format('DD/MM/YYYY')}</td>
                     <td>{moment(item.to_date).format('DD/MM/YYYY')}</td>
