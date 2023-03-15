@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Row } from 'reactstrap'
 import { _post } from '../../Utils/Helper';
-// import { _get, _post } from "../Utils/Helper";
 
 export default function AgentModal() {
      const [data, setData] = useState([]);

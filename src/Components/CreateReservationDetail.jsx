@@ -2,27 +2,26 @@ import React, { useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Input, Label, Row } from 'reactstrap'
+import { Card, Col, Modal, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import AgentModal from './Modal/AgentModal'
+import QuestModal from './Modal/QuestModal'
 
 export default function CreateReservationDetail() {
+    const [modal, setModal] = useState(false)
+    const [modal1, setModal1] = useState(false)
     const navigate = useNavigate()
     const [check, setCheck] = useState(false)
     const [form, setForm] = useState({
-        reservation_no: '',
-        status: '',
-        view: '',
-        hotel: '',
-        category: '',
-        print_view: '',
-        hotel_city: '',
-        filter_type: ''
+        reservation_no: ''
     })
     const handleChange = ({ target: { name, value } }) => {
         // console.log({ target })
         setForm((p) => ({ ...p, [name]: value }))
     }
 
+    const toggle = () => setModal(!modal);
+    const toggle1 = () => setModal1(!modal1);
     
     return (
         <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -143,13 +142,22 @@ export default function CreateReservationDetail() {
                     >
                         <option>Select </option>
                     </select>
-                    <InputForm
-                        className="app_input"
-                        label="Quest Full Name"
-                        value={form.date}
-                        onChange={handleChange}
-                        name="date"
-                    />
+                    <label className="Label mt-2">Quest Full Name</label>
+                    <div className='search_input_form'>
+                        <input
+                            className="app_input3"
+                            value={form.reservation_no}
+                            onChange={handleChange}
+                            name="reservation_no"
+                        />
+                        <CiSearch
+                            className='search_icon'
+                            onClick={toggle1}
+                        />
+                        <Modal isOpen={modal1} toggle={toggle1} size="xl">
+                            <QuestModal />
+                        </Modal>
+                    </div>
                     <InputForm
                         className="app_input"
                         label="Local Mobile Number"
@@ -187,16 +195,21 @@ export default function CreateReservationDetail() {
                         <option>Select </option>
                     </select>
                     <label className="Label mt-2">Agent Name</label>
-                    <select
-                        id="exampleSelect"
-                        className="app_input"
-                        value={form.filter_type}
-                        name="filter_type"
-                        type="select"
-                        onClick={handleChange}
-                    >
-                        <option>Select </option>
-                    </select>
+                    <div className='search_input_form'>
+                        <input
+                            className="app_input3"
+                            value={form.agent_name}
+                            onChange={handleChange}
+                            name="agent_name"
+                        />
+                        <CiSearch
+                            className='search_icon'
+                            onClick={toggle}
+                        />
+                        <Modal isOpen={modal} toggle={toggle} size="xl">
+                            <AgentModal />
+                        </Modal>
+                    </div>
                     <InputForm
                         className="app_input"
                         label="Client Ref Number"
