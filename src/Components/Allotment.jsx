@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotment() {
+    const [form, setForm] = useState({
+        id_no: '',
+        hotel_name: '',
+        allotment_type: '',
+        supplier_name: '',
+        ref_id: '',
+        local_contact_details: ''
+    })
+
+    const handleChange = ({ target: { name, value } }) => {
+        console.log(form)
+        setForm((p) => ({ ...p, [name]: value }))
+    }
+
   return(
     <Card className="app_card dashboard_card shadow p-3 m-3">
         <Row>
@@ -15,8 +29,8 @@ export default function Allotment() {
                 <InputForm
                     className="app_input"
                     label="ID No"
-                    // value={form.account_number}
-                    // onChange={handleChange}
+                    value={form.id_no}
+                    onChange={handleChange}
                     name="account_number"
                     type= 'number'
                 />
@@ -25,12 +39,11 @@ export default function Allotment() {
                 <label className="Label mt-2">Hotel Name</label>
                 <select
                     id="exampleSelect"
-                    // bbbbb{JSON.stringify(selectedRoom)}
                     className="app_input"
-                    name="price_category"
+                    value={form.hotel_name}
+                    onChange={handleChange}
+                    name="hotel_name"
                     type="select"
-                    // onClick={handleChange}
-                    // value={form.price_category}
                 >
                     <option>Select </option>
                 </select>
@@ -39,12 +52,11 @@ export default function Allotment() {
                 <label className="Label mt-2">Allotment Type</label>
                 <select
                     id="exampleSelect"
-                    // bbbbb{JSON.stringify(selectedRoom)}
                     className="app_input"
-                    name="price_category"
+                    value={form.allotment_type}
+                    name="allotment_type"
                     type="select"
-                    // onClick={handleChange}
-                    // value={form.price_category}
+                    onChange={handleChange}
                 >
                     <option>Select </option>
                 </select>
@@ -53,12 +65,11 @@ export default function Allotment() {
                 <label className="Label mt-2">Supplier Name</label>
                 <select
                     id="exampleSelect"
-                    // bbbbb{JSON.stringify(selectedRoom)}
                     className="app_input"
-                    name="price_category"
+                    value={form.supplier_name}
+                    name="supplier_name"
                     type="select"
-                    // onClick={handleChange}
-                    // value={form.price_category}
+                    onChange={handleChange}
                 >
                     <option>Select </option>
                 </select>
@@ -69,9 +80,9 @@ export default function Allotment() {
                 <InputForm
                     className="app_input"
                     label="Reference ID"
-                    // value={form.account_number}
-                    // onChange={handleChange}
-                    name="account_number"
+                    value={form.ref_id}
+                    onChange={handleChange}
+                    name="ref_id"
                     type= 'number'
                 />
             </Col>
