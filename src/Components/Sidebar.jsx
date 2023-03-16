@@ -184,32 +184,16 @@ export default function Sidebar() {
         </li>
         {showSubMenuS ? (
           <div className="sub_menu">
-            <li
-              onClick={() => goto('/room-type')}
-              className="link_item"
-              
-            >
+            <li onClick={() => goto('/room-type')} className="link_item">
               Create Room type
             </li>
-            <li
-              onClick={() => goto('/view')}
-              className="link_item"
-              
-            >
+            <li onClick={() => goto('/view')} className="link_item">
               Create Room View
             </li>
-            <li
-              onClick={() => goto('/table-meal')}
-              className="link_item"
-              
-            >
+            <li onClick={() => goto('/table-meal')} className="link_item">
               Create Meal
             </li>
-            <li
-              onClick={() => goto('/country')}
-              className="link_item"
-              
-            >
+            <li onClick={() => goto('/country')} className="link_item">
               Country
             </li>
             {/* <li
@@ -223,6 +207,10 @@ export default function Sidebar() {
         ) : (
           ''
         )}
+        <li onClick={() => goto('/hotel-registration')} className="link_item">
+          <FaHotel className="logo shadow" />
+          Hotel Registration Form
+        </li>
 
         {/* <li onClick={() => goto('/dashboard')} className="link_item">
           <MdDashboard className="logo shadow" /> Dashboard
