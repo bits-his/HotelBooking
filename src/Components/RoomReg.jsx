@@ -10,6 +10,7 @@ export default function RoomReg() {
     room_number: '',
     price: '',
     hotel_id: "",
+    floor:""
   })
   const [hotelList, setHotelList] = useState([])
   // const [roomList, setRoomList] = useState([])
@@ -61,7 +62,10 @@ export default function RoomReg() {
   // }, [selectedRoom])
 
   const handleSubmit = () => {
-    setLoading(true)
+    if(form.hotel_id === ""){
+      alert('pls select hotel before submmiting')
+    }else{
+    setLoading(true);
     _post(
       'api/room_tables?query_type=create',
       form,
@@ -77,6 +81,7 @@ export default function RoomReg() {
         console.log(err)
       },
     )
+  }
     // console.log(form)
   }
   const [selected, setSelected] = useState([])

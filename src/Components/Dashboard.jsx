@@ -131,11 +131,11 @@ export default function Dashboard() {
     rows.push(
       <tr key={i} className="p-0 m-0">
       <th  className=''style={{background: item.status.toLowerCase() === 'cleaned'
-                    ? 'rgba(255, 108, 108, 0.5)'
-                    : item.status.toLowerCase() === 'occupied'
-                    ? 'rgba(255, 166, 0, 0.5)'
-                    : item.status.toLowerCase() === 'checkout'
                     ? 'rgba(99, 175, 99, 0.5)'
+                    : item.status.toLowerCase() === 'occupied'
+                    ? 'rgba(255, 108, 108, 0.5)'
+                    : item.status.toLowerCase() === 'checkout'
+                    ? 'rgba(255, 166, 0, 0.5)'
                     : '',width :"25px"}} scope="row ">{i + 1}</th>
                   <td className='text-center'>{hotelName(parseInt(item.hotel_id))}</td>
                   <td className='text-center'>{item.room_number}</td>
