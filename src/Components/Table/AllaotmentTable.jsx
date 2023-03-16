@@ -5,6 +5,7 @@ import { _get } from "../../Utils/Helper";
 
 export default function AllaotmentTable() {
     const [data, setData] = useState([])
+    const [data1, setData1] = useState([])
 
     const getData = () => {
      _get(
@@ -22,12 +23,31 @@ export default function AllaotmentTable() {
     // console.log(form)
   };
 
+  const getMeals_table = () => {
+    _get(
+      "api/meals_tables",
+      (res) => {
+          // navigate(-1)
+        console.log(res);
+        setData1(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+
   useEffect(() => {
     getData();
+    getMeals_table();
   }, []);
+
+
   return (
     <Row>
-        {JSON.stringify(data)}
+        {JSON.stringify(data1)}
         <Row>
             <Table
                 bordered
@@ -149,6 +169,7 @@ export default function AllaotmentTable() {
                             // value={form.price_category}
                         >
                             <option>Select </option>
+                            {data1.map(item => ( <option value={item.view_name}>{item.meal_name} </option>))}
                         </select>
                     </td>
                     <td style={{border: '1px solid rgb(12, 134, 103)'}}>
