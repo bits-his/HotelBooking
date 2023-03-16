@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
@@ -15,6 +15,7 @@ export default function Allotment() {
     details: '',
   })
 
+  const [allotmentData, setAllotmentData] = useState([])
 
   const handleChange = ({ target: { name, value } }) => {
     // console.log(form)
@@ -30,8 +31,18 @@ export default function Allotment() {
       }
   }
 
+  useEffect(() => {
+    _post('api/allotment', { query_type: 'select' }, (resp) => {
+        setAllotmentData(resp)
+      console.log(allotmentData)
+    }),
+      (err) => {
+        console.log(err)
+      }
+  }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+        {JSON.stringify(allotmentData)}
       <Row>
         <Col md={12}>
           <h5 className="app_title">Allotment</h5>
@@ -56,7 +67,8 @@ export default function Allotment() {
             name="hotel_name"
             type="select"
           >
-            <option>HOTEL 2 </option>
+            <option value="HOTEL2">HOTEL2 </option>
+            <option value="HOTEL3">HOTEL3 </option>
           </select>
         </Col>
         <Col md={2}>
@@ -69,8 +81,8 @@ export default function Allotment() {
             type="select"
             onChange={handleChange}
           >
-            <option>ALO1 </option>
-            <option>ALO1 </option>
+            <option value="AMfD">AMfD </option>
+            <option value="AMfv">AMfv </option>
           </select>
         </Col>
         <Col md={4}>
@@ -83,8 +95,8 @@ export default function Allotment() {
             type="select"
             onChange={handleChange}
           >
-            <option value='AMD'>AMD </option>
-            <option value='AMv'>AMv </option>
+            <option value="AMD">AMD </option>
+            <option value="AMv">AMv </option>
           </select>
         </Col>
       </Row>
