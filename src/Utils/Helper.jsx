@@ -9,8 +9,8 @@
 import { useLocation } from "react-router"
 
 // export const server_url = 'http://yge.wvi.mybluehost.me:9090/api'
-export const server_url = ' http://localhost:6678'
-// export const server_url = 'https://new-hotel-server-production.up.railway.app'
+// export const server_url = ' http://localhost:6678'
+export const server_url = 'https://new-hotel-server-production.up.railway.app'
 
 export const _post = (url, data, success = (f) => f, error = (f) => f) => {
   fetch(`${server_url}/${url}`, {
