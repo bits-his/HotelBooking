@@ -121,6 +121,7 @@ export default function RoomReg() {
         <Col md={6}>
           <h5 className="app_title">Create New Room</h5>
           <label className="Label mt-2">Hotel</label>
+          {JSON.stringify(form)}
           <select name="hotel_id" onChange={handleChange} className="app_input">
             <option>Select Hotel</option>
             {hotelList && hotelList.map((item, index) => (
@@ -128,7 +129,7 @@ export default function RoomReg() {
             ))}
           </select>
           <label className="Label mt-2">Floor</label>
-          <select name="hotel_id" onChange={handleChange} className="app_input">
+          <select name="floor" onChange={handleChange} className="app_input">
             <option>Select Hotel</option>
             {selected&&[selected].map((item) => (
               <option value={item.floor}>{item.floor}</option>
