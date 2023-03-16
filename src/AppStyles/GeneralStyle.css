@@ -183,7 +183,6 @@ label {
   width: 100%;
 }
 
-
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -237,7 +236,7 @@ label {
   /* transition: all 0.5s; */
   padding-top: 6px;
   cursor: pointer;
-  
+
   width: 100%;
 }
 
@@ -467,28 +466,31 @@ label {
 .sub_menu > li {
   font-size: 12px;
 }
-.list_item_div{ 
+.list_item_div {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.btn_div{
+.btn_div {
   background-color: transparent;
   border: none;
   font-size: 18px;
   color: rgb(12, 134, 103);
   width: 200px;
 }
-.btn_div:hover{
+.btn_div:hover {
   border-bottom: 2px solid rgb(12, 134, 103);
   width: 200px;
 }
 
-.thead_{
+.thead_ {
   width: 100px !important;
   /* background-color: red; */
 }
-.table_input{
+.table_input {
   /* width: 150px; */
   border: none;
+}
+.table_input:focus {
+  outline: none;
 }

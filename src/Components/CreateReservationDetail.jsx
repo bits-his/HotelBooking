@@ -83,7 +83,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(form)} */}
-     
+
       <Row>
         <Col
           md={12}
@@ -405,7 +405,10 @@ export default function CreateReservationDetail() {
                 <tbody>
                   <tr>
                     <td>
-                      <input className="table_input" type="search" />
+                      <div style={{display:'flex'}}>
+                        <input className="table_input" type="search" />
+                        <CiSearch className="search_icon" size='1rem' onClick={toggle2} />
+                      </div>
                     </td>
                     <td>
                       <input className="table_input" type="date" />
