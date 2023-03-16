@@ -20,7 +20,7 @@ export default function CreateReservationDetail() {
   const toggle = () => setModal(!modal)
   const toggle1 = () => setModal1(!modal1)
   const toggle2 = () => setModal2(!modal2)
-  const toggle3 = () => setModal3(!modal2)
+  const toggle3 = () => setModal3(!modal3)
   const navigate = useNavigate()
   const hotelBookingForm = {
     hotel: '',
@@ -421,6 +421,9 @@ export default function CreateReservationDetail() {
                           }}
                           onClick={toggle3}
                         />
+                        <Modal isOpen={modal3} toggle={toggle3} size="xl">
+                          <HotelReg />
+                        </Modal>
                       </div>
                     </td>
                     <td>
