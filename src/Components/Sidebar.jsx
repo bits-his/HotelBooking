@@ -115,7 +115,7 @@ export default function Sidebar() {
         )}
         <li onClick={dropA} className="link_item">
           <span>
-            <MdDashboard className="logo shadow" /> Allotment & Purchases
+            <MdDashboard className="logo shadow" /> Allotmnt & Purchases
             {showSubMenuA ? (
               <TiArrowSortedUp size="1.4rem" />
             ) : (
@@ -142,9 +142,9 @@ export default function Sidebar() {
             <li onClick={() => goto('#')} className="link_item">
               Check Reservation & Availability
             </li>{' '}
-            <li onClick={() => goto('/reservation')} className="link_item">
+            {/* <li onClick={() => goto('/reservation')} className="link_item">
               Reservations & Availability
-            </li>
+            </li> */}
           </div>
         ) : (
           ''
@@ -174,7 +174,7 @@ export default function Sidebar() {
 
         <li onClick={dropS} className="link_item">
           <span>
-            <MdDashboard className="logo shadow" /> SetUp Forms
+            <MdDashboard className="logo shadow" /> Basic Data
             {showSubMenuS ? (
               <TiArrowSortedUp size="1.4rem" />
             ) : (

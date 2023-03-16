@@ -38,7 +38,7 @@ export default function Agent() {
             style={{ width: 200 }}
             onClick={() => goto('/new-agent')}
           >
-            Add Agent
+            Add Agent/Supplier
           </button>
         </Col>
       </Row>

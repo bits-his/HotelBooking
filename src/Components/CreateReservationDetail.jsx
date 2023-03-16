@@ -47,7 +47,7 @@ export default function CreateReservationDetail() {
                     >
                         <FaArrowLeft style={{marginRight: 10}} /> Back
                     </button>
-                    <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Reservation Details</h5>
+                    <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Reservation</h5>
                 </Col>
             </Row>
             <Row>
