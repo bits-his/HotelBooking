@@ -10,9 +10,9 @@ export default function CreacteMeal() {
   const id = params.id
   const navigate = useNavigate()
   const [form, setForm] = useState({
-    meal_name: '',
-    meal_type: '',
-  })
+    meal_name: "",
+    meal_type: "",
+  });
 
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
@@ -48,27 +48,28 @@ export default function CreacteMeal() {
       },
     )
     // console.log(form)
-  }
-  const [data, setData] = useState()
-  const getMeals = () => {
-    _post(
-      `api/meals_tables?in_query_type=select&id=${id}`,
-      {},
-      (res) => {
-        if (res.success) {
-          setForm(res.results[0])
-        }
-      },
-      (err) => {
-        // setLoading(false);
-        console.log(err)
-      },
-    )
-    // console.log(form)
-  }
-  useEffect(() => {
-    getMeals()
-  }, [])
+  };
+// const [data,setData]=useState()
+//   const getMeals =()=>{
+//     _post(
+//       `api/meals_tables?in_query_type=select&id=${id}`,
+//       {},
+//       (res) => {
+//         if(res.success){
+//       setForm(res.results[0])
+//     }
+//       },
+//       (err) => {
+//         setLoading(false);
+//         console.log(err);
+//       }
+//     );
+//     console.log(form)
+  
+//   }
+//   useEffect(()=>{
+//     getMeals()
+//   },[])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(data)} */}
@@ -93,7 +94,6 @@ export default function CreacteMeal() {
         <Col md={6}>
           {/* <InputForm
             className="app_input"
-            label="meal Id"
             value={form.meal_id}
             onChange={handleChange}
             name="meal_id"
@@ -101,6 +101,7 @@ export default function CreacteMeal() {
           /> */}
           <input
             className="app_input"
+            // label="meal Id"
             label="meal Name"
             name="meal_name"
             type='text'

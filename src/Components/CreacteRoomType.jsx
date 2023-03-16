@@ -8,19 +8,19 @@ import { _post } from "../Utils/Helper";
 export default function CreacteRoomType() {
     const goto = useNavigate()
     const [form, setForm] = useState({
-    room_type:"",
-    room_name:"",
-    no_pax:""
-  });
+      room_type:"",
+      room_name:"",
+      no_pax:""
+    });
 
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
   };    
   const [Loading, setLoading] = useState(false);
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const handleSubmit = () => {
-    if (form.room_name && form.room_type && form.no_of_pax) {
+    if (form.room_name && form.room_type && form.no_pax) {
       setForm({
         // id,
         room_type:"",
@@ -44,6 +44,7 @@ const navigate = useNavigate()
     );
     // console.log(form)
   };
+
   const [hotel,setHotel]=useState([])
   const getHotels = () => {
     _post( 
@@ -121,7 +122,6 @@ const navigate = useNavigate()
             value={form.no_pax}
             onChange={handleChange}
             name="no_pax"
-            // type="number"
           />
         </Col>
         <Col md= {6}>
@@ -131,7 +131,6 @@ const navigate = useNavigate()
             value={form.room_type}
             onChange={handleChange}
             name="room_type"
-            // type="number"
           /></Col>
       </Row>
       <Row className="mt-3">

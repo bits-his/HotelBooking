@@ -199,7 +199,7 @@ export default function HotelReg() {
                   >
                     <button
                       className="app_button"
-                      // onClick={}
+                      onClick={toggle}
                     >
                       {' '}
                       Select

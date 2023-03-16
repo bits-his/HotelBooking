@@ -1,6 +1,8 @@
 import React from 'react'
-import { Card, Col, Input, Label, Row } from 'reactstrap'
+import { AiFillDelete } from 'react-icons/ai'
+import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
+import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotment() {
   return(
@@ -136,25 +138,7 @@ export default function Allotment() {
                 </button>
             </Col>
         </Row>
-        <Row>
-            <table style={{border: '1px solid #ccc', padding: 12}} className= 'mt-5'>
-                <thead>
-                    <th style={{border: '1px solid #ccc'}}>head</th>
-                    <th style={{border: '1px solid #ccc'}}>head</th>
-                    <th style={{border: '1px solid #ccc'}}>head</th>
-                    <th style={{border: '1px solid #ccc'}}>head</th>
-                    <th style={{border: '1px solid #ccc'}}>head</th>
-                </thead>
-                <tbody>
-                    <td style={{border: '1px solid #ccc'}}>head</td>
-                    <td style={{border: '1px solid #ccc'}}>head</td>
-                    <td style={{border: '1px solid #ccc'}}>head</td>
-                    <td style={{border: '1px solid #ccc'}}>head</td>
-                    <td style={{border: '1px solid #ccc'}}>head</td>
-                </tbody>
-            </table>
-        </Row>
-        <center><h1 className='mt-5' style={{color:"red"}}><b>COMING SOON !!!</b></h1></center> 
+        <AllaotmentTable/>
     </Card>
   )
 }
