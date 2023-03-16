@@ -65,7 +65,7 @@ export default function Sidebar() {
                 location.pathname === '/reservation' && 'active_side_menu'
               }`}
             >
-              Create Reservation
+              Reservation & Availability
             </li>
             <li
               onClick={() => goto('/reservation-details')}
@@ -74,7 +74,7 @@ export default function Sidebar() {
                 'active_side_menu'
               }`}
             >
-              Reservation Details View
+             Create Reservation
             </li>
             <li
               onClick={() => goto('/agent')}

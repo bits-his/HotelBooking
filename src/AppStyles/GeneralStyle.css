@@ -305,9 +305,9 @@ label {
   .customer-page {
     display: none;
   }
-  .sidebar_div {
-    /* display: none; */
-  }
+  /* .sidebar_div {
+    display: none;
+  } */
   .sidebar {
     display: none;
   }
@@ -482,4 +482,11 @@ label {
 .btn_div:hover{
   border-bottom: 2px solid rgb(12, 134, 103);
   width: 200px;
+}
+.allotment_table{
+  border: 1px solid rgb(12, 134, 103);
+  padding: 12;
+  width: 100%;
+  /* height: 200px; */
+  overflow-x: auto;
 }

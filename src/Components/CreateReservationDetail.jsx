@@ -28,7 +28,7 @@ export default function CreateReservationDetail() {
     
     return (
         <Card className="app_card dashboard_card shadow p-3 m-3">
-            <Row>
+            {/* <Row>
             <Col md={6}>
                 <div className='list_item_div'>
                     <button className='btn_div' style={{borderBottom: '2px solid rgb(12, 134, 103)'}}> Reservation Details </button>
@@ -36,8 +36,7 @@ export default function CreateReservationDetail() {
                     <button className='btn_div'> Visa Details</button>
                 </div>
             </Col>
-            {/* <hr /> */}
-        </Row>
+        </Row> */}
             <Row>
                 <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
                     <button
@@ -115,14 +114,14 @@ export default function CreateReservationDetail() {
                     >
                         <option>Select </option>
                     </select>
-                    <InputForm
+                    {/* <InputForm
                         className="app_input"
                         label="Group Number"
                         value={form.date}
                         onChange={handleChange}
                         name="date"
                         type= "number"
-                    />
+                    /> */}
                 </Col>
                 <Col md={4}>
                     <label className="Label mt-2">Reservation Type</label>
@@ -174,14 +173,14 @@ export default function CreateReservationDetail() {
                             <QuestModal />
                         </Modal>
                     </div>
-                    <InputForm
+                    {/* <InputForm
                         className="app_input"
                         label="Local Mobile Number"
                         value={form.date}
                         onChange={handleChange}
                         name="date"
                         type ="number"
-                    />
+                    /> */}
                     <InputForm
                         className="app_input"
                         label="BRN Hotel"
@@ -189,14 +188,14 @@ export default function CreateReservationDetail() {
                         onChange={handleChange}
                         name="date"
                     />
-                    <InputForm
+                    {/* <InputForm
                         className="app_input"
                         label="Local Ref Number"
                         value={form.date}
                         onChange={handleChange}
                         name="date"
                         type= "number"
-                    />
+                    /> */}
                 </Col>
                 <Col md={4}>
                     <label className="Label mt-2">Booking Status</label>
@@ -226,14 +225,14 @@ export default function CreateReservationDetail() {
                             <AgentModal />
                         </Modal>
                     </div>
-                    <InputForm
+                    {/* <InputForm
                         className="app_input"
                         label="Client Ref Number"
                         value={form.date}
                         onChange={handleChange}
                         name="date"
                         type= 'number'
-                    />
+                    /> */}
                     <InputForm
                         className="app_input"
                         label="Country Name"
