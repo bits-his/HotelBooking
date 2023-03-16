@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BiTrash } from 'react-icons/bi'
 import { CiSearch } from 'react-icons/ci'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
@@ -7,11 +8,19 @@ import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
+import HotelReg from './Modal/HotelModal'
 
 export default function CreateReservationDetail() {
   const [modal, setModal] = useState(false)
   const [modal1, setModal1] = useState(false)
   const [modal2, setModal2] = useState(false)
+  const [modal3, setModal3] = useState(false)
+  const [page, setPage] = useState(false)
+
+  const toggle = () => setModal(!modal)
+  const toggle1 = () => setModal1(!modal1)
+  const toggle2 = () => setModal2(!modal2)
+  const toggle3 = () => setModal3(!modal2)
   const navigate = useNavigate()
   const hotelBookingForm = {
     hotel: '',
@@ -71,11 +80,6 @@ export default function CreateReservationDetail() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
-  const [page, setPage] = useState(false)
-
-  const toggle = () => setModal(!modal)
-  const toggle1 = () => setModal1(!modal1)
-  const toggle2 = () => setModal2(!modal2)
 
   const handleSubmit = () => {
     console.log(form)
@@ -400,14 +404,23 @@ export default function CreateReservationDetail() {
                     <th className="thead_">Total Meal Cost Rate</th>
                     <th className="thead_">Net Total Sale</th>
                     <th className="thead_">Net Total Cost</th>
+                    <th className="thead_">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <div style={{display:'flex'}}>
+                      <div style={{ display: 'flex' }}>
                         <input className="table_input" type="search" />
-                        <CiSearch className="search_icon" size='1rem' onClick={toggle2} />
+                        <CiSearch
+                          className=""
+                          size="1.5rem"
+                          style={{
+                            backgroundColor: 'rgb(12, 134, 103)',
+                            color: 'white',
+                          }}
+                          onClick={toggle3}
+                        />
                       </div>
                     </td>
                     <td>
@@ -470,9 +483,19 @@ export default function CreateReservationDetail() {
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td className="text-center text-danger">
+                      <BiTrash size="1.5rem" />
+                    </td>
                   </tr>
                 </tbody>
               </Table>
+              <button
+                className="app_button p-3 mt-3"
+                style={{ width: 150 }}
+                // onClick={handleSubmit}
+              >
+                Submit
+              </button>
             </div>
           </>
         ) : (
