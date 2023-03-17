@@ -2,6 +2,7 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Agent from '../Components/Agent'
 import Allotment from '../Components/Allotment'
+import Allotmentstep from '../Components/Allotmentstep'
 // import Allotment from '../Components/Allotment'
 import BankDetails from '../Components/BankDetails'
 import Country from '../Components/Country'
@@ -102,7 +103,7 @@ function AppNavigation() {
         },
         {
           path: 'create-allotment',
-          element: <CreaateAllotment />,
+          element: <Allotmentstep />,
         },
         {
           path: 'allotment',

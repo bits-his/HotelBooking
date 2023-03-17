@@ -76,6 +76,12 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
         <Row> 
+            <Col
+            md={12}>
+            <h5 className="app_title" style={{ fontSize: 30}}>
+                <center >Hotel Booking</center> 
+            </h5>
+            </Col>
             <Col md={4}>
                 <label className="Label mt-2">Hotel</label>
                 <div className='search_input_form'>
@@ -497,13 +503,17 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
                   </tr>
                 </tbody>
               </Table>
-              <button
-                className="app_button p-3 mt-3"
-                style={{ width: 150 }}
-                // onClick={handleSubmit}
-              >
-                Submit
-              </button>
+              <Col md={12}>
+                <center>
+                    <button
+                        className="app_button p-3 mt-3"
+                        style={{ width: 150 }}
+                        // onClick={handleSubmit}
+                    >
+                        Submit
+                    </button>
+                </center>
+            </Col>
             </div>
     </Card>
   )
