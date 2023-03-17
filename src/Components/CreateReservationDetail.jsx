@@ -400,59 +400,6 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           </div>
         </Col>
       </Row>
-      <Row>
-        <div className="switch_div mt-5">
-          <div>
-            <p
-              className="login_register"
-              style={{
-                borderBottom: '1px solid grey',
-                paddingBottom: 10,
-                // width: 'fit-content',
-              }}
-            >
-              <span
-                style={{
-                  borderBottom: page ? null : `3px solid rgb(12, 134, 103)`,
-                  marginRight: 20,
-                  paddingBottom: 10,
-                  cursor: 'pointer',
-                }}
-                onClick={() => setPage(false)}
-              >
-                Hotel Booking
-              </span>
-              {/* <span
-                style={{
-                  borderBottom: page ? `3px solid rgb(12, 134, 103)` : null,
-                  marginLeft: 20,
-                  paddingBottom: 10,
-                  cursor: 'pointer',
-                }}
-                onClick={() => setPage(true)}
-              >
-                Transport Booking
-              </span> */}
-            </p>
-          </div>
-        </div>
-        {!page ? (
-          <>
-            <div style={{ display: 'flex', gap: 10 }}>
-              <button className="app_button">Hotel Rack</button>
-              <button className="app_button">Show Rate Table</button>
-              <button className="app_button">Show Availability</button>
-              <button className="app_button">Add Row</button>
-              <button className="app_button">Add Local VAT</button>
-              <input type="checkbox" />
-              Show All
-            </div>
-           <ReservationTable />
-          </>
-        ) : (
-          ''
-        )}
-      </Row>
     </Card>
   )
 }
