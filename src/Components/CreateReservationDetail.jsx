@@ -160,18 +160,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
 
       <Row>
         <Col
-          md={12}
-          style={{ display: 'flex', width: '100%', textAlign: 'center' }}
-        >
-          <button
-            className="app_button p-3 mb-3"
-            style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-            onClick={() => navigate('/reservation-details')}
-          >
-            <FaArrowLeft style={{ marginRight: 10 }} /> Back
-          </button>
-          <h5 className="app_title" style={{ fontSize: 30, width: '80%' }}>
-            Create New Reservation
+          md={12}>
+          <h5 className="app_title" style={{ fontSize: 30}}>
+            <center >Create New Reservation</center> 
           </h5>
         </Col>
       </Row>
