@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
-import { Card, Col, Row } from 'reactstrap'
+import { Card, Col, Row ,Button} from 'reactstrap'
 import { _post } from '../../Utils/Helper';
 
-export default function AgentModal() {
+export default function AgentModal({setSelected=f=>f}) {
      const [data, setData] = useState([]);
 
     const [hotel,setHotel]=useState([])
@@ -91,6 +91,7 @@ export default function AgentModal() {
                 <tbody>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     <Button 
+                    onClick={()=>setSelected({agent:i.room_name})}
                         // onClick={}
                     > Select</Button>
                   </td>

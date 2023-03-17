@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi'
 import { CiSearch } from 'react-icons/ci'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Modal, Label, Row, Table } from 'reactstrap'
+import { Card, Col, Modal, Label, Row, Table, Input } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
 import HotelReg from './Modal/HotelModal'
+import { _get, _post } from '../Utils/Helper'
 
 export default function CreateReservationDetail() {
   const [modal, setModal] = useState(false)
@@ -58,35 +59,157 @@ export default function CreateReservationDetail() {
     net_total_cost: '',
   }
   const reservationForm = {
-    reservation_no: '',
+    reservation_number: '',
     reservation_type: '',
     booking_status: '',
     option_date: '',
     booking_type: '',
     agent_name: '',
-    vat_ret_no: '',
+    vat_reg_no: '',
     sub_agent_name: '',
     price_category: '',
     guest_fullname: '',
     country_name: '',
-    phone_no: '',
+    phone: '',
     email: '',
-    brn_hotel: '',
-    brn_transport: '',
+    BRN_hotel: '',
+    BRN_transport: '',
   }
-  const [form, setForm] = useState({
+  const [form, setForm] = useState(
     reservationForm,
-  })
+  )
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
+  const [data, setData] = useState([]);
 
+  const getViews = () => {
+    _get(
+      "api/get_views",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setData(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+  const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/room_type?query_type=select',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
+  const [meal,setMeal]=useState([])
+  const getMeals_table = () => {
+    _get(
+      "api/meals_tables",
+      (res) => {
+          // navigate(-1)
+        console.log(res);
+        setMeal(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+  const [agent,setAgent]=useState([])
+  const getAgent = () => {
+    _post(
+      'api/bank_account_details',
+      {},
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res)
+        setAgent(res.results)
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err)
+      },
+    )
+    // console.log(form)
+  }
+
+  useEffect(() => {
+    getViews();
+    getHotels();
+    getMeals_table();
+    getAgent();
+  }, []);
   const handleSubmit = () => {
     console.log(form)
+    _post('api/new-reservation?query_type=insert',
+    form,
+    (res) => {
+      //   navigate(`/agent`)
+      if(res.success){
+        alert("submitted successfully!!")
+        setForm({    reservation_number: '',
+        reservation_type: '',
+        booking_status: '',
+        option_date: '',
+        booking_type: '',
+        agent_name: '',
+        vat_reg_no: '',
+        sub_agent_name: '',
+        price_category: '',
+        guest_fullname: '',
+        country_name: '',
+        phone: '',
+        email: '',
+        BRN_hotel: '',
+        BRN_transport: '',})
+      }
+      console.log(res)
+      // setAgent(res.results)
+    },
+    (err) => {
+      // setLoading(false)
+      console.log(err)
+    },
+    )
   }
+  const [country, setCountry] = useState([]);
+  useEffect(() => {
+    _get(
+      "api/get_countries",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setCountry(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+  }, [0]);
+  const [selected,setSelected]=useState({})
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(form)} */}
+      {JSON.stringify(form)}
 
       <Row>
         <Col
@@ -111,9 +234,9 @@ export default function CreateReservationDetail() {
           <div className="search_input_form">
             <input
               className="app_input3"
-              value={form.reservation_no}
+              value={form.reservation_number}
               onChange={handleChange}
-              name="reservation_no"
+              name="reservation_number"
               type="number"
             />
             <CiSearch className="search_icon" onClick={toggle2} />
@@ -132,28 +255,28 @@ export default function CreateReservationDetail() {
           <InputForm
             className="app_input"
             label="Vat Reg No."
-            value={form.date}
+            value={form.vat_reg_no}
             onChange={handleChange}
-            name="date"
+            name="vat_reg_no"
             type="number"
           />
           <label className="Label mt-2">Price Category</label>
           <select
             id="exampleSelect"
             className="app_input"
-            name="status"
+            name="price_category"
             type="select"
             onClick={handleChange}
-            value={form.status}
+            value={form.price_category}
           >
             <option>Select </option>
           </select>
           <InputForm
             className="app_input"
             label="Phone Number"
-            value={form.date}
+            value={form.phone}
             onChange={handleChange}
-            name="date"
+            name="phone"
             type="number"
           />
           {/* <label className="Label mt-2">VIP Category</label>
@@ -181,8 +304,8 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.hotel}
-            name="hotel"
+            value={form.reservation_type}
+            name="reservation_type"
             type="select"
             onClick={handleChange}
           >
@@ -192,8 +315,8 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.category}
-            name="category"
+            value={form.booking_type}
+            name="booking_type"
             type="select"
             onClick={handleChange}
           >
@@ -203,8 +326,8 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.print_view}
-            name="print_view"
+            value={form.sub_agent_name}
+            name="sub_agent_name"
             type="select"
             onClick={handleChange}
           >
@@ -214,9 +337,9 @@ export default function CreateReservationDetail() {
           <div className="search_input_form">
             <input
               className="app_input3"
-              value={form.reservation_no}
+              value={form.guest_fullname}
               onChange={handleChange}
-              name="reservation_no"
+              name="guest_fullname"
             />
             <CiSearch className="search_icon" onClick={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
@@ -234,9 +357,9 @@ export default function CreateReservationDetail() {
           <InputForm
             className="app_input"
             label="BRN Hotel"
-            value={form.date}
+            value={form.BRN_hotel}
             onChange={handleChange}
-            name="date"
+            name="BRN_hotel"
           />
           {/* <InputForm
             className="app_input"
@@ -252,8 +375,8 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.hotel_city}
-            name="hotel_city"
+            value={form.booking_status}
+            name="booking_status"
             type="select"
             onClick={handleChange}
           >
@@ -269,7 +392,7 @@ export default function CreateReservationDetail() {
             />
             <CiSearch className="search_icon" onClick={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal />
+              <AgentModal setSelected={setSelected} />
             </Modal>
           </div>
           {/* <InputForm
@@ -280,27 +403,34 @@ export default function CreateReservationDetail() {
             name="date"
             type="number"
           /> */}
-          <InputForm
+          <label className="Label mt-2">Country </label>
+          <select
+            id="exampleSelect"
             className="app_input"
-            label="Country Name"
-            value={form.date}
+            name="country_name"
+            type="select"
             onChange={handleChange}
-            name="date"
-          />
+            value={form.country_name}
+          >
+            <option>----select-----</option>
+            {country.map((i) => (
+              <option value={i.country_name}>{i.country_name}</option>
+            ))}
+          </select>
           <InputForm
             className="app_input"
             label="Email Address"
-            value={form.date}
+            value={form.email}
             onChange={handleChange}
-            name="date"
+            name="email"
             type="email"
           />
           <InputForm
             className="app_input"
             label="BRN Transport"
-            value={form.date}
+            value={form.BRN_transport}
             onChange={handleChange}
-            name="date"
+            name="BRN_transport"
           />
         </Col>
         <Col md={12} style={{ display: 'flex', gap: 10 }}>
@@ -308,7 +438,7 @@ export default function CreateReservationDetail() {
             <button
               className="app_button p-3 mt-3"
               style={{ width: 150 }}
-              // onClick={handleSubmit}
+              onClick={()=>handleSubmit()}
             >
               Save
             </button>
@@ -435,9 +565,26 @@ export default function CreateReservationDetail() {
                     <td></td>
                     <td>
                       <select className="table_input">
-                        <option></option>
+                      {data &&
+              data.map((i)=>
+                        <option value={i.view_name}>{i.view_name}</option>)}
                       </select>
                     </td>
+                    <td>
+                      <select className="table_input">
+                      {hotel &&
+              hotel.map((i) =>
+                        <option value= {i.room_type}> {i.room_type}</option>)}
+                      </select>
+                    </td>
+                    <td>
+                      <select className="table_input">
+                      {meal &&
+            meal.map((i) => 
+                        <option value={i.meal_type}>{i.meal_type}</option>)}
+                      </select>
+                    </td>
+                    <td><Input /></td>
                     <td>
                       <select className="table_input">
                         <option></option>
@@ -445,18 +592,9 @@ export default function CreateReservationDetail() {
                     </td>
                     <td>
                       <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td></td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
+                      {agent &&
+              agent.map((i) => 
+                        <option> {i.agent_name}</option>)}
                       </select>
                     </td>
                     <td>
