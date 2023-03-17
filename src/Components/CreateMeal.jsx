@@ -81,7 +81,7 @@ export default function CreacteMeal() {
           <button
             className="app_button p-3 mb-3"
             style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-            onClick={() => navigate('/meal')}
+            onClick={() => navigate('/table-meal')}
           >
             <FaArrowLeft style={{ marginRight: 10 }} /> Back
           </button>
@@ -99,10 +99,9 @@ export default function CreacteMeal() {
             name="meal_id"
             type="number"
           /> */}
-          <input
+          <InputForm
             className="app_input"
-            // label="meal Id"
-            label="meal Name"
+            label="Meal Name"
             name="meal_name"
             type='text'
             onChange={handleChange}

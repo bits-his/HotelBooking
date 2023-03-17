@@ -2,8 +2,10 @@ import React from 'react'
 import { useRoutes } from 'react-router-dom'
 import Agent from '../Components/Agent'
 import Allotment from '../Components/Allotment'
+// import Allotment from '../Components/Allotment'
 import BankDetails from '../Components/BankDetails'
 import Country from '../Components/Country'
+import CreaateAllotment from '../Components/CreaateAllotment'
 import CreacteNewRoom from '../Components/CreacteNewRoom'
 import CreacteRoomType from '../Components/CreacteRoomType'
 import CreacteView from '../Components/CreacteView'
@@ -24,6 +26,7 @@ import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
 import Reservation from '../Components/Reservation'
 import ReservationDetails from '../Components/ReservationDetails'
+import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
 import SignIn from '../Components/SignIn'
@@ -98,6 +101,10 @@ function AppNavigation() {
           element: <BankDetails />,
         },
         {
+          path: 'create-allotment',
+          element: <CreaateAllotment />,
+        },
+        {
           path: 'allotment',
           element: <Allotment />,
         },
@@ -107,7 +114,7 @@ function AppNavigation() {
         },
         {
           path: '/reservation-details',
-          element: <ReservationDetails />,
+          element: <Reserve />,
         },
         {
           path: '/new-reservation-details',
