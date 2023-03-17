@@ -9,8 +9,9 @@ import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
 import HotelReg from './Modal/HotelModal'
+import ReservationTable from './Table/ReservationTable'
 
-export default function CreateReservationDetail() {
+export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const [modal, setModal] = useState(false)
   const [modal1, setModal1] = useState(false)
   const [modal2, setModal2] = useState(false)
@@ -22,61 +23,7 @@ export default function CreateReservationDetail() {
   const toggle2 = () => setModal2(!modal2)
   const toggle3 = () => setModal3(!modal3)
   const navigate = useNavigate()
-  const hotelBookingForm = {
-    hotel: '',
-    check_in: '',
-    check_out: '',
-    night: '',
-    view: '',
-    room_type: '',
-    meal_type: '',
-    no_of_room: '',
-    room_sale_source: '',
-    supplier: '',
-    meal_sale_source: '',
-    supplier: '',
 
-    sale_rate_exc_tax: '',
-    sale_municipal_vat: '',
-    sale_purch_vat: '',
-    sale_rat_inc_all_tax: '',
-    total_room_sale_rate: '',
-
-    cost_rate_exc_tax: '',
-    cost_municipal_vat: '',
-    cost_purch_vat: '',
-    cost_rat_inc_all_tax: '',
-    total_room_cost_rate: '',
-
-    meal_rate_exc_tax: '',
-    meal_municipal_vat: '',
-    meal_purch_vat: '',
-    meal_rat_inc_all_tax: '',
-    total_meal_cost_rate: '',
-
-    net_total_sale: '',
-    net_total_cost: '',
-  }
-  const reservationForm = {
-    reservation_no: '',
-    reservation_type: '',
-    booking_status: '',
-    option_date: '',
-    booking_type: '',
-    agent_name: '',
-    vat_ret_no: '',
-    sub_agent_name: '',
-    price_category: '',
-    guest_fullname: '',
-    country_name: '',
-    phone_no: '',
-    email: '',
-    brn_hotel: '',
-    brn_transport: '',
-  }
-  const [form, setForm] = useState({
-    reservationForm,
-  })
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
@@ -269,7 +216,7 @@ export default function CreateReservationDetail() {
             />
             <CiSearch className="search_icon" onClick={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal />
+              <AgentModal setForm={setForm} toggle={toggle} />
             </Modal>
           </div>
           {/* <InputForm
@@ -371,135 +318,7 @@ export default function CreateReservationDetail() {
               <input type="checkbox" />
               Show All
             </div>
-            <div>
-              <Table responsive size="sm mt-5" bordered striped>
-                <thead>
-                  <tr>
-                    <th className="thead_">Hotel</th>
-                    <th className="thead_">Check In</th>
-                    <th className="thead_">Check Out</th>
-                    <th className="thead_">Night</th>
-                    <th className="thead_">View</th>
-                    <th className="thead_">Room Type</th>
-                    <th className="thead_">Meal Type</th>
-                    <th className="thead_">No of Room</th>
-                    <th className="thead_">Room Sale Source</th>
-                    <th className="thead_">Supplier</th>
-                    <th className="thead_">Meal Sale Source</th>
-                    <th className="thead_">Supplier</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Room Sale Rate</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Room Cost Rate</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Meal Cost Rate</th>
-                    <th className="thead_">Net Total Sale</th>
-                    <th className="thead_">Net Total Cost</th>
-                    <th className="thead_">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div style={{ display: 'flex' }}>
-                        <input className="table_input" type="search" />
-                        <CiSearch
-                          className=""
-                          size="1.5rem"
-                          style={{
-                            backgroundColor: 'rgb(12, 134, 103)',
-                            color: 'white',
-                          }}
-                          onClick={toggle3}
-                        />
-                        <Modal isOpen={modal3} toggle={toggle3} size="xl">
-                          <HotelReg />
-                        </Modal>
-                      </div>
-                    </td>
-                    <td>
-                      <input className="table_input" type="date" />
-                    </td>
-                    <td>
-                      <input className="table_input" type="date" />
-                    </td>
-                    <td></td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td></td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>{' '}
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td className="text-center text-danger">
-                      <BiTrash size="1.5rem" />
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              <button
-                className="app_button p-3 mt-3"
-                style={{ width: 150 }}
-                // onClick={handleSubmit}
-              >
-                Submit
-              </button>
-            </div>
+           <ReservationTable />
           </>
         ) : (
           ''

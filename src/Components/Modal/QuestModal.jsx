@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
-import { Card, Col, Row } from 'reactstrap'
+import { Card, Col, Row, Button  } from 'reactstrap'
 import { _get } from '../../Utils/Helper';
 
 export default function QuestModal() {

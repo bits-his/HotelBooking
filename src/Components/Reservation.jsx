@@ -5,22 +5,12 @@ import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import HotelReg from './Modal/HotelModal'
 
-export default function Reservation() {
+export default function Reservation({form={},setForm=(f)=>f}) {
     const [modal, setModal] = useState(false)
     const [check, setCheck] = useState(false)
-    const [form, setForm] = useState({
-        date: '',
-        status: '',
-        view: '',
-        hotel: '',
-        category: '',
-        print_view: '',
-        hotel_city: '',
-        filter_type: ''
-    })
+
     const handleChange = ({ target: { name, value } }) => {
-    // console.log({ target })
-    setForm((p) => ({ ...p, [name]: value }))
+        setForm((p) => ({ ...p, [name]: value }))
     }
 
     const toggle = () => setModal(!modal);

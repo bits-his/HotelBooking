@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { BiTrash } from 'react-icons/bi';
 import { Row, Table, Button, Col  } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
 import { _get } from "../../Utils/Helper";
@@ -30,7 +31,6 @@ export default function AllaotmentTable() {
      _get(
       "api/get_views",
       (res) => {
-        //   navigate(`/agent`)
         console.log(res);
         setData(res.results[0]);
       },
@@ -46,7 +46,6 @@ export default function AllaotmentTable() {
     _get(
       "api/meals_tables",
       (res) => {
-          // navigate(-1)
         console.log(res);
         setData1(res.results[0]);
       },
@@ -260,7 +259,9 @@ export default function AllaotmentTable() {
                             name="pur_source"
                         />
                     </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)',backgroundColor: 'rbg(12, 134, 103)'}}><Button style={{backgroundColor: 'rbg(12, 134, 103)', color: 'black'}}>Delete</Button></td>
+                    <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
+                      <BiTrash size="2.5rem" />
+                    </td>
                 </tbody>
             </Table>
         </Row>

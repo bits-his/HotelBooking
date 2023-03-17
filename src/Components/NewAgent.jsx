@@ -8,7 +8,6 @@ import AgentModal from './Modal/AgentModal'
 export default function NewAgent({form={},setForm=(f)=>f}) {
     const [modal, setModal] = useState(false)
     const handleChange = ({ target: { name, value } }) => {
-        // console.log({ target })
         setForm((p) => ({ ...p, [name]: value }))
     } 
     const [loading, setLoading] = useState(false)
