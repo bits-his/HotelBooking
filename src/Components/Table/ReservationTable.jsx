@@ -77,26 +77,24 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
     <Card className="app_card dashboard_card shadow p-3 m-3">
         <Row> 
             <Col md={4}>
-                <label className="Label mt-2">Hotel</label>
-                <div className='search_input_form'>
-                    <select
-                        id="exampleSelect"
-                        className="app_input3"
-                        value={form.hotel}
-                        name="hotel"
-                        type="select"
-                        onClick={handleChange}
-                    >
-                        <option>Select </option>
-                    </select>
-                    <CiSearch   
-                        className='search_icon'
-                        onClick={toggle3}
-                    />
-                    <Modal isOpen={modal3} toggle={toggle3}size="xl" >
-                        <HotelReg/>
+            <label className="Label mt-2">Hotel</label>
+          <div className="search_input_form">
+            <input
+              className="app_input3"
+              value={form.hotel}
+              onChange={handleChange}
+              name="hotel"
+              // type="number"
+            />
+            <CiSearch className="search_icon" onClick={toggle3} />
+            <Modal isOpen={modal3} toggle={toggle3} size="xl" >
+                        <HotelReg setForms={setForm} toggles={toggle3}/>
                     </Modal>
-                </div>
+          </div>
+                {/* <label className="Label mt-2">Hotel</label> */}
+                {/* <div className='search_input_form'> */}
+                
+                {/* </div> */}
                 <InputForm
                     // style={{width: '200px', border: 'none ', outline: 'none', height: 15}}
                     className="app_input"

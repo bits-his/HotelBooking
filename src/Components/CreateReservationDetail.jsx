@@ -10,6 +10,7 @@ import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
 import HotelReg from './Modal/HotelModal'
 import ReservationTable from './Table/ReservationTable'
+import { _get, _post } from '../Utils/Helper'
 
 export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const [modal, setModal] = useState(false)
@@ -216,6 +217,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             value={form.price_category}
           >
             <option>Select </option>
+            <option>Value-based pricing </option>
+            <option>Dynamic pricing</option>
+            <option>Cost-plus pricing  </option>
           </select>
           <InputForm
             className="app_input"
@@ -255,11 +259,14 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             type="select"
             onClick={handleChange}
           >
-            <option>Select </option>
+            <option>Select</option>
+            <option>Comfirmed Reservation</option>
+            <option>Waitlisted Reservation </option>
+            <option>Tentative Reservation </option>
           </select>
           <label className="Label mt-2">Booking Type</label>
           <select
-            id="exampleSelect"
+            // id="exampleSelect"
             className="app_input"
             value={form.booking_type}
             name="booking_type"
@@ -267,6 +274,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             onClick={handleChange}
           >
             <option>Select </option>
+            <option value="Comfirmed Reservation">Comfirmed Reservation</option>
+            <option value="Waitlisted Reservation">Waitlisted Reservation </option>
+            <option>Tentative Reservation </option>
           </select>
           <label className="Label mt-2">Sub Agent Name</label>
           <select
@@ -278,6 +288,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             onClick={handleChange}
           >
             <option>Select </option>
+            <option>Abdulsalam </option>
           </select>
           <label className="Label mt-2">Quest Full Name</label>
           <div className="search_input_form">

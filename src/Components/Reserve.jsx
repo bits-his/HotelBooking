@@ -68,6 +68,7 @@ export default function Reserve() {
     })
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
+      {JSON.stringify(form)}
       <FormWrapper steps={["Create Reservation Detail", "Reservation",]} >
         <CreateReservationDetail form={form} setForm={setForm}/>
         <ReservationTable form={form} setForm={setForm}/>
