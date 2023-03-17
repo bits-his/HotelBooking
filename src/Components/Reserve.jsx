@@ -3,6 +3,7 @@ import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
 import CreateReservationDetail from './CreateReservationDetail'
 import Reservation from './Reservation'
+import ReservationTable from './Table/ReservationTable'
 
 export default function Reserve() {
     const [form ,setForm] = useState({
@@ -69,8 +70,7 @@ export default function Reserve() {
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       <FormWrapper steps={["Create Reservation Detail", "Reservation",]} >
         <CreateReservationDetail form={form} setForm={setForm}/>
-        <h1>uiujjhjh</h1>
-        {/* <Reservation form={form} setForm={setForm}/> */}
+        <ReservationTable form={form} setForm={setForm}/>
       </FormWrapper>    
     </Card>
   )
