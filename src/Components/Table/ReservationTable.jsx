@@ -6,11 +6,11 @@ import InputForm from '../../CustomComponents/InputForm'
 import { _get, _post } from '../../Utils/Helper'
 import HotelReg from '../HotelReg'
 
-export default function ReservationTable({form={},setForm=(f)=>f}) {
+export default function ReservationTable({form={},setForm=(f)=>f,setNew_data=f=>f,new_data=f=>f}) {
     const [data, setData] = useState([])
     const [data1, setData1] = useState([])
     const [data2, setData2] = useState([])
-
+   
     const getData = () => {
      _get(
       "api/get_views",
@@ -70,11 +70,53 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
   };
+  const addData = () =>{
+   
+        setNew_data(prev => [
+            ...prev,
+            {
+              hotel: form.hotel,
+              check_in: form.check_in,
+                gender: form.gender,
+                check_out: form.check_out,
+                night: form.night,
+                room_type: form.room_type,
+                meal_type: form.meal_type,
+                no_of_room: form.no_of_room,
+                room_scale_source: form.room_scale_source,
+                supplier: form.supplier,
+                meal_scale_source: form.meal_scale_source,
+                supplier1: form.supplier1,
+                sale_rate_exc_tax: form.sale_rate_exc_tax,
+                sale_municipal_vat : form.sale_municipal_vat ,
+                sale_purch_vat: form.sale_purch_vat,
+                sale_rat_inc_all_tax: form.sale_rat_inc_all_tax,
+                total_room_sale_rate: form.total_room_sale_rate,
+                cost_rate_exc_tax: form.cost_rate_exc_tax,
+                cost_municipal_vat: form.cost_municipal_vat,
+                cost_purch_vat: form.cost_purch_vat,
+                cost_rat_inc_all_tax: form.cost_rat_inc_all_tax,
+                total_room_cost_rate: form.total_room_cost_rate,
+                meal_rate_exc_tax: form.meal_rate_exc_tax,
+                meal_municipal_vat: form.meal_municipal_vat,
+                meal_purch_vat: form.meal_purch_vat,
+                meal_rat_inc_all_tax: form.meal_rat_inc_all_tax,
+                total_meal_cost_rate: form.total_meal_cost_rate,
+                net_total_sale: form.net_total_sale,
+                net_total_cost: form.net_total_cost,
+                // view: form.view,
+                
+            }
+        ]) 
+            
 
+console.log(form)
+}
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(new_data)} */}
         <Row> 
             <Col
             md={12}>
@@ -122,19 +164,14 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
                             <option>Select </option>
                           {data.map(item => ( <option value={item.meal_type}>{item.meal_type} </option>))}
                         </select>
-                <label className="Label mt-2">Supplier</label>
-                         <select
-                            // style={{width: '200px', border: 'none ', outline: 'none'}}
-                            id="exampleSelect"
+                        <InputForm
                             className="app_input"
+                            label= "Supllier"
                             onChange={handleChange}
                             value={form.supplier}
                             name="supplier"
-                            type="select"
-                        >
-                            <option>Select </option>
-                          {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
-                        </select>
+                            // type= 'Number'
+                        />
                         <InputForm
                             className="app_input"
                             label= 'Rate ExcTax'
@@ -310,18 +347,14 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
                             <option>Select </option>
                           {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
                         </select>
-                        <label className="Label mt-2">Supplier</label>
-                        <select
-                            id="exampleSelect"
+                        <InputForm
                             className="app_input"
+                            label= "Supllier"
                             onChange={handleChange}
                             value={form.supplier1}
                             name="supplier1"
-                            type="select"
-                        >
-                            <option>Select </option>
-                          {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
-                        </select>
+                            // type= 'Number'
+                        />
                         <InputForm
                             className="app_input"
                             label= " Purch VAT 15%"
@@ -369,7 +402,7 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
                     <button
                         className="app_button p-3 mt-3"
                         style={{ width: 150 }}
-                        // onClick={handleSubmit}
+                        onClick={addData}
                     >
                         Add +
                     </button>
@@ -413,93 +446,98 @@ export default function ReservationTable({form={},setForm=(f)=>f}) {
                     <th className="thead_">Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td style={{height: 10,border: '1px solid rgb(12, 134, 103)'}}></td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}></td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}></td>
-                    
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}></td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                       
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                       
-                    </td>{' '}
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        
-                    </td>
-                    <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
-                      <BiTrash size="1.5rem" />
-                    </td>
-                  </tr>
-                </tbody>
+                {
+                  new_data&&new_data.map((item,index)=>(
+                    <tbody>
+                    <tr>
+                      <td style={{height: 10,border: '1px solid rgb(12, 134, 103)'}}>{item.hotel}</td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>{item.check_in}</td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>{item.check_out}</td>
+                      
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>{item.night}</td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.view}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.room_type}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                         {item.night} 
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.room_type}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.meal_type}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                         {item.no_of_room}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                         {item.room_scale_source}
+                      </td>{' '}
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.supplier}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.room_scale_source}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.supplier1}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                      {item.meal_rate_exc_tax}  
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                      {item.meal_municipal_vat}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                      {item.meal_purch_vat}    
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.meal_rat_inc_all_tax}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.total_room_sale_rate}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_rate_exc_tax}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_municipal_vat}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_purch_vat}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_rat_inc_all_tax}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.total_room_cost_rate}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_rate_exc_tax}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.cost_municipal_vat}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.total_meal_cost_rate}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.net_total_sale}
+                      </td>
+                      <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                          {item.net_total_cost}
+                      </td>
+                      <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
+                        <BiTrash size="1.5rem" />
+                      </td>
+                    </tr>
+                  </tbody>
+                  ))
+                }
+               
               </Table>
               <Col md={12}>
                 <center>

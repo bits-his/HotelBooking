@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi';
 import { Row, Table, Button, Col, Card  } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
-import { _get } from "../../Utils/Helper";
+import { _get, _post } from "../../Utils/Helper";
 
-export default function AllaotmentTable({form={},setForm=(f)=>f}) {
+export default function AllaotmentTable({form={},setForm=(f)=>f,newData=f=>f,setNewData=f=>f}) {
     const [data, setData] = useState([])
     const [data1, setData1] = useState([])
 
@@ -37,30 +37,106 @@ export default function AllaotmentTable({form={},setForm=(f)=>f}) {
     );
     // console.log(form)
   };
-
+const [room,setRoom]=useState([])
+const getHotels = () => {
+    _post( 
+      'api/room_type?query_type=select',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setRoom(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
   useEffect(() => {
     getData();
     getMeals_table();
+    getHotels()
   }, []);
 
     const handleChange = ({ target: { name, value } }) => {
         console.log(form)
         setForm((p) => ({ ...p, [name]: value }))
     }
+   
+    const addData = () =>{
+   
+        setNewData(prev => [
+            ...prev,
+            {
+room_type:form.room_type,
+view:form.veiws,
+date_from:form.d_from,
+night:form.nights,
+date_to:form.d_to,
+room:form.rooms,
+totals:form.totals,
+meal_plan:form.meals_plan,
+meal_total:form.meals_ttl,
+net_total:form.meals_ttl,
+vat:form.vat,
+vat_total:form.vat_ttl,
+total_with_vat:form.ttl_w_vat,
+reference_no:form.ref_no,
+purchase_source:form.pur_source
+            }]);
+            setForm({room_type: '',
+            room_type: '',
+            veiws: '',
+            d_from: '',
+            nights: '',
+            d_to: '',
+            rooms :'',
+            rate: '',
+            totals: '',
+            meals_plan: '',
+            meals_ttl: '',
+            net_ttl: '',
+            vat: '',
+            vat_ttl: '',
+            ttl_w_vat: '',
+            ref_no: '',
+            pur_source: '',
+    
+            id_no: '',
+            hotel_name: '',
+            allotment_type: '',
+            supplier_name: '',
+            reference_id: '',
+            details: ''})
+        }
+           const handleDelete = (index) =>{
+        let item = newData.filter((i, idx) => index !== idx)
+        setNewData(item) 
+        console.log(index)
+       }
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3 mt-2">
+        {/* {JSON.stringify(newData)} */}
         <Row>
             <Col md={4}>
                             <label className="Label mt-2">Room Type</label>
                             <select
                                 id="exampleSelect"
                                 className="app_input"
-                                value={form.room_ty}
-                                name="room_ty"
+                                value={form.room_type}
+                                name="room_type"
                                 type="select"
                                 onChange={handleChange}
                             >
                                 <option>Select </option>
+                                {
+                                    room&&room.map(i=><option value={i.room_type}>{i.room_type}</option>)
+                                }
                             </select>
                             <InputForm
                                 className="app_input"
@@ -187,7 +263,7 @@ export default function AllaotmentTable({form={},setForm=(f)=>f}) {
                                 name="pur_source"
                             />
             </Col>
-            <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Add + </button></center> </Col>
+            <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addData}>Add + </button></center> </Col>
         </Row>
         <Row>
             {/* {JSON.stringify(data1)} */}
@@ -220,56 +296,62 @@ export default function AllaotmentTable({form={},setForm=(f)=>f}) {
                         <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Action</th>
                         {/* <th style={{border: '1px solid rgb(12, 134, 103)'}}>head</th> */}
                     </thead>
-                    <tbody>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            
-                        </td>
-                        <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
-                        <BiTrash size="2.5rem" />
-                        </td>
-                    </tbody>
+                    {
+                        newData&&newData.map((i,index)=>
+                            <tbody>
+                           
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.room_type}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.view}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.date_from}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                               {i.night} 
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.date_to}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                               {i.room} 
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.totals}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                               {i.meal_plan} 
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.meal_total}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.net_total}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                               {i.vat} 
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.vat_total}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.total_with_vat}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.reference_no}
+                            </td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                                {i.purchase_source}
+                                </td>
+                            <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
+                            <BiTrash size="2.5rem" onClick={()=>handleDelete(index)} />
+                            </td>
+                        </tbody>
+                        )
+                    }
+                   
                 </Table>
             </Row>
             <Row>

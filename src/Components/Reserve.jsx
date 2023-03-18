@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
+import { _post } from '../Utils/Helper'
 import CreateReservationDetail from './CreateReservationDetail'
 import Reservation from './Reservation'
 import ReservationTable from './Table/ReservationTable'
@@ -41,37 +42,62 @@ export default function Reserve() {
         net_total_sale: '',
         net_total_cost: '',
 
-        reservation_no: '',
         reservation_type: '',
         booking_status: '',
         option_date: '',
         booking_type: '',
         agent_name: '',
-        vat_ret_no: '',
+        vat_reg_no: '',
         sub_agent_name: '',
         price_category: '',
-        guest_fullname: '',
+        guest_name: '',
         country_name: '',
-        phone_no: '',
+        phone: '',
         email: '',
-        brn_hotel: '',
-        brn_transport: '',
+        BRN_hotel: '',
+        BRN_transport: '',
 
         date: '',
         status: '',
-        view: '',
+        // view: '',
         hotel: '',
         category: '',
         print_view: '',
         hotel_city: '',
         filter_type: ''
     })
+    const [new_data,setNew_data]=useState([])
+    const post_hotel_bookings =()=>{
+      _post(
+        `api/hotel_booking?query_type=insert`,
+        new_data,
+        (resp)=>{
+          console.log(resp)
+        }
+      ),
+      (err)=>{
+        console.log(err)
+      }
+    }
+    const handleSubmit =()=>{
+      _post(
+        `api/new-reservation?query_type=insert`,
+        form,
+        (resp)=>{
+          console.log(resp)
+        }
+      ),
+      (err)=>{
+        console.log(err)
+      }
+      post_hotel_bookings()
+    }
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
-      {JSON.stringify(form)}
-      <FormWrapper steps={["Create Reservation Detail", "Reservation",]} >
+      {/* {JSON.stringify(form)} */}
+      <FormWrapper steps={["Create Reservation Detail", "Reservation",]} handleSubmit={handleSubmit}>
         <CreateReservationDetail form={form} setForm={setForm}/>
-        <ReservationTable form={form} setForm={setForm}/>
+        <ReservationTable form={form} setForm={setForm} setNew_data={setNew_data} new_data={new_data} />
       </FormWrapper>    
     </Card>
   )

@@ -8,8 +8,8 @@ import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
-import HotelReg from './Modal/HotelModal'
-import ReservationTable from './Table/ReservationTable'
+// import HotelReg from './Modal/HotelModal'
+// import ReservationTable from './Table/ReservationTable'
 import { _get, _post } from '../Utils/Helper'
 
 export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
@@ -122,7 +122,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
         vat_reg_no: '',
         sub_agent_name: '',
         price_category: '',
-        guest_fullname: '',
+        guest_name: '',
         country_name: '',
         phone: '',
         email: '',
@@ -156,7 +156,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const [selected,setSelected]=useState({})
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
 
       <Row>
         <Col
@@ -285,9 +285,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           <div className="search_input_form">
             <input
               className="app_input3"
-              value={form.guest_fullname}
+              value={form.guest_name}
               onChange={handleChange}
-              name="guest_fullname"
+              name="guest_name"
             />
             <CiSearch className="search_icon" onClick={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
@@ -381,7 +381,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             name="BRN_transport"
           />
         </Col>
-        <Col md={12} style={{ display: 'flex', gap: 10 }}>
+        {/* <Col md={12} style={{ display: 'flex', gap: 10 }}>
           <div>
             <button
               className="app_button p-3 mt-3"
@@ -400,7 +400,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               New
             </button>
           </div>
-        </Col>
+        </Col> */}
       </Row>
     </Card>
   )
