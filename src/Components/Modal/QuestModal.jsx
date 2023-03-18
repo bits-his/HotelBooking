@@ -3,7 +3,7 @@ import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Row, Button  } from 'reactstrap'
 import { _get } from '../../Utils/Helper';
 
-export default function QuestModal() {
+export default function QuestModal({setForm=f=>f,toggle=f=>f}) {
      const [data, setData] = useState([]);
 
   const getCustomer = () => {
@@ -143,9 +143,11 @@ export default function QuestModal() {
               data.map((i) => (
                 <tbody>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                      <Button 
+                      <button
+                      className="app_button"
+                      onClick={()=>{setForm((p)=>({...p,guest_name:i.customer_name}));toggle()}} 
                         // onClick={}
-                      > Select</Button>
+                      > Select</button>
                   </td>
                   <td 
                     style={{

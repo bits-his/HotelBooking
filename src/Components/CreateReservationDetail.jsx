@@ -179,7 +179,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             />
             <CiSearch className="search_icon" onClick={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
-              <ReservationModal />
+              <ReservationModal setForm={setForm} toggle={toggle2} />
             </Modal>
           </div>
           <InputForm
@@ -291,7 +291,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             />
             <CiSearch className="search_icon" onClick={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
-              <QuestModal />
+              <QuestModal setForm={setForm} toggle={toggle1}/>
             </Modal>
           </div>
           {/* <InputForm
@@ -325,10 +325,12 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             className="app_input"
             value={form.booking_status}
             name="booking_status"
-            type="select"
+            // type="select"
             onClick={handleChange}
           >
-            <option>Select </option>
+            {/* <option>Select </option> */}
+            <option value='active'>Active</option>
+            <option value='pending'>pending</option>
           </select>
           <label className="Label mt-2">Agent Name</label>
           <div className="search_input_form">

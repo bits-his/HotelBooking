@@ -10,7 +10,7 @@ export default function ReservationTable({form={},setForm=(f)=>f,setNew_data=f=>
     const [data, setData] = useState([])
     const [data1, setData1] = useState([])
     const [data2, setData2] = useState([])
-   
+    
     const getData = () => {
      _get(
       "api/get_views",

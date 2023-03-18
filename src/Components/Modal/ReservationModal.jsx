@@ -3,13 +3,13 @@ import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Row,Button } from 'reactstrap'
 import { _post } from '../../Utils/Helper';
 
-export default function ReservationModal() {
+export default function ReservationModal({setForm=f=>f,toggle=f=>f}) {
      const [data, setData] = useState([]);
 
     const [hotel,setHotel]=useState([])
     const getHotels = () => {
         _post( 
-        'api/room_type?query_type=select',
+        'api/reservations_and_availability?query_type=select',
         {},
         (resp) => {
             // setLoading(false)
@@ -37,6 +37,7 @@ export default function ReservationModal() {
             <h5 className="app_title">Reservation List</h5> 
             <hr />
         </Col>
+        {/* {JSON.stringify(hotel)} */}
         <Col md={12}>
             <div style={{display: 'flex', flexDirection: 'row', marginTop: 0}}>
                 <label className='label_title' >Search</label>
@@ -97,35 +98,36 @@ export default function ReservationModal() {
                 <tbody>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
                     <Button 
+                    onClick={()=>{setForm((p)=>({...p,reservation_number:i.id}));toggle()}} 
                         // onClick={}
                     > Select</Button>
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                    {i.hotel}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                    {i.hotel_city}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                    {i.status}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                    {i.category}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_type}
+                    {i.filter_type}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_pax}
+                    {i.view}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_pax}
+                    {i.print_view}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_pax}
+                    {i.date_from}
                   </td>
                   <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_pax}
+                    {i.date_from}
                   </td>
                 </tbody>
               ))}
