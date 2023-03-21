@@ -6,7 +6,7 @@ import { _get, _post } from "../Utils/Helper";
 
 export default function RoomType() {
   const goto = useNavigate();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
  const [hotel,setHotel]=useState([])
   const getHotels = () => {

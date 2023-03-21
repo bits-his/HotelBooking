@@ -8,7 +8,6 @@ import AgentModal from './Modal/AgentModal'
 export default function NewAgent({form={},setForm=(f)=>f}) {
     const [modal, setModal] = useState(false)
     const handleChange = ({ target: { name, value } }) => {
-        // console.log({ target })
         setForm((p) => ({ ...p, [name]: value }))
     } 
     const [loading, setLoading] = useState(false)
@@ -38,7 +37,7 @@ export default function NewAgent({form={},setForm=(f)=>f}) {
         <Row>
             <Col md={6}>
                 <h5 className="app_title">Create New Agent/Supplier</h5>
-                <label className="Label mt-2">Reservation Number</label>
+                <label className="Label mt-2">Agent Name</label>
                 <div className='search_input_form'>
                     <input
                         className="app_input3"

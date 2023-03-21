@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Input, Label, Row } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _post } from '../Utils/Helper'
@@ -148,22 +149,34 @@ export default function BankDetails({form={},setForm=(f)=>f}) {
                     name="credit_limit"
                     type= 'number'
                 />
-                <InputForm
-                    className="app_input"
-                    label="GL Account No.(Sales)"
-                    value={form.gl_acc_no_sales}
-                    onChange={handleChange}
-                    name="gl_acc_no_sales"
-                />
+                <label className="Label mt-2">GL Account No.(Sales)</label>
+                <div className='search_input_form'>
+                    <input
+                        className="app_input3"
+                        value={form.gl_acc_no_sales}
+                        onChange={handleChange}
+                        name="gl_acc_no_sales"
+                    />
+                    <CiSearch 
+                        className='search_icon'
+                        // onClick={}
+                    />
+                </div>
             </Col>
             <Col md={6}>
-                <InputForm
-                    className="app_input"
-                    label="GL Account No.(Supplier)"
-                    value={form.gl_acc_no_supplier}
-                    onChange={handleChange}
-                    name= "gl_acc_no_supplier"
-                />
+                <label className="Label mt-2">GL Account No.(Supplier)</label>
+                <div className='search_input_form'>
+                    <input
+                        className="app_input3"
+                        value={form.gl_acc_no_supplier}
+                        onChange={handleChange}
+                        name="gl_acc_no_supplier"
+                    />
+                    <CiSearch 
+                        className='search_icon'
+                        // onClick={}
+                    />
+                </div>
             </Col>
         </Row>
         <Row className= "mt-3">
