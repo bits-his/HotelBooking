@@ -58,7 +58,7 @@ export default function CreaateAllotment({form={},setForm=(f)=>f}) {
   }, []);
 
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
+    <div>
         {/* {JSON.stringify(data)} */}
       <Row>
         <Col
@@ -209,6 +209,6 @@ export default function CreaateAllotment({form={},setForm=(f)=>f}) {
         </Col>
       </Row>
       {/* <AllaotmentTable /> */}
-    </Card>
+    </div>
   )
 }

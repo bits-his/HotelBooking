@@ -114,9 +114,35 @@ console.log(form)
 }
   const [modal3, setModal3] = useState(false)
   const toggle3 = () => setModal3(!modal3)
+  let percent = parseInt(form.meal_municipal_vat)/100
+  let percent2 = parseInt(form.meal_purch_vat)/100
+  let percent3 = parseInt(form.sale_municipal_vat)/100
+  let percent4 = parseInt(form.sale_purch_vat)/100
+  let percent5 = parseInt(form.cost_municipal_vat)/100
+  let percent6 = parseInt(form.cost_purch_vat)/100
+  // let final =  meal_rate_exc_tax 
+  const tax =parseInt(form.meal_rate_exc_tax)*percent;
+  let rate_tax = tax+parseInt(form.meal_rate_exc_tax)
+  const purch_tax =percent2*  rate_tax;
+  const ratInc =purch_tax + rate_tax;
+
+
+  const sale_tax =parseInt(form.sale_rate_exc_tax)*percent3;
+  let sale_rate_tax = sale_tax+parseInt(form.sale_rate_exc_tax)
+  const sale_purch_tax =percent4*  sale_rate_tax;
+  const sale_ratInc =sale_purch_tax + sale_rate_tax
+
+  const cost_tax =parseInt(form.cost_rate_exc_tax)*percent5;
+  let cost_rate_tax = cost_tax+parseInt(form.cost_rate_exc_tax)
+  const cost_purch_tax =percent6*  cost_rate_tax;
+  const cost_ratInc =cost_purch_tax + cost_rate_tax
+useEffect(()=>{
+  setForm((p)=>({...p, meal_rat_inc_all_tax:ratInc,sale_rat_inc_all_tax:sale_ratInc,cost_rat_inc_all_tax:cost_ratInc}))
+})
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(new_data)} */}
+    <div >
+      {JSON.stringify(cost_ratInc)}
+      {JSON.stringify(form.sale_purch_vat)}
         <Row> 
             <Col
             md={12}>
@@ -173,27 +199,28 @@ console.log(form)
                             // type= 'Number'
                         />
                         <InputForm
+                            label='	Rate ExcTax'
                             className="app_input"
-                            label= 'Rate ExcTax'
                             onChange={handleChange}
-                            value={form.sale_rate_exc_tax}
-                            name="cost_rate_exc_tax"
+                            value={form.meal_rate_exc_tax}
+                            name="meal_rate_exc_tax"
                             type= 'Number'
                         />
                         <InputForm
                             className="app_input"
                             label='Rat Inc. All Tax'
                             onChange={handleChange}
-                            value={form.sale_rat_inc_all_tax}
-                            name="sale_rat_inc_all_tax"
+                            value={form.meal_rat_inc_all_tax}
+                            name="meal_rat_inc_all_tax"
                             type= 'Number'
                         />
+                      
                         <InputForm
                             label="Municipal VAT 5%"
                             className="app_input"
                             onChange={handleChange}
-                            value={form.cost_municipal_vat}
-                            name="cost_municipal_vat"
+                            value={form.sale_municipal_vat}
+                            name="sale_municipal_vat"
                             type= 'Number'
                         />
                         <InputForm
@@ -206,10 +233,10 @@ console.log(form)
                         />
                         <InputForm
                             className="app_input"
-                            label= 'Purch VAT 15%'
+                            label= 'Purch VAT 15%a'
                             onChange={handleChange}
-                            value={form.meal_purch_vat}
-                            name="meal_purch_vat"
+                            value={form.cost_purch_vat}
+                            name="cost_purch_vat"
                             type= 'Number'
                         />
                         <InputForm
@@ -268,10 +295,19 @@ console.log(form)
                             label= "Municipal VAT 5%"
                             className="app_input"
                             onChange={handleChange}
-                            value={form.sale_municipal_vat}
-                            name="sale_municipal_vat"
+                            value={form.meal_municipal_vat}
+                            name="meal_municipal_vat"
                             type= 'Number'
                         />
+                           <InputForm
+                            label="Tax"
+                            className="app_input"
+                            onChange={handleChange}
+                            value={rate_tax}
+                            name="cost_municipal_vat"
+                            type= 're'
+                        />
+                       
                         <InputForm
                             className="app_input"
                             label="	Total Room Sale Rate"
@@ -284,24 +320,25 @@ console.log(form)
                             label='Purch VAT 15%'
                             className="app_input"
                             onChange={handleChange}
-                            value={form.cost_purch_vat}
-                            name="cost_purch_vat"
+                            value={form.sale_purch_vat}
+                            name="sale_purch_vat"
                             type= 'Number'
                         />
                         <InputForm
                             label='	Rate ExcTax'
                             className="app_input"
                             onChange={handleChange}
-                            value={form.meal_rate_exc_tax}
-                            name="meal_rate_exc_tax"
+                            value={form.cost_rate_exc_tax}
+                            name="cost_rate_exc_tax"
                             type= 'Number'
                         />
+                        
                         <InputForm
                             className="app_input"
                             label= 'Rat Inc. All Tax'
                             onChange={handleChange}
-                            value={form.meal_rate_exc_tax}
-                            name="meal_rate_exc_tax"
+                            value={form.cost_rat_inc_all_tax}
+                            name="cost_rat_inc_all_tax"
                             type= 'Number'
                         />
                         <InputForm
@@ -357,35 +394,43 @@ console.log(form)
                         />
                         <InputForm
                             className="app_input"
-                            label= " Purch VAT 15%"
+                            label= " Purch VAT 15%s"
                             onChange={handleChange}
-                            value={form.sale_purch_vat}
-                            name="cost_purch_vat"
+                            value={form.meal_purch_vat}
+                            name="meal_purch_vat"
                             type= 'Number'
+                        />
+                          <InputForm
+                            label="Purch Tax"
+                            className="app_input"
+                            onChange={handleChange}
+                            value={purch_tax}
+                            name="cost_municipal_vat"
+                            type= 're'
                         />
                         <InputForm
                             // style={{width: 100 ,border: 'none ', outline: 'none', height: 15}}
                             className="app_input"
                             label="Rate ExcTax"
                             onChange={handleChange}
-                            value={form.cost_rate_exc_tax}
-                            name="cost_rate_exc_tax"
+                            value={form.sale_rate_exc_tax}
+                            name="sale_rate_exc_tax"
                             type= 'Number'
                         />
                         <InputForm
                             label= 'Rat Inc. All Tax'
                             className="app_input"
                             onChange={handleChange}
-                            value={form.cost_rate_exc_tax}
-                            name="cost_rate_exc_tax"
+                            value={form.sale_rat_inc_all_tax}
+                            name="sale_rat_inc_all_tax"
                             type= 'Number'
                         />
                         <InputForm
                             className="app_input"
                             label= 'Municipal VAT 5%'
                             onChange={handleChange}
-                            value={form.meal_municipal_vat}
-                            name="meal_municipal_vat"
+                            value={form.cost_municipal_vat}
+                            name="cost_municipal_vat"
                             type= 'Number'
                         />
                         <InputForm
@@ -551,6 +596,6 @@ console.log(form)
                 </center>
             </Col>
             </div>
-    </Card>
+    </div>
   )
 }

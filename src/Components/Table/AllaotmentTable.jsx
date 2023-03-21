@@ -89,39 +89,73 @@ total_with_vat:form.ttl_w_vat,
 reference_no:form.ref_no,
 purchase_source:form.pur_source
             }]);
-            setForm({room_type: '',
-            room_type: '',
-            veiws: '',
-            d_from: '',
-            nights: '',
-            d_to: '',
-            rooms :'',
-            rate: '',
-            totals: '',
-            meals_plan: '',
-            meals_ttl: '',
-            net_ttl: '',
-            vat: '',
-            vat_ttl: '',
-            ttl_w_vat: '',
-            ref_no: '',
-            pur_source: '',
-    
-            id_no: '',
-            hotel_name: '',
-            allotment_type: '',
-            supplier_name: '',
-            reference_id: '',
-            details: ''})
+          
         }
+
+        const addDataClear = () =>{
+   
+            setNewData(prev => [
+                ...prev,
+                {
+    room_type:form.room_type,
+    view:form.veiws,
+    date_from:form.d_from,
+    night:form.nights,
+    date_to:form.d_to,
+    room:form.rooms,
+    totals:form.totals,
+    meal_plan:form.meals_plan,
+    meal_total:form.meals_ttl,
+    net_total:form.meals_ttl,
+    vat:form.vat,
+    vat_total:form.vat_ttl,
+    total_with_vat:form.ttl_w_vat,
+    reference_no:form.ref_no,
+    purchase_source:form.pur_source
+                }]);
+                setForm({room_type: '',
+                room_type: '',
+                veiws: '',
+                d_from: '',
+                nights: '',
+                d_to: '',
+                rooms :'',
+                rate: '',
+                totals: '',
+                meals_plan: '',
+                meals_ttl: '',
+                net_ttl: '',
+                vat: '',
+                vat_ttl: '',
+                ttl_w_vat: '',
+                ref_no: '',
+                pur_source: '',
+        
+                id_no: '',
+                hotel_name: '',
+                allotment_type: '',
+                supplier_name: '',
+                reference_id: '',
+                details: ''})
+            }
+
            const handleDelete = (index) =>{
         let item = newData.filter((i, idx) => index !== idx)
         setNewData(item) 
         console.log(index)
        }
+       
+    //    const meal = parseInt(meals_ttl)
+    let percent = parseInt(form.vat)/100
+    const vat_total = parseInt(form.meals_ttl) * percent;
+   const total_with_vat = parseInt(form.meals_ttl)+ vat_total;
+   const net_total = total_with_vat - vat_total
+    useEffect(()=>{
+setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_total}))
+    },[percent])
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3 mt-2">
-        {/* {JSON.stringify(newData)} */}
+    <div>
+        {/* {JSON.stringify(form )} */}
         <Row>
             <Col md={4}>
                             <label className="Label mt-2">Room Type</label>
@@ -263,7 +297,12 @@ purchase_source:form.pur_source
                                 name="pur_source"
                             />
             </Col>
-            <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addData}>Add + </button></center> </Col>
+            <Row>
+            <Col md= {3}></Col>
+            <Col md= {3}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addData}>Add + </button></center>  </Col>
+            <Col md= {3}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addDataClear}>Add & clear </button></center>  </Col>
+            <Col md= {3}>  </Col>
+            </Row>
         </Row>
         <Row>
             {/* {JSON.stringify(data1)} */}
@@ -355,9 +394,9 @@ purchase_source:form.pur_source
                 </Table>
             </Row>
             <Row>
-                <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Sumbit</button></center> </Col>
+                {/* <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Sumbit</button></center> </Col> */}
             </Row>
         </Row>
-    </Card>
+    </div>
   )
 }
