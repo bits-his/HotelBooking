@@ -23,7 +23,6 @@ export default function Allotmentstep() {
         ttl_w_vat: '',
         ref_no: '',
         pur_source: '',
-
         id_no: '',
         hotel_name: '',
         allotment_type: '',

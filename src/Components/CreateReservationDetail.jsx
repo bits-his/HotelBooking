@@ -177,7 +177,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               name="reservation_number"
               type="number"
             />
-            <CiSearch className="search_icon" onClick={toggle2} />
+            <CiSearch className="search_icon" onChange={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
               <ReservationModal setForm={setForm} toggle={toggle2} />
             </Modal>
@@ -204,7 +204,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             className="app_input"
             name="price_category"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
             value={form.price_category}
           >
             <option>Select </option>
@@ -227,7 +227,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             value={form.view}
             name="view"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
           </select> */}
@@ -247,8 +247,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             className="app_input"
             value={form.reservation_type}
             name="reservation_type"
-            type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select</option>
             <option>Comfirmed Reservation</option>
@@ -262,7 +261,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             value={form.booking_type}
             name="booking_type"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
             <option value="Comfirmed Reservation">Comfirmed Reservation</option>
@@ -276,7 +275,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             value={form.sub_agent_name}
             name="sub_agent_name"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
             <option>Abdulsalam </option>
@@ -289,7 +288,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               onChange={handleChange}
               name="guest_name"
             />
-            <CiSearch className="search_icon" onClick={toggle1} />
+            <CiSearch className="search_icon" onChange={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
               <QuestModal setForm={setForm} toggle={toggle1}/>
             </Modal>
@@ -326,7 +325,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             value={form.booking_status}
             name="booking_status"
             // type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             {/* <option>Select </option> */}
             <option value='active'>Active</option>
@@ -340,7 +339,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               onChange={handleChange}
               name="agent_name"
             />
-            <CiSearch className="search_icon" onClick={toggle} />
+            <CiSearch className="search_icon" onChange={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
               <AgentModal setForm={setForm} toggle={toggle} />
             </Modal>
@@ -388,7 +387,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             <button
               className="app_button p-3 mt-3"
               style={{ width: 150 }}
-              onClick={()=>handleSubmit()}
+              onChange={()=>handleSubmit()}
             >
               Save
             </button>
@@ -397,7 +396,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             <button
               className="app_button p-3 mt-3"
               style={{ width: 150 }}
-              // onClick={handleSubmit}
+              // onChange={handleSubmit}
             >
               New
             </button>

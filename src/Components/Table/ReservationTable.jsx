@@ -370,7 +370,7 @@ useEffect(()=>{
                             onChange={handleChange}
                         >
                             <option>Select </option>
-                          {data2.map(item => ( <option value={item.room_name}>{item.room_name} </option>))}
+                          {data2?.map(item => ( <option value={item.room_name}>{item.room_name} </option>))}
                         </select>
                         <label className="Label mt-2">Room Sale Source</label>
                         <select
