@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState } from "react";
 import { Card } from "reactstrap";
 import FormWrapper from "../tab-wrapper/FormaWrapper";
@@ -7,11 +8,12 @@ import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
 
 export default function Reserve() {
+  const today = moment().format('YYYY-MM-DD')
   const [form, setForm] = useState({
     hotel: "",
-    check_in: "",
-    check_out: "",
-    night: "",
+    check_in: today,
+    check_out:'',
+    night: 1,
     view: "",
     room_type: "",
     meal_type: "",
@@ -37,6 +39,7 @@ export default function Reserve() {
     meal_municipal_vat: "",
     meal_purch_vat: "",
     meal_rat_inc_all_tax: "",
+    meal_scale_source:"",
     total_meal_cost_rate: "",
 
     net_total_sale: "",
