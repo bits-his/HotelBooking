@@ -80,6 +80,7 @@ export default function Reserve() {
       };
   };
   const navigate=useNavigate()
+  const [print,setPrint]=useState(false)
   const handleSubmit = () => {
     _post(`api/new-reservation?query_type=insert`, form, (resp) => {
       console.log(resp);
@@ -88,7 +89,7 @@ export default function Reserve() {
         console.log(err);
       };
     post_hotel_bookings();
-    navigate('/reservation-invoice')
+   setPrint(!print)
   };
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
