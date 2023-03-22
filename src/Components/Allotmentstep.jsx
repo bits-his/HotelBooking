@@ -1,3 +1,4 @@
+import moment from 'moment/moment'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Card } from 'reactstrap'
@@ -7,13 +8,18 @@ import CreaateAllotment from './CreaateAllotment'
 import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotmentstep() {
+<<<<<<< HEAD
   const {user}=useSelector((state)=>state.auth)
+=======
+  const today = moment().format("YYYY-MM-DD")
+  const d_to =moment(today).add(1,'days').format("YYYY-MM-DD") 
+>>>>>>> a2316e48d45dd70ac0919d7f020f151a9c4729c5
     const [form, setForm] = useState({
       room_type: '',
         veiws: '',
-        d_from: '',
-        nights: '',
-        d_to: '',
+        d_from: today,
+        nights: 1,
+        d_to: d_to,
         rooms :'',
         rate: '',
         totals: '',
@@ -69,6 +75,7 @@ console.log(res)
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       {JSON.stringify(form)}
       <FormWrapper steps={["Creaate Allotment", "Allaotment Table",]} handleSubmit={handleSubmit} >
+      
         <CreaateAllotment form={form} setForm={setForm}/>
         <AllaotmentTable form={form} setForm={setForm} newData={newData} setNewData={setNewData} />
       </FormWrapper>    

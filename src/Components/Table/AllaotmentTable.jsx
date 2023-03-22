@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
@@ -65,8 +66,12 @@ const getHotels = () => {
   }, []);
 
     const handleChange = ({ target: { name, value } }) => {
-        console.log(form)
-        setForm((p) => ({ ...p, [name]: value }))
+        if(name==='nights'){
+            setForm((p) => ({ ...p, [name]: value,d_to:moment(form.d_from).add(value,'days').format("YYYY-MM-DD") }))
+        }else{
+            setForm((p) => ({ ...p, [name]: value }))
+        }
+        
     }
     const {user}=useSelector((state)=>state.auth)
     const addData = () =>{
@@ -74,22 +79,21 @@ const getHotels = () => {
         setNewData(prev => [
             ...prev,
             {
-room_type:form.room_type,
-view:form.veiws,
-date_from:form.d_from,
-night:form.nights,
-date_to:form.d_to,
-room:form.rooms,
-totals:form.totals,
-meal_plan:form.meals_plan,
-meal_total:form.meals_ttl,
-net_total:form.meals_ttl,
-vat:form.vat,
-vat_total:form.vat_ttl,
-total_with_vat:form.ttl_w_vat,
-reference_no:form.ref_no,
-purchase_source:form.pur_source,
-agent:user.name
+                room_type:form.room_type,
+                view:form.veiws,
+                date_from:form.d_from,
+                night:form.nights,
+                date_to:form.d_to,
+                room:form.rooms,
+                totals:form.totals,
+                meal_plan:form.meals_plan,
+                meal_total:form.meals_ttl,
+                net_total:form.meals_ttl,
+                vat:form.vat,
+                vat_total:form.vat_ttl,
+                total_with_vat:form.ttl_w_vat,
+                reference_no:form.ref_no,
+                purchase_source:form.pur_source
             }]);
           
         }
@@ -99,21 +103,21 @@ agent:user.name
             setNewData(prev => [
                 ...prev,
                 {
-    room_type:form.room_type,
-    view:form.veiws,
-    date_from:form.d_from,
-    night:form.nights,
-    date_to:form.d_to,
-    room:form.rooms,
-    totals:form.totals,
-    meal_plan:form.meals_plan,
-    meal_total:form.meals_ttl,
-    net_total:form.meals_ttl,
-    vat:form.vat,
-    vat_total:form.vat_ttl,
-    total_with_vat:form.ttl_w_vat,
-    reference_no:form.ref_no,
-    purchase_source:form.pur_source
+                    room_type:form.room_type,
+                    view:form.veiws,
+                    date_from:form.d_from,
+                    night:form.nights,
+                    date_to:form.d_to,
+                    room:form.rooms,
+                    totals:form.totals,
+                    meal_plan:form.meals_plan,
+                    meal_total:form.meals_ttl,
+                    net_total:form.meals_ttl,
+                    vat:form.vat,
+                    vat_total:form.vat_ttl,
+                    total_with_vat:form.ttl_w_vat,
+                    reference_no:form.ref_no,
+                    purchase_source:form.pur_source
                 }]);
                 setForm({room_type: '',
                 room_type: '',
@@ -155,6 +159,9 @@ agent:user.name
     useEffect(()=>{
 setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_total}))
     },[percent])
+
+    let styles =  {border: '1px solid rgb(12, 134, 103)', padding: '5px 12px'}
+
   return (
     <div>
         {/* {JSON.stringify(form )} */}
@@ -227,6 +234,7 @@ setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_tota
                                 onChange={handleChange}
                                 name="d_to"
                                 type= 'date'
+                                disabled
                             />
                             <label className="Label mt-2">Meal Plan</label>
                             <select
@@ -309,42 +317,35 @@ setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_tota
         <Row>
             {/* {JSON.stringify(data1)} */}
             <Row>
-                <Table
-                    bordered
-                    borderless
-                    hover
-                    responsive
-                    striped
-                    className='allotment_table mt-5 ml-3'
-                >
-                {/* <table > */}
-                    <thead style={{width: '100px'}}>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Room Type</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>View</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Date From</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>#Night</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Date To</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>#Room</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Totals</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Meal Plan</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Meals Total</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Net Total</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Vat</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Vat Total</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Total With Vat</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Reference No.</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Purchase Source</th>
-                        <th style={{border: '1px solid rgb(12, 134, 103)', padding: '8px 10px'}}>Action</th>
-                        {/* <th style={{border: '1px solid rgb(12, 134, 103)'}}>head</th> */}
-                    </thead>
+                <div>
+                <table className= 'mt-5 table-striped'>
+                    <thead >
+                        
+                        <th style={styles}>Room Type</th>
+                        <th style={styles}>View</th>
+                        <th style={styles}>Date From</th>
+                        <th style={styles}>#Night</th>
+                        <th style={styles}>Date To</th>
+                        <th style={styles}>#Room</th>
+                        <th style={styles}>Totals</th>
+                        <th style={styles}>Meal Plan</th>
+                        <th style={styles}>Meals Total</th>
+                        <th style={styles}>Net Total</th>
+                        <th style={styles}>Vat</th>
+                        <th style={styles}>Vat Total</th>
+                        <th style={styles}>Total With Vat</th>
+                        <th style={styles}>Reference No.</th>
+                        <th style={styles}>Purchase Source</th>
+                        <th style={styles}>Action</th>
+                        {/* </tr> */}
+                    
+                    </thead>  
                     {
-                        newData&&newData.map((i,index)=>
-                            <tbody>
-                           
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.room_type}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
+                        newData&&newData.map((i,index)=> (
+                            <>
+
+
+                            <td>
                                 {i.view}
                             </td>
                             <td style={{border: '1px solid rgb(12, 134, 103)'}}>
@@ -389,11 +390,11 @@ setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_tota
                             <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
                             <BiTrash size="2.5rem" onClick={()=>handleDelete(index)} />
                             </td>
-                        </tbody>
-                        )
-                    }
-                   
-                </Table>
+                            </>
+                            ))}
+                </table>
+              
+                </div>
             </Row>
             <Row>
                 {/* <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Sumbit</button></center> </Col> */}
