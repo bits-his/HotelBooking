@@ -155,7 +155,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   }, [0]);
   const [selected,setSelected]=useState({})
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
+    <div className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(form)} */}
 
       <Row>
@@ -403,6 +403,6 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           </div>
         </Col> */}
       </Row>
-    </Card>
+    </div>
   )
 }
