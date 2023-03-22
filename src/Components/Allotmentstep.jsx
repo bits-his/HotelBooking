@@ -1,3 +1,4 @@
+import moment from 'moment/moment'
 import React, { useState } from 'react'
 import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
@@ -6,12 +7,14 @@ import CreaateAllotment from './CreaateAllotment'
 import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotmentstep() {
+  const today = moment().format("YYYY-MM-DD")
+  const d_to =moment(today).add(1,'days').format("YYYY-MM-DD") 
     const [form, setForm] = useState({
       room_type: '',
         veiws: '',
-        d_from: '',
-        nights: '',
-        d_to: '',
+        d_from: today,
+        nights: 1,
+        d_to: d_to,
         rooms :'',
         rate: '',
         totals: '',
@@ -63,6 +66,7 @@ console.log(res)
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       <FormWrapper steps={["Creaate Allotment", "Allaotment Table",]} handleSubmit={handleSubmit} >
+      
         <CreaateAllotment form={form} setForm={setForm}/>
         <AllaotmentTable form={form} setForm={setForm} newData={newData} setNewData={setNewData} />
       </FormWrapper>    
