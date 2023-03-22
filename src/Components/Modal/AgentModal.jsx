@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
-import { Card, Col, Row } from 'reactstrap'
+import { Button, Card, Col, Row } from 'reactstrap'
 import { _post } from '../../Utils/Helper';
 
-export default function AgentModal() {
-     const [data, setData] = useState([]);
+export default function AgentModal({setForm=f=>f,toggle=f=>f}) {
 
     const [hotel,setHotel]=useState([])
     const getHotels = () => {
         _post( 
-        'api/room_type?query_type=select',
+        'api/bank_account_details',
         {},
         (resp) => {
             // setLoading(false)
@@ -33,6 +32,7 @@ export default function AgentModal() {
   )
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
+      {/* {JSON.stringify(hotel)} */}
         <Col md= {12}>
             <h5 className="app_title">Agent List</h5> 
             <hr />
@@ -58,63 +58,146 @@ export default function AgentModal() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Action
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+              Action
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                IDD
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+                Agent Id
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Agent Namex
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+                Name
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+                Phone
+              </th>
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
                 Country
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+                State
+              </th>
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
                 City
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Email
+              <th
+                style={{
+                  border: '1px solid rgb(12, 134, 103)',
+                  padding: '5px 10px',
+                }}
+              >
+                Zip
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Account No.
-              </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Telephone No
-              </th>
-              {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
-                      <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
             </thead>
 
             {hotel &&
               hotel.map((i) => (
                 <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button 
-                        // onClick={}
-                    > Select</Button>
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    <button
+                      className="app_button"
+                      onClick={()=>{setForm((p)=>({...p,agent_name:i.agent_name}));toggle()}}
+                      // onClick={toggle}
+                    >
+                      {' '}
+                      Select
+                    </button>
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.agent_id}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.agent_name}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.phone}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_name}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.country}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.room_type}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.state}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    {i.no_pax}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.city}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button size="sm">Edit</Button>
-                  </td>{" "}
+                  <td
+                    style={{
+                      border: '1px solid rgb(12, 134, 103)',
+                      padding: '5px 10px',
+                    }}
+                  >
+                    {i.zipcode}
+                  </td>{' '}
                 </tbody>
               ))}
           </table>

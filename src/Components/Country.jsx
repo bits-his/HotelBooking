@@ -38,20 +38,20 @@ export default function Country() {
       </Row>
       <div className="card_div">
         <Col md={12}>
-          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-                  {/* {JSON.stringify(data)} */}
-                  <label className='label_title' >Search</label>
-                  <div className='search'>
-                    <CiSearch style={{fontSize: 30}}/>
-                      <input 
-                          className='app_input2'
-                          type='text'
-                          placeholder='Search'
-                          name='Search'
-                          // value={}
-                      />
-                  </div>
-              </div>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label className="label_title">Search</label>
+            <div className="search">
+              <CiSearch style={{ fontSize: 30 }} />
+              <input
+                className="app_input2"
+                type="text"
+                placeholder="Search"
+                name="Search"
+                // value={}
+              />
+            </div>
+          </div>
         </Col>
         <Row>
           {/* {JSON.stringify(data)} */}
@@ -127,8 +127,7 @@ export default function Country() {
                         Edit
                       </Button>
                     </center>
-                  </td>
-                 {" "}
+                  </td>{" "}
                 </tbody>
               ))}
           </table>

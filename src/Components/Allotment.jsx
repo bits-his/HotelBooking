@@ -1,189 +1,125 @@
-import React, { useEffect, useState } from 'react'
-import { AiFillDelete } from 'react-icons/ai'
-import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
-import { _post } from '../Utils/Helper'
-import AllaotmentTable from './Table/AllaotmentTable'
+import React, { useEffect, useState } from "react";
+import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Col, Input, Label, Row } from "reactstrap";
+import { _get, _post } from "../Utils/Helper";
 
 export default function Allotment() {
-  const [form, setForm] = useState({
-    id_no: '',
-    hotel_name: '',
-    allotment_type: '',
-    supplier_name: '',
-    reference_id: '',
-    details: '',
-  })
-
-  const [allotmentData, setAllotmentData] = useState([])
-
-  const handleChange = ({ target: { name, value } }) => {
-    // console.log(form)
-    setForm((p) => ({ ...p, [name]: value }))
-  }
-
-  const handleSubmit = () => {
-    _post('api/allotment', form, (resp) => {
-      console.log(resp)
-    }),
-      (err) => {
-        console.log(err)
-      }
-  }
+  const goto = useNavigate();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     _post('api/allotment', { query_type: 'select' }, (resp) => {
-      setAllotmentData(resp)
-      console.log(allotmentData)
+        setData(resp.results)
     }),
       (err) => {
         console.log(err)
       }
   }, [])
+
+//     useEffect(() => {
+//     _post(
+//       "api/allotment",
+//       (res) => {
+//         //   navigate(`/agent`)
+//         console.log(res);
+//         setData(res.results[0]);
+//       },
+//       (err) => {
+//         // setLoading(false)
+//         console.log(err);
+//       }
+//     );
+//   }, [0]);
+
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(allotmentData)}
+      {/* {JSON.stringify(data)} */}
       <Row>
         <Col md={12}>
-          <h5 className="app_title">Allotment</h5>
-        </Col>
-        <Col md={2} style={{ display: 'flex', flexDirection: 'row' }}>
-          <InputForm
-            className="app_input"
-            label="ID No"
-            value={form.id_no}
-            onChange={handleChange}
-            name="id_no"
-            type="number"
-          />
-        </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Hotel Name</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.hotel_name}
-            onChange={handleChange}
-            name="hotel_name"
-            type="select"
-          >
-            <option value="HOTEL2">HOTEL2 </option>
-            <option value="HOTEL3">HOTEL3 </option>
-          </select>
-        </Col>
-        <Col md={2}>
-          <label className="Label mt-2">Allotment Type</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.allotment_type}
-            name="allotment_type"
-            type="select"
-            onChange={handleChange}
-          >
-            <option value="AMfD">AMfD </option>
-            <option value="AMfv">AMfv </option>
-          </select>
-        </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Supplier Name</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.supplier_name}
-            name="supplier_name"
-            type="select"
-            onChange={handleChange}
-          >
-            <option value="AMD">AMD </option>
-            <option value="AMv">AMv </option>
-          </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={2}>
-          <InputForm
-            className="app_input"
-            label="Reference ID"
-            value={form.reference_id}
-            onChange={handleChange}
-            name="reference_id"
-            type="number"
-          />
-        </Col>
-        <Col md={3} style={{ marginTop: 30 }}>
-          <Label>
-            <Input type="checkbox" /> Show All Pending Transaction
-          </Label>
-        </Col>
-        <Col md={2} style={{ marginTop: 30 }}>
-          <Label>
-            <Input type="checkbox" /> Show GI Post
-          </Label>
-        </Col>
-        <Col md={2} style={{ marginTop: 30 }}>
-          <Label>
-            <Input type="checkbox" /> Rate Update by Total
-          </Label>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={4}>
-          <label>Local Contact Details</label>
-          <textarea
-            className="app_input"
-            placeholder="While............"
-            name="details"
-            value={form.details}
-            onChange={handleChange}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={4}>
           <button
-            className="app_button p-1"
-            style={{
-              width: 200,
-              backgroundColor: 'rgb(12, 134, 103)',
-              height: 40,
-              marginTop: 30,
-            }}
-            onClick={handleSubmit}
+            className="app_button p-3"
+            style={{ width: 150 }}
+            onClick={() => goto("/create-allotment")}
           >
-            Save
-          </button>
-        </Col>
-        <Col md={4}>
-          <button
-            className="app_button bg-danger p-1"
-            style={{
-              width: 200,
-              backgroundColor: 'rgb(12, 134, 103)',
-              height: 40,
-              marginTop: 30,
-            }}
-            // onClick={() => goto('/sign-ip')}
-          >
-            Cancel
-          </button>
-        </Col>
-        <Col md={4}>
-          <button
-            className="app_button  p-1"
-            style={{
-              width: 200,
-              backgroundColor: 'orange',
-              height: 40,
-              marginTop: 30,
-            }}
-            // onClick={() => goto('/sign-ip')}
-          >
-            Add Row
+            Add Allotement
           </button>
         </Col>
       </Row>
-      <AllaotmentTable />
+      <div className='card_div'>
+        <Col md={12}>
+          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
+                  <label className='label_title' >Search</label>
+                  <div className='search'>
+                    <CiSearch style={{fontSize: 30}}/>
+                      <input 
+                          className='app_input2'
+                          type='text'
+                          placeholder='Search'
+                          name='Search'
+                          // value={}
+                      />
+                  </div>
+              </div>
+        </Col>
+        <Row>
+          <table
+            style={{ border: "1px solid #ccc", padding: 12 }}
+            className="mt-5"
+          >
+            <thead>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Id Number
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Hotel Name
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Allotment Type
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Supplier Name
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Reference ID
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Local Contact Details
+              </th>
+              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Action
+              </th>
+            </thead>
+
+          {data &&
+              data.map((i) => (
+              <tbody>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.id_no}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.hotel_name}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.allotment_type}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.supplier_name}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.reference_id}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  {i.details}
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  <Button size="sm" onClick={()=>goto(`/create-meal/${i.id}`)}>Edit</Button>
+                </td>{" "}
+              </tbody>
+            ))}
+        </table>
+      </Row>
+    </div>
     </Card>
-  )
+  );
 }

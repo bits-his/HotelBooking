@@ -20,8 +20,8 @@ export default function CreateNewCustomer() {
     date_to: "",
     status: "",
     meal: "",
-    arrival_date:"",
-    departure_date:""
+    arrival_date: "",
+    departure_date: "",
   });
   const [file, setFile] = useState();
 
@@ -47,7 +47,7 @@ export default function CreateNewCustomer() {
       (res) => {
         // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
         setLoading(false);
-        goto(-1)
+        goto(-1);
       },
       (err) => {
         setLoading(false);
@@ -66,7 +66,7 @@ export default function CreateNewCustomer() {
   const [view, setView] = useState([]);
   const [hotel, setHotel] = useState([]);
   const [meal, setMeal] = useState([]);
-  const [room,setRoom]=useState([])
+  const [room, setRoom] = useState([]);
   const getAgent = () => {
     _post(
       "api/bank_account_details",
@@ -149,35 +149,35 @@ export default function CreateNewCustomer() {
     );
   }, [0]);
   const getRooms = () => {
-    _post( 
-      'api/room_type?query_type=select',
+    _post(
+      "api/room_type?query_type=select",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-          setRoom(resp.results)
+        setRoom(resp.results);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
+      }
+    );
+  };
   useEffect(() => {
     getAgent();
     getHotels();
     getViews();
     getMeals_table();
-    getRooms()
+    getRooms();
   }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3 mt-3">
-        {/* {JSON.stringify(form)} */}
+      {/* {JSON.stringify(form)} */}
       <Row>
         <Col
           md={12}
@@ -191,7 +191,7 @@ export default function CreateNewCustomer() {
             <FaArrowLeft style={{ marginRight: 10 }} /> Back
           </button>
           <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
-           Client Registration Form
+            Client Registration Form
           </h5>
         </Col>
       </Row>
@@ -249,8 +249,9 @@ export default function CreateNewCustomer() {
             name="arrival_date"
             type="date"
           />
-          <labe>NO. Days....</labe><br />
-                <labe>NO. Night....</labe>
+          <labe>NO. Days....</labe>
+          <br />
+          <labe>NO. Night....</labe>
           <InputForm
             className="app_input"
             label="Status"
@@ -297,17 +298,17 @@ export default function CreateNewCustomer() {
             <option value="adult_children">Adult / Children</option>
           </select>
           <label className="Label mt-2">Select Room Type</label>
-                <select
-                    id="exampleSelect"
-                    className="app_input"
-                    name="room_type"
-                    type="select"
-                    onChange={handleChange}
-                    value={form.room_type}
-                >
-                  <option>----select-----</option>
-                   {room&&room.map(i=><option>{i.room_name}</option>)}
-                </select>
+          <select
+            id="exampleSelect"
+            className="app_input"
+            name="room_type"
+            type="select"
+            onChange={handleChange}
+            value={form.room_type}
+          >
+            <option>----select-----</option>
+            {room && room.map((i) => <option>{i.room_name}</option>)}
+          </select>
           <label className="Label mt-2">Room View</label>
           <select
             id="exampleSelect"

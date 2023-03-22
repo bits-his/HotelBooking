@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'
 import { CiSearch } from 'react-icons/ci'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Modal, Row, Table } from 'reactstrap'
+import { Button, Card, Col, Modal, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import { _get, _post } from '../Utils/Helper'
 import { Floors } from './Floors'
 
-export default function HotelReg() {
+export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
   const goto = useNavigate()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
@@ -189,6 +189,9 @@ export default function HotelReg() {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
+                    <td>
+                      <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
+                    </td>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
                     <td
                       style={{

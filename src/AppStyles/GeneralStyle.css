@@ -485,7 +485,7 @@ label {
 
 .thead_ {
   width: 100px !important;
-  /* background-color: red; */
+  border: 1px solid rgb(12, 134, 103);
 }
 .table_input {
   /* width: 150px; */

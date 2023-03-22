@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi'
 import { CiSearch } from 'react-icons/ci'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { Card, Col, Modal, Label, Row, Table } from 'reactstrap'
+import { Card, Col, Modal, Label, Row, Table, Input } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
 import AgentModal from './Modal/AgentModal'
 import QuestModal from './Modal/QuestModal'
 import ReservationModal from './Modal/ReservationModal'
-import HotelReg from './Modal/HotelModal'
+// import HotelReg from './Modal/HotelModal'
+// import ReservationTable from './Table/ReservationTable'
+import { _get, _post } from '../Utils/Helper'
 
-export default function CreateReservationDetail() {
+export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const [modal, setModal] = useState(false)
   const [modal1, setModal1] = useState(false)
   const [modal2, setModal2] = useState(false)
@@ -22,86 +24,145 @@ export default function CreateReservationDetail() {
   const toggle2 = () => setModal2(!modal2)
   const toggle3 = () => setModal3(!modal3)
   const navigate = useNavigate()
-  const hotelBookingForm = {
-    hotel: '',
-    check_in: '',
-    check_out: '',
-    night: '',
-    view: '',
-    room_type: '',
-    meal_type: '',
-    no_of_room: '',
-    room_sale_source: '',
-    supplier: '',
-    meal_sale_source: '',
-    supplier: '',
 
-    sale_rate_exc_tax: '',
-    sale_municipal_vat: '',
-    sale_purch_vat: '',
-    sale_rat_inc_all_tax: '',
-    total_room_sale_rate: '',
-
-    cost_rate_exc_tax: '',
-    cost_municipal_vat: '',
-    cost_purch_vat: '',
-    cost_rat_inc_all_tax: '',
-    total_room_cost_rate: '',
-
-    meal_rate_exc_tax: '',
-    meal_municipal_vat: '',
-    meal_purch_vat: '',
-    meal_rat_inc_all_tax: '',
-    total_meal_cost_rate: '',
-
-    net_total_sale: '',
-    net_total_cost: '',
-  }
-  const reservationForm = {
-    reservation_no: '',
-    reservation_type: '',
-    booking_status: '',
-    option_date: '',
-    booking_type: '',
-    agent_name: '',
-    vat_ret_no: '',
-    sub_agent_name: '',
-    price_category: '',
-    guest_fullname: '',
-    country_name: '',
-    phone_no: '',
-    email: '',
-    brn_hotel: '',
-    brn_transport: '',
-  }
-  const [form, setForm] = useState({
-    reservationForm,
-  })
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
+  const [data, setData] = useState([]);
 
+  const getViews = () => {
+    _get(
+      "api/get_views",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setData(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+  const [hotel,setHotel]=useState([])
+  const getHotels = () => {
+    _post( 
+      'api/room_type?query_type=select',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+          setHotel(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
+  const [meal,setMeal]=useState([])
+  const getMeals_table = () => {
+    _get(
+      "api/meals_tables",
+      (res) => {
+          // navigate(-1)
+        console.log(res);
+        setMeal(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
+  const [agent,setAgent]=useState([])
+  const getAgent = () => {
+    _post(
+      'api/bank_account_details',
+      {},
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res)
+        setAgent(res.results)
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err)
+      },
+    )
+    // console.log(form)
+  }
+
+  useEffect(() => {
+    getViews();
+    getHotels();
+    getMeals_table();
+    getAgent();
+  }, []);
   const handleSubmit = () => {
     console.log(form)
+    _post('api/new-reservation?query_type=insert',
+    form,
+    (res) => {
+      //   navigate(`/agent`)
+      if(res.success){
+        alert("submitted successfully!!")
+        setForm({    reservation_number: '',
+        reservation_type: '',
+        booking_status: '',
+        option_date: '',
+        booking_type: '',
+        agent_name: '',
+        vat_reg_no: '',
+        sub_agent_name: '',
+        price_category: '',
+        guest_name: '',
+        country_name: '',
+        phone: '',
+        email: '',
+        BRN_hotel: '',
+        BRN_transport: '',})
+      }
+      console.log(res)
+      // setAgent(res.results)
+    },
+    (err) => {
+      // setLoading(false)
+      console.log(err)
+    },
+    )
   }
+  const [country, setCountry] = useState([]);
+  useEffect(() => {
+    _get(
+      "api/get_countries",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setCountry(res.results[0]);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+  }, [0]);
+  const [selected,setSelected]=useState({})
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(form)} */}
 
       <Row>
         <Col
-          md={12}
-          style={{ display: 'flex', width: '100%', textAlign: 'center' }}
-        >
-          <button
-            className="app_button p-3 mb-3"
-            style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-            onClick={() => navigate('/reservation-details')}
-          >
-            <FaArrowLeft style={{ marginRight: 10 }} /> Back
-          </button>
-          <h5 className="app_title" style={{ fontSize: 30, width: '80%' }}>
-            Create New Reservation
+          md={12}>
+          <h5 className="app_title" style={{ fontSize: 30}}>
+            <center >Create New Reservation</center> 
           </h5>
         </Col>
       </Row>
@@ -111,14 +172,14 @@ export default function CreateReservationDetail() {
           <div className="search_input_form">
             <input
               className="app_input3"
-              value={form.reservation_no}
+              value={form.reservation_number}
               onChange={handleChange}
-              name="reservation_no"
+              name="reservation_number"
               type="number"
             />
-            <CiSearch className="search_icon" onClick={toggle2} />
+            <CiSearch className="search_icon" onChange={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
-              <ReservationModal />
+              <ReservationModal setForm={setForm} toggle={toggle2} />
             </Modal>
           </div>
           <InputForm
@@ -132,28 +193,31 @@ export default function CreateReservationDetail() {
           <InputForm
             className="app_input"
             label="Vat Reg No."
-            value={form.date}
+            value={form.vat_reg_no}
             onChange={handleChange}
-            name="date"
+            name="vat_reg_no"
             type="number"
           />
           <label className="Label mt-2">Price Category</label>
           <select
             id="exampleSelect"
             className="app_input"
-            name="status"
+            name="price_category"
             type="select"
-            onClick={handleChange}
-            value={form.status}
+            onChange={handleChange}
+            value={form.price_category}
           >
             <option>Select </option>
+            <option>Value-based pricing </option>
+            <option>Dynamic pricing</option>
+            <option>Cost-plus pricing  </option>
           </select>
           <InputForm
             className="app_input"
             label="Phone Number"
-            value={form.date}
+            value={form.phone}
             onChange={handleChange}
-            name="date"
+            name="phone"
             type="number"
           />
           {/* <label className="Label mt-2">VIP Category</label>
@@ -163,7 +227,7 @@ export default function CreateReservationDetail() {
             value={form.view}
             name="view"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
           </select> */}
@@ -181,46 +245,52 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.hotel}
-            name="hotel"
-            type="select"
-            onClick={handleChange}
+            value={form.reservation_type}
+            name="reservation_type"
+            onChange={handleChange}
           >
-            <option>Select </option>
+            <option>Select</option>
+            <option>Comfirmed Reservation</option>
+            <option>Waitlisted Reservation </option>
+            <option>Tentative Reservation </option>
           </select>
           <label className="Label mt-2">Booking Type</label>
           <select
-            id="exampleSelect"
+            // id="exampleSelect"
             className="app_input"
-            value={form.category}
-            name="category"
+            value={form.booking_type}
+            name="booking_type"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
+            <option value="Comfirmed Reservation">Comfirmed Reservation</option>
+            <option value="Waitlisted Reservation">Waitlisted Reservation </option>
+            <option>Tentative Reservation </option>
           </select>
           <label className="Label mt-2">Sub Agent Name</label>
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.print_view}
-            name="print_view"
+            value={form.sub_agent_name}
+            name="sub_agent_name"
             type="select"
-            onClick={handleChange}
+            onChange={handleChange}
           >
             <option>Select </option>
+            <option>Abdulsalam </option>
           </select>
           <label className="Label mt-2">Quest Full Name</label>
           <div className="search_input_form">
             <input
               className="app_input3"
-              value={form.reservation_no}
+              value={form.guest_name}
               onChange={handleChange}
-              name="reservation_no"
+              name="guest_name"
             />
-            <CiSearch className="search_icon" onClick={toggle1} />
+            <CiSearch className="search_icon" onChange={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
-              <QuestModal />
+              <QuestModal setForm={setForm} toggle={toggle1}/>
             </Modal>
           </div>
           {/* <InputForm
@@ -234,9 +304,9 @@ export default function CreateReservationDetail() {
           <InputForm
             className="app_input"
             label="BRN Hotel"
-            value={form.date}
+            value={form.BRN_hotel}
             onChange={handleChange}
-            name="date"
+            name="BRN_hotel"
           />
           {/* <InputForm
             className="app_input"
@@ -252,12 +322,14 @@ export default function CreateReservationDetail() {
           <select
             id="exampleSelect"
             className="app_input"
-            value={form.hotel_city}
-            name="hotel_city"
-            type="select"
-            onClick={handleChange}
+            value={form.booking_status}
+            name="booking_status"
+            // type="select"
+            onChange={handleChange}
           >
-            <option>Select </option>
+            {/* <option>Select </option> */}
+            <option value='active'>Active</option>
+            <option value='pending'>pending</option>
           </select>
           <label className="Label mt-2">Agent Name</label>
           <div className="search_input_form">
@@ -267,9 +339,9 @@ export default function CreateReservationDetail() {
               onChange={handleChange}
               name="agent_name"
             />
-            <CiSearch className="search_icon" onClick={toggle} />
+            <CiSearch className="search_icon" onChange={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal />
+              <AgentModal setForm={setForm} toggle={toggle} />
             </Modal>
           </div>
           {/* <InputForm
@@ -280,35 +352,42 @@ export default function CreateReservationDetail() {
             name="date"
             type="number"
           /> */}
-          <InputForm
+          <label className="Label mt-2">Country </label>
+          <select
+            id="exampleSelect"
             className="app_input"
-            label="Country Name"
-            value={form.date}
+            name="country_name"
+            type="select"
             onChange={handleChange}
-            name="date"
-          />
+            value={form.country_name}
+          >
+            <option>----select-----</option>
+            {country.map((i) => (
+              <option value={i.country_name}>{i.country_name}</option>
+            ))}
+          </select>
           <InputForm
             className="app_input"
             label="Email Address"
-            value={form.date}
+            value={form.email}
             onChange={handleChange}
-            name="date"
+            name="email"
             type="email"
           />
           <InputForm
             className="app_input"
             label="BRN Transport"
-            value={form.date}
+            value={form.BRN_transport}
             onChange={handleChange}
-            name="date"
+            name="BRN_transport"
           />
         </Col>
-        <Col md={12} style={{ display: 'flex', gap: 10 }}>
+        {/* <Col md={12} style={{ display: 'flex', gap: 10 }}>
           <div>
             <button
               className="app_button p-3 mt-3"
               style={{ width: 150 }}
-              // onClick={handleSubmit}
+              onChange={()=>handleSubmit()}
             >
               Save
             </button>
@@ -317,193 +396,12 @@ export default function CreateReservationDetail() {
             <button
               className="app_button p-3 mt-3"
               style={{ width: 150 }}
-              // onClick={handleSubmit}
+              // onChange={handleSubmit}
             >
               New
             </button>
           </div>
-        </Col>
-      </Row>
-      <Row>
-        <div className="switch_div mt-5">
-          <div>
-            <p
-              className="login_register"
-              style={{
-                borderBottom: '1px solid grey',
-                paddingBottom: 10,
-                // width: 'fit-content',
-              }}
-            >
-              <span
-                style={{
-                  borderBottom: page ? null : `3px solid rgb(12, 134, 103)`,
-                  marginRight: 20,
-                  paddingBottom: 10,
-                  cursor: 'pointer',
-                }}
-                onClick={() => setPage(false)}
-              >
-                Hotel Booking
-              </span>
-              {/* <span
-                style={{
-                  borderBottom: page ? `3px solid rgb(12, 134, 103)` : null,
-                  marginLeft: 20,
-                  paddingBottom: 10,
-                  cursor: 'pointer',
-                }}
-                onClick={() => setPage(true)}
-              >
-                Transport Booking
-              </span> */}
-            </p>
-          </div>
-        </div>
-        {!page ? (
-          <>
-            <div style={{ display: 'flex', gap: 10 }}>
-              <button className="app_button">Hotel Rack</button>
-              <button className="app_button">Show Rate Table</button>
-              <button className="app_button">Show Availability</button>
-              <button className="app_button">Add Row</button>
-              <button className="app_button">Add Local VAT</button>
-              <input type="checkbox" />
-              Show All
-            </div>
-            <div>
-              <Table responsive size="sm mt-5" bordered striped>
-                <thead>
-                  <tr>
-                    <th className="thead_">Hotel</th>
-                    <th className="thead_">Check In</th>
-                    <th className="thead_">Check Out</th>
-                    <th className="thead_">Night</th>
-                    <th className="thead_">View</th>
-                    <th className="thead_">Room Type</th>
-                    <th className="thead_">Meal Type</th>
-                    <th className="thead_">No of Room</th>
-                    <th className="thead_">Room Sale Source</th>
-                    <th className="thead_">Supplier</th>
-                    <th className="thead_">Meal Sale Source</th>
-                    <th className="thead_">Supplier</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Room Sale Rate</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Room Cost Rate</th>
-                    <th className="thead_">Rate ExcTax</th>
-                    <th className="thead_">Municipal VAT 5%</th>
-                    <th className="thead_">Purch VAT 15%</th>
-                    <th className="thead_">Rat Inc. All Tax</th>
-                    <th className="thead_">Total Meal Cost Rate</th>
-                    <th className="thead_">Net Total Sale</th>
-                    <th className="thead_">Net Total Cost</th>
-                    <th className="thead_">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div style={{ display: 'flex' }}>
-                        <input className="table_input" type="search" />
-                        <CiSearch
-                          className=""
-                          size="1.5rem"
-                          style={{
-                            backgroundColor: 'rgb(12, 134, 103)',
-                            color: 'white',
-                          }}
-                          onClick={toggle3}
-                        />
-                        <Modal isOpen={modal3} toggle={toggle3} size="xl">
-                          <HotelReg />
-                        </Modal>
-                      </div>
-                    </td>
-                    <td>
-                      <input className="table_input" type="date" />
-                    </td>
-                    <td>
-                      <input className="table_input" type="date" />
-                    </td>
-                    <td></td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td></td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>{' '}
-                    <td>
-                      <select className="table_input">
-                        <option></option>
-                      </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td className="text-center text-danger">
-                      <BiTrash size="1.5rem" />
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              <button
-                className="app_button p-3 mt-3"
-                style={{ width: 150 }}
-                // onClick={handleSubmit}
-              >
-                Submit
-              </button>
-            </div>
-          </>
-        ) : (
-          ''
-        )}
+        </Col> */}
       </Row>
     </Card>
   )
