@@ -1,5 +1,6 @@
 import moment from "moment";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "reactstrap";
 import FormWrapper from "../tab-wrapper/FormaWrapper";
 import { _post } from "../Utils/Helper";
@@ -78,6 +79,7 @@ export default function Reserve() {
         console.log(err);
       };
   };
+  const navigate=useNavigate()
   const handleSubmit = () => {
     _post(`api/new-reservation?query_type=insert`, form, (resp) => {
       console.log(resp);
@@ -86,6 +88,7 @@ export default function Reserve() {
         console.log(err);
       };
     post_hotel_bookings();
+    navigate('/reservation-invoice')
   };
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
