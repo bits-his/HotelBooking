@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
 import { _post } from '../Utils/Helper'
@@ -6,6 +7,7 @@ import CreaateAllotment from './CreaateAllotment'
 import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotmentstep() {
+  const {user}=useSelector((state)=>state.auth)
     const [form, setForm] = useState({
       room_type: '',
         veiws: '',
@@ -28,7 +30,9 @@ export default function Allotmentstep() {
         allotment_type: '',
         supplier_name: '',
         reference_id: '',
-        details: ''
+        details: '',
+        agent:user.name
+
     })
     const [newData,setNewData]=useState([])
     const handleSubmit = ()=>{
@@ -60,8 +64,10 @@ console.log(res)
         console.log(err)
       }
     }
+
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
+      {JSON.stringify(form)}
       <FormWrapper steps={["Creaate Allotment", "Allaotment Table",]} handleSubmit={handleSubmit} >
         <CreaateAllotment form={form} setForm={setForm}/>
         <AllaotmentTable form={form} setForm={setForm} newData={newData} setNewData={setNewData} />

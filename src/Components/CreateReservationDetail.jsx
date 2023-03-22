@@ -19,7 +19,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const [modal3, setModal3] = useState(false)
   const [page, setPage] = useState(false)
 
-  const toggle = () => setModal(!modal)
+    const toggle = () => setModal(!modal)
   const toggle1 = () => setModal1(!modal1)
   const toggle2 = () => setModal2(!modal2)
   const toggle3 = () => setModal3(!modal3)
@@ -155,8 +155,8 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   }, [0]);
   const [selected,setSelected]=useState({})
   return (
-    <div className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(form)} */}
+    <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(names)} */}
 
       <Row>
         <Col
@@ -177,7 +177,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               name="reservation_number"
               type="number"
             />
-            <CiSearch className="search_icon" onChange={toggle2} />
+            <CiSearch className="search_icon" onClick={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
               <ReservationModal setForm={setForm} toggle={toggle2} />
             </Modal>
@@ -288,7 +288,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               onChange={handleChange}
               name="guest_name"
             />
-            <CiSearch className="search_icon" onChange={toggle1} />
+            <CiSearch className="search_icon" onClick={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
               <QuestModal setForm={setForm} toggle={toggle1}/>
             </Modal>
@@ -339,9 +339,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               onChange={handleChange}
               name="agent_name"
             />
-            <CiSearch className="search_icon" onChange={toggle} />
+            <CiSearch className="search_icon" onClick={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal setForm={setForm} toggle={toggle} />
+              <AgentModal setForm={setForm} toggle={toggle} names='agent_name' />
             </Modal>
           </div>
           {/* <InputForm
@@ -403,6 +403,6 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           </div>
         </Col> */}
       </Row>
-    </div>
+    </Card>
   )
 }

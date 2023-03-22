@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
 import { Row, Table, Button, Col, Card  } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
 import { _get, _post } from "../../Utils/Helper";
@@ -67,7 +68,7 @@ const getHotels = () => {
         console.log(form)
         setForm((p) => ({ ...p, [name]: value }))
     }
-   
+    const {user}=useSelector((state)=>state.auth)
     const addData = () =>{
    
         setNewData(prev => [
@@ -87,7 +88,8 @@ vat:form.vat,
 vat_total:form.vat_ttl,
 total_with_vat:form.ttl_w_vat,
 reference_no:form.ref_no,
-purchase_source:form.pur_source
+purchase_source:form.pur_source,
+agent:user.name
             }]);
           
         }
