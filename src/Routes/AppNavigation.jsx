@@ -16,6 +16,8 @@ import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
 import HotelReg from '../Components/HotelReg'
+import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
+import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
 import Master from '../Components/Master'
@@ -157,6 +159,10 @@ function AppNavigation() {
           path: 'create-new-costomer',
           element: <CreateNewCustomer />,
         },
+        {
+          path: '/reservation-invoice',
+          element: <ViewReservationInvoice/>
+      }
       ],
     },
   ])

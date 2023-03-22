@@ -33,7 +33,7 @@ export default function Allotment() {
 
   useEffect(() => {
     _post('api/allotment', { query_type: 'select' }, (resp) => {
-        setAllotmentData(resp)
+      setAllotmentData(resp)
       console.log(allotmentData)
     }),
       (err) => {
@@ -42,7 +42,7 @@ export default function Allotment() {
   }, [])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-        {JSON.stringify(allotmentData)}
+      {JSON.stringify(allotmentData)}
       <Row>
         <Col md={12}>
           <h5 className="app_title">Allotment</h5>
