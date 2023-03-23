@@ -196,6 +196,9 @@ export default function Sidebar() {
             <li onClick={() => goto('/country')} className="link_item">
               Country
             </li>
+            <li onClick={() => goto('/food-supplier')} className="link_item">
+              Create Food Suppler
+            </li>
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"

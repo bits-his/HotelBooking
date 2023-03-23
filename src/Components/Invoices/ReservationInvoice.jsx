@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-export const ReservationInvoice = () => (
+export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
   <>
     <Document>
       <Page size="A4" orientation="potrait" style={styles.page}>
@@ -70,7 +70,7 @@ export const ReservationInvoice = () => (
           >
             <View style={{ width: '50%' }}>
               <Text style={{ fontWeight: 'bold', fontSize: 12 }}>
-                VAT Rg No : <Text>311312212312131</Text>
+                VAT Rg No : <Text>{form&&form.vat_reg_no}</Text>
               </Text>
             </View>
             <View
@@ -82,14 +82,14 @@ export const ReservationInvoice = () => (
             >
               <View>
                 <Text style={{ fontSize: 12 }}>
-                  Print Date: 31/12/2023 7:00 AM
+                  Print Date: {form&&form.check_in}
                 </Text>
               </View>
             </View>
           </View>
           <View style={{ textAlign: 'center' }}>
             <Text style={{ fontWeight: '900', marginTop: 20 }}>
-              Proforma Invoice
+              Proform&&forma Invoice
             </Text>
           </View>
           <View
@@ -112,16 +112,16 @@ export const ReservationInvoice = () => (
               </Text>
               <View style={{ marginTop: 20 }}>
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
-                  Agent Name : <Text style={{}}>Yasir Hassan</Text>
+                  Agent Name : <Text style={{}}>{form&&form.agent_name}</Text>
                 </Text>
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
-                  Guest Name : <Text style={{}}>Ado Hassan</Text>
+                  Guest Name : <Text style={{}}>{form&&form.guest_name}</Text>
                 </Text>
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
-                  Nationality : <Text style={{}}>Nigeria</Text>
+                  Nationality : <Text style={{}}>{form&&form.country_name}</Text>
                 </Text>
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
-                  Contact Name : <Text style={{}}>nnn</Text>
+                  Contact Name : <Text style={{}}>{form&&form.phone}</Text>
                 </Text>
               </View>
             </View>
@@ -133,11 +133,11 @@ export const ReservationInvoice = () => (
               }}
             >
               <Text style={{ fontSize: 12, color: 'maroon' }}>
-                Reservation No: <Text style={{ fontSize: 20 }}>111</Text>
+                Reservation No: <Text style={{ fontSize: 20 }}>{form&&form.reservation_number}</Text>
               </Text>
               <View style={{ marginTop: 20 }}>
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
-                  TRN No: <Text>111</Text>
+                  TRN No: <Text>{form&&form.BRN_transport}</Text>
                 </Text>{' '}
                 <Text style={{ fontSize: 12, marginTop: 4 }}>
                   Client Ref No: <Text>111</Text>
@@ -191,6 +191,45 @@ export const ReservationInvoice = () => (
               </View>
             </View>
           </View>
+          {
+           setNew_data&&setNew_data.map((i)=>(
+            <View style={{ textAlign: '' }}>
+            
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{form&&form.hotel}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.room_type}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.check_in}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.check_out}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.night}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.no_of_room}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>1</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.meal_type}</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>Day Rate</Text>
+              </View>
+              <View style={styles.thead}>
+                <Text style={styles.tableData}>{i.total_meal_cost_rate}</Text>
+              </View>
+            </View>
+          </View>
+           )) 
+          }
           <View style={{ textAlign: '' }}>
             <Text style={{ color: 'grey', fontSize: 12, marginTop: 10 }}>
               Transport Details

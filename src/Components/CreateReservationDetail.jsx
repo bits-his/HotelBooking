@@ -280,7 +280,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             <option>Select </option>
             <option>Abdulsalam </option>
           </select>
-          <label className="Label mt-2">Quest Full Name</label>
+          <label className="Label mt-2">Guest Full Name</label>
           <div className="search_input_form">
             <input
               className="app_input3"

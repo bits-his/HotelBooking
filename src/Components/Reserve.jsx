@@ -1,3 +1,4 @@
+import { pdf } from "@react-pdf/renderer";
 import moment from "moment";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Card } from "reactstrap";
 import FormWrapper from "../tab-wrapper/FormaWrapper";
 import { _post } from "../Utils/Helper";
 import CreateReservationDetail from "./CreateReservationDetail";
+import ViewReservationInvoice from "./Invoices/ViewReservationInvoice";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
 
@@ -45,6 +47,11 @@ export default function Reserve() {
 
     net_total_sale: "",
     net_total_cost: "",
+    meal_cost_rate_ExcTax:"",
+    meal_cost_purch_vat:"",
+    meal_cost_municipal_vat:"",
+    meal_cost_rat_Inc_all_tax:"",
+    total_meal_sale_rate:"",
 
     reservation_type: "",
     booking_status: "",
@@ -69,6 +76,7 @@ export default function Reserve() {
     print_view: "",
     hotel_city: "",
     filter_type: "",
+    reservation_number:""
   });
   const [new_data, setNew_data] = useState([]);
   const post_hotel_bookings = () => {
@@ -91,12 +99,16 @@ export default function Reserve() {
     post_hotel_bookings();
    setPrint(!print)
   };
+  const trys = ()=>{
+    setPrint(!print)
+  }
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       {/* {JSON.stringify(form)} */}
-      <FormWrapper
+      {
+        print?<ViewReservationInvoice setNew_data={new_data} form={form}/>: <FormWrapper
         steps={["Create Reservation Details", "Hotel Bokking Details"]}
-        handleSubmit={handleSubmit}
+        handleSubmit={trys}
       >
         <CreateReservationDetail form={form} setForm={setForm} />
         <ReservationTable
@@ -106,6 +118,8 @@ export default function Reserve() {
           new_data={new_data}
         />
       </FormWrapper>
+      }
+     
     </Card>
   );
 }

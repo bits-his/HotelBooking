@@ -18,6 +18,8 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
+import FoodSupply from '../Components/FoodSupply'
+import CreateSupplier from '../Components/FoodSupplyForm'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
 import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
@@ -170,6 +172,13 @@ function AppNavigation() {
         {
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
+      },
+      {
+        path:"/food-supplier",
+        element:<FoodSupply />
+      },{
+        path:"/creat-food-supply",
+        element:<CreateSupplier />
       }
       ],
     },
