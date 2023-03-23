@@ -3,7 +3,7 @@ import { CiSearch } from 'react-icons/ci'
 import { Button, Card, Col, Row } from 'reactstrap'
 import { _post } from '../../Utils/Helper';
 
-export default function AgentModal({setForm=f=>f,toggle=f=>f}) {
+export default function AgentModal({setForm=f=>f,toggle=f=>f,names=''}) {
 
     const [hotel,setHotel]=useState([])
     const getHotels = () => {
@@ -33,6 +33,7 @@ export default function AgentModal({setForm=f=>f,toggle=f=>f}) {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       {/* {JSON.stringify(hotel)} */}
+      {JSON.stringify(names)}
         <Col md= {12}>
             <h5 className="app_title">Agent List</h5> 
             <hr />
@@ -119,7 +120,7 @@ export default function AgentModal({setForm=f=>f,toggle=f=>f}) {
                   border: '1px solid rgb(12, 134, 103)',
                   padding: '5px 10px',
                 }}
-              >
+              >+
                 Zip
               </th>
             </thead>
@@ -135,7 +136,7 @@ export default function AgentModal({setForm=f=>f,toggle=f=>f}) {
                   >
                     <button
                       className="app_button"
-                      onClick={()=>{setForm((p)=>({...p,agent_name:i.agent_name}));toggle()}}
+                      onClick={()=>{setForm((p)=>({...p,[names]:i.agent_name}));toggle()}}
                       // onClick={toggle}
                     >
                       {' '}

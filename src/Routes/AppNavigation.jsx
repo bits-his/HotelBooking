@@ -20,6 +20,8 @@ import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
 import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
+import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
+import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
 import Master from '../Components/Master'
@@ -167,9 +169,15 @@ function AppNavigation() {
           element: <CreateNewCustomer />,
         },
         {
+<<<<<<< HEAD
           path: 'hotel-chart',
           element: <HotelChart />,
         },
+=======
+          path: '/reservation-invoice',
+          element: <ViewReservationInvoice/>
+      }
+>>>>>>> a2316e48d45dd70ac0919d7f020f151a9c4729c5
       ],
     },
   ])
