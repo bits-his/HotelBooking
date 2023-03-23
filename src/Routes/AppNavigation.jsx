@@ -18,6 +18,7 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
+import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import Landing from '../Components/Landing'
 import ManageRooms from '../Components/ManageRooms'
@@ -164,6 +165,10 @@ function AppNavigation() {
         {
           path: 'create-new-costomer',
           element: <CreateNewCustomer />,
+        },
+        {
+          path: 'hotel-chart',
+          element: <HotelChart />,
         },
       ],
     },
