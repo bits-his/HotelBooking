@@ -29,7 +29,6 @@
   border: none !important;
   border-radius: 5px;
   border: 3px solid rgb(12, 134, 103) !important;
-  overflow-x: auto;
 }
 .dd {
   width: 100% !important;
@@ -208,7 +207,6 @@ label {
 .dashboard_card {
   height: 95vh !important;
   overflow-y: auto;
-  overflow-x: auto;
 }
 .card_div {
   border: 1px solid rgb(12, 134, 103);
@@ -487,14 +485,7 @@ label {
 
 .thead_ {
   /* width: 100px !important;
-   */
-   padding-left: 40px;
-   padding-right: 40px;
-   padding-top: 1px;
-   /* height: 0px; */
-   /* margin: 0; */
-   padding-bottom: 1px;
-  border: 1px solid rgb(12, 134, 103);
+  border: 1px solid rgb(12, 134, 103); */
 }
 .table_input {
   /* width: 150px; */
@@ -504,32 +495,47 @@ label {
   outline: none;
 } 
 .allotment_table{
-  border: 1px solid rgb(12, 134, 103);
-  /* padding: 12; */
+  border: 1px solid rgb(211, 211, 211);
+  padding: 12;
   width: 100%;
-  /* overflow-x: auto; */
-}
-.table-div22{
-  border: 1px solid black;
-  border-collapse: collapse;
+  /* height: 200px; */
+  overflow-x: auto;
 }
 
-.t{
-  width: 100%;
-}
-.thead{
-  width: 100%;
-  border: 1px solid rgb(12, 134, 103);
-}
-.th{
-  width: 150px;
-  overflow-x: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.td{
-  width: fit-content;
-}
-.t{
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  width: 400%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  /* padding: 8px; */
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  /* padding-top: 12px;
+  padding-bottom: 12px; */
+  text-align: left;
+  background-color: white;
+  color: black;
+}
+.label_ {
+  background-color: rgb(12, 134, 103);
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 10px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.line {
+  position: relative;
+  top: -25px;
+  margin: 0;
 }
