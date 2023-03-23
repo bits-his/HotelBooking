@@ -220,322 +220,360 @@ export default function ReservationTable({
             <center>Hotel Booking</center>
           </h5>
         </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Hotel</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.hotel}
-              onChange={handleChange}
-              name="hotel"
-              // type="number"
-            />
-            <CiSearch className="search_icon" onClick={toggle3} />
-            <Modal isOpen={modal3} toggle={toggle3} size="xl">
-              <HotelReg setForms={setForm} toggles={toggle3} />
-            </Modal>
-          </div>
-          {/* <label className="Label mt-2">Hotel</label> */}
-          {/* <div className='search_input_form'> */}
-
-          {/* </div> */}
-          <InputForm
-            // style={{width: '200px', border: 'none ', outline: 'none', height: 15}}
-            className="app_input"
-            label="Night"
-            value={form.night}
-            onChange={handleChange}
-            name="night"
-            type="number"
-          />
-          <label className="Label mt-2">Meal Type</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.meal_type}
-            name="meal_type"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-            {data1.map((item) => (
-              <option value={item.meal_name}>{item.meal_name} </option>
-            ))}
-          </select>
-          <label className="Label mt-2">Supllier</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.supplier}
-              onChange={handleChange}
-              name="supplier"
-            />
-            <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal setForm={setForm} toggle={toggle} names="supplier" />
-            </Modal>
-          </div>
-          <InputForm
-            label="	Rate ExcTax"
-            className="app_input"
-            onChange={handleChange}
-            value={form.meal_rate_exc_tax}
-            name="meal_rate_exc_tax"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Rat Inc. All Tax"
-            onChange={handleChange}
-            value={form.meal_rat_inc_all_tax}
-            name="meal_rat_inc_all_tax"
-            type="Number"
-          />
-
-          <InputForm
-            label="Municipal VAT 5%"
-            className="app_input"
-            onChange={handleChange}
-            value={form.sale_municipal_vat}
-            name="sale_municipal_vat"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Total Room Cost Rate"
-            onChange={handleChange}
-            value={form.total_room_cost_rate}
-            name="total_room_cost_rate"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Purch VAT 15%a"
-            onChange={handleChange}
-            value={form.cost_purch_vat}
-            name="cost_purch_vat"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Net Total Sale"
-            onChange={handleChange}
-            value={form.net_total_sale}
-            name="net_total_sale"
-            type="Number"
-          />
-        </Col>
-        <Col md={4}>
-          <InputForm
-            // style={{width: '200px', border: 'none ', outline: 'none', height: 15}}
-            className="app_input"
-            label="Check In"
-            value={form.check_in}
-            onChange={handleChange}
-            name="check_in"
-            type="date"
-          />
-          <label className="Label mt-2">View</label>
-          {/* <label */}
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.view}
-            name="view"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-            {data.map((item) => (
-              <option value={item.view_name}>{item.view_name} </option>
-            ))}
-          </select>
-          <InputForm
-            className="app_input"
-            label="No of Room"
-            onChange={handleChange}
-            value={form.no_of_room}
-            name="no_of_room"
-            type="Number"
-          />
-          <label className="Label mt-2">Meal Sale Source</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            onChange={handleChange}
-            value={form.meal_scale_source}
-            name="meal_scale_source"
-            type="select"
-          >
-            <option>Select </option>
-            <option>Hotel </option>
-            <option>restaurant </option>
-            {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
-          </select>
-          <InputForm
-            label="Municipal VAT 5%"
-            className="app_input"
-            onChange={handleChange}
-            value={form.meal_municipal_vat}
-            name="meal_municipal_vat"
-            type="Number"
-          />
-          <InputForm
-            label="Tax"
-            className="app_input"
-            onChange={handleChange}
-            value={rate_tax}
-            name="cost_municipal_vat"
-            type="re"
-          />
-
-          <InputForm
-            className="app_input"
-            label="	Total Room Sale Rate"
-            onChange={handleChange}
-            value={form.total_room_sale_rate}
-            name="total_room_sale_rate"
-            type="Number"
-          />
-          <InputForm
-            label="Purch VAT 15%"
-            className="app_input"
-            onChange={handleChange}
-            value={form.sale_purch_vat}
-            name="sale_purch_vat"
-            type="Number"
-          />
-          <InputForm
-            label="	Rate ExcTax"
-            className="app_input"
-            onChange={handleChange}
-            value={form.cost_rate_exc_tax}
-            name="cost_rate_exc_tax"
-            type="Number"
-          />
-
-          <InputForm
-            className="app_input"
-            label="Rat Inc. All Tax"
-            onChange={handleChange}
-            value={form.cost_rat_inc_all_tax}
-            name="cost_rat_inc_all_tax"
-            type="Number"
-          />
-          <InputForm
-            label="Net Total Cost"
-            className="app_input"
-            onChange={handleChange}
-            value={form.net_total_cost}
-            name="net_total_cost"
-            type="Number"
-          />
-        </Col>
-        <Col md={4}>
-          <InputForm
-            // style={{width: '200px', border: 'none ', outline: 'none', height: 15}}
-            className="app_input"
-            label="Check Out"
-            value={form.check_out}
-            onChange={handleChange}
-            name="check_out"
-            type="date"
-          />
-          <label className="Label mt-2">Room Type</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.room_type}
-            name="room_type"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-            {data2?.map((item) => (
-              <option value={item.room_name}>{item.room_name} </option>
-            ))}
-          </select>
-          <label className="Label mt-2">Room Sale Source</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            onChange={handleChange}
-            value={form.room_scale_source}
-            name="room_scale_source"
-            type="select"
-          >
-            <option>Select </option>
-            <option>Agent</option>
-            <option>supplier</option>
-            {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
-          </select>
-          <label>Supllier</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.supplier1}
-              onChange={handleChange}
-              name="supplier1"
-            />
-            <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={modal4} toggle={toggle9} size="xl">
-              <AgentModal
-                setForm={setForm}
-                toggle={toggle9}
-                names="supplier1"
+        <div>
+          <Row>
+            <Col md={4}>
+              <label className="Label mt-2">Hotel</label>
+              <div className="search_input_form">
+                <input
+                  className="app_input3"
+                  value={form.hotel}
+                  onChange={handleChange}
+                  name="hotel"
+                />
+                <CiSearch className="search_icon" onClick={toggle3} />
+                <Modal isOpen={modal3} toggle={toggle3} size="xl">
+                  <HotelReg setForms={setForm} toggles={toggle3} />
+                </Modal>
+              </div>
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Check In"
+                value={form.check_in}
+                onChange={handleChange}
+                name="check_in"
+                type="date"
               />
-            </Modal>
-          </div>
-          <InputForm
-            className="app_input"
-            label=" Purch VAT 15%s"
-            onChange={handleChange}
-            value={form.meal_purch_vat}
-            name="meal_purch_vat"
-            type="Number"
-          />
-          <InputForm
-            label="Purch Tax"
-            className="app_input"
-            onChange={handleChange}
-            value={purch_tax}
-            name="cost_municipal_vat"
-            type="re"
-          />
-          <InputForm
-            // style={{width: 100 ,border: 'none ', outline: 'none', height: 15}}
-            className="app_input"
-            label="Rate ExcTax"
-            onChange={handleChange}
-            value={form.sale_rate_exc_tax}
-            name="sale_rate_exc_tax"
-            type="Number"
-          />
-          <InputForm
-            label="Rat Inc. All Tax"
-            className="app_input"
-            onChange={handleChange}
-            value={form.sale_rat_inc_all_tax}
-            name="sale_rat_inc_all_tax"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Municipal VAT 5%"
-            onChange={handleChange}
-            value={form.cost_municipal_vat}
-            name="cost_municipal_vat"
-            type="Number"
-          />
-          <InputForm
-            className="app_input"
-            label="Total Meal Cost Rate"
-            onChange={handleChange}
-            value={form.total_meal_cost_rate}
-            name="total_meal_cost_rate"
-            type="Number"
-          />
-        </Col>
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Night"
+                value={form.night}
+                onChange={handleChange}
+                name="night"
+                type="number"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Check Out"
+                value={form.check_out}
+                onChange={handleChange}
+                name="check_out"
+                type="date"
+              />
+            </Col>
+            <Col md={4}>
+              <label className="Label mt-2">View</label>
+              {/* <label */}
+              <select
+                id="exampleSelect"
+                className="app_input"
+                value={form.view}
+                name="view"
+                type="select"
+                onChange={handleChange}
+              >
+                <option>Select </option>
+                {data.map((item) => (
+                  <option value={item.view_name}>{item.view_name} </option>
+                ))}
+              </select>
+            </Col>
+            <Col md={4}>
+              <label className="Label mt-2">Room Type</label>
+              <select
+                id="exampleSelect"
+                className="app_input"
+                value={form.room_type}
+                name="room_type"
+                type="select"
+                onChange={handleChange}
+              >
+                <option>Select </option>
+                {data2?.map((item) => (
+                  <option value={item.room_name}>{item.room_name} </option>
+                ))}
+              </select>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <label className="Label mt-2">Meal Type</label>
+              <select
+                id="exampleSelect"
+                className="app_input"
+                value={form.meal_type}
+                name="meal_type"
+                type="select"
+                onChange={handleChange}
+              >
+                <option>Select </option>
+                {data1.map((item) => (
+                  <option value={item.meal_name}>{item.meal_name} </option>
+                ))}
+              </select>
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="No of Room"
+                onChange={handleChange}
+                value={form.no_of_room}
+                name="no_of_room"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <label className="Label mt-2">Room Sale Source</label>
+              <select
+                id="exampleSelect"
+                className="app_input"
+                onChange={handleChange}
+                value={form.room_scale_source}
+                name="room_scale_source"
+                type="select"
+              >
+                <option>Select </option>
+                <option>Agent</option>
+                <option>supplier</option>
+              </select>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <label className="Label mt-2">Supllier</label>
+              <div className="search_input_form">
+                <input
+                  className="app_input3"
+                  value={form.supplier}
+                  onChange={handleChange}
+                  name="supplier"
+                />
+                <CiSearch className="search_icon" onClick={toggle} />
+                <Modal isOpen={modal} toggle={toggle} size="xl">
+                  <AgentModal
+                    setForm={setForm}
+                    toggle={toggle}
+                    names="supplier"
+                  />
+                </Modal>
+              </div>
+            </Col>
+            <Col md={4}>
+              <label className="Label mt-2">Meal Sale Source</label>
+              <select
+                id="exampleSelect"
+                className="app_input"
+                onChange={handleChange}
+                value={form.meal_scale_source}
+                name="meal_scale_source"
+                type="select"
+              >
+                <option>Select </option>
+                <option>Hotel </option>
+                <option>restaurant </option>
+                {/* {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))} */}
+              </select>
+            </Col>
+            <Col md={4}>
+              <label>Supllier</label>
+              <div className="search_input_form">
+                <input
+                  className="app_input3"
+                  value={form.supplier1}
+                  onChange={handleChange}
+                  name="supplier1"
+                />
+                <CiSearch className="search_icon" onClick={toggle} />
+                <Modal isOpen={modal4} toggle={toggle9} size="xl">
+                  <AgentModal
+                    setForm={setForm}
+                    toggle={toggle9}
+                    names="supplier1"
+                  />
+                </Modal>
+              </div>
+            </Col>
+          </Row>
+          {/* //////////////////////////////////////////////////////// */}
+          {/* ////ROOM RATE SALE///// */}
+          
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Rate Ex Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Municipal VAT 5%"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Purch VAT 15%"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Rate Inc. All Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Total Room Sale Rate"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}></Col>
+          </Row>
+
+          {/* ////MEAL RATE SALE///// */}
+
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Rate Ex Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Purch VAT 15%"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Rate Inc. All Tax"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Total Meal Sale Rate"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          {/* ////ROOM RATE COST///// */}
+
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Rate Ex Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Municipal VAT 5%"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Purch VAT 15%"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Room Rate Inc. All Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Total Room Cost Rate"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}></Col>
+          </Row>
+          {/* ////MEAL RATE COST///// */}
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Rate Ex Tax"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Purch VAT 15%"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Rate Inc. All Tax"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Total Meal Cost Rate"
+                type="Number"
+              />
+            </Col>
+          </Row>
+          {/* ////NET TOTAL///// */}
+
+          <Row>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Net Total Sale"
+                type="Number"
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Net Total Cost"
+                type="Number"
+              />
+            </Col>
+          </Row>
+        </div>
         <Col md={12}>
           <center>
             <button
