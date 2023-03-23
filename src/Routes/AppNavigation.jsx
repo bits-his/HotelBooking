@@ -169,15 +169,13 @@ function AppNavigation() {
           element: <CreateNewCustomer />,
         },
         {
-<<<<<<< HEAD
           path: 'hotel-chart',
           element: <HotelChart />,
         },
-=======
+        { 
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
-      }
->>>>>>> a2316e48d45dd70ac0919d7f020f151a9c4729c5
+        }
       ],
     },
   ])
