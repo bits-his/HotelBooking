@@ -524,3 +524,18 @@ label {
   background-color: white;
   color: black;
 }
+.label_ {
+  background-color: rgb(12, 134, 103);
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 10px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.line {
+  position: relative;
+  top: -25px;
+  margin: 0;
+}

@@ -404,7 +404,10 @@ export default function ReservationTable({
           </Row>
           {/* //////////////////////////////////////////////////////// */}
           {/* ////ROOM RATE SALE///// */}
-          
+          <div className="text-center mt-5">
+            <p className="label_">ROOM RATE SALE</p>
+          </div>
+          <hr className="line" />
           <Row>
             <Col md={4}>
               <InputForm
@@ -447,7 +450,10 @@ export default function ReservationTable({
           </Row>
 
           {/* ////MEAL RATE SALE///// */}
-
+          <div className="text-center mt-5">
+            <p className="label_">ROOM RATE SALE</p>
+          </div>
+          <hr className='line'/>
           <Row>
             <Col md={4}>
               <InputForm
@@ -481,7 +487,10 @@ export default function ReservationTable({
             </Col>
           </Row>
           {/* ////ROOM RATE COST///// */}
-
+          <div className="text-center mt-5">
+            <p className="label_">ROOM RATE SALE</p>
+          </div>
+          <hr className='line'/>
           <Row>
             <Col md={4}>
               <InputForm
@@ -523,6 +532,10 @@ export default function ReservationTable({
             <Col md={4}></Col>
           </Row>
           {/* ////MEAL RATE COST///// */}
+          <div className="text-center mt-5">
+            <p className="label_">ROOM RATE SALE</p>
+          </div>
+          <hr className='line'/>
           <Row>
             <Col md={4}>
               <InputForm
