@@ -68,7 +68,7 @@ export default function ReservationDetails() {
         </Col>
         <Row>
           <table
-            style={{ border: "1px solid #ccc", padding: 12 }}
+            style={{ border: "1px solid #ccc", padding: '' }}
             className="mt-5"
           >
             <thead>

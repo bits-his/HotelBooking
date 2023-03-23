@@ -363,7 +363,6 @@ export const ReservationInvoice = () => (
                   </View>
                   <View
                     style={{
-                     
                       border: '1px solid black',
                       display: 'flex',
                       padding: 5,
@@ -373,7 +372,6 @@ export const ReservationInvoice = () => (
                   </View>
                   <View
                     style={{
-                     
                       border: '1px solid black',
                       display: 'flex',
                       padding: 5,
@@ -384,7 +382,6 @@ export const ReservationInvoice = () => (
                   </View>
                   <View
                     style={{
-                     
                       border: '1px solid black',
                       display: 'flex',
                       padding: 5,
