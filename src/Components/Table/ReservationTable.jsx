@@ -147,6 +147,11 @@ export default function ReservationTable({
         net_total_sale: form.net_total_sale,
         net_total_cost: form.net_total_cost,
         view: form.view,
+        meal_cost_rate_ExcTax:form.meal_cost_rate_ExcTax,
+    meal_cost_purch_vat:form.meal_cost_purch_vat,
+    meal_cost_municipal_vat:form.meal_cost_municipal_vat,
+    meal_cost_rat_Inc_all_tax:form.meal_cost_rat_Inc_all_tax,
+    total_meal_sale_rate:form.total_meal_sale_rate,
       },
     ])
 
@@ -166,6 +171,8 @@ export default function ReservationTable({
   let percent4 = parseInt(form.sale_purch_vat) / 100
   let percent5 = parseInt(form.cost_municipal_vat) / 100
   let percent6 = parseInt(form.cost_purch_vat) / 100
+  let percent7 = parseInt(form.meal_cost_municipal_vat) / 100
+  let percent8 = parseInt(form.meal_cost_purch_vat) / 100
   // let final =  meal_rate_exc_tax
   const tax = parseInt(form.meal_rate_exc_tax) * percent
   let rate_tax = tax + parseInt(form.meal_rate_exc_tax)
@@ -181,12 +188,31 @@ export default function ReservationTable({
   let cost_rate_tax = cost_tax + parseInt(form.cost_rate_exc_tax)
   const cost_purch_tax = percent6 * cost_rate_tax
   const cost_ratInc = cost_purch_tax + cost_rate_tax
+
+  const meal_cost_tax = parseInt(form.meal_cost_rate_ExcTax) * percent7
+  let meal_cost_rate_tax = meal_cost_tax + parseInt(form.meal_cost_rate_ExcTax)
+  const meal_cost_purch_tax = percent8 * meal_cost_rate_tax
+  const meal_cost_ratInc = meal_cost_purch_tax + meal_cost_rate_tax
+  const total_r_sale = parseInt(form.sale_rate_exc_tax)+parseInt(form.sale_municipal_vat)+parseInt(form.sale_purch_vat)
+  const total_2_sale = parseInt(form.meal_rate_exc_tax)+parseInt(form.meal_municipal_vat)+parseInt(form.meal_purch_vat)
+  const total_3_sale = parseInt(form.cost_rate_exc_tax)+parseInt(form.cost_municipal_vat)+parseInt(form.cost_purch_vat)
+  const total_4_sale = parseInt(form.meal_cost_rate_ExcTax)+parseInt(form.meal_cost_purch_vat)+parseInt(form.meal_cost_municipal_vat)
+  const netsale = total_r_sale+total_2_sale
+  const netCost = total_3_sale + total_4_sale
   useEffect(() => {
     setForm((p) => ({
       ...p,
       meal_rat_inc_all_tax: ratInc,
       sale_rat_inc_all_tax: sale_ratInc,
       cost_rat_inc_all_tax: cost_ratInc,
+      meal_cost_rat_Inc_all_tax:meal_cost_ratInc,
+      total_room_sale_rate:total_r_sale,
+      total_meal_sale_rate:total_2_sale,
+      total_room_cost_rate:total_3_sale,
+      total_meal_cost_rate:total_4_sale,
+      net_total_sale:netsale,
+      net_total_cost:netCost
+
     }))
   })
   const [modal, setModal] = useState(false)
@@ -214,7 +240,7 @@ export default function ReservationTable({
     )
   return (
     <div>
-      {JSON.stringify(calc)}
+      {JSON.stringify(form.room_sale_source)}
       <Row>
         <Col md={12}>
           <h5 className="app_title" style={{ fontSize: 30 }}>
@@ -415,9 +441,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Ex Tax"
                 type="Number"
-                name=""
-                // value={}
-
+                name="sale_rate_exc_tax"
+                value={form.sale_rate_exc_tax}
+                onChange={handleChange}
               />
             </Col>
             <Col md={4}>
@@ -425,6 +451,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Municipal VAT 5%"
                 type="Number"
+                name="sale_municipal_vat"
+                value={form.sale_municipal_vat}
+                onChange={handleChange}
               />
             </Col>
             <Col md={4}>
@@ -432,6 +461,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Purch VAT 15%"
                 type="Number"
+                name="sale_purch_vat"
+                value={form.sale_purch_vat}
+                onChange={handleChange}
               />
             </Col>
           </Row>
@@ -441,6 +473,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Inc. All Tax"
                 type="Number"
+                name='sale_rat_inc_all_tax'
+                value={form.sale_rat_inc_all_tax}
+                onChange={handleChange}
               />
             </Col>
             <Col md={4}>
@@ -448,6 +483,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Total Room Sale Rate"
                 type="Number"
+                name="total_room_sale_rate"
+                value={form.total_room_sale_rate}
+                onChange={handleChange}
               />
             </Col>
             <Col md={4}></Col>
@@ -464,6 +502,20 @@ export default function ReservationTable({
                 className="app_input"
                 label="Meal Rate Ex Tax"
                 type="Number"
+                name="meal_rate_exc_tax"
+                value={form.meal_rate_exc_tax}
+                onChange={handleChange}
+
+              />
+            </Col>
+            <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Municipal VAT 15%"
+                type="Number"
+                name="meal_municipal_vat"
+                value={form.meal_municipal_vat}
+                onChange={handleChange}
               />
             </Col>
             <Col md={4}>
@@ -471,24 +523,35 @@ export default function ReservationTable({
                 className="app_input"
                 label="Meal Purch VAT 15%"
                 type="Number"
+                name="meal_purch_vat"
+                value={form.meal_purch_vat}
+                onChange={handleChange}
               />
             </Col>
-            <Col md={4}>
+           
+          </Row>
+          <Row>
+          <Col md={4}>
               <InputForm
                 className="app_input"
                 label="Meal Rate Inc. All Tax"
                 type="Number"
+                name="meal_rat_inc_all_tax"
+                value={form.meal_rat_inc_all_tax}
+                onChange={handleChange}
               />
             </Col>
-          </Row>
-          <Row>
             <Col md={4}>
               <InputForm
                 className="app_input"
                 label="Total Meal Sale Rate"
                 type="Number"
+                name="total_meal_sale_rate"
+                value={form.total_meal_sale_rate}
+                onChange={handleChange}
               />
             </Col>
+            
           </Row>
           {/* ////ROOM RATE COST///// */}
           <div className="text-center mt-5">
@@ -501,6 +564,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Ex Tax"
                 type="Number"
+                onChange={handleChange}
+                name="cost_rate_exc_tax"
+                value={form.cost_rate_exc_tax}
               />
             </Col>
             <Col md={4}>
@@ -508,6 +574,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Municipal VAT 5%"
                 type="Number"
+                onChange={handleChange}
+                name="cost_municipal_vat"
+                value={form.cost_municipal_vat}
               />
             </Col>
             <Col md={4}>
@@ -515,6 +584,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Purch VAT 15%"
                 type="Number"
+                onChange={handleChange}
+                name="cost_purch_vat"
+                value={form.cost_purch_vat}
               />
             </Col>
           </Row>
@@ -524,6 +596,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Inc. All Tax"
                 type="Number"
+                onChange={handleChange}
+                name="cost_rat_inc_all_tax"
+                value={form.cost_rat_inc_all_tax}
               />
             </Col>
             <Col md={4}>
@@ -531,6 +606,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Total Room Cost Rate"
                 type="Number"
+                onChange={handleChange}
+                name="total_room_cost_rate"
+                value={form.total_room_cost_rate}
               />
             </Col>
             <Col md={4}></Col>
@@ -546,6 +624,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Meal Rate Ex Tax"
                 type="Number"
+                onChange={handleChange}
+                name="meal_cost_rate_ExcTax"
+                value={form.meal_cost_rate_ExcTax}
               />
             </Col>
             <Col md={4}>
@@ -553,22 +634,42 @@ export default function ReservationTable({
                 className="app_input"
                 label="Meal Purch VAT 15%"
                 type="Number"
+                onChange={handleChange}
+                name="meal_cost_purch_vat"
+                value={form.meal_cost_purch_vat}
               />
             </Col>
             <Col md={4}>
               <InputForm
                 className="app_input"
-                label="Meal Rate Inc. All Tax"
+                label="Meal Municipal VAT 5%"
                 type="Number"
+                onChange={handleChange}
+                name="meal_cost_municipal_vat"
+                value={form.meal_cost_municipal_vat}
               />
             </Col>
+            
           </Row>
           <Row>
+          <Col md={4}>
+              <InputForm
+                className="app_input"
+                label="Meal Rate Inc. All Tax"
+                type="Number"
+                onChange={handleChange}
+                name="meal_cost_rat_Inc_all_tax"
+                value={form.meal_cost_rat_Inc_all_tax}
+              />
+            </Col>
             <Col md={4}>
               <InputForm
                 className="app_input"
                 label="Total Meal Cost Rate"
                 type="Number"
+                onChange={handleChange}
+                name="total_meal_cost_rate"
+                value={form.total_meal_cost_rate}
               />
             </Col>
           </Row>
@@ -580,6 +681,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Net Total Sale"
                 type="Number"
+                onChange={handleChange}
+                name="net_total_sale"
+                value={form.net_total_sale}
               />
             </Col>
             <Col md={4}>
@@ -587,6 +691,10 @@ export default function ReservationTable({
                 className="app_input"
                 label="Net Total Cost"
                 type="Number"
+                onChange={handleChange}
+                name="net_total_cost"
+
+                value={form.net_total_cost}
               />
             </Col>
           </Row>
@@ -758,36 +866,58 @@ export default function ReservationTable({
                     />
                   </td>
                   <td>
-                    <input
-                      className="table_input"
-                      onChange={({ target: { name, value } }) => {
-                        handleChanges(name, value, index)
-                      }}
-                      value={item.view}
-                      name="view"
-                    />
+                  <select
+                id="exampleSelect"
+                className="table_input"
+                value={item.view}
+                name="view"
+                type="select"
+                onChange={({ target: { name, value } }) => {
+                  handleChanges(name, value, index)
+                }}
+              >
+                <option>Select </option>
+                {data.map((items) => (
+                  <option value={items.view_name}>{items.view_name} </option>
+                ))}
+              </select>
+
                     {/* {item.view} */}
                   </td>
                   <td>
-                    <input
-                      className="table_input"
-                      onChange={({ target: { name, value } }) => {
-                        handleChanges(name, value, index)
-                      }}
-                      value={item.room_type}
-                      name="room_type"
-                    />
+                  <select
+                id="exampleSelect"
+                className="table_input"
+                value={item.room_type}
+                name="room_type"
+                type="select"
+                onChange={({ target: { name, value } }) => {
+                  handleChanges(name, value, index)
+                }}
+              >
+                <option>Select </option>
+                {data2?.map((items) => (
+                  <option value={items.room_name}>{items.room_name} </option>
+                ))}
+              </select>
                     {/* {item.room_type} */}
                   </td>
                   <td>
-                    <input
-                      className="table_input"
-                      onChange={({ target: { name, value } }) => {
-                        handleChanges(name, value, index)
-                      }}
-                      value={item.meal_type}
-                      name="meal_type"
-                    />
+                  <select
+                id="exampleSelect"
+                className="table_input"
+                value={item.meal_type}
+                name="meal_type"
+                type="select"
+                onChange={({ target: { name, value } }) => {
+                  handleChanges(name, value, index)
+                }}
+              >
+                <option>Select </option>
+                {data1.map((items) => (
+                  <option value={items.meal_name}>{items.meal_name} </option>
+                ))}
+              </select>
                     {/* {item.meal_type}  */}
                   </td>
                   <td>
@@ -807,8 +937,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.room_scale_source}
-                      name="room_scale_source"
+                      value={item.room_sale_source}
+                      name="room_sale_source"
                     />
                     {/* {item.meal_type} */}
                   </td>
@@ -853,8 +983,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.meal_rate_exc_tax}
-                      name="meal_rate_exc_tax"
+                      value={item.sale_rate_exc_tax}
+                      name="sale_rate_exc_tax"
                     />
                   </td>
                   <td>
@@ -863,8 +993,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.meal_municipal_vat}
-                      name="meal_municipal_vat"
+                      value={item.sale_municipal_vat}
+                      name="sale_municipal_vat"
                     />
                   </td>
                   <td>
@@ -873,8 +1003,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.meal_purch_vat}
-                      name="meal_purch_vat"
+                      value={item.sale_purch_vat}
+                      name="sale_purch_vat"
                     />
                   </td>
                   <td>
@@ -883,8 +1013,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.meal_rat_inc_all_tax}
-                      name="meal_rat_inc_all_tax"
+                      value={item.sale_rat_inc_all_tax}
+                      name="sale_rat_inc_all_tax"
                     />
                   </td>
                   <td>
@@ -935,8 +1065,8 @@ export default function ReservationTable({
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
                       }}
-                      value={item.total_room_cost_rate}
-                      name="total_room_cost_rate"
+                      value={item.total_meal_sale_rate}
+                      name="total_meal_sale_rate"
                     />
                   </td>
                   {/* /////////////////////////////////////////////////////////////////////////////////////// */}
@@ -994,16 +1124,44 @@ export default function ReservationTable({
                   {/* //////////////////////////////////////////////////////////////////////////////////// */}
                   {/* //////////////////////////////MEAL RATE COST//////////////////////////////////////// */}
                   <td>
-                    <input className="table_input" />
+                  <input
+                      className="table_input"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                      value={item.meal_cost_rate_ExcTax}
+                      name="meal_cost_rate_ExcTax"
+                    />
                   </td>
                   <td>
-                    <input className="table_input" />
+                     <input
+                      className="table_input"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                      value={item.meal_cost_purch_vat}
+                      name="meal_cost_purch_vat"
+                    />
                   </td>
                   <td>
-                    <input className="table_input" />
+                     <input
+                      className="table_input"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                      value={item.meal_cost_rat_Inc_all_tax}
+                      name="meal_cost_rat_Inc_all_tax"
+                    />
                   </td>
                   <td>
-                    <input className="table_input" />
+                     <input
+                      className="table_input"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                      value={item.total_meal_cost_rate}
+                      name="total_meal_cost_rate"
+                    />
                   </td>
                   {/* ///////////////////////////////////////////////////////// */}
                   {/* /////////////////////////NET TOTAL/////////////////////////// */}

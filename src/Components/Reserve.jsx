@@ -99,16 +99,16 @@ export default function Reserve() {
     post_hotel_bookings();
    setPrint(!print)
   };
-  const trys = ()=>{
-    setPrint(!print)
-  }
+  // const trys = ()=>{
+  //   setPrint(!print)
+  // }
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       {/* {JSON.stringify(form)} */}
       {
         print?<ViewReservationInvoice setNew_data={new_data} form={form}/>: <FormWrapper
         steps={["Create Reservation Details", "Hotel Bokking Details"]}
-        handleSubmit={trys}
+        handleSubmit={handleSubmit}
       >
         <CreateReservationDetail form={form} setForm={setForm} />
         <ReservationTable
