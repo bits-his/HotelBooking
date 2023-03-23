@@ -5,6 +5,7 @@ import { CiSearch } from 'react-icons/ci'
 import { Card, Col, Modal, Row, Table } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
 import { _get, _post } from '../../Utils/Helper'
+import FoodModal from '../FoodModal'
 import HotelReg from '../HotelReg'
 import AgentModal from '../Modal/AgentModal'
 
@@ -191,7 +192,7 @@ export default function ReservationTable({
   const [modal, setModal] = useState(false)
   const [modal4, setModal4] = useState(false)
   const toggle = () => setModal(!modal)
-  const toggle9 = () => setModal(!modal4)
+  const toggle9 = () => setModal4(!modal4)
   const filt = new_data && new_data.map((i) => i.meal_rat_inc_all_tax)
   const calc =
     new_data &&
@@ -336,8 +337,8 @@ export default function ReservationTable({
                 id="exampleSelect"
                 className="app_input"
                 onChange={handleChange}
-                value={form.room_scale_source}
-                name="room_scale_source"
+                value={form.room_sale_source}
+                name="room_sale_source"
                 type="select"
               >
                 <option>Select </option>
@@ -383,7 +384,7 @@ export default function ReservationTable({
               </select>
             </Col>
             <Col md={4}>
-              <label>Supllier</label>
+              <label>Meal Supllier</label>
               <div className="search_input_form">
                 <input
                   className="app_input3"
@@ -391,12 +392,12 @@ export default function ReservationTable({
                   onChange={handleChange}
                   name="supplier1"
                 />
-                <CiSearch className="search_icon" onClick={toggle} />
+                <CiSearch className="search_icon" onClick={toggle9} />
                 <Modal isOpen={modal4} toggle={toggle9} size="xl">
-                  <AgentModal
+                  <FoodModal
                     setForm={setForm}
                     toggle={toggle9}
-                    names="supplier1"
+                    
                   />
                 </Modal>
               </div>
@@ -414,6 +415,9 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Ex Tax"
                 type="Number"
+                name=""
+                // value={}
+
               />
             </Col>
             <Col md={4}>
