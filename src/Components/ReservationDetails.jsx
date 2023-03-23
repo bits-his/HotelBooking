@@ -48,7 +48,7 @@ export default function ReservationDetails() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className=''>
 
         <Col md={12}>
           <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
