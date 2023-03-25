@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _post } from "../Utils/Helper";
 
-export default function ReservationModal({
-  setForm = (f) => f,
-  toggle = (f) => f,
-}) {
+
+export default function ReservationTable() {
   const [data, setData] = useState([]);
 
   const [hotel, setHotel] = useState([]);
@@ -40,6 +38,14 @@ export default function ReservationModal({
         <h5 className="app_title">Reservation List</h5>
         <hr />
       </Col>
+      <button
+            className="app_button p-3 mb-3"
+            style={{ width: 150 }}
+            onClick={() => navigate ("/reservation-details")}
+          >
+            Add Reservation +
+          </button>
+        
       {/* {JSON.stringify(hotel)} */}
       <Col md={12}>
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
@@ -156,8 +162,6 @@ export default function ReservationModal({
                 >
                   <Button
                     onClick={() => {
-                      setForm((p) => ({ ...p, reservation_number: i.reservation_number }));
-                      toggle();
                       navigate(`/reservation-details?reservation_number=${i.reservation_number}`)
                     }}
                     // onClick={}

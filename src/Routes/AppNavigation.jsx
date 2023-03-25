@@ -20,6 +20,7 @@ import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
 import FoodSupply from '../Components/FoodSupply'
 import CreateSupplier from '../Components/FoodSupplyForm'
+import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
 import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
@@ -31,6 +32,7 @@ import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
 import Reservation from '../Components/Reservation'
 import ReservationDetails from '../Components/ReservationDetails'
+import ReservationTable from '../Components/ReservationTable'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -126,6 +128,10 @@ function AppNavigation() {
           element: <CreateReservationDetail />,
         },
         {
+          path:"/reservation-table",
+          element:<ReservationTable />
+        },
+        {
           path: '/room-type',
           element: <RoomType />,
         },
@@ -170,6 +176,10 @@ function AppNavigation() {
           element: <CreateNewCustomer />,
         },
         {
+          path: 'hotel-chart',
+          element: <HotelChart />,
+        },
+        { 
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
       },
@@ -180,6 +190,7 @@ function AppNavigation() {
         path:"/creat-food-supply",
         element:<CreateSupplier />
       }
+        
       ],
     },
   ])

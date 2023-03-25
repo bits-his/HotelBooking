@@ -30,6 +30,36 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 5,
   },
+  theads: {
+    backgroundColor: '#EBECF0',
+    textAlign: 'center',
+    width: 90,
+    border: 1,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    margin: 0,
+    padding: 4,
+  },
+  thead6: {
+    // backgroundColor: '#EBECF0',
+    textAlign: 'center',
+    width: 150,
+    border: 1,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    margin: 0,
+    padding: 5,
+  },
+  thead4: {
+    // backgroundColor: '#EBECF0',
+    textAlign: 'center',
+    width: 90,
+    border: 1,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    margin: 0,
+    padding: 4,
+  },
   thead2: {
     backgroundColor: '#EBECF0',
     textAlign: 'center',
@@ -171,13 +201,13 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
               <View style={styles.thead}>
                 <Text style={styles.tableData}>Check-out</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.theads}>
                 <Text style={styles.tableData}>Night</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.theads}>
                 <Text style={styles.tableData}>Room</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.theads}>
                 <Text style={styles.tableData}>Adult</Text>
               </View>
               <View style={styles.thead}>
@@ -196,34 +226,34 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
             <View style={{ textAlign: '' }}>
             
             <View style={{ display: 'flex', flexDirection: 'row' }}>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{form&&form.hotel}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{i.room_type}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{i.check_in}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{i.check_out}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead4}>
                 <Text style={styles.tableData}>{i.night}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead4}>
                 <Text style={styles.tableData}>{i.no_of_room}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead4}>
                 <Text style={styles.tableData}>1</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{i.meal_type}</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>Day Rate</Text>
               </View>
-              <View style={styles.thead}>
+              <View style={styles.thead6}>
                 <Text style={styles.tableData}>{i.total_meal_cost_rate}</Text>
               </View>
             </View>
@@ -392,13 +422,13 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
                       padding: 5,
                     }}
                   >
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
                   </View>
                   <View
                     style={{
@@ -407,7 +437,7 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
                       padding: 5,
                     }}
                   >
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
                   </View>
                   <View
                     style={{
@@ -416,8 +446,8 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
                       padding: 5,
                     }}
                   >
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
                   </View>
                   <View
                     style={{
@@ -426,7 +456,7 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
                       padding: 5,
                     }}
                   >
-                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>----</Text>
                   </View>
                 </View>
               </View>
