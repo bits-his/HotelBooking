@@ -11,8 +11,8 @@ import { RiFileExcel2Fill } from 'react-icons/ri'
 
 export default function SalesInvoice() {
     const [form, setForm] = useState({
-        check_in: '',
-        check_out: '',
+        date_frm: '',
+        date_to: '',
         hotel: ''
     })
   const handleChange = ({ target: { name, value } }) => {
@@ -90,31 +90,12 @@ export default function SalesInvoice() {
         </Row>
        <Row>
             <Col md ={4}>
-                <label className="Label mt-2">Transport Company</label>
-                <div className='search_input_form'>
-                    <input
-                        id="exampleSelect"
-                        className="app_input3"
-                        value={form.hotel}
-                        onClick={handleChange}
-                        name="hotel"
-                    />
-                    <CiSearch   
-                        className='search_icon'
-                        // onClick={toggle}
-                    />
-                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
-                        <HotelReg/>
-                    </Modal> */}
-                </div>
-            </Col>
-            <Col md ={4}>
                 <InputForm
                     className="app_input"
-                    label="Check In"
-                    value={form.check_in}
+                    label="Date From"
+                    value={form.date_frm}
                     onChange={handleChange}
-                    name="check_in"
+                    name="date_frm"
                     type="date"
                 />
             </Col>
@@ -122,11 +103,24 @@ export default function SalesInvoice() {
                 <InputForm
                     className="app_input"
                     label="Date To"
-                    value={form.check_out}
+                    value={form.date_to}
                     onChange={handleChange}
-                    name="check_out"
+                    name="date_to"
                     type="date"
                 />
+            </Col>
+            <Col md ={4}>
+                <label className="Label mt-2">Filter Type</label>
+                    <select
+                        id="exampleSelect"
+                        className="app_input"
+                        name="hotel"
+                        type="select"
+                        onClick={handleChange}
+                        value={form.hotel}
+                    >
+                    <option>Select </option>
+                </select>
             </Col>
       </Row>
       <Row>
@@ -177,7 +171,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Comfirm
+                        Post
                         </td>
                         <td
                         style={{
@@ -185,7 +179,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Reserve id
+                        Delete
                         </td>
                         <td
                         style={{
@@ -193,7 +187,23 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        CI RefNo
+                        Reserve Id
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        #
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Comfirm Date
                         </td>
                         <td
                         style={{
@@ -209,7 +219,23 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        City Code
+                        CI.RefNo
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Quest Name
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Costomer Name
                         </td>
                         <td
                         style={{
@@ -233,7 +259,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Conf.No
+                        Total
                         </td>
                         <td
                         style={{
@@ -241,7 +267,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Costomer Name
+                        Debit
                         </td>
                         <td
                         style={{
@@ -249,7 +275,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Hotel Id
+                        Credit
                         </td>
                         <td
                         style={{
@@ -257,7 +283,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Hotel
+                        Balance
                         </td>
                         <td
                         style={{
@@ -265,7 +291,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        No of Room
+                        Create Date
                         </td>
                         <td
                         style={{
@@ -273,39 +299,7 @@ export default function SalesInvoice() {
                             padding: '5px 10px',
                         }}
                         >
-                        Room Type
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        View
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        No. of Days
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Cr.Date
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Exec
+                        Cr.User
                         </td>
                     </tr>
                     </thead>
