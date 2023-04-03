@@ -12,14 +12,17 @@ import ReservationModal from './Modal/ReservationModal'
 // import ReservationTable from './Table/ReservationTable'
 import { _get, _post } from '../Utils/Helper'
 
-export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
+export default function CreateReservationDetail({
+  form = {},
+  setForm = (f) => f,
+}) {
   const [modal, setModal] = useState(false)
   const [modal1, setModal1] = useState(false)
   const [modal2, setModal2] = useState(false)
   const [modal3, setModal3] = useState(false)
   const [page, setPage] = useState(false)
 
-    const toggle = () => setModal(!modal)
+  const toggle = () => setModal(!modal)
   const toggle1 = () => setModal1(!modal1)
   const toggle2 = () => setModal2(!modal2)
   const toggle3 = () => setModal3(!modal3)
@@ -28,33 +31,33 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   const getViews = () => {
     _get(
-      "api/get_views",
+      'api/get_views',
       (res) => {
         //   navigate(`/agent`)
-        console.log(res);
-        setData(res.results[0]);
+        console.log(res)
+        setData(res.results[0])
       },
       (err) => {
         // setLoading(false)
-        console.log(err);
-      }
-    );
+        console.log(err)
+      },
+    )
     // console.log(form)
-  };
-  const [hotel,setHotel]=useState([])
+  }
+  const [hotel, setHotel] = useState([])
   const getHotels = () => {
-    _post( 
+    _post(
       'api/room_type?query_type=select',
       {},
       (resp) => {
         // setLoading(false)
         console.log(resp)
         // if (resp ) {
-          setHotel(resp.results)
+        setHotel(resp.results)
         //  alert('dfasfsadf'+resp)
         // }
       },
@@ -65,23 +68,23 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
       },
     )
   }
-  const [meal,setMeal]=useState([])
+  const [meal, setMeal] = useState([])
   const getMeals_table = () => {
     _get(
-      "api/meals_tables",
+      'api/meals_tables',
       (res) => {
-          // navigate(-1)
-        console.log(res);
-        setMeal(res.results[0]);
+        // navigate(-1)
+        console.log(res)
+        setMeal(res.results[0])
       },
       (err) => {
         // setLoading(false)
-        console.log(err);
-      }
-    );
+        console.log(err)
+      },
+    )
     // console.log(form)
-  };
-  const [agent,setAgent]=useState([])
+  }
+  const [agent, setAgent] = useState([])
   const getAgent = () => {
     _post(
       'api/bank_account_details',
@@ -98,71 +101,74 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
     )
     // console.log(form)
   }
-
+ 
   useEffect(() => {
-    getViews();
-    getHotels();
-    getMeals_table();
-    getAgent();
-  }, []);
+    getViews()
+    getHotels()
+    getMeals_table()
+    getAgent()
+   
+  }, [])
   const handleSubmit = () => {
     console.log(form)
-    _post('api/new-reservation?query_type=insert',
-    form,
-    (res) => {
-      //   navigate(`/agent`)
-      if(res.success){
-        alert("submitted successfully!!")
-        setForm({    reservation_number: '',
-        reservation_type: '',
-        booking_status: '',
-        option_date: '',
-        booking_type: '',
-        agent_name: '',
-        vat_reg_no: '',
-        sub_agent_name: '',
-        price_category: '',
-        guest_name: '',
-        country_name: '',
-        phone: '',
-        email: '',
-        BRN_hotel: '',
-        BRN_transport: '',})
-      }
-      console.log(res)
-      // setAgent(res.results)
-    },
-    (err) => {
-      // setLoading(false)
-      console.log(err)
-    },
-    )
-  }
-  const [country, setCountry] = useState([]);
-  useEffect(() => {
-    _get(
-      "api/get_countries",
+    _post(
+      'api/new-reservation?query_type=insert',
+      form,
       (res) => {
         //   navigate(`/agent`)
-        console.log(res);
-        setCountry(res.results[0]);
+        if (res.success) {
+          alert('submitted successfully!!')
+          setForm({
+            reservation_number: '',
+            reservation_type: '',
+            booking_status: '',
+            option_date: '',
+            booking_type: '',
+            agent_name: '',
+            vat_reg_no: '',
+            sub_agent_name: '',
+            price_category: '',
+            guest_name: '',
+            country_name: '',
+            phone: '',
+            email: '',
+            BRN_hotel: '',
+            BRN_transport: '',
+          })
+        }
+        console.log(res)
+        // setAgent(res.results)
       },
       (err) => {
         // setLoading(false)
-        console.log(err);
-      }
-    );
-  }, [0]);
-  const [selected,setSelected]=useState({})
+        console.log(err)
+      },
+    )
+  }
+  const [country, setCountry] = useState([])
+  useEffect(() => {
+    _get(
+      'api/get_countries',
+      (res) => {
+        //   navigate(`/agent`)
+        console.log('contryyyyyyyyyyyyyyyy',res)
+        setCountry(res.results)
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err)
+      },
+    )
+  }, [0])
+  const [selected, setSelected] = useState({})
   return (
-    <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(names)} */}
+    <div className="">
+      {/* {JSON.stringify(country[0].length)} */}
 
       <Row>
-        <Col
-          md={12}>
-          <h5 className="app_title" style={{ fontSize: 30}}>
-            <center >Create New Reservation</center> 
+        <Col md={12}>
+          <h5 className="app_title" style={{ fontSize: 30 }}>
+            <center>Create New Reservation</center>
           </h5>
         </Col>
       </Row>
@@ -176,6 +182,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
               onChange={handleChange}
               name="reservation_number"
               type="number"
+              disabled
             />
             <CiSearch className="search_icon" onClick={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
@@ -210,7 +217,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             <option>Select </option>
             <option>Value-based pricing </option>
             <option>Dynamic pricing</option>
-            <option>Cost-plus pricing  </option>
+            <option>Cost-plus pricing </option>
           </select>
           <InputForm
             className="app_input"
@@ -265,7 +272,9 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           >
             <option>Select </option>
             <option value="Comfirmed Reservation">Comfirmed Reservation</option>
-            <option value="Waitlisted Reservation">Waitlisted Reservation </option>
+            <option value="Waitlisted Reservation">
+              Waitlisted Reservation{' '}
+            </option>
             <option>Tentative Reservation </option>
           </select>
           <label className="Label mt-2">Sub Agent Name</label>
@@ -280,7 +289,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             <option>Select </option>
             <option>Abdulsalam </option>
           </select>
-          <label className="Label mt-2">Quest Full Name</label>
+          <label className="Label mt-2">Guest Full Name</label>
           <div className="search_input_form">
             <input
               className="app_input3"
@@ -290,7 +299,7 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             />
             <CiSearch className="search_icon" onClick={toggle1} />
             <Modal isOpen={modal1} toggle={toggle1} size="xl">
-              <QuestModal setForm={setForm} toggle={toggle1}/>
+              <QuestModal setForm={setForm} toggle={toggle1} />
             </Modal>
           </div>
           {/* <InputForm
@@ -328,8 +337,8 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             onChange={handleChange}
           >
             {/* <option>Select </option> */}
-            <option value='active'>Active</option>
-            <option value='pending'>pending</option>
+            <option value="active">Active</option>
+            <option value="pending">pending</option>
           </select>
           <label className="Label mt-2">Agent Name</label>
           <div className="search_input_form">
@@ -341,7 +350,11 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
             />
             <CiSearch className="search_icon" onClick={toggle} />
             <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal setForm={setForm} toggle={toggle} names='agent_name' />
+              <AgentModal
+                setForm={setForm}
+                toggle={toggle}
+                names="agent_name"
+              />
             </Modal>
           </div>
           {/* <InputForm
@@ -403,6 +416,6 @@ export default function CreateReservationDetail({form={},setForm=(f)=>f}) {
           </div>
         </Col> */}
       </Row>
-    </Card>
+    </div>
   )
 }
