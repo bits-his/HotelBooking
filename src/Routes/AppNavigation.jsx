@@ -28,6 +28,11 @@ import Master from '../Components/Master'
 import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
+import HotelComfirmation from '../Components/Report/HotelComfirmation'
+import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
+import SalesInvoice from '../Components/Report/salesInvoice'
+import TranComfirmPending from '../Components/Report/TranComfirmPending'
+import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
 import ReservationDetails from '../Components/ReservationDetails'
 import Reserve from '../Components/Reserve'
@@ -175,6 +180,26 @@ function AppNavigation() {
         { 
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
+        },
+        { 
+          path: '/Report-payment',
+          element: <TransportPAyment />
+        },
+        { 
+          path: '/hotel-comfirmation-pending',
+          element: <HotelComfirmation />
+        },
+        { 
+          path: '/trans-comfirmation-pending',
+          element: <TranComfirmPending />
+        },
+        {
+          path: '/room-Purchase',
+          element: <RoomPurchasePaymentPending />
+        },
+        {
+          path: '/sells-invoice-pending',
+          element: <SalesInvoice />
         }
       ],
     },

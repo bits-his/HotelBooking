@@ -138,6 +138,14 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
                     padding: '5px 10px',
                   }}
                 >
+                  Action
+                </td>
+                <td
+                  style={{
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
+                  }}
+                >
                   Hotel Name
                 </td>
                 <td
@@ -189,7 +197,12 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
-                    <td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
                       <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
                     </td>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}

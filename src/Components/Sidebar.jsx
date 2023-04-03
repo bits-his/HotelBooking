@@ -16,6 +16,7 @@ export default function Sidebar() {
   const [showSubMenuA, setShowSubMenuA] = useState(false)
   const [showSubMenuO, setShowSubMenuO] = useState(false)
   const [showSubMenuS, setShowSubMenuS] = useState(false)
+  const [showSubMenu1, setShowSubMenu1] = useState(false)
 
   const drop = () => {
     setShowSubMenu((p) => !p)
@@ -31,6 +32,9 @@ export default function Sidebar() {
   }
   const dropS = () => {
     setShowSubMenuS((p) => !p)
+  }
+  const drop1 = () => {
+    setShowSubMenu1((p) => !p)
   }
   return (
     <div className="sidebar_div">
@@ -198,6 +202,44 @@ export default function Sidebar() {
             </li>
             <li onClick={() => goto('/hotel-chart')} className="link_item">
               Hotel Chart
+            </li>
+            {/* <li
+              onClick={() => goto('/reservation-details')}
+              className="link_item"
+              
+            >
+              Reservation Details
+            </li> */}
+          </div>
+        ) : (
+          ''
+        )}
+        <li onClick={drop1} className="link_item">
+          <span>
+            <MdDashboard className="logo shadow" /> Report
+            {showSubMenu1 ? (
+              <TiArrowSortedUp size="1.4rem" />
+            ) : (
+              <TiArrowSortedDown size="1.4rem" />
+            )}
+          </span>
+        </li>
+        {showSubMenu1 ? (
+          <div className="sub_menu">
+            <li onClick={() => goto('/Report-payment')} className="link_item">
+              Transport Payment Pending
+            </li>
+            <li onClick={() => goto('/hotel-comfirmation-pending')} className="link_item">
+              Hotel Comfirmation Pending
+            </li>
+            <li onClick={() => goto('/trans-comfirmation-pending')} className="link_item">
+              Transport Comfirmation Pending
+            </li>
+            <li onClick={() => goto('/room-Purchase')} className="link_item">
+              Room Purchase Payment Pending
+            </li>
+            <li onClick={() => goto('/sells-invoice-pending')} className="link_item">
+              Sells Invoice Pending to Post
             </li>
             {/* <li
               onClick={() => goto('/reservation-details')}
