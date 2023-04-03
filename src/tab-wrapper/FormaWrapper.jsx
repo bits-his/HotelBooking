@@ -83,7 +83,7 @@ function  FormWrapper(props) {
           <FaCheck className="mr-1" size={20} /> Save
         </CustomButton></>
         ) : (
-          <CustomButton className="px-6" color="sucess" onClick={goNext}>
+          <CustomButton className="px-6" color="success" onClick={goNext}>
             Next <AiOutlineRight className="ml-1" size={20} />
           </CustomButton>
         )}

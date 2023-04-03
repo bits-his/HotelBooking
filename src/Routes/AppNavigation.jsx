@@ -18,6 +18,8 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
+import FoodSupply from '../Components/FoodSupply'
+import CreateSupplier from '../Components/FoodSupplyForm'
 import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
@@ -35,6 +37,7 @@ import TranComfirmPending from '../Components/Report/TranComfirmPending'
 import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
 import ReservationDetails from '../Components/ReservationDetails'
+import ReservationTable from '../Components/ReservationTable'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -130,6 +133,10 @@ function AppNavigation() {
           element: <CreateReservationDetail />,
         },
         {
+          path:"/reservation-table",
+          element:<ReservationTable />
+        },
+        {
           path: '/room-type',
           element: <RoomType />,
         },
@@ -200,7 +207,15 @@ function AppNavigation() {
         {
           path: '/sells-invoice-pending',
           element: <SalesInvoice />
+        },
+        {
+          path:"/food-supplier",
+          element:<FoodSupply />
+        },{
+          path:"/creat-food-supply",
+          element:<CreateSupplier />
         }
+        
       ],
     },
   ])

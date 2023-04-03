@@ -72,9 +72,9 @@ export default function Sidebar() {
               Reservation & Availability
             </li>
             <li
-              onClick={() => goto('/reservation-details')}
+              onClick={() => goto('/reservation-table')}
               className={`link_item ${
-                location.pathname === '/reservation-details' &&
+                location.pathname === '/reservation-table' &&
                 'active_side_menu'
               }`}
             >
@@ -200,6 +200,8 @@ export default function Sidebar() {
             <li onClick={() => goto('/country')} className="link_item">
               Country
             </li>
+            <li onClick={() => goto('/food-supplier')} className="link_item">
+              Create Food Suppler</li>
             <li onClick={() => goto('/hotel-chart')} className="link_item">
               Hotel Chart
             </li>
