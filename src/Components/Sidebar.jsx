@@ -243,6 +243,24 @@ export default function Sidebar() {
             <li onClick={() => goto('/sells-invoice-pending')} className="link_item">
               Sells Invoice Pending to Post
             </li>
+            <li onClick={() => goto('/vat-invoice-report')} className="link_item">
+              Vat Invoice Report
+            </li>
+            <li onClick={() => goto('/post-purchase-invoice')} className="link_item">
+              Post Purchase Incoice
+            </li>
+            <li onClick={() => goto('/option-date-warning')} className="link_item">
+              Option Date Warning
+            </li>
+            <li onClick={() => goto('/audit-booking')} className="link_item">
+              Audit Booking
+            </li>
+            <li onClick={() => goto('/agent-pay-schedule-report')} className="link_item">
+              Agent Pay Schedule Report
+            </li>
+            <li onClick={() => goto('/supplier-pay-schedule-report')} className="link_item">
+              Supplier Pay Schedule Report
+            </li>
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"

@@ -8,18 +8,13 @@ import InputForm from '../../CustomComponents/InputForm'
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
 import { RiFileExcel2Fill } from 'react-icons/ri'
-import HotelReg from '../Modal/HotelModal'
 
-export default function HotelComfirmation() {
+export default function VatInvoiceReport() {
     const [form, setForm] = useState({
-        check_in: '',
-        check_out: '',
-        hotel: ''
+        date_frm: '',
+        date_to: '',
+        date_filter: ''
     })
-    const [open, setOpen] = useState(false);
-    const toggle = () => {
-        setOpen(!open);
-    };
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
@@ -88,38 +83,32 @@ export default function HotelComfirmation() {
         <Row>
             <Col md={12}>
                 <center>
-                    <h5 className="app_title" style={{fontSize: 23}}>Hotel Comfirmation Pending</h5>
+                    <h5 className="app_title" style={{fontSize: 23}}>Vat Invoice Report</h5>
                     <hr />
                 </center>
             </Col>
         </Row>
        <Row>
             <Col md ={4}>
-                <label className="Label mt-2">Hotel</label>
-                <div className='search_input_form'>
-                    <input
+                <label className="Label mt-2">Date Type</label>
+                    <select
                         id="exampleSelect"
-                        className="app_input3"
-                        value={form.hotel}
+                        className="app_input"
+                        name="date_filter"
+                        type="select"
                         onClick={handleChange}
-                        name="hotel"
-                    />
-                    <CiSearch   
-                        className='search_icon'
-                        onClick={toggle}
-                    />
-                    <Modal isOpen={open} toggle={toggle}size="xl" >
-                        <HotelReg/>
-                    </Modal>
-                </div>
+                        value={form.date_filter}
+                    >
+                    <option>Select </option>
+                </select>
             </Col>
             <Col md ={4}>
                 <InputForm
                     className="app_input"
-                    label="Check In"
-                    value={form.check_in}
+                    label="Date From"
+                    value={form.date_frm}
                     onChange={handleChange}
-                    name="check_in"
+                    name="date_frm"
                     type="date"
                 />
             </Col>
@@ -127,31 +116,26 @@ export default function HotelComfirmation() {
                 <InputForm
                     className="app_input"
                     label="Date To"
-                    value={form.check_out}
+                    value={form.date_to}
                     onChange={handleChange}
-                    name="check_out"
+                    name="date_to"
                     type="date"
                 />
             </Col>
       </Row>
       <Row>
-        <Col md= {7}>
+        <Col md= {4}>
             <div style={{display: 'flex', gap: 15}}>
-                <button
-                    className="app_button p-3 mt-3 "
-                    style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-                    // onClick={() => navigate('/table-meal')}
-                >View Record</button>
-                <button
-                    className="app_button p-3 mt-3 "
-                    style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-                    // onClick={() => navigate('/table-meal')}
-                >Reset</button>
                 <button
                     className="app_button p-3 mt-3 "
                     style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
-                ><RiFileExcel2Fill /> Exel DownLoad</button>
+                >View Record</button>
+                <button
+                    className="app_button p-3 mt-3 "
+                    style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+                    // onClick={() => navigate('/table-meal')}
+                >DownLoad Invoice</button>
             </div>
         </Col>
       </Row>
@@ -187,14 +171,6 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Comfirm
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
                         Reserve id
                         </td>
                         <td
@@ -203,7 +179,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        CI RefNo
+                        Print
                         </td>
                         <td
                         style={{
@@ -211,7 +187,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Agent Name
+                        #
                         </td>
                         <td
                         style={{
@@ -219,7 +195,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        City Code
+                        Quest Name
                         </td>
                         <td
                         style={{
@@ -227,7 +203,15 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Check In 
+                        Cr.Date 
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Check In
                         </td>
                         <td
                         style={{
@@ -243,7 +227,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Conf.No
+                        Vat Inv No.
                         </td>
                         <td
                         style={{
@@ -251,7 +235,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Costomer Name
+                        Inv Date
                         </td>
                         <td
                         style={{
@@ -259,7 +243,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Hotel Id
+                        Post Date
                         </td>
                         <td
                         style={{
@@ -275,7 +259,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        No of Room
+                        Meals Total
                         </td>
                         <td
                         style={{
@@ -283,7 +267,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Room Type
+                        Other
                         </td>
                         <td
                         style={{
@@ -291,7 +275,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        View
+                        Transport
                         </td>
                         <td
                         style={{
@@ -299,7 +283,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        No. of Days
+                        Total
                         </td>
                         <td
                         style={{
@@ -307,7 +291,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Cr.Date
+                        Vat
                         </td>
                         <td
                         style={{
@@ -315,7 +299,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Exec
+                        Net Total With Vat
                         </td>
                     </tr>
                     </thead>

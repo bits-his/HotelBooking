@@ -8,18 +8,13 @@ import InputForm from '../../CustomComponents/InputForm'
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
 import { RiFileExcel2Fill } from 'react-icons/ri'
-import HotelReg from '../Modal/HotelModal'
 
-export default function HotelComfirmation() {
+export default function OptionDateWarning() {
     const [form, setForm] = useState({
-        check_in: '',
-        check_out: '',
-        hotel: ''
+        date_frm: '',
+        date_to: '',
+        date_filter: ''
     })
-    const [open, setOpen] = useState(false);
-    const toggle = () => {
-        setOpen(!open);
-    };
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
@@ -88,70 +83,29 @@ export default function HotelComfirmation() {
         <Row>
             <Col md={12}>
                 <center>
-                    <h5 className="app_title" style={{fontSize: 23}}>Hotel Comfirmation Pending</h5>
+                    <h5 className="app_title" style={{fontSize: 23}}>Option Date Warning</h5>
                     <hr />
                 </center>
             </Col>
         </Row>
-       <Row>
-            <Col md ={4}>
-                <label className="Label mt-2">Hotel</label>
-                <div className='search_input_form'>
-                    <input
-                        id="exampleSelect"
-                        className="app_input3"
-                        value={form.hotel}
-                        onClick={handleChange}
-                        name="hotel"
-                    />
-                    <CiSearch   
-                        className='search_icon'
-                        onClick={toggle}
-                    />
-                    <Modal isOpen={open} toggle={toggle}size="xl" >
-                        <HotelReg/>
-                    </Modal>
-                </div>
-            </Col>
-            <Col md ={4}>
-                <InputForm
-                    className="app_input"
-                    label="Check In"
-                    value={form.check_in}
-                    onChange={handleChange}
-                    name="check_in"
-                    type="date"
-                />
-            </Col>
-            <Col md ={4}>
-                <InputForm
-                    className="app_input"
-                    label="Date To"
-                    value={form.check_out}
-                    onChange={handleChange}
-                    name="check_out"
-                    type="date"
-                />
-            </Col>
-      </Row>
       <Row>
         <Col md= {7}>
             <div style={{display: 'flex', gap: 15}}>
                 <button
                     className="app_button p-3 mt-3 "
-                    style={{ width: 150, fontSize: 16, fontWeight: 500 }}
+                    style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
                 >View Record</button>
                 <button
                     className="app_button p-3 mt-3 "
-                    style={{ width: 150, fontSize: 16, fontWeight: 500 }}
+                    style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
-                >Reset</button>
+                >Change Status</button>
                 <button
                     className="app_button p-3 mt-3 "
                     style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
-                ><RiFileExcel2Fill /> Exel DownLoad</button>
+                >Cancel Reservation</button>
             </div>
         </Col>
       </Row>
@@ -187,7 +141,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Comfirm
+                        Reservation Id 
                         </td>
                         <td
                         style={{
@@ -195,15 +149,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Reserve id
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        CI RefNo
+                        Quest Name
                         </td>
                         <td
                         style={{
@@ -219,7 +165,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        City Code
+                        Nationality
                         </td>
                         <td
                         style={{
@@ -227,7 +173,39 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Check In 
+                        CI.RefNo
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Phone Number 
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Mobile
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Email
+                        </td>
+                        <td
+                        style={{
+                            border: '1px solid rgb(12, 134, 103)',
+                            padding: '5px 10px',
+                        }}
+                        >
+                        Check In
                         </td>
                         <td
                         style={{
@@ -243,7 +221,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Conf.No
+                        Option Date
                         </td>
                         <td
                         style={{
@@ -251,7 +229,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Costomer Name
+                        Cr.User
                         </td>
                         <td
                         style={{
@@ -259,63 +237,7 @@ export default function HotelComfirmation() {
                             padding: '5px 10px',
                         }}
                         >
-                        Hotel Id
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Hotel
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        No of Room
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Room Type
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        View
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        No. of Days
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Cr.Date
-                        </td>
-                        <td
-                        style={{
-                            border: '1px solid rgb(12, 134, 103)',
-                            padding: '5px 10px',
-                        }}
-                        >
-                        Exec
+                        Create Date
                         </td>
                     </tr>
                     </thead>

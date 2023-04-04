@@ -45,6 +45,12 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
+import VatInvoiceReport from '../Components/Report/VatInvoiceReport'
+import PostPurchaseInvoice from '../Components/Report/PostPurchaseInvoice'
+import OptionDateWarning from '../Components/Report/OptionDateWarning'
+import AuditBooking from '../Components/Report/AuditBooking'
+import AgenPayReport from '../Components/Report/AgenPayReport'
+import SupplierPayReport from '../Components/Report/SupplierPayReport'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -214,8 +220,31 @@ function AppNavigation() {
         },{
           path:"/creat-food-supply",
           element:<CreateSupplier />
+        },
+        {
+          path:  '/vat-invoice-report',
+          element: <VatInvoiceReport />
+        },
+        {
+          path: '/post-purchase-invoice',
+          element: <PostPurchaseInvoice />
+        },
+        {
+          path: '/option-date-warning',
+          element: < OptionDateWarning/>
+        },
+        {
+          path: '/audit-booking',
+          element: <AuditBooking />
+        },
+        {
+          path: '/agent-pay-schedule-report',
+          element: <AgenPayReport />
+        },
+        {
+          path: '/supplier-pay-schedule-report',
+          element: <SupplierPayReport />
         }
-        
       ],
     },
   ])
