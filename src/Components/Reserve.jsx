@@ -10,6 +10,8 @@ import CreateReservationDetail from "./CreateReservationDetail";
 import ViewReservationInvoice from "./Invoices/ViewReservationInvoice";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
+import TransportReservation from "./TransportReservation";
+import CreateTransportReservstion from "./CreateTransportReservstion";
 
 export default function Reserve() {
   const today = moment().format('YYYY-MM-DD')
@@ -190,34 +192,9 @@ export default function Reserve() {
   }, [country_name]);
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
-       <Modal isOpen={modal3} toggle={toggle3} size="md">
-       <ModalHeader>Continue With</ModalHeader>
-        <ModalBody>
-        <Alert color="primary">
-    Reservation Updated! ResNo :{no}
-  </Alert>
-         <div className="d-flex justify-content-between">
-          <Button color='success' size="md" onClick={()=>{setPrint(!print);toggle3()}}>Print & Share Invoice</Button>
-          <Button color='success' size="md">Print ltinery</Button>
-          <Button color='success' size="md">Hotel Request</Button>
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle3}>
-          View Booking Details
-          </Button>{' '}
-          <Button style={{background:"rgb(233, 31, 64)"}} onClick={toggle3}>
-          Add Transportation
-          </Button>
-          <Button color="danger" onClick={toggle3}>
-            Close
-          </Button>
-        </ModalFooter>
-                </Modal>
-      {/* {JSON.stringify(new_data)} */}
-      {
-        print?<><Button color="danger" onClick={()=>setPrint(false)}>close</Button><ViewReservationInvoice setNew_data={new_data} form={form}/></>: <FormWrapper
-        steps={["Create Reservation Details", "Hotel Bokking Details"]}
+      {/* {JSON.stringify(form)} */}
+      <FormWrapper
+        steps={["Create Reservation Details", "Hotel Bokking Details","Transport Reservation"]}
         handleSubmit={handleSubmit}
       >
         <CreateReservationDetail form={form} setForm={setForm} />
@@ -227,8 +204,9 @@ export default function Reserve() {
           setNew_data={setNew_data}
           new_data={new_data}
         />
+      <CreateTransportReservstion />
       </FormWrapper>
-      }
+      
      
     </Card>
   );

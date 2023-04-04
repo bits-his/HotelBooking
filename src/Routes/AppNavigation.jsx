@@ -45,12 +45,10 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
-import VatInvoiceReport from '../Components/Report/VatInvoiceReport'
-import PostPurchaseInvoice from '../Components/Report/PostPurchaseInvoice'
-import OptionDateWarning from '../Components/Report/OptionDateWarning'
-import AuditBooking from '../Components/Report/AuditBooking'
-import AgenPayReport from '../Components/Report/AgenPayReport'
-import SupplierPayReport from '../Components/Report/SupplierPayReport'
+import TransportReservation from '../Components/TransportReservation'
+import CreateTransportReservstion from '../Components/CreateTransportReservstion'
+import AllotmentReport from '../Components/AllotmentReport'
+import ViewCancelLetter from '../Components/Invoices/ViewCancelLetter'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -139,8 +137,8 @@ function AppNavigation() {
           element: <CreateReservationDetail />,
         },
         {
-          path:"/reservation-table",
-          element:<ReservationTable />
+          path: '/reservation-table',
+          element: <ReservationTable />,
         },
         {
           path: '/room-type',
@@ -190,61 +188,26 @@ function AppNavigation() {
           path: 'hotel-chart',
           element: <HotelChart />,
         },
-        { 
+        {
           path: '/reservation-invoice',
-          element: <ViewReservationInvoice/>
-        },
-        { 
-          path: '/Report-payment',
-          element: <TransportPAyment />
-        },
-        { 
-          path: '/hotel-comfirmation-pending',
-          element: <HotelComfirmation />
-        },
-        { 
-          path: '/trans-comfirmation-pending',
-          element: <TranComfirmPending />
+          element: <ViewReservationInvoice />,
         },
         {
-          path: '/room-Purchase',
-          element: <RoomPurchasePaymentPending />
+          path: '/cancel-letter',
+          element: <ViewCancelLetter />,
         },
         {
-          path: '/sells-invoice-pending',
-          element: <SalesInvoice />
+          path: '/allotment-report',
+          element: <AllotmentReport />,
         },
         {
-          path:"/food-supplier",
-          element:<FoodSupply />
-        },{
-          path:"/creat-food-supply",
-          element:<CreateSupplier />
+          path: '/transport-reservation',
+          element: <TransportReservation />,
         },
         {
-          path:  '/vat-invoice-report',
-          element: <VatInvoiceReport />
+          path: '/create-transport-reservstion',
+          element: <CreateTransportReservstion />,
         },
-        {
-          path: '/post-purchase-invoice',
-          element: <PostPurchaseInvoice />
-        },
-        {
-          path: '/option-date-warning',
-          element: < OptionDateWarning/>
-        },
-        {
-          path: '/audit-booking',
-          element: <AuditBooking />
-        },
-        {
-          path: '/agent-pay-schedule-report',
-          element: <AgenPayReport />
-        },
-        {
-          path: '/supplier-pay-schedule-report',
-          element: <SupplierPayReport />
-        }
       ],
     },
   ])

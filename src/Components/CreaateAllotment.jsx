@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { FaArrowLeft } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Button, Card, Col, Input, Label, Row, Table } from 'reactstrap'
 import InputForm from '../CustomComponents/InputForm'
@@ -56,10 +57,10 @@ export default function CreaateAllotment({form={},setForm=(f)=>f}) {
     // getData();
     getMeals_table();
   }, []);
-
+const {user}=useSelector((state)=>state.auth)
   return (
     <div>
-        {/* {JSON.stringify(data)} */}
+        {/* {JSON.stringify(user)} */}
       <Row>
         <Col
           md={12}>

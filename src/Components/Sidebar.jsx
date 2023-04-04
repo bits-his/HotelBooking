@@ -17,7 +17,9 @@ export default function Sidebar() {
   const [showSubMenuO, setShowSubMenuO] = useState(false)
   const [showSubMenuS, setShowSubMenuS] = useState(false)
   const [showSubMenu1, setShowSubMenu1] = useState(false)
-
+  const drop1 = () => {
+    setShowSubMenu1((p) => !p)
+  }
   const drop = () => {
     setShowSubMenu((p) => !p)
   }
@@ -32,9 +34,6 @@ export default function Sidebar() {
   }
   const dropS = () => {
     setShowSubMenuS((p) => !p)
-  }
-  const drop1 = () => {
-    setShowSubMenu1((p) => !p)
   }
   return (
     <div className="sidebar_div">
@@ -74,8 +73,7 @@ export default function Sidebar() {
             <li
               onClick={() => goto('/reservation-table')}
               className={`link_item ${
-                location.pathname === '/reservation-table' &&
-                'active_side_menu'
+                location.pathname === '/reservation-table' && 'active_side_menu'
               }`}
             >
               Create Reservation
@@ -146,6 +144,9 @@ export default function Sidebar() {
             <li onClick={() => goto('#')} className="link_item">
               Check Reservation & Availability
             </li>{' '}
+            <li onClick={() => goto('/allotment-report')} className="link_item">
+              Allotment Report
+            </li>{' '}
             {/* <li onClick={() => goto('/reservation')} className="link_item">
               Reservations & Availability
             </li> */}
@@ -201,7 +202,8 @@ export default function Sidebar() {
               Country
             </li>
             <li onClick={() => goto('/food-supplier')} className="link_item">
-              Create Food Suppler</li>
+              Create Food Suppler
+            </li>
             <li onClick={() => goto('/hotel-chart')} className="link_item">
               Hotel Chart
             </li>
@@ -231,34 +233,58 @@ export default function Sidebar() {
             <li onClick={() => goto('/Report-payment')} className="link_item">
               Transport Payment Pending
             </li>
-            <li onClick={() => goto('/hotel-comfirmation-pending')} className="link_item">
+            <li
+              onClick={() => goto('/hotel-comfirmation-pending')}
+              className="link_item"
+            >
               Hotel Comfirmation Pending
             </li>
-            <li onClick={() => goto('/trans-comfirmation-pending')} className="link_item">
+            <li
+              onClick={() => goto('/trans-comfirmation-pending')}
+              className="link_item"
+            >
               Transport Comfirmation Pending
             </li>
             <li onClick={() => goto('/room-Purchase')} className="link_item">
               Room Purchase Payment Pending
             </li>
-            <li onClick={() => goto('/sells-invoice-pending')} className="link_item">
+            <li
+              onClick={() => goto('/sells-invoice-pending')}
+              className="link_item"
+            >
               Sells Invoice Pending to Post
             </li>
-            <li onClick={() => goto('/vat-invoice-report')} className="link_item">
+            <li
+              onClick={() => goto('/vat-invoice-report')}
+              className="link_item"
+            >
               Vat Invoice Report
             </li>
-            <li onClick={() => goto('/post-purchase-invoice')} className="link_item">
+            <li
+              onClick={() => goto('/post-purchase-invoice')}
+              className="link_item"
+            >
               Post Purchase Incoice
             </li>
-            <li onClick={() => goto('/option-date-warning')} className="link_item">
+            <li
+              onClick={() => goto('/option-date-warning')}
+              className="link_item"
+            >
               Option Date Warning
             </li>
             <li onClick={() => goto('/audit-booking')} className="link_item">
               Audit Booking
             </li>
-            <li onClick={() => goto('/agent-pay-schedule-report')} className="link_item">
+            <li
+              onClick={() => goto('/agent-pay-schedule-report')}
+              className="link_item"
+            >
               Agent Pay Schedule Report
             </li>
-            <li onClick={() => goto('/supplier-pay-schedule-report')} className="link_item">
+            <li
+              onClick={() => goto('/supplier-pay-schedule-report')}
+              className="link_item"
+            >
               Supplier Pay Schedule Report
             </li>
             {/* <li
@@ -277,6 +303,13 @@ export default function Sidebar() {
           Create Hoetel
         </li>
 
+        <li
+          onClick={() => goto('/create-transport-reservstion')}
+          className="link_item"
+        >
+          <FaHotel className="logo shadow" />
+          Transport Reservation
+        </li>
         {/* <li onClick={() => goto('/dashboard')} className="link_item">
           <MdDashboard className="logo shadow" /> Dashboard
           </li>

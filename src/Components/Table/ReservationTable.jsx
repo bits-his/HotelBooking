@@ -1,13 +1,11 @@
-import moment from 'moment'
-import React, { useEffect, useState } from 'react'
-import { BiTrash } from 'react-icons/bi'
-import { CiSearch } from 'react-icons/ci'
-import { Card, Col, Modal, Row, Table } from 'reactstrap'
-import InputForm from '../../CustomComponents/InputForm'
-import { _get, _post } from '../../Utils/Helper'
-import FoodModal from '../FoodModal'
-import HotelReg from '../HotelReg'
-import AgentModal from '../Modal/AgentModal'
+import React, { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import { CiSearch } from "react-icons/ci";
+import { Card, Col, Modal, Row, Table, Input } from "reactstrap";
+import InputForm from "../../CustomComponents/InputForm";
+import { _get, _post } from "../../Utils/Helper";
+import HotelReg from "../HotelReg";
+import AgentModal from "../Modal/AgentModal";
 
 export default function ReservationTable({
   form = {},
@@ -81,7 +79,7 @@ export default function ReservationTable({
   const [hotel, setHotel] = useState([])
   const getHotels = () => {
     _post(
-      'api/hotels?in_query_type=select-all',
+      "api/hotels?in_query_type=select-all",
       {},
       (res) => {
         console.log(res)
@@ -244,7 +242,7 @@ export default function ReservationTable({
       <Row>
         <Col md={12}>
           <h5 className="app_title" style={{ fontSize: 30 }}>
-            <center>Hotel Booking</center>
+            <center> </center>
           </h5>
         </Col>
         <div>
@@ -1220,5 +1218,5 @@ export default function ReservationTable({
         </Col>
       </div>
     </div>
-  )
+  );
 }
