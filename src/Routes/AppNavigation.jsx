@@ -209,13 +209,25 @@ function AppNavigation() {
           element: <TranComfirmPending />
         },
         {
-          path: '/cancel-letter',
-          element: <ViewCancelLetter />,
+          path:  '/vat-invoice-report',
+          element: <VatInvoiceReport />
         },
         {
-          path: '/allotment-report',
-          element: <AllotmentReport />,
+          path: '/room-Purchase',
+          element: <RoomPurchasePaymentPending />
         },
+        {
+          path: '/sells-invoice-pending',
+          element: <SalesInvoice />
+        },
+        // {
+        //   path: '/cancel-letter',
+        //   element: <ViewCancelLetter />,
+        // },
+        // {
+        //   path: '/allotment-report',
+        //   element: <AllotmentReport />,
+        // },
         {
           path: '/transport-reservation',
           element: <TransportReservation />,
