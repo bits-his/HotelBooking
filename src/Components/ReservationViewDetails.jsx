@@ -1250,7 +1250,7 @@ export default function ReservationViewDetails() {
         {/* ACCOUNT STATEMENT */}
 
         <Row>
-          <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+          <h5 className="app_title" style={{ fontSize: 30, marginTop: 50, width: "80%" }}>
             Account Statement
           </h5>
           <div style={{ display: "flex", flexDirection: "row"   }}>
@@ -1508,7 +1508,7 @@ export default function ReservationViewDetails() {
 
 
         <Row>
-        <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+        <h5 className="app_title" style={{ fontSize: 30, marginTop: 50, width: "80%" }}>
              Purchase
             </h5>
           <table
