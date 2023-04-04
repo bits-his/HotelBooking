@@ -104,7 +104,12 @@ export default function Sidebar() {
         </li>
         {showSubMenuF ? (
           <div className="sub_menu">
-            <li onClick={() => goto('#')} className="link_item">
+            <li 
+              onClick={() => goto('#')} 
+              className={`link_item ${
+              location.pathname === '#' && 'active_side_menu'
+            }`}
+            >
               Hotel Confirmation Pending
             </li>
             <li onClick={() => goto('#')} className="link_item">
@@ -188,21 +193,45 @@ export default function Sidebar() {
         </li>
         {showSubMenuS ? (
           <div className="sub_menu">
-            <li onClick={() => goto('/room-type')} className="link_item">
+            <li onClick={() => goto('/room-type')} 
+              className={`link_item ${
+                location.pathname === '/room-type' && 'active_side_menu'
+              }`}
+            >
               Create Room type
             </li>
-            <li onClick={() => goto('/view')} className="link_item">
+            <li onClick={() => goto('/view')} 
+              className={`link_item ${
+                location.pathname === '/view' && 'active_side_menu'
+              }`}
+            >
               Create Room View
             </li>
-            <li onClick={() => goto('/table-meal')} className="link_item">
+            <li onClick={() => goto('/table-meal')} 
+              className={`link_item ${
+                location.pathname === '/table-meal' && 'active_side_menu'
+              }`}
+            >
               Create Meal
             </li>
-            <li onClick={() => goto('/country')} className="link_item">
+            <li onClick={() => goto('/country')} 
+              className={`link_item ${
+                location.pathname === '/country' && 'active_side_menu'
+              }`}
+            >
               Country
             </li>
-            <li onClick={() => goto('/food-supplier')} className="link_item">
+            <li onClick={() => goto('/food-supplier')} 
+              className={`link_item ${
+                location.pathname === '/food-supplier' && 'active_side_menu'
+              }`}
+            >
               Create Food Suppler</li>
-            <li onClick={() => goto('/hotel-chart')} className="link_item">
+            <li onClick={() => goto('/hotel-chart')} 
+              className={`link_item ${
+                location.pathname === '/hotel-chart' && 'active_side_menu'
+              }`}
+            >
               Hotel Chart
             </li>
             {/* <li
@@ -228,37 +257,81 @@ export default function Sidebar() {
         </li>
         {showSubMenu1 ? (
           <div className="sub_menu">
-            <li onClick={() => goto('/Report-payment')} className="link_item">
+            <li onClick={() => goto('/Report-payment')} 
+              className={`link_item ${
+                location.pathname === '/Report-payment' && 'active_side_menu'
+              }`}
+            >
               Transport Payment Pending
             </li>
-            <li onClick={() => goto('/hotel-comfirmation-pending')} className="link_item">
+            <li onClick={() => goto('/hotel-comfirmation-pending')} 
+              className={`link_item ${
+                location.pathname === '/hotel-comfirmation-pending' && 'active_side_menu'
+              }`}
+            >
               Hotel Comfirmation Pending
             </li>
-            <li onClick={() => goto('/trans-comfirmation-pending')} className="link_item">
+            <li onClick={() => goto('/trans-comfirmation-pending')} 
+              className={`link_item ${
+                location.pathname === '/trans-comfirmation-pending' && 'active_side_menu'
+              }`}
+            >
               Transport Comfirmation Pending
             </li>
-            <li onClick={() => goto('/room-Purchase')} className="link_item">
+            <li onClick={() => goto('/room-Purchase')}
+              className={`link_item ${
+                location.pathname === '/room-Purchase' && 'active_side_menu'
+              }`}
+            >
               Room Purchase Payment Pending
             </li>
-            <li onClick={() => goto('/sells-invoice-pending')} className="link_item">
+            <li onClick={() => goto('/sells-invoice-pending')} 
+              className={`link_item ${
+                location.pathname === '/sells-invoice-pending' && 'active_side_menu'
+              }`}
+            >
               Sells Invoice Pending to Post
             </li>
-            <li onClick={() => goto('/vat-invoice-report')} className="link_item">
+            <li onClick={() => goto('/vat-invoice-report')} 
+              className={`link_item ${
+                location.pathname === '/vat-invoice-report' && 'active_side_menu'
+              }`}
+            >
               Vat Invoice Report
             </li>
-            <li onClick={() => goto('/post-purchase-invoice')} className="link_item">
+            <li onClick={() => goto('/post-purchase-invoice')} 
+              className={`link_item ${
+                location.pathname === '/post-purchase-invoice' && 'active_side_menu'
+              }`}
+            >
               Post Purchase Incoice
             </li>
-            <li onClick={() => goto('/option-date-warning')} className="link_item">
+            <li onClick={() => goto('/option-date-warning')} 
+              className={`link_item ${
+                location.pathname === '/option-date-warning' && 'active_side_menu'
+              }`}
+            >
               Option Date Warning
             </li>
-            <li onClick={() => goto('/audit-booking')} className="link_item">
+            <li onClick={() => goto('/audit-booking')} 
+              className={`link_item ${
+                location.pathname === '/audit-booking' && 'active_side_menu'
+              }`}
+            >
               Audit Booking
             </li>
-            <li onClick={() => goto('/agent-pay-schedule-report')} className="link_item">
+            <li onClick={() => goto('/agent-pay-schedule-report')} 
+              className={`link_item ${
+                location.pathname === '/agent-pay-schedule-report' && 'active_side_menu'
+              }`}
+            >
               Agent Pay Schedule Report
             </li>
-            <li onClick={() => goto('/supplier-pay-schedule-report')} className="link_item">
+            <li onClick={() => goto('/supplier-pay-schedule-report')} 
+              className={`link_item ${
+                location.pathname === '/supplier-pay-schedule-report' && 'active_side_menu'
+              }`}
+            >
               Supplier Pay Schedule Report
             </li>
             {/* <li
@@ -272,7 +345,11 @@ export default function Sidebar() {
         ) : (
           ''
         )}
-        <li onClick={() => goto('/hotel-registration')} className="link_item">
+        <li onClick={() => goto('/hotel-registration')} 
+          className={`link_item ${
+                location.pathname === '/hotel-registration' && 'active_side_menu'
+              }`}
+            >
           <FaHotel className="logo shadow" />
           Create Hoetel
         </li>
