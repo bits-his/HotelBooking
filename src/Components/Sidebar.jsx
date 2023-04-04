@@ -88,6 +88,14 @@ export default function Sidebar() {
             >
               Create Agent/Supplier
             </li>
+            <li
+              onClick={() => goto("/reservation-view-details")}
+              className={`link_item ${
+                location.pathname === "/reservation-view-details" && "active_side_menu"
+              }`}
+            >
+              Reservation Details View 
+            </li>
           </div>
         ) : (
           ""

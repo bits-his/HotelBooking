@@ -28,7 +28,6 @@ import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
 import Reservation from '../Components/Reservation'
-import ReservationDetails from '../Components/ReservationDetails'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -36,8 +35,8 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
-import TransportReservation from '../Components/TransportReservation'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
+import ReservationViewDetails from '../Components/ReservationViewDetails'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -174,8 +173,8 @@ function AppNavigation() {
           element: <ViewReservationInvoice/>
       },
       {
-        path: '/transport-reservation',
-        element: <TransportReservation/>
+        path: '/reservation-view-details',
+        element: <ReservationViewDetails/>
     },
     {
       path: '/create-transport-reservstion',

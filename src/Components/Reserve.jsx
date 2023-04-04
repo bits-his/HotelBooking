@@ -7,7 +7,7 @@ import { _post } from "../Utils/Helper";
 import CreateReservationDetail from "./CreateReservationDetail";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
-import TransportReservation from "./TransportReservation";
+// import TransportReservation from "./ReservationViewDeteals";
 import CreateTransportReservstion from "./CreateTransportReservstion";
 
 export default function Reserve() {
