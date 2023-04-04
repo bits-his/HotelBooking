@@ -7,6 +7,8 @@ import { _post } from "../Utils/Helper";
 import CreateReservationDetail from "./CreateReservationDetail";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
+import TransportReservation from "./TransportReservation";
+import CreateTransportReservstion from "./CreateTransportReservstion";
 
 export default function Reserve() {
   const today = moment().format('YYYY-MM-DD')
@@ -95,7 +97,7 @@ export default function Reserve() {
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       {/* {JSON.stringify(form)} */}
       <FormWrapper
-        steps={["Create Reservation Details", "Hotel Bokking Details"]}
+        steps={["Create Reservation Details", "Hotel Bokking Details","Transport Reservation"]}
         handleSubmit={handleSubmit}
       >
         <CreateReservationDetail form={form} setForm={setForm} />
@@ -105,6 +107,7 @@ export default function Reserve() {
           setNew_data={setNew_data}
           new_data={new_data}
         />
+      <CreateTransportReservstion />
       </FormWrapper>
     </Card>
   );

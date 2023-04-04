@@ -36,6 +36,8 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
+import TransportReservation from '../Components/TransportReservation'
+import CreateTransportReservstion from '../Components/CreateTransportReservstion'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -170,7 +172,15 @@ function AppNavigation() {
         {
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
-      }
+      },
+      {
+        path: '/transport-reservation',
+        element: <TransportReservation/>
+    },
+    {
+      path: '/create-transport-reservstion',
+      element: <CreateTransportReservstion/>
+  },
       ],
     },
   ])

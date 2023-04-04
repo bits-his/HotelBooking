@@ -303,6 +303,46 @@ export const ReservationInvoice = () => (
                       Discount : <Text style={{}}>SWIFT NCBKSAJE</Text>
                     </Text>
                   </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>
+                      Payable : <Text style={{}}> Roya Visio</Text>
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>
+                      Municipality Tax : <Text style={{}}> Roya</Text>
+                    </Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>
+                      VAT :{' '}
+                      <Text style={{}}>
+                        {' '}
+                        Roya Vision Hotel Operation Company
+                      </Text>
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>
+                      Payable : <Text style={{}}> Roya Visio</Text>
+                    </Text>
+                  </View>
                 </View>
                 <View style={{ width: '30%' }}>
                   <View
@@ -319,6 +359,34 @@ export const ReservationInvoice = () => (
                     <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
                     <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
                     <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                  </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                  </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                    <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
+                  </View>
+                  <View
+                    style={{
+                      border: '1px solid black',
+                      display: 'flex',
+                      padding: 5,
+                    }}
+                  >
                     <Text style={{ fontSize: 9, marginTop: 4 }}>200,000</Text>
                   </View>
                 </View>
