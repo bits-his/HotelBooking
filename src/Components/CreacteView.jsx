@@ -6,12 +6,12 @@ import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
 
 export default function CreacteView() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     view_name: "",
     view_type: "",
   });
-  
+
   const [Loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
@@ -30,7 +30,7 @@ export default function CreacteView() {
 
         setLoading(false);
         console.log(res);
-        navigate(-1)
+        navigate(-1);
       },
       (err) => {
         setLoading(false);
@@ -42,22 +42,26 @@ export default function CreacteView() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
-  
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
-                <button
-                    className="app_button p-3 mb-3"
-                    style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-                    onClick={() => navigate('/view')}
-                >
-                    <FaArrowLeft style={{marginRight: 10}} /> Back
-                </button>
-                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Room</h5>
-            </Col>
-        </Row>
+        <Col
+          md={12}
+          style={{ display: "flex", width: "100%", textAlign: "center" }}
+        >
+          <button
+            className="app_button p-3 mb-3"
+            style={{ width: 150, fontSize: 16, fontWeight: 500 }}
+            onClick={() => navigate("/view")}
+          >
+            <FaArrowLeft style={{ marginRight: 10 }} /> Back
+          </button>
+          <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+            Create New Room
+          </h5>
+        </Col>
+      </Row>
       <Row>
         <Col md={6}>
           <InputForm

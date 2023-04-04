@@ -10,6 +10,8 @@ import CreateReservationDetail from "./CreateReservationDetail";
 import ViewReservationInvoice from "./Invoices/ViewReservationInvoice";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
+import TransportReservation from "./TransportReservation";
+import CreateTransportReservstion from "./CreateTransportReservstion";
 
 export default function Reserve() {
   const today = moment().format('YYYY-MM-DD')
@@ -227,6 +229,7 @@ export default function Reserve() {
           setNew_data={setNew_data}
           new_data={new_data}
         />
+      <CreateTransportReservstion />
       </FormWrapper>
       }
      

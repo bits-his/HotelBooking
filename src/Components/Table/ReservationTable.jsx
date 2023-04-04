@@ -81,7 +81,7 @@ export default function ReservationTable({
   const [hotel, setHotel] = useState([])
   const getHotels = () => {
     _post(
-      'api/hotels?in_query_type=select-all',
+      "api/hotels?in_query_type=select-all",
       {},
       (res) => {
         console.log(res)
@@ -244,7 +244,7 @@ export default function ReservationTable({
       <Row>
         <Col md={12}>
           <h5 className="app_title" style={{ fontSize: 30 }}>
-            <center>Hotel Booking</center>
+            <center> </center>
           </h5>
         </Col>
         <div>
@@ -1220,5 +1220,5 @@ export default function ReservationTable({
         </Col>
       </div>
     </div>
-  )
+  );
 }

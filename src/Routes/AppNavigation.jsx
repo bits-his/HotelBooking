@@ -51,6 +51,8 @@ import OptionDateWarning from '../Components/Report/OptionDateWarning'
 import AuditBooking from '../Components/Report/AuditBooking'
 import AgenPayReport from '../Components/Report/AgenPayReport'
 import SupplierPayReport from '../Components/Report/SupplierPayReport'
+import TransportReservation from '../Components/TransportReservation'
+import CreateTransportReservstion from '../Components/CreateTransportReservstion'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -244,7 +246,16 @@ function AppNavigation() {
         {
           path: '/supplier-pay-schedule-report',
           element: <SupplierPayReport />
-        }
+        },
+        {
+          path: '/transport-reservation',
+          element: <TransportReservation/>
+      },
+      {
+        path: '/create-transport-reservstion',
+        element: <CreateTransportReservstion/>
+    },
+        
       ],
     },
   ])
