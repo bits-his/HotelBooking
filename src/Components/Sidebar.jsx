@@ -1,18 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  MdDashboard,
-  MdRoomPreferences,
-  MdSafetyDivider,
-} from "react-icons/md";
-import { BiUserPlus } from "react-icons/bi";
-import { MdOutlineBedroomParent } from "react-icons/md";
-import { ImUsers } from "react-icons/im";
-import { RiReservedLine } from "react-icons/ri";
-import Dropdowns from "./Dropdown/Dropdown";
-import { FaHotel } from "react-icons/fa";
-import { BiUpArrow, BiDownArrow } from "react-icons/bi";
-import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MdDashboard, MdRoomPreferences, MdSafetyDivider } from 'react-icons/md'
+import { BiUserPlus } from 'react-icons/bi'
+import { MdOutlineBedroomParent } from 'react-icons/md'
+import { ImUsers } from 'react-icons/im'
+import { RiReservedLine } from 'react-icons/ri'
+import Dropdowns from './Dropdown/Dropdown'
+import { FaHotel } from 'react-icons/fa'
+import { BiUpArrow, BiDownArrow } from 'react-icons/bi'
+import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
 export default function Sidebar() {
   const goto = useNavigate()
   const [showSubMenu, setShowSubMenu] = useState(false)
@@ -25,30 +21,30 @@ export default function Sidebar() {
     setShowSubMenu1((p) => !p)
   }
   const drop = () => {
-    setShowSubMenu((p) => !p);
-  };
+    setShowSubMenu((p) => !p)
+  }
   const dropF = () => {
-    setShowSubMenuF((p) => !p);
-  };
+    setShowSubMenuF((p) => !p)
+  }
   const dropA = () => {
-    setShowSubMenuA((p) => !p);
-  };
+    setShowSubMenuA((p) => !p)
+  }
   const dropO = () => {
-    setShowSubMenuO((p) => !p);
-  };
+    setShowSubMenuO((p) => !p)
+  }
   const dropS = () => {
-    setShowSubMenuS((p) => !p);
-  };
+    setShowSubMenuS((p) => !p)
+  }
   return (
     <div className="sidebar_div">
-      <h4 className="mt-4 text-white app_title" style={{ fontSize: "26px" }}>
+      <h4 className="mt-4 text-white app_title" style={{ fontSize: '26px' }}>
         Hotel Booking
       </h4>
       <div className="link" activeclassName="active">
         <li
-          onClick={() => goto("/dashboard")}
+          onClick={() => goto('/dashboard')}
           className={`link_item ${
-            location.pathname === "/dashboard" && "active_side_menu"
+            location.pathname === '/dashboard' && 'active_side_menu'
           }`}
         >
           <MdDashboard className="logo shadow" /> Dashboard
@@ -56,7 +52,7 @@ export default function Sidebar() {
 
         <li className="link_item" onClick={drop}>
           <span>
-            <MdDashboard className="logo shadow" /> Create Reservation{" "}
+            <MdDashboard className="logo shadow" /> Create Reservation{' '}
             {showSubMenu ? (
               <TiArrowSortedUp size="1.4rem" />
             ) : (
@@ -67,9 +63,9 @@ export default function Sidebar() {
         {showSubMenu ? (
           <div className="sub_menu">
             <li
-              onClick={() => goto("/reservation")}
+              onClick={() => goto('/reservation')}
               className={`link_item ${
-                location.pathname === "/reservation" && "active_side_menu"
+                location.pathname === '/reservation' && 'active_side_menu'
               }`}
             >
               Reservation & Availability
@@ -77,23 +73,22 @@ export default function Sidebar() {
             <li
               onClick={() => goto('/reservation-table')}
               className={`link_item ${
-                location.pathname === '/reservation-table' &&
-                'active_side_menu'
+                location.pathname === '/reservation-table' && 'active_side_menu'
               }`}
             >
               Create Reservation
             </li>
             <li
-              onClick={() => goto("/agent")}
+              onClick={() => goto('/agent')}
               className={`link_item ${
-                location.pathname === "/agent" && "active_side_menu"
+                location.pathname === '/agent' && 'active_side_menu'
               }`}
             >
               Create Agent/Supplier
             </li>
           </div>
         ) : (
-          ""
+          ''
         )}
         <li onClick={dropF} className="link_item">
           <span>
@@ -107,18 +102,18 @@ export default function Sidebar() {
         </li>
         {showSubMenuF ? (
           <div className="sub_menu">
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Confirmation Pending
             </li>
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Option Date Warning
-            </li>{" "}
-            <li onClick={() => goto("#")} className="link_item">
+            </li>{' '}
+            <li onClick={() => goto('#')} className="link_item">
               Audit Booking
             </li>
           </div>
         ) : (
-          ""
+          ''
         )}
         <li onClick={dropA} className="link_item">
           <span>
@@ -133,28 +128,31 @@ export default function Sidebar() {
         {showSubMenuA ? (
           <div className="sub_menu">
             <li
-              onClick={() => goto("/allotment")}
+              onClick={() => goto('/allotment')}
               className={`link_item ${
-                location.pathname === "/allotment" && "active_side_menu"
+                location.pathname === '/allotment' && 'active_side_menu'
               }`}
             >
               Add Allotment
             </li>
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Pending Purchase Request
-            </li>{" "}
-            <li onClick={() => goto("#")} className="link_item">
+            </li>{' '}
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Rack
             </li>
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Check Reservation & Availability
-            </li>{" "}
+            </li>{' '}
+            <li onClick={() => goto('/allotment-report')} className="link_item">
+              Allotment Report
+            </li>{' '}
             {/* <li onClick={() => goto('/reservation')} className="link_item">
               Reservations & Availability
             </li> */}
           </div>
         ) : (
-          ""
+          ''
         )}
         <li onClick={dropO} className="link_item">
           <span>
@@ -168,15 +166,15 @@ export default function Sidebar() {
         </li>
         {showSubMenuO ? (
           <div className="sub_menu">
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Hotel Reservation Report
             </li>
-            <li onClick={() => goto("#")} className="link_item">
+            <li onClick={() => goto('#')} className="link_item">
               Reports By Agent
-            </li>{" "}
+            </li>{' '}
           </div>
         ) : (
-          ""
+          ''
         )}
 
         <li onClick={dropS} className="link_item">
@@ -191,20 +189,21 @@ export default function Sidebar() {
         </li>
         {showSubMenuS ? (
           <div className="sub_menu">
-            <li onClick={() => goto("/room-type")} className="link_item">
+            <li onClick={() => goto('/room-type')} className="link_item">
               Create Room type
             </li>
-            <li onClick={() => goto("/view")} className="link_item">
+            <li onClick={() => goto('/view')} className="link_item">
               Create Room View
             </li>
-            <li onClick={() => goto("/table-meal")} className="link_item">
+            <li onClick={() => goto('/table-meal')} className="link_item">
               Create Meal
             </li>
-            <li onClick={() => goto("/country")} className="link_item">
+            <li onClick={() => goto('/country')} className="link_item">
               Country
             </li>
             <li onClick={() => goto('/food-supplier')} className="link_item">
-              Create Food Suppler</li>
+              Create Food Suppler
+            </li>
             <li onClick={() => goto('/hotel-chart')} className="link_item">
               Hotel Chart
             </li>
@@ -234,34 +233,58 @@ export default function Sidebar() {
             <li onClick={() => goto('/Report-payment')} className="link_item">
               Transport Payment Pending
             </li>
-            <li onClick={() => goto('/hotel-comfirmation-pending')} className="link_item">
+            <li
+              onClick={() => goto('/hotel-comfirmation-pending')}
+              className="link_item"
+            >
               Hotel Comfirmation Pending
             </li>
-            <li onClick={() => goto('/trans-comfirmation-pending')} className="link_item">
+            <li
+              onClick={() => goto('/trans-comfirmation-pending')}
+              className="link_item"
+            >
               Transport Comfirmation Pending
             </li>
             <li onClick={() => goto('/room-Purchase')} className="link_item">
               Room Purchase Payment Pending
             </li>
-            <li onClick={() => goto('/sells-invoice-pending')} className="link_item">
+            <li
+              onClick={() => goto('/sells-invoice-pending')}
+              className="link_item"
+            >
               Sells Invoice Pending to Post
             </li>
-            <li onClick={() => goto('/vat-invoice-report')} className="link_item">
+            <li
+              onClick={() => goto('/vat-invoice-report')}
+              className="link_item"
+            >
               Vat Invoice Report
             </li>
-            <li onClick={() => goto('/post-purchase-invoice')} className="link_item">
+            <li
+              onClick={() => goto('/post-purchase-invoice')}
+              className="link_item"
+            >
               Post Purchase Incoice
             </li>
-            <li onClick={() => goto('/option-date-warning')} className="link_item">
+            <li
+              onClick={() => goto('/option-date-warning')}
+              className="link_item"
+            >
               Option Date Warning
             </li>
             <li onClick={() => goto('/audit-booking')} className="link_item">
               Audit Booking
             </li>
-            <li onClick={() => goto('/agent-pay-schedule-report')} className="link_item">
+            <li
+              onClick={() => goto('/agent-pay-schedule-report')}
+              className="link_item"
+            >
               Agent Pay Schedule Report
             </li>
-            <li onClick={() => goto('/supplier-pay-schedule-report')} className="link_item">
+            <li
+              onClick={() => goto('/supplier-pay-schedule-report')}
+              className="link_item"
+            >
               Supplier Pay Schedule Report
             </li>
             {/* <li
@@ -273,14 +296,17 @@ export default function Sidebar() {
             </li> */}
           </div>
         ) : (
-          ""
+          ''
         )}
-        <li onClick={() => goto("/hotel-registration")} className="link_item">
+        <li onClick={() => goto('/hotel-registration')} className="link_item">
           <FaHotel className="logo shadow" />
           Create Hoetel
         </li>
 
-        <li onClick={() => goto("/create-transport-reservstion")} className="link_item">
+        <li
+          onClick={() => goto('/create-transport-reservstion')}
+          className="link_item"
+        >
           <FaHotel className="logo shadow" />
           Transport Reservation
         </li>
@@ -352,5 +378,5 @@ export default function Sidebar() {
         </li> */}
       </div>
     </div>
-  );
+  )
 }

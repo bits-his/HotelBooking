@@ -219,7 +219,7 @@ export default function Reserve() {
       {/* {JSON.stringify(new_data)} */}
       {
         print?<><Button color="danger" onClick={()=>setPrint(false)}>close</Button><ViewReservationInvoice setNew_data={new_data} form={form}/></>: <FormWrapper
-        steps={["Create Reservation Details", "Hotel Bokking Details"]}
+        steps={["Create Reservation Details", "Hotel Bokking Details","Transport Reservation"]}
         handleSubmit={handleSubmit}
       >
         <CreateReservationDetail form={form} setForm={setForm} />
@@ -230,8 +230,8 @@ export default function Reserve() {
           new_data={new_data}
         />
       <CreateTransportReservstion />
-      </FormWrapper>
-      }
+      </FormWrapper>}
+      
      
     </Card>
   );

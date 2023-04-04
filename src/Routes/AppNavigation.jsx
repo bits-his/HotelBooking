@@ -141,8 +141,8 @@ function AppNavigation() {
           element: <CreateReservationDetail />,
         },
         {
-          path:"/reservation-table",
-          element:<ReservationTable />
+          path: '/reservation-table',
+          element: <ReservationTable />,
         },
         {
           path: '/room-type',
@@ -192,7 +192,7 @@ function AppNavigation() {
           path: 'hotel-chart',
           element: <HotelChart />,
         },
-        { 
+        {
           path: '/reservation-invoice',
           element: <ViewReservationInvoice/>
         },
@@ -209,23 +209,20 @@ function AppNavigation() {
           element: <TranComfirmPending />
         },
         {
-          path: '/room-Purchase',
-          element: <RoomPurchasePaymentPending />
+          path: '/cancel-letter',
+          element: <ViewCancelLetter />,
         },
         {
-          path: '/sells-invoice-pending',
-          element: <SalesInvoice />
+          path: '/allotment-report',
+          element: <AllotmentReport />,
         },
         {
-          path:"/food-supplier",
-          element:<FoodSupply />
-        },{
-          path:"/creat-food-supply",
-          element:<CreateSupplier />
+          path: '/transport-reservation',
+          element: <TransportReservation />,
         },
         {
-          path:  '/vat-invoice-report',
-          element: <VatInvoiceReport />
+          path: '/create-transport-reservstion',
+          element: <CreateTransportReservstion />,
         },
         {
           path: '/post-purchase-invoice',

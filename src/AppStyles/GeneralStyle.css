@@ -81,6 +81,11 @@
   color: white;
   /* font-weight: bold; */
 }
+.download_button {
+  border: none;
+  background-color: rgb(231, 231, 231);
+  padding: 8px 10px;
+}
 .app_input {
   border-radius: none !important;
   border: 1px solid rgb(12, 134, 103);
@@ -494,8 +499,8 @@ label {
 }
 .table_input:focus {
   outline: none;
-} 
-.allotment_table{
+}
+.allotment_table {
   border: 1px solid rgb(211, 211, 211);
   padding: 12;
   width: 100%;
@@ -507,7 +512,7 @@ label {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
 }
-.table_overflow{
+.table_overflow {
   overflow-x: auto;
   width: 100%;
   margin-bottom: 50px;
@@ -519,30 +524,35 @@ label {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
+  /* box-shadow: inset 0 0 5px grey; */
+  /* border-radius: 10px; */
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(10, 104, 79); 
-  border-radius: 10px;
+  background: rgb(10, 104, 79);
+  /* border-radius: 10px; */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(12, 134, 103); 
-  width: 400%;
+  background: rgb(12, 134, 103);
+  /* width: 400%; */
 }
 
-#customers td, #customers th {
+#customers td,
+#customers th {
   border: 1px solid #ddd;
   /* padding: 8px; */
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+  background-color: #ddd;
+}
 
 #customers th {
   /* padding-top: 12px;
