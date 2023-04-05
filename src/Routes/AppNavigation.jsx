@@ -38,6 +38,7 @@ import AppIndex from './AppIndex'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
 import ReservationViewDetails from '../Components/ReservationViewDetails'
 import AllotmentReport from '../Components/AllotmentReport'
+import ViewCancelLetter from '../Components/Invoices/ViewCancelLetter'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -185,6 +186,10 @@ function AppNavigation() {
           path: '/create-transport-reservstion',
           element: <CreateTransportReservstion />,
         },
+        {
+          path:'/cancel-letter',
+          element:<ViewCancelLetter/>
+        }
       ],
     },
   ])
