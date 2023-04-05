@@ -37,6 +37,7 @@ import View from '../Components/Views'
 import AppIndex from './AppIndex'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
 import ReservationViewDetails from '../Components/ReservationViewDetails'
+import AllotmentReport from '../Components/AllotmentReport'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -109,6 +110,10 @@ function AppNavigation() {
           element: <Allotmentstep />,
         },
         {
+          path: 'allotment-report',
+          element: <AllotmentReport />,
+        },
+        {
           path: 'allotment',
           element: <Allotment />,
         },
@@ -170,16 +175,16 @@ function AppNavigation() {
         },
         {
           path: '/reservation-invoice',
-          element: <ViewReservationInvoice/>
-      },
-      {
-        path: '/reservation-view-details',
-        element: <ReservationViewDetails/>
-    },
-    {
-      path: '/create-transport-reservstion',
-      element: <CreateTransportReservstion/>
-  },
+          element: <ViewReservationInvoice />,
+        },
+        {
+          path: '/reservation-view-details',
+          element: <ReservationViewDetails />,
+        },
+        {
+          path: '/create-transport-reservstion',
+          element: <CreateTransportReservstion />,
+        },
       ],
     },
   ])
