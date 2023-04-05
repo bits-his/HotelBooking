@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 })
-const d = new Date()
+
 
 // Create Document Component
  const ItenaryReport = () => (
