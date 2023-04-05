@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
 import { Row, Table, Button, Col, Card  } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
 import { _get, _post } from "../../Utils/Helper";
@@ -72,7 +73,7 @@ const getHotels = () => {
         }
         
     }
-   
+    const {user}=useSelector((state)=>state.auth)
     const addData = () =>{
    
         setNewData(prev => [

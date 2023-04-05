@@ -15,7 +15,7 @@ export default function Country() {
       (res) => {
         //   navigate(`/agent`)
         console.log(res);
-        setData(res.results[0]);
+        setData(res.results);
       },
       (err) => {
         // setLoading(false)
@@ -90,7 +90,7 @@ export default function Country() {
             </thead>
 
             {data &&
-              data.map((i) => (
+              data?.map((i) => (
                 <tbody>
                   <td
                     style={{

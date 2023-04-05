@@ -1,13 +1,12 @@
-import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { BiTrash } from 'react-icons/bi'
 import { CiSearch } from 'react-icons/ci'
-import { Card, Col, Modal, Row, Table } from 'reactstrap'
+import { Card, Col, Modal, Row, Table, Input } from 'reactstrap'
 import InputForm from '../../CustomComponents/InputForm'
 import { _get, _post } from '../../Utils/Helper'
-import FoodModal from '../FoodModal'
 import HotelReg from '../HotelReg'
 import AgentModal from '../Modal/AgentModal'
+import FoodModal from '../../Components/FoodModal'
 
 export default function ReservationTable({
   form = {},
@@ -147,11 +146,11 @@ export default function ReservationTable({
         net_total_sale: form.net_total_sale,
         net_total_cost: form.net_total_cost,
         view: form.view,
-        meal_cost_rate_ExcTax:form.meal_cost_rate_ExcTax,
-    meal_cost_purch_vat:form.meal_cost_purch_vat,
-    meal_cost_municipal_vat:form.meal_cost_municipal_vat,
-    meal_cost_rat_Inc_all_tax:form.meal_cost_rat_Inc_all_tax,
-    total_meal_sale_rate:form.total_meal_sale_rate,
+        meal_cost_rate_ExcTax: form.meal_cost_rate_ExcTax,
+        meal_cost_purch_vat: form.meal_cost_purch_vat,
+        meal_cost_municipal_vat: form.meal_cost_municipal_vat,
+        meal_cost_rat_Inc_all_tax: form.meal_cost_rat_Inc_all_tax,
+        total_meal_sale_rate: form.total_meal_sale_rate,
       },
     ])
 
@@ -193,11 +192,23 @@ export default function ReservationTable({
   let meal_cost_rate_tax = meal_cost_tax + parseInt(form.meal_cost_rate_ExcTax)
   const meal_cost_purch_tax = percent8 * meal_cost_rate_tax
   const meal_cost_ratInc = meal_cost_purch_tax + meal_cost_rate_tax
-  const total_r_sale = parseInt(form.sale_rate_exc_tax)+parseInt(form.sale_municipal_vat)+parseInt(form.sale_purch_vat)
-  const total_2_sale = parseInt(form.meal_rate_exc_tax)+parseInt(form.meal_municipal_vat)+parseInt(form.meal_purch_vat)
-  const total_3_sale = parseInt(form.cost_rate_exc_tax)+parseInt(form.cost_municipal_vat)+parseInt(form.cost_purch_vat)
-  const total_4_sale = parseInt(form.meal_cost_rate_ExcTax)+parseInt(form.meal_cost_purch_vat)+parseInt(form.meal_cost_municipal_vat)
-  const netsale = total_r_sale+total_2_sale
+  const total_r_sale =
+    parseInt(form.sale_rate_exc_tax) +
+    parseInt(form.sale_municipal_vat) +
+    parseInt(form.sale_purch_vat)
+  const total_2_sale =
+    parseInt(form.meal_rate_exc_tax) +
+    parseInt(form.meal_municipal_vat) +
+    parseInt(form.meal_purch_vat)
+  const total_3_sale =
+    parseInt(form.cost_rate_exc_tax) +
+    parseInt(form.cost_municipal_vat) +
+    parseInt(form.cost_purch_vat)
+  const total_4_sale =
+    parseInt(form.meal_cost_rate_ExcTax) +
+    parseInt(form.meal_cost_purch_vat) +
+    parseInt(form.meal_cost_municipal_vat)
+  const netsale = total_r_sale + total_2_sale
   const netCost = total_3_sale + total_4_sale
   useEffect(() => {
     setForm((p) => ({
@@ -205,14 +216,13 @@ export default function ReservationTable({
       meal_rat_inc_all_tax: ratInc,
       sale_rat_inc_all_tax: sale_ratInc,
       cost_rat_inc_all_tax: cost_ratInc,
-      meal_cost_rat_Inc_all_tax:meal_cost_ratInc,
-      total_room_sale_rate:total_r_sale,
-      total_meal_sale_rate:total_2_sale,
-      total_room_cost_rate:total_3_sale,
-      total_meal_cost_rate:total_4_sale,
-      net_total_sale:netsale,
-      net_total_cost:netCost
-
+      meal_cost_rat_Inc_all_tax: meal_cost_ratInc,
+      total_room_sale_rate: total_r_sale,
+      total_meal_sale_rate: total_2_sale,
+      total_room_cost_rate: total_3_sale,
+      total_meal_cost_rate: total_4_sale,
+      net_total_sale: netsale,
+      net_total_cost: netCost,
     }))
   })
   const [modal, setModal] = useState(false)
@@ -244,7 +254,7 @@ export default function ReservationTable({
       <Row>
         <Col md={12}>
           <h5 className="app_title" style={{ fontSize: 30 }}>
-            <center>Hotel Booking</center>
+            <center> </center>
           </h5>
         </Col>
         <div>
@@ -420,11 +430,7 @@ export default function ReservationTable({
                 />
                 <CiSearch className="search_icon" onClick={toggle9} />
                 <Modal isOpen={modal4} toggle={toggle9} size="xl">
-                  <FoodModal
-                    setForm={setForm}
-                    toggle={toggle9}
-                    
-                  />
+                  <FoodModal setForm={setForm} toggle={toggle9} />
                 </Modal>
               </div>
             </Col>
@@ -473,7 +479,7 @@ export default function ReservationTable({
                 className="app_input"
                 label="Room Rate Inc. All Tax"
                 type="Number"
-                name='sale_rat_inc_all_tax'
+                name="sale_rat_inc_all_tax"
                 value={form.sale_rat_inc_all_tax}
                 onChange={handleChange}
               />
@@ -495,7 +501,7 @@ export default function ReservationTable({
           <div className="text-center mt-5">
             <p className="label_">MEAL RATE SALE</p>
           </div>
-          <hr className='line'/>
+          <hr className="line" />
           <Row>
             <Col md={4}>
               <InputForm
@@ -505,7 +511,6 @@ export default function ReservationTable({
                 name="meal_rate_exc_tax"
                 value={form.meal_rate_exc_tax}
                 onChange={handleChange}
-
               />
             </Col>
             <Col md={4}>
@@ -528,10 +533,9 @@ export default function ReservationTable({
                 onChange={handleChange}
               />
             </Col>
-           
           </Row>
           <Row>
-          <Col md={4}>
+            <Col md={4}>
               <InputForm
                 className="app_input"
                 label="Meal Rate Inc. All Tax"
@@ -551,13 +555,12 @@ export default function ReservationTable({
                 onChange={handleChange}
               />
             </Col>
-            
           </Row>
           {/* ////ROOM RATE COST///// */}
           <div className="text-center mt-5">
             <p className="label_">ROOM RATE COST</p>
           </div>
-          <hr className='line'/>
+          <hr className="line" />
           <Row>
             <Col md={4}>
               <InputForm
@@ -617,7 +620,7 @@ export default function ReservationTable({
           <div className="text-center mt-5">
             <p className="label_">MEAL RATE COST</p>
           </div>
-          <hr className='line'/>
+          <hr className="line" />
           <Row>
             <Col md={4}>
               <InputForm
@@ -649,10 +652,9 @@ export default function ReservationTable({
                 value={form.meal_cost_municipal_vat}
               />
             </Col>
-            
           </Row>
           <Row>
-          <Col md={4}>
+            <Col md={4}>
               <InputForm
                 className="app_input"
                 label="Meal Rate Inc. All Tax"
@@ -693,7 +695,6 @@ export default function ReservationTable({
                 type="Number"
                 onChange={handleChange}
                 name="net_total_cost"
-
                 value={form.net_total_cost}
               />
             </Col>
@@ -702,11 +703,11 @@ export default function ReservationTable({
         <Col md={12}>
           <center>
             <button
-              className="app_button p-3 mt-3"
-              style={{ width: 150 }}
+              className="app_button p-2 mt-3"
+              style={{ width: 100 }}
               onClick={addData}
             >
-              Add +
+              Add
             </button>
           </center>
         </Col>
@@ -866,58 +867,64 @@ export default function ReservationTable({
                     />
                   </td>
                   <td>
-                  <select
-                id="exampleSelect"
-                className="table_input"
-                value={item.view}
-                name="view"
-                type="select"
-                onChange={({ target: { name, value } }) => {
-                  handleChanges(name, value, index)
-                }}
-              >
-                <option>Select </option>
-                {data.map((items) => (
-                  <option value={items.view_name}>{items.view_name} </option>
-                ))}
-              </select>
+                    <select
+                      id="exampleSelect"
+                      className="table_input"
+                      value={item.view}
+                      name="view"
+                      type="select"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                    >
+                      <option>Select </option>
+                      {data.map((items) => (
+                        <option value={items.view_name}>
+                          {items.view_name}{' '}
+                        </option>
+                      ))}
+                    </select>
 
                     {/* {item.view} */}
                   </td>
                   <td>
-                  <select
-                id="exampleSelect"
-                className="table_input"
-                value={item.room_type}
-                name="room_type"
-                type="select"
-                onChange={({ target: { name, value } }) => {
-                  handleChanges(name, value, index)
-                }}
-              >
-                <option>Select </option>
-                {data2?.map((items) => (
-                  <option value={items.room_name}>{items.room_name} </option>
-                ))}
-              </select>
+                    <select
+                      id="exampleSelect"
+                      className="table_input"
+                      value={item.room_type}
+                      name="room_type"
+                      type="select"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                    >
+                      <option>Select </option>
+                      {data2?.map((items) => (
+                        <option value={items.room_name}>
+                          {items.room_name}{' '}
+                        </option>
+                      ))}
+                    </select>
                     {/* {item.room_type} */}
                   </td>
                   <td>
-                  <select
-                id="exampleSelect"
-                className="table_input"
-                value={item.meal_type}
-                name="meal_type"
-                type="select"
-                onChange={({ target: { name, value } }) => {
-                  handleChanges(name, value, index)
-                }}
-              >
-                <option>Select </option>
-                {data1.map((items) => (
-                  <option value={items.meal_name}>{items.meal_name} </option>
-                ))}
-              </select>
+                    <select
+                      id="exampleSelect"
+                      className="table_input"
+                      value={item.meal_type}
+                      name="meal_type"
+                      type="select"
+                      onChange={({ target: { name, value } }) => {
+                        handleChanges(name, value, index)
+                      }}
+                    >
+                      <option>Select </option>
+                      {data1.map((items) => (
+                        <option value={items.meal_name}>
+                          {items.meal_name}{' '}
+                        </option>
+                      ))}
+                    </select>
                     {/* {item.meal_type}  */}
                   </td>
                   <td>
@@ -1124,7 +1131,7 @@ export default function ReservationTable({
                   {/* //////////////////////////////////////////////////////////////////////////////////// */}
                   {/* //////////////////////////////MEAL RATE COST//////////////////////////////////////// */}
                   <td>
-                  <input
+                    <input
                       className="table_input"
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
@@ -1134,7 +1141,7 @@ export default function ReservationTable({
                     />
                   </td>
                   <td>
-                     <input
+                    <input
                       className="table_input"
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
@@ -1144,7 +1151,7 @@ export default function ReservationTable({
                     />
                   </td>
                   <td>
-                     <input
+                    <input
                       className="table_input"
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
@@ -1154,7 +1161,7 @@ export default function ReservationTable({
                     />
                   </td>
                   <td>
-                     <input
+                    <input
                       className="table_input"
                       onChange={({ target: { name, value } }) => {
                         handleChanges(name, value, index)
@@ -1207,17 +1214,15 @@ export default function ReservationTable({
         <div style={{ float: 'right' }}>
           Cost Rat Inc. All Tax :<b> {costCalc}</b>
         </div>
-        <Col md={12}>
-          <center>
-            <button
-              className="app_button p-3 mt-3"
-              style={{ width: 150 }}
-              // onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          </center>
-        </Col>
+      </div>
+      <div className=" bg-danger mt-3 text-center">
+        <button
+          className="app_button p-2"
+          style={{ width: 150 }}
+          // onClick={handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     </div>
   )

@@ -18,9 +18,6 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
-import FoodSupply from '../Components/FoodSupply'
-import CreateSupplier from '../Components/FoodSupplyForm'
-import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
 import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
@@ -30,14 +27,7 @@ import Master from '../Components/Master'
 import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
-import HotelComfirmation from '../Components/Report/HotelComfirmation'
-import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
-import SalesInvoice from '../Components/Report/salesInvoice'
-import TranComfirmPending from '../Components/Report/TranComfirmPending'
-import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
-import ReservationDetails from '../Components/ReservationDetails'
-import ReservationTable from '../Components/ReservationTable'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -45,13 +35,9 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
-import VatInvoiceReport from '../Components/Report/VatInvoiceReport'
-import PostPurchaseInvoice from '../Components/Report/PostPurchaseInvoice'
-import OptionDateWarning from '../Components/Report/OptionDateWarning'
-import AuditBooking from '../Components/Report/AuditBooking'
-import AgenPayReport from '../Components/Report/AgenPayReport'
-import SupplierPayReport from '../Components/Report/SupplierPayReport'
-import ViewItenaryReport from '../Components/Invoices/ViewItenaryReport'
+import CreateTransportReservstion from '../Components/CreateTransportReservstion'
+import ReservationViewDetails from '../Components/ReservationViewDetails'
+import AllotmentReport from '../Components/AllotmentReport'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -124,6 +110,10 @@ function AppNavigation() {
           element: <Allotmentstep />,
         },
         {
+          path: 'allotment-report',
+          element: <AllotmentReport />,
+        },
+        {
           path: 'allotment',
           element: <Allotment />,
         },
@@ -138,10 +128,6 @@ function AppNavigation() {
         {
           path: '/new-reservation-details',
           element: <CreateReservationDetail />,
-        },
-        {
-          path:"/reservation-table",
-          element:<ReservationTable />
         },
         {
           path: '/room-type',
@@ -188,68 +174,17 @@ function AppNavigation() {
           element: <CreateNewCustomer />,
         },
         {
-          path: 'hotel-chart',
-          element: <HotelChart />,
-        },
-        { 
           path: '/reservation-invoice',
-          element: <ViewReservationInvoice/>
-        },
-        { 
-          path: '/Report-payment',
-          element: <TransportPAyment />
-        },
-        { 
-          path: '/hotel-comfirmation-pending',
-          element: <HotelComfirmation />
-        },
-        { 
-          path: '/trans-comfirmation-pending',
-          element: <TranComfirmPending />
+          element: <ViewReservationInvoice />,
         },
         {
-          path: '/room-Purchase',
-          element: <RoomPurchasePaymentPending />
+          path: '/reservation-view-details',
+          element: <ReservationViewDetails />,
         },
         {
-          path: '/sells-invoice-pending',
-          element: <SalesInvoice />
+          path: '/create-transport-reservstion',
+          element: <CreateTransportReservstion />,
         },
-        {
-          path:"/food-supplier",
-          element:<FoodSupply />
-        },{
-          path:"/creat-food-supply",
-          element:<CreateSupplier />
-        },
-        {
-          path:  '/vat-invoice-report',
-          element: <VatInvoiceReport />
-        },
-        {
-          path: '/post-purchase-invoice',
-          element: <PostPurchaseInvoice />
-        },
-        {
-          path: '/option-date-warning',
-          element: < OptionDateWarning/>
-        },
-        {
-          path: '/audit-booking',
-          element: <AuditBooking />
-        },
-        {
-          path: '/agent-pay-schedule-report',
-          element: <AgenPayReport />
-        },
-        {
-          path: '/supplier-pay-schedule-report',
-          element: <SupplierPayReport />
-        },
-        {
-          path: '/itenary-report',
-          element: <ViewItenaryReport />
-        }
       ],
     },
   ])
