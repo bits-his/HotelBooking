@@ -101,12 +101,13 @@ export default function CreateReservationDetail({
     )
     // console.log(form)
   }
-
+ 
   useEffect(() => {
     getViews()
     getHotels()
     getMeals_table()
     getAgent()
+   
   }, [])
   const handleSubmit = () => {
     console.log(form)
@@ -150,8 +151,8 @@ export default function CreateReservationDetail({
       'api/get_countries',
       (res) => {
         //   navigate(`/agent`)
-        console.log(res)
-        setCountry(res.results[0])
+        console.log('contryyyyyyyyyyyyyyyy',res)
+        setCountry(res.results)
       },
       (err) => {
         // setLoading(false)
@@ -162,7 +163,7 @@ export default function CreateReservationDetail({
   const [selected, setSelected] = useState({})
   return (
     <div className="">
-      {/* {JSON.stringify(names)} */}
+      {/* {JSON.stringify(country[0].length)} */}
 
       <Row>
         <Col md={12}>
@@ -181,6 +182,7 @@ export default function CreateReservationDetail({
               onChange={handleChange}
               name="reservation_number"
               type="number"
+              disabled
             />
             <CiSearch className="search_icon" onClick={toggle2} />
             <Modal isOpen={modal2} toggle={toggle2} size="xl">
@@ -287,7 +289,7 @@ export default function CreateReservationDetail({
             <option>Select </option>
             <option>Abdulsalam </option>
           </select>
-          <label className="Label mt-2">Quest Full Name</label>
+          <label className="Label mt-2">Guest Full Name</label>
           <div className="search_input_form">
             <input
               className="app_input3"

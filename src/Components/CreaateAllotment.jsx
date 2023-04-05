@@ -60,7 +60,7 @@ export default function CreaateAllotment({form={},setForm=(f)=>f}) {
 const {user}=useSelector((state)=>state.auth)
   return (
     <div>
-        {JSON.stringify(user)}
+        {/* {JSON.stringify(user)} */}
       <Row>
         <Col
           md={12}>

@@ -1,50 +1,51 @@
-import moment from "moment/moment";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Card } from "reactstrap";
-import FormWrapper from "../tab-wrapper/FormaWrapper";
-import { _post } from "../Utils/Helper";
-import CreaateAllotment from "./CreaateAllotment";
-import AllaotmentTable from "./Table/AllaotmentTable";
+import moment from 'moment/moment'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Card } from 'reactstrap'
+import FormWrapper from '../tab-wrapper/FormaWrapper'
+import { _post } from '../Utils/Helper'
+import CreaateAllotment from './CreaateAllotment'
+import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotmentstep() {
-  const today = moment().format("YYYY-MM-DD");
-  const d_to = moment(today).add(1, "days").format("YYYY-MM-DD");
+  const today = moment().format('YYYY-MM-DD')
+  const d_to = moment(today).add(1, 'days').format('YYYY-MM-DD')
+  const { user } = useSelector((state) => state.auth)
   const [form, setForm] = useState({
-    room_type: "",
-    veiws: "",
+    room_type: '',
+    veiws: '',
     d_from: today,
     nights: 1,
     d_to: d_to,
-    rooms: "",
-    rate: "",
-    totals: "",
-    meals_plan: "",
-    meals_ttl: "",
-    net_ttl: "",
-    vat: "",
-    vat_ttl: "",
-    ttl_w_vat: "",
-    ref_no: "",
-    pur_source: "",
-    id_no: "",
-    hotel_name: "",
-    allotment_type: "",
-    supplier_name: "",
-    reference_id: "",
-    details: "",
-    agent: user.name,
-  });
-  const [newData, setNewData] = useState([]);
+    rooms: '',
+    rate: '',
+    totals: '',
+    meals_plan: '',
+    meals_ttl: '',
+    net_ttl: '',
+    vat: '',
+    vat_ttl: '',
+    ttl_w_vat: '',
+    ref_no: '',
+    pur_source: '',
+    id_no: '',
+    hotel_name: '',
+    allotment_type: '',
+    supplier_name: '',
+    reference_id: '',
+    details: '',
+    agent: user?.name,
+  })
+  const [newData, setNewData] = useState([])
   const handleSubmit = () => {
     _post(`api/allotment_details?query_type=insert`, newData, (res) => {
-      console.log(res);
+      console.log(res)
     }),
       (err) => {
-        console.log(err);
+        console.log(err)
       },
-      allotment();
-  };
+      allotment()
+  }
   const allotment = () => {
     if (
       form.id_no &&
@@ -55,27 +56,27 @@ export default function Allotmentstep() {
       form.details
     ) {
       setForm({
-        id_no: "",
-        hotel_name: "",
-        allotment_type: "",
-        supplier_name: "",
-        reference_id: "",
-        details: "",
-      });
+        id_no: '',
+        hotel_name: '',
+        allotment_type: '',
+        supplier_name: '',
+        reference_id: '',
+        details: '',
+      })
     }
-    _post("api/allotment", form, (resp) => {
-      console.log(resp);
+    _post('api/allotment', form, (resp) => {
+      console.log(resp)
     }),
       (err) => {
-        console.log(err);
-      };
-  };
+        console.log(err)
+      }
+  }
 
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
       <FormWrapper
-        steps={["Creaate Allotment", "Allaotment Table"]}
+        steps={['Creaate Allotment', 'Allaotment Table']}
         handleSubmit={handleSubmit}
       >
         <CreaateAllotment form={form} setForm={setForm} />
@@ -87,5 +88,5 @@ export default function Allotmentstep() {
         />
       </FormWrapper>
     </Card>
-  );
+  )
 }
