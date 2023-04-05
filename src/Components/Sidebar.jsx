@@ -334,6 +334,13 @@ export default function Sidebar() {
             >
               Supplier Pay Schedule Report
             </li>
+            <li onClick={() => goto('/itenary-report')} 
+              className={`link_item ${
+                location.pathname === '/itenary-report' && 'active_side_menu'
+              }`}
+            >
+              Itenary Report
+            </li>
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"

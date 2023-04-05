@@ -51,6 +51,7 @@ import OptionDateWarning from '../Components/Report/OptionDateWarning'
 import AuditBooking from '../Components/Report/AuditBooking'
 import AgenPayReport from '../Components/Report/AgenPayReport'
 import SupplierPayReport from '../Components/Report/SupplierPayReport'
+import ViewItenaryReport from '../Components/Invoices/ViewItenaryReport'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -244,6 +245,10 @@ function AppNavigation() {
         {
           path: '/supplier-pay-schedule-report',
           element: <SupplierPayReport />
+        },
+        {
+          path: '/itenary-report',
+          element: <ViewItenaryReport />
         }
       ],
     },

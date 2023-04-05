@@ -8,6 +8,8 @@ import InputForm from '../../CustomComponents/InputForm'
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
 import { RiFileExcel2Fill } from 'react-icons/ri'
+import { Document, Page, View } from '@react-pdf/renderer'
+import ViewReservationInvoice from '../Invoices/ViewReservationInvoice'
 
 export default function PostPurchaseInvoice() {
     const [form, setForm] = useState({
@@ -391,6 +393,9 @@ export default function PostPurchaseInvoice() {
                     </tbody> */}
                 </table>
             </div>
+        </Row>
+        <Row>
+           <ViewReservationInvoice/>
         </Row>
       </div>
     </Card>

@@ -124,9 +124,7 @@ export const ReservationInvoice = ({setNew_data=[],form=f=>f}) => (
           </View>
           <View
             style={{
-              border: 1,
-              borderStyle: 'solid',
-              borderColor: 'grey',
+              border: "1px solid gray",
               borderWidth: 1,
               marginTop: 5,
             }}
