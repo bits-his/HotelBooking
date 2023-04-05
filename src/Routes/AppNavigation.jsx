@@ -18,9 +18,6 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
-import FoodSupply from '../Components/FoodSupply'
-import CreateSupplier from '../Components/FoodSupplyForm'
-import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
 import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
@@ -30,14 +27,7 @@ import Master from '../Components/Master'
 import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
-import HotelComfirmation from '../Components/Report/HotelComfirmation'
-import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
-import SalesInvoice from '../Components/Report/SalesInvoice'
-import TranComfirmPending from '../Components/Report/TranComfirmPending'
-import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
-import ReservationDetails from '../Components/ReservationDetails'
-import ReservationTable from '../Components/ReservationTable'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -45,10 +35,8 @@ import SignIn from '../Components/SignIn'
 import SignUp from '../Components/SignUp'
 import View from '../Components/Views'
 import AppIndex from './AppIndex'
-import TransportReservation from '../Components/TransportReservation'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
-import AllotmentReport from '../Components/AllotmentReport'
-import ViewCancelLetter from '../Components/Invoices/ViewCancelLetter'
+import ReservationViewDetails from '../Components/ReservationViewDetails'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -137,10 +125,6 @@ function AppNavigation() {
           element: <CreateReservationDetail />,
         },
         {
-          path: '/reservation-table',
-          element: <ReservationTable />,
-        },
-        {
           path: '/room-type',
           element: <RoomType />,
         },
@@ -185,29 +169,17 @@ function AppNavigation() {
           element: <CreateNewCustomer />,
         },
         {
-          path: 'hotel-chart',
-          element: <HotelChart />,
-        },
-        {
           path: '/reservation-invoice',
-          element: <ViewReservationInvoice />,
-        },
-        {
-          path: '/cancel-letter',
-          element: <ViewCancelLetter />,
-        },
-        {
-          path: '/allotment-report',
-          element: <AllotmentReport />,
-        },
-        {
-          path: '/transport-reservation',
-          element: <TransportReservation />,
-        },
-        {
-          path: '/create-transport-reservstion',
-          element: <CreateTransportReservstion />,
-        },
+          element: <ViewReservationInvoice/>
+      },
+      {
+        path: '/reservation-view-details',
+        element: <ReservationViewDetails/>
+    },
+    {
+      path: '/create-transport-reservstion',
+      element: <CreateTransportReservstion/>
+  },
       ],
     },
   ])
