@@ -536,11 +536,7 @@ label {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-<<<<<<< HEAD
-  background: rgb(12, 134, 103); 
-=======
   background: rgb(12, 134, 103);
->>>>>>> 854487fc14d37d3e5ade8eed01f28bde7ce5a251
   /* width: 400%; */
 }
 
