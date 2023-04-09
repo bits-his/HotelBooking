@@ -71,9 +71,9 @@ export default function Sidebar() {
               Reservation & Availability
             </li>
             <li
-              onClick={() => goto('/reservation-table')}
+              onClick={() => goto('/reservation-details')}
               className={`link_item ${
-                location.pathname === '/reservation-table' && 'active_side_menu'
+                location.pathname === '/reservation-details' && 'active_side_menu'
               }`}
             >
               Create Reservation
@@ -85,6 +85,14 @@ export default function Sidebar() {
               }`}
             >
               Create Agent/Supplier
+            </li>
+            <li
+              onClick={() => goto("/reservation-view-details")}
+              className={`link_item ${
+                location.pathname === "/reservation-view-details" && "active_side_menu"
+              }`}
+            >
+              Reservation Details View 
             </li>
           </div>
         ) : (

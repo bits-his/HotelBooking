@@ -36,8 +36,6 @@ import SalesInvoice from '../Components/Report/SalesInvoice'
 import TranComfirmPending from '../Components/Report/TranComfirmPending'
 import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
-import ReservationDetails from '../Components/ReservationDetails'
-import ReservationTable from '../Components/ReservationTable'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
 import RoomType from '../Components/RoomType'
@@ -51,8 +49,10 @@ import OptionDateWarning from '../Components/Report/OptionDateWarning'
 import AuditBooking from '../Components/Report/AuditBooking'
 import AgenPayReport from '../Components/Report/AgenPayReport'
 import SupplierPayReport from '../Components/Report/SupplierPayReport'
-import TransportReservation from '../Components/TransportReservation'
+import TransportReservation from '../Components/CreateTransportReservstion'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
+import ReservationViewDetails from '../Components/ReservationViewDetails'
+import ReservationTable from '../Components/Table/ReservationTable'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -261,8 +261,8 @@ function AppNavigation() {
           element: <TransportReservation/>
       },
       {
-        path: '/create-transport-reservstion',
-        element: <CreateTransportReservstion/>
+        path: '/reservation-view-details',
+        element: <ReservationViewDetails/>
     },
         
       ],

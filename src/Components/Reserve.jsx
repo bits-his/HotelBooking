@@ -10,7 +10,7 @@ import CreateReservationDetail from "./CreateReservationDetail";
 import ViewReservationInvoice from "./Invoices/ViewReservationInvoice";
 import Reservation from "./Reservation";
 import ReservationTable from "./Table/ReservationTable";
-import TransportReservation from "./TransportReservation";
+// import TransportReservation from "./ReservationViewDeteals";
 import CreateTransportReservstion from "./CreateTransportReservstion";
 
 export default function Reserve() {

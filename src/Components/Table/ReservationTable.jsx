@@ -13,7 +13,7 @@ export default function ReservationTable({
   form = {},
   setForm = (f) => f,
   setNew_data = (f) => f,
-  new_data = (f) => f,
+  new_data = [],
 }) {
   const [data, setData] = useState([])
   const [data1, setData1] = useState([])
