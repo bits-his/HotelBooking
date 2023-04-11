@@ -19,67 +19,28 @@ export default function TransportPAyment() {
     setForm((p) => ({ ...p, [name]: value }))
   }
 
-//   const handleSubmit = () => {
-//     let finalObj = {
-//       name: form.name,
-//       address: form.address,
-//       floors: selected,
-//     }
-//     setLoading(true)
-//     _post(
-//       'api/hotels?in_query_type=create',
-//       form,
-//       (res) => {
-//         setForm((p) => ({
-//           ...p,
-//           hotel_in: '',
-//           hotel_name: '',
-//           address: '',
-//           city: '',
-//           phone: '',
-//           email: '',
-//           website: '',
-//         }))
-//         setLoading(false)
-//         console.log(res)
-//         getHotels()
-//         toggle()
-//       },
-//       (err) => {
-//         setLoading(false)
-//         console.log(err)
-//       },
-//     )
-//     console.log(finalObj)
-//   }
+  const [transport, setTransport] = useState([])
 
-//   const getHotels = () => {
-//     _post(
-//       'api/hotels?in_query_type=select-all',
-//       {},
-//       (resp) => {
-//         // setLoading(false)
-//         console.log(resp)
-//         // if (resp ) {
-//         setHotelList(resp.resp)
-//         //  alert('dfasfsadf'+resp)
-//         // }
-//       },
-//       (e) => {
-//         console.log(e)
-//         // setLoading(false)
-//         // alert(e)
-//       },
-//     )
-//   }
+    const getTransport = () => {
+        _post(
+            'api/getTransport?query_type=pending',
+            {},
+            (resp) => {  
+                console.log(resp)
+                setTransport(resp.results) },
+            (e) => {
+                console.log(e)},
+        )
+    }
 
-//   useEffect(() => {
-//     // setLoading(true)
-//     getHotels()
-//   }, [])
+    useEffect(() => {
+        // setLoading(true)
+        getTransport()
+    }, [])
   
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(transport)} */}
         <Row>
             <Col md={12}>
                 <center>
@@ -276,12 +237,12 @@ export default function TransportPAyment() {
                 </td>
               </tr>
             </thead>
-            {/* <tbody>
-              {JSON.stringify(hotelList)}
-              {hotelList.length === 0 ? (
+            <tbody>
+              {/* {JSON.stringify(transport)} */}
+              {transport.length === 0 ? (
                 <span>Loading Rooms...</span>
               ) : (
-                hotelList.map((item, index) => (
+                transport.map((item, index) => (
                   <tr>
                     <td
                       style={{
@@ -289,7 +250,7 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
+                     {index+1}
                     </td>
                     <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
                     <td
@@ -306,7 +267,7 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      {item.address}
+                      {item.transport_company}
                     </td>
                     <td
                       style={{
@@ -314,7 +275,7 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      {item.city}
+                      {item.transport_company}
                     </td>
                     <td
                       style={{
@@ -322,7 +283,7 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      {item.phone}
+                      {item.pickup_date}
                     </td>
                     <td
                       style={{
@@ -330,7 +291,7 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      {item.email}
+                      {item.arrive_or_dep_time}
                     </td>
                     <td
                       style={{
@@ -338,12 +299,53 @@ export default function TransportPAyment() {
                         padding: '5px 10px',
                       }}
                     >
-                      {item.website}
+                      {item.vat_amount}
                     </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.vat_cost}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.qty}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.vat}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.total}
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {item.net_total}
+                    </td>
+
                   </tr>
                 ))
               )}
-            </tbody> */}
+            </tbody>
           </table>
         </Row>
       </div>

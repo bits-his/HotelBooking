@@ -9,6 +9,7 @@ import InputForm from '../../CustomComponents/InputForm'
 // import { Floors } from './Floors'
 import { RiFileExcel2Fill } from 'react-icons/ri'
 import HotelReg from '../Modal/HotelModal'
+import { CSVLink } from 'react-csv'
 
 export default function HotelComfirmation() {
     const [form, setForm] = useState({
@@ -23,68 +24,36 @@ export default function HotelComfirmation() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
   }
+const [data,setData]=useState([])
 
-//   const handleSubmit = () => {
-//     let finalObj = {
-//       name: form.name,
-//       address: form.address,
-//       floors: selected,
-//     }
-//     setLoading(true)
-//     _post(
-//       'api/hotels?in_query_type=create',
-//       form,
-//       (res) => {
-//         setForm((p) => ({
-//           ...p,
-//           hotel_in: '',
-//           hotel_name: '',
-//           address: '',
-//           city: '',
-//           phone: '',
-//           email: '',
-//           website: '',
-//         }))
-//         setLoading(false)
-//         console.log(res)
-//         getHotels()
-//         toggle()
-//       },
-//       (err) => {
-//         setLoading(false)
-//         console.log(err)
-//       },
-//     )
-//     console.log(finalObj)
-//   }
+  const getHotels = () => {
+    _post(
+      'api/getALLReserve',
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp)
+        // if (resp ) {
+            setData(resp.results)
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e)
+        // setLoading(false)
+        // alert(e)
+      },
+    )
+  }
 
-//   const getHotels = () => {
-//     _post(
-//       'api/hotels?in_query_type=select-all',
-//       {},
-//       (resp) => {
-//         // setLoading(false)
-//         console.log(resp)
-//         // if (resp ) {
-//         setHotelList(resp.resp)
-//         //  alert('dfasfsadf'+resp)
-//         // }
-//       },
-//       (e) => {
-//         console.log(e)
-//         // setLoading(false)
-//         // alert(e)
-//       },
-//     )
-//   }
-
-//   useEffect(() => {
-//     // setLoading(true)
-//     getHotels()
-//   }, [])
-  
+  useEffect(() => {
+    // setLoading(true)
+    getHotels()
+  }, [])
+   let news = data[0]
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+        {/* {JSON.stringify(news)} */}
         <Row>
             <Col md={12}>
                 <center>
@@ -151,7 +120,15 @@ export default function HotelComfirmation() {
                     className="app_button p-3 mt-3 "
                     style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
-                ><RiFileExcel2Fill /> Exel DownLoad</button>
+                    
+                >
+                     <CSVLink
+                            data={news}
+                            className='csv_link'
+                            filename={"Hotel Comfirma"}
+                        >
+                          <RiFileExcel2Fill /> Exel DownLoad
+                        </CSVLink></button>
             </div>
         </Col>
       </Row>
@@ -319,12 +296,12 @@ export default function HotelComfirmation() {
                         </td>
                     </tr>
                     </thead>
-                    {/* <tbody>
-                    {JSON.stringify(hotelList)}
-                    {hotelList.length === 0 ? (
+                    <tbody>
+                    {/* {JSON.stringify(hotelList)} */}
+                    {data.length === 0 ? (
                         <span>Loading Rooms...</span>
                     ) : (
-                        hotelList.map((item, index) => (
+                        data[0]?.map((item, index) => (
                         <tr>
                             <td
                             style={{
@@ -332,24 +309,16 @@ export default function HotelComfirmation() {
                                 padding: '5px 10px',
                             }}
                             >
-                            <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
+                            {item.reservation_type}
                             </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
+                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.reservation_number}</td>
                             <td
                             style={{
                                 border: '1px solid rgb(12, 134, 103)',
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.hotel_name}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.address}
+                            {item.id}
                             </td>
                             <td
                             style={{
@@ -357,7 +326,7 @@ export default function HotelComfirmation() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.city}
+                            {item.agent_name}
                             </td>
                             <td
                             style={{
@@ -365,7 +334,7 @@ export default function HotelComfirmation() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.phone}
+                            {item.country_name}
                             </td>
                             <td
                             style={{
@@ -373,7 +342,7 @@ export default function HotelComfirmation() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.email}
+                            {item.check_in}
                             </td>
                             <td
                             style={{
@@ -381,12 +350,92 @@ export default function HotelComfirmation() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.website}
+                            {item.check_out}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.reservation_number}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.guest_name}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.id}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.hotel}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.no_of_room}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.room_type}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.view}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.night}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.meal_cost_rat_Inc_all_tax}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.meal_cost_municipal_vat}
                             </td>
                         </tr>
                         ))
                     )}
-                    </tbody> */}
+                    </tbody>
                 </table>
             </div>
         </Row>

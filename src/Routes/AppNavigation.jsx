@@ -18,9 +18,6 @@ import CreateReservationDetail from '../Components/CreateReservationDetail'
 import CustomerReg from '../Components/CustomerReg'
 import Customers from '../Components/Customers'
 import Dashboard from '../Components/Dashboard'
-import FoodSupply from '../Components/FoodSupply'
-import CreateSupplier from '../Components/FoodSupplyForm'
-import HotelChart from '../Components/HotelChart'
 import HotelReg from '../Components/HotelReg'
 import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
 import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
@@ -30,11 +27,6 @@ import Master from '../Components/Master'
 import Meal from '../Components/Meal'
 import NewAgent from '../Components/NewAgent'
 import NewCustomer from '../Components/NewCustomer'
-import HotelComfirmation from '../Components/Report/HotelComfirmation'
-import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
-import SalesInvoice from '../Components/Report/SalesInvoice'
-import TranComfirmPending from '../Components/Report/TranComfirmPending'
-import TransportPAyment from '../Components/Report/TransportPAyment'
 import Reservation from '../Components/Reservation'
 import Reserve from '../Components/Reserve'
 import RoomReg from '../Components/RoomReg'
@@ -53,6 +45,13 @@ import TransportReservation from '../Components/CreateTransportReservstion'
 import CreateTransportReservstion from '../Components/CreateTransportReservstion'
 import ReservationViewDetails from '../Components/ReservationViewDetails'
 import ReservationTable from '../Components/Table/ReservationTable'
+import AllotmentReport from '../Components/AllotmentReport'
+import ViewCancelLetter from '../Components/Invoices/ViewCancelLetter'
+import TransportPAyment from '../Components/Report/TransportPAyment'
+import HotelComfirmation from '../Components/Report/HotelComfirmation'
+import TranComfirmPending from '../Components/Report/TranComfirmPending'
+import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
+import SalesInvoice from '../Components/Report/SalesInvoice'
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -125,6 +124,10 @@ function AppNavigation() {
           element: <Allotmentstep />,
         },
         {
+          path: 'allotment-report',
+          element: <AllotmentReport />,
+        },
+        {
           path: 'allotment',
           element: <Allotment />,
         },
@@ -139,10 +142,6 @@ function AppNavigation() {
         {
           path: '/new-reservation-details',
           element: <CreateReservationDetail />,
-        },
-        {
-          path: '/reservation-table',
-          element: <ReservationTable />,
         },
         {
           path: '/room-type',
@@ -187,10 +186,6 @@ function AppNavigation() {
         {
           path: 'create-new-costomer',
           element: <CreateNewCustomer />,
-        },
-        {
-          path: 'hotel-chart',
-          element: <HotelChart />,
         },
         {
           path: '/reservation-invoice',
@@ -265,6 +260,9 @@ function AppNavigation() {
         element: <ReservationViewDetails/>
     },
         
+          {path:'/cancel-letter',
+          element:<ViewCancelLetter/>
+        }
       ],
     },
   ])

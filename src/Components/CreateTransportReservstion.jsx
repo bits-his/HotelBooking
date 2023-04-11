@@ -1,39 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
 
+
 export default function CreateTransportReservstion() {
   const _form = {
-    route: "",
-    mov_type: "",
-    pickup_from: "",
-    pickup_to: "",
-    aduil_child: "",
-    pickup_date: "",
-    transport_company: "",
-    transport_type: "",
-    qty: "",
-    sale_rote: "",
-    total: "",
-    discount: "",
-    vat: "",
-    vat_amount: "",
-    net_total: "",
-    purch_rate: "",
-    vat1: "",
-    vat_cost: "",
-    flight: "",
-    flight_no: "",
-    city:"",
-    arrive_or_dep_time: "",
-    remark: ""
-  };
+    route: '',
+    mov_type: '',
+    pickup_from: '',
+    pickup_to: '',
+    aduil_child: '',
+    pickup_date: '',
+    transport_company: '',
+    transport_type: '',
+    qty: '',
+    sale_rote: '',
+    total: '',
+    discount: '',
+    vat: '',
+    vat_amount: '',
+    net_total: '',
+    purch_rate: '',
+    vat1: '',
+    vat_cost: '',
+    flight: '',
+    flight_no: '',
+    city: '',
+    arrive_or_dep_time: '',
+    remark: '',
+  }
 
-  const [form, setForm] = useState(_form);
-  const [data, setData] = useState([]);
+  const [form, setForm] = useState(_form)
+  const [data, setData] = useState([])
   const handleChange = ({ target: { name, value } }) =>
-    setForm((p) => ({ ...p, [name]: value }));
+    setForm((p) => ({ ...p, [name]: value }))
 
   const handleSubmit = () => {
     // setForm(_form);
@@ -51,13 +52,18 @@ export default function CreateTransportReservstion() {
       console.log(err)
     })
   }
+  const vat = parseInt(form.vat)/parseInt(form.sale_rote)
+  const purch = parseInt(form.vat1)/parseInt(form.purch_rate)
+  useEffect(()=>{
+   setForm((p)=>({...p, total:vat,net_total:parseInt(form.vat)-vat,vat_cost:purch}))
+  },[vat,purch])
   return (
     <div>
       <Card className="app_card dashboard_card shadow p-3 m-3">
-        <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+        <h5 className="app_title" style={{ fontSize: 30, width: '80%' }}>
           Create Transport Reservation
         </h5>
-        {JSON.stringify(data)}
+        {JSON.stringify(vat)}
         <Row>
           <Col md={4}>
             <InputForm
@@ -86,6 +92,8 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -114,6 +122,8 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -142,10 +152,16 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <div className="text-center mt-5">
+          <p className="label_">TRANSPORT SALE RATE</p>
+        </div>
+        <hr className="line" />
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
-              label="Sale Rote"
+              label="Sale Rate"
               name="sale_rote"
               value={form.sale_rote}
               onChange={handleChange}
@@ -171,6 +187,8 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -201,6 +219,12 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <div className="text-center mt-5">
+          <p className="label_">TRANSPORT PURCHASE RATE</p>
+        </div>
+        <hr className="line" />
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -231,6 +255,8 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -260,6 +286,8 @@ export default function CreateTransportReservstion() {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row>
           <Col md={4}>
             <InputForm
               className="app_input"
@@ -279,201 +307,199 @@ export default function CreateTransportReservstion() {
             />
           </Col>
         </Row>
-        <Row className="mt-3">
-          <Col md={6}>
-            <button
-              className="app_button p-3"
-              style={{ width: 150, float: "right" }}
-              onClick={handleSubmit}
-            >
-              Add
-            </button>
-          </Col>
-        </Row>
+        <div className="mt-3 text-center">
+          <button
+            className="p-2 app_button"
+            style={{ width: 100 }}
+            onClick={handleSubmit}
+          >
+            Add
+          </button>
+        </div>
         <Row>
-          <div style={{ overflowX: "auto", marginTop: 50 }}>
+          <div style={{ overflowX: 'auto', marginTop: 50 }}>
             <table id="customers" className="mt-5">
               <thead>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Router
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Mov type
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Pickup From
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Pickup To
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Adult child
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Pickup Date
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Transport Company
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Transport Type
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Qty
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Sale Rate
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Total
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Discount
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Vat %
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Vat Amount
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Net Total
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Purch Rate
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Vat %
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Vat Cost %
-                </th>{" "}
+                </th>{' '}
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Flight
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Flight No
                 </th>
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   City
-                </th>{" "}
+                </th>{' '}
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Arrive Or Dep Time
-                </th>{" "}
+                </th>{' '}
                 <th
                   style={{
-                    border: "1px solid rgb(12, 134, 103)",
-                    padding: "5px 10px",
+                    border: '1px solid rgb(12, 134, 103)',
+                    padding: '5px 10px',
                   }}
                 >
                   Remark
@@ -484,8 +510,8 @@ export default function CreateTransportReservstion() {
                   <tbody>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -496,8 +522,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -508,8 +534,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -520,8 +546,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -532,8 +558,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -544,8 +570,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -556,8 +582,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -568,8 +594,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -580,28 +606,28 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      <input className="table_input" value={i.qty} name="qty" />
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
                         className="table_input"
-                        value={i.qty}
-                        name="qty"
+                        value={i.sale_rote}
+                        name="sale_rote"
                       />
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                      }}
-                    >
-                      <input className="table_input" value={i.sale_rote} name="sale_rote" />
-                    </td>
-                    <td
-                      style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -612,8 +638,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -624,28 +650,28 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      <input className="table_input" value={i.vat} name="vat" />
+                    </td>
+                    <td
+                      style={{
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
                         className="table_input"
-                        value={i.vat}
-                        name="vat"
+                        value={i.vat_amount}
+                        name="vat_amount"
                       />
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                      }}
-                    >
-                      <input className="table_input" value={i.vat_amount} name="vat_amount" />
-                    </td>
-                    <td
-                      style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -656,8 +682,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -668,8 +694,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -680,8 +706,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -692,8 +718,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -704,8 +730,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -716,8 +742,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -728,8 +754,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -740,8 +766,8 @@ export default function CreateTransportReservstion() {
                     </td>
                     <td
                       style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
+                        border: '1px solid rgb(12, 134, 103)',
+                        padding: '5px 10px',
                       }}
                     >
                       <input
@@ -777,5 +803,5 @@ export default function CreateTransportReservstion() {
         <center><button className="app_button p-3 mt-2" onClick={handleSubmiting}>Submit</button></center>
       </Card>
     </div>
-  );
+  )
 }

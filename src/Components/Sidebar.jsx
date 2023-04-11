@@ -130,7 +130,7 @@ export default function Sidebar() {
         )}
         <li onClick={dropA} className="link_item">
           <span>
-            <MdDashboard className="logo shadow" /> Allotmnt & Purchases
+            <MdDashboard className="logo shadow" /> Altmnt & Purchases
             {showSubMenuA ? (
               <TiArrowSortedUp size="1.4rem" />
             ) : (
