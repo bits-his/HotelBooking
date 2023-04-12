@@ -48,7 +48,7 @@ export default function AuditBooking() {
                 </Col>
             </Row>
             <Row>
-                {JSON.stringify(transport)}
+                {/* {JSON.stringify(transport)} */}
                 <Col md={4}>
                     <InputForm
                         className="app_input"

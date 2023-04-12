@@ -114,6 +114,7 @@ export default function Reserve() {
     _post(`api/hotel_booking?query_type=insert`, {...form,arr:new_data}, (resp) => {
       console.log(resp.nextCode);
       setNo(resp.nextCode)
+      handleSubmitings()
       setForm((p)=>({...p,reservation_number:resp.nextCode}))
       NotificationManager.success('Success message', `Your Reservation Number is ${resp.nextCode}`);
       toggle3()
@@ -185,6 +186,18 @@ export default function Reserve() {
       }
     );
   };
+  const [data,setData]=useState([])
+  const handleSubmitings =()=>{
+    _post('api/create_transport?query_type=insert',
+    data,
+    (res)=>{
+      if(res.success){
+        alert('success')
+      }
+    },(err)=>{
+      console.log(err)
+    })
+  }
   // const navigate =useNavigate()
   useEffect(() => {
     getHotels();
@@ -229,7 +242,7 @@ export default function Reserve() {
           setNew_data={setNew_data}
           new_data={new_data}
         />
-      <CreateTransportReservstion />
+      <CreateTransportReservstion data={data} setData={setData} />
       </FormWrapper>}
       
      

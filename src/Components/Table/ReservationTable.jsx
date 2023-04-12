@@ -251,7 +251,7 @@ export default function ReservationTable({
     )
   return (
     <div>
-      {JSON.stringify(form.room_sale_source)}
+      {/* {JSON.stringify(form.room_sale_source)} */}
       <Row>
         <Col md={12}>
           <h5 className="app_title" style={{ fontSize: 30 }}>
@@ -385,7 +385,8 @@ export default function ReservationTable({
             </Col>
           </Row>
           <Row>
-            <Col md={4}>
+            {
+              form.room_sale_source==='supplier'? <Col md={4}>
               <label className="Label mt-2">Supllier</label>
               <div className="search_input_form">
                 <input
@@ -403,7 +404,9 @@ export default function ReservationTable({
                   />
                 </Modal>
               </div>
-            </Col>
+            </Col>:''
+            }
+           
             <Col md={4}>
               <label className="Label mt-2">Meal Sale Source</label>
               <select
@@ -1216,14 +1219,8 @@ export default function ReservationTable({
           Cost Rat Inc. All Tax :<b> {costCalc}</b>
         </div>
       </div>
-      <div className=" bg-danger mt-3 text-center">
-        <button
-          className="app_button p-2"
-          style={{ width: 150 }}
-          // onClick={handleSubmit}
-        >
-          Submit
-        </button>
+      <div className=" mt-3 text-center">
+       
       </div>
     </div>
   )

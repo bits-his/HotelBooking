@@ -4,7 +4,7 @@ import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
 
 
-export default function CreateTransportReservstion() {
+export default function CreateTransportReservstion({data=[],setData=f=>f}) {
   const _form = {
     route: '',
     mov_type: '',
@@ -32,7 +32,7 @@ export default function CreateTransportReservstion() {
   }
 
   const [form, setForm] = useState(_form)
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const handleChange = ({ target: { name, value } }) =>
     setForm((p) => ({ ...p, [name]: value }))
 
@@ -59,11 +59,11 @@ export default function CreateTransportReservstion() {
   },[vat,purch])
   return (
     <div>
-      <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* <Card className="app_card dashboard_card shadow p-3 m-3"> */}
         <h5 className="app_title" style={{ fontSize: 30, width: '80%' }}>
           Create Transport Reservation
         </h5>
-        {JSON.stringify(vat)}
+        {/* {JSON.stringify(vat)} */}
         <Row>
           <Col md={4}>
             <InputForm
@@ -505,8 +505,9 @@ export default function CreateTransportReservstion() {
                   Remark
                 </th>
               </thead>
+              {/* {JSON.stringify(data)} */}
               {data &&
-                data.map((i) => (
+                data?.map((i) => (
                   <tbody>
                     <td
                       style={{
@@ -800,8 +801,8 @@ export default function CreateTransportReservstion() {
             </table>
           </div>
         </Row>
-        <center><button className="app_button p-3 mt-2" onClick={handleSubmiting}>Submit</button></center>
-      </Card>
+        {/* <center><button className="app_button p-3 mt-2" onClick={handleSubmiting}>Submit</button></center> */}
+      {/* </Card> */}
     </div>
   )
 }

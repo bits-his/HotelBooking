@@ -123,7 +123,7 @@ const [data,setData]=useState([])
                     
                 >
                      <CSVLink
-                            data={news}
+                            data={news?news:[]}
                             className='csv_link'
                             filename={"Hotel Comfirma"}
                         >

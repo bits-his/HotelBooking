@@ -262,6 +262,10 @@ function AppNavigation() {
         
           {path:'/cancel-letter',
           element:<ViewCancelLetter/>
+        },
+        {
+          path:"/reservation_table",
+          element:<ReservationTable />
         }
       ],
     },
