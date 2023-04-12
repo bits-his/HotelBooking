@@ -29,7 +29,7 @@
 .app_card {
   border: none !important;
   border-radius: 5px;
-  border: 3px solid rgb(12, 134, 103) !important;
+  border: 1px solid rgb(12, 134, 103) !important;
 }
 .dd {
   width: 100% !important;

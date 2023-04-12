@@ -57,6 +57,9 @@ export default function FoodModal({setForm=f=>f,toggle=f=>f,}) {
             className="mt-5"
           >
             <thead>
+            <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                Action
+              </th>
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
               Company Name
               </th>
@@ -72,14 +75,15 @@ export default function FoodModal({setForm=f=>f,toggle=f=>f,}) {
               <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
             Company Email
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Action
-              </th>
+             
             </thead>
 
           {data &&
             data.map((i) => (
               <tbody>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  <button className="app_button" size="sm" onClick={()=>{setForm((p)=>({...p,supplier1:i.company_name}));toggle()}}>Select</button>
+                </td>
                 <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
                   {i.company_name}
                 </td>
@@ -95,9 +99,7 @@ export default function FoodModal({setForm=f=>f,toggle=f=>f,}) {
                 <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
                   {i.company_email}
                 </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  <Button size="sm" onClick={()=>{setForm((p)=>({...p,supplier1:i.company_name}));toggle()}}>Edit</Button>
-                </td>{" "}
+              
               </tbody>
             ))}
         </table>

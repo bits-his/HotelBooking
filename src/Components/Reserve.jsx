@@ -95,7 +95,7 @@ export default function Reserve() {
     print_view: "",
     hotel_city: "",
     filter_type: "",
-    reservation_number:parseInt(nos),
+    reservation_number:0,
     // arr:new_data
   });
   
