@@ -16,7 +16,7 @@ import CreateTransportReservstion from "./CreateTransportReservstion";
 export default function Reserve() {
   const today = moment().format('YYYY-MM-DD')
   const [new_data, setNew_data] = useState([]);
-  const [results,setResults]=useState([])
+  // const [results,setResults]=useState([])
   const getChart =()=>{
       _get('api/getNextCode',(resp)=>{
           console.log(resp.results)
@@ -30,7 +30,7 @@ export default function Reserve() {
   useEffect(()=>{
       getChart()
   },[0])
-  let nos= results.code;
+  // let nos= results.code;
   const [form, setForm] = useState({
     hotel: "",
     check_in: today,
