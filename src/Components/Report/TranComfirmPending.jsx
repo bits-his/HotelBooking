@@ -158,7 +158,7 @@ export default function TranComfirmPending() {
           </div>
         </Col>
       </Row>
-      <div className="card_div">
+      <div className="m-2">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}

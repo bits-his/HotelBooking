@@ -36,7 +36,7 @@ export default function Country() {
           </button>
         </Col>
       </Row>
-      <div className="card_div">
+      <div className="m-2">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
@@ -116,8 +116,10 @@ export default function Country() {
                     }}
                   >
                     <center>
-                      <Button
+                      <button
                         size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
                         onClick={() =>
                           navigate(
                             `/create-country?country_name=${i.country_name}&id=${i.id}`
@@ -125,7 +127,7 @@ export default function Country() {
                         }
                       >
                         Edit
-                      </Button>
+                      </button>
                     </center>
                   </td>{" "}
                 </tbody>

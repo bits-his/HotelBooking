@@ -64,7 +64,7 @@ export default function CreateSupplier() {
                 <button
                     className="app_button p-2 mb-3"
                     style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate('/food-supplier')}
                 >
                     <FaArrowLeft style={{marginRight: 10}} /> Back
                 </button>

@@ -5,7 +5,7 @@ import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
 export default function FoodSupply() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
@@ -14,7 +14,7 @@ export default function FoodSupply() {
       "api/food-supply?query_type=select",
       {},
       (res) => {
-          // navigate(-1)
+        // navigate(-1)
         console.log(res);
         setData(res.results);
       },
@@ -44,22 +44,22 @@ export default function FoodSupply() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className="card_div">
         <Col md={12}>
-          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-                  {/* {JSON.stringify(data)} */}
-                  <label className='label_title' >Search</label>
-                  <div className='search'>
-                    <CiSearch style={{fontSize: 30}}/>
-                      <input 
-                          className='app_input2'
-                          type='text'
-                          placeholder='Search'
-                          name='Search'
-                          // value={}
-                      />
-                  </div>
-              </div>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label className="label_title">Search</label>
+            <div className="search">
+              <CiSearch style={{ fontSize: 30 }} />
+              <input
+                className="app_input2"
+                type="text"
+                placeholder="Search"
+                name="Search"
+                // value={}
+              />
+            </div>
+          </div>
         </Col>
         <Row>
           <table
@@ -67,52 +67,91 @@ export default function FoodSupply() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-              Company Name
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Company Name
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-            Company Address
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Company Address
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-            Company Website
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Company Website
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-            Company Phone
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Company Phone
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-            Company Email
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Company Email
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Action
               </th>
             </thead>
 
-          {data &&
-            data.map((i) => (
-              <tbody>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.company_name}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.company_address}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.company_website}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.company_phone}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.company_email}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  <Button size="sm" onClick={()=>goto(`/create-meal/${i.id}`)}>Edit</Button>
-                </td>{" "}
-              </tbody>
-            ))}
-        </table>
-      </Row>
-    </div>
+            {data &&
+              data.map((i) => (
+                <tbody>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                    {i.company_name}
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                    {i.company_address}
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                    {i.company_website}
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                    {i.company_phone}
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                    {i.company_email}
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
+                  <center>
+                      <button
+                        size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
+                        onClick={() => goto(`/create-meal/${i.id}`)}
+                      >
+                        Edit
+                      </button>
+                    </center>
+                  </td>{" "}
+                </tbody>
+              ))}
+          </table>
+        </Row>
+      </div>
     </Card>
   );
 }

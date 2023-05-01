@@ -42,7 +42,7 @@ export default function View() {
           </button>
         </Col>
       </Row>
-      <div className="card_div">
+      <div className="m-2">
         <Col md={12}>
           <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
@@ -117,7 +117,13 @@ export default function View() {
                     }}
                   >
                     <center>
-                      <Button size="sm">Edit</Button>
+                      <button
+                        size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
+                      >
+                        Edit
+                      </button>
                     </center>
                   </td>
                 </tbody>

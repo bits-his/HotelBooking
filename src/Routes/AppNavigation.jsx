@@ -1,219 +1,222 @@
-import React from 'react'
-import { useRoutes } from 'react-router-dom'
-import Agent from '../Components/Agent'
-import Allotment from '../Components/Allotment'
-import Allotmentstep from '../Components/Allotmentstep'
+import React from "react";
+import { useRoutes } from "react-router-dom";
+import Agent from "../Components/Agent";
+import Allotment from "../Components/Allotment";
+import Allotmentstep from "../Components/Allotmentstep";
 // import Allotment from '../Components/Allotment'
-import BankDetails from '../Components/BankDetails'
-import Country from '../Components/Country'
-import CreaateAllotment from '../Components/CreaateAllotment'
-import CreacteNewRoom from '../Components/CreacteNewRoom'
-import CreacteRoomType from '../Components/CreacteRoomType'
-import CreacteView from '../Components/CreacteView'
-import CreacteCountry from '../Components/CreateCountry'
-import CreacteMeal from '../Components/CreateMeal'
-import CreateNewCustomer from '../Components/CreateNewCustomer'
-import CreateNewHotel from '../Components/CreateNewHotel'
-import CreateReservationDetail from '../Components/CreateReservationDetail'
-import CustomerReg from '../Components/CustomerReg'
-import Customers from '../Components/Customers'
-import Dashboard from '../Components/Dashboard'
-import HotelReg from '../Components/HotelReg'
-import ViewReservationInvoice from '../Components/Invoices/ViewReservationInvoice'
-import ViewCashReceipt from '../Components/Invoices/ViewReservationInvoice'
-import Landing from '../Components/Landing'
-import ManageRooms from '../Components/ManageRooms'
-import Master from '../Components/Master'
-import Meal from '../Components/Meal'
-import NewAgent from '../Components/NewAgent'
-import NewCustomer from '../Components/NewCustomer'
-import Reservation from '../Components/Reservation'
-import Reserve from '../Components/Reserve'
-import RoomReg from '../Components/RoomReg'
-import RoomType from '../Components/RoomType'
-import SignIn from '../Components/SignIn'
-import SignUp from '../Components/SignUp'
-import View from '../Components/Views'
-import AppIndex from './AppIndex'
-import VatInvoiceReport from '../Components/Report/VatInvoiceReport'
-import PostPurchaseInvoice from '../Components/Report/PostPurchaseInvoice'
-import OptionDateWarning from '../Components/Report/OptionDateWarning'
-import AuditBooking from '../Components/Report/AuditBooking'
-import AgenPayReport from '../Components/Report/AgenPayReport'
-import SupplierPayReport from '../Components/Report/SupplierPayReport'
-import TransportReservation from '../Components/CreateTransportReservstion'
-import CreateTransportReservstion from '../Components/CreateTransportReservstion'
-import ReservationViewDetails from '../Components/ReservationViewDetails'
-import ReservationTable from '../Components/Table/ReservationTable'
-import AllotmentReport from '../Components/AllotmentReport'
-import ViewCancelLetter from '../Components/Invoices/ViewCancelLetter'
-import TransportPAyment from '../Components/Report/TransportPAyment'
-import HotelComfirmation from '../Components/Report/HotelComfirmation'
-import TranComfirmPending from '../Components/Report/TranComfirmPending'
-import RoomPurchasePaymentPending from '../Components/Report/RoomPurchasePaymentPending'
-import SalesInvoice from '../Components/Report/SalesInvoice'
+import BankDetails from "../Components/BankDetails";
+import Country from "../Components/Country";
+import CreaateAllotment from "../Components/CreaateAllotment";
+import CreacteNewRoom from "../Components/CreacteNewRoom";
+import CreacteRoomType from "../Components/CreacteRoomType";
+import CreacteView from "../Components/CreacteView";
+import CreacteCountry from "../Components/CreateCountry";
+import CreacteMeal from "../Components/CreateMeal";
+import CreateNewCustomer from "../Components/CreateNewCustomer";
+import CreateNewHotel from "../Components/CreateNewHotel";
+import CreateReservationDetail from "../Components/CreateReservationDetail";
+import CustomerReg from "../Components/CustomerReg";
+import Customers from "../Components/Customers";
+import Dashboard from "../Components/Dashboard";
+import HotelReg from "../Components/HotelReg";
+import ViewReservationInvoice from "../Components/Invoices/ViewReservationInvoice";
+import ViewCashReceipt from "../Components/Invoices/ViewReservationInvoice";
+import Landing from "../Components/Landing";
+import ManageRooms from "../Components/ManageRooms";
+import Master from "../Components/Master";
+import Meal from "../Components/Meal";
+import NewAgent from "../Components/NewAgent";
+import NewCustomer from "../Components/NewCustomer";
+import Reservation from "../Components/Reservation";
+import Reserve from "../Components/Reserve";
+import RoomReg from "../Components/RoomReg";
+import RoomType from "../Components/RoomType";
+import SignIn from "../Components/SignIn";
+import SignUp from "../Components/SignUp";
+import View from "../Components/Views";
+import AppIndex from "./AppIndex";
+import VatInvoiceReport from "../Components/Report/VatInvoiceReport";
+import PostPurchaseInvoice from "../Components/Report/PostPurchaseInvoice";
+import OptionDateWarning from "../Components/Report/OptionDateWarning";
+import AuditBooking from "../Components/Report/AuditBooking";
+import AgenPayReport from "../Components/Report/AgenPayReport";
+import SupplierPayReport from "../Components/Report/SupplierPayReport";
+import TransportReservation from "../Components/CreateTransportReservstion";
+import CreateTransportReservstion from "../Components/CreateTransportReservstion";
+import ReservationViewDetails from "../Components/ReservationViewDetails";
+import ReservationTable from "../Components/Table/ReservationTable";
+import AllotmentReport from "../Components/AllotmentReport";
+import ViewCancelLetter from "../Components/Invoices/ViewCancelLetter";
+import TransportPAyment from "../Components/Report/TransportPAyment";
+import HotelComfirmation from "../Components/Report/HotelComfirmation";
+import TranComfirmPending from "../Components/Report/TranComfirmPending";
+import RoomPurchasePaymentPending from "../Components/Report/RoomPurchasePaymentPending";
+import SalesInvoice from "../Components/Report/SalesInvoice";
+import HotelChart from "../Components/HotelChart";
+import FoodSupply from "../Components/FoodSupply";
+import FoodSupplyForm from "../Components/FoodSupplyForm";
 function AppNavigation() {
   let element = useRoutes([
     {
-      path: '/',
+      path: "/",
       element: <Landing />,
       children: [{ index: true }],
     },
     {
-      path: 'sign-up',
+      path: "sign-up",
       element: <SignUp />,
     },
     {
-      path: 'sign-in',
+      path: "sign-in",
       element: <SignIn />,
     },
     {
       element: <AppIndex />,
       children: [
         {
-          path: '/dashboard',
+          path: "/dashboard",
           element: <Dashboard />,
         },
         {
-          path: '/customer-registration',
+          path: "/customer-registration",
           element: <CustomerReg />,
         },
         {
-          path: '/hotel-registration',
+          path: "/hotel-registration",
           element: <HotelReg />,
         },
         {
-          path: '/create-hotel',
+          path: "/create-hotel",
           element: <CreateNewHotel />,
         },
         {
-          path: '/creact-new-room',
+          path: "/creact-new-room",
           element: <RoomReg />,
         },
         {
-          path: '/room-registration',
+          path: "/room-registration",
           element: <CreacteNewRoom />,
         },
         {
-          path: '/manage-rooms',
+          path: "/manage-rooms",
           element: <ManageRooms />,
         },
         {
-          path: '/customers',
+          path: "/customers",
           element: <Customers />,
         },
         {
-          path: '/agent',
+          path: "/agent",
           element: <Agent />,
         },
         {
-          path: '/new-agent/:agent_id',
+          path: "/new-agent/:agent_id",
           element: <Master />,
         },
 
         {
-          path: '/new-agent',
+          path: "/new-agent",
           element: <Master />,
         },
         {
-          path: 'bank-details',
+          path: "bank-details",
           element: <BankDetails />,
         },
         {
-          path: 'create-allotment',
+          path: "create-allotment",
           element: <Allotmentstep />,
         },
         {
-          path: 'allotment-report',
+          path: "allotment-report",
           element: <AllotmentReport />,
         },
         {
-          path: 'allotment',
+          path: "allotment",
           element: <Allotment />,
         },
         {
-          path: '/reservation',
+          path: "/reservation",
           element: <Reservation />,
         },
         {
-          path: '/reservation-details',
+          path: "/reservation-details",
           element: <Reserve />,
         },
         {
-          path: '/new-reservation-details',
+          path: "/new-reservation-details",
           element: <CreateReservationDetail />,
         },
         {
-          path: '/room-type',
+          path: "/room-type",
           element: <RoomType />,
         },
         {
-          path: '/creact-room-type',
+          path: "/creact-room-type",
           element: <CreacteRoomType />,
         },
         {
-          path: '/view',
+          path: "/view",
           element: <View />,
         },
         {
-          path: 'create-view',
+          path: "create-view",
           element: <CreacteView />,
         },
         {
-          path: '/table-meal',
+          path: "/table-meal",
           element: <Meal />,
         },
         {
-          path: '/create-meal',
+          path: "/create-meal",
           element: <CreacteMeal />,
         },
         {
-          path: '/create-meal/:id',
+          path: "/create-meal/:id",
           element: <CreacteMeal />,
         },
         {
-          path: '/country',
+          path: "/country",
           element: <Country />,
         },
         {
-          path: 'create-country',
+          path: "create-country",
           element: <CreacteCountry />,
         },
         {
-          path: 'costomer',
+          path: "costomer",
           element: <NewCustomer />,
         },
         {
-          path: 'create-new-costomer',
+          path: "create-new-costomer",
           element: <CreateNewCustomer />,
         },
         {
-          path: '/reservation-invoice',
-          element: <ViewReservationInvoice/>
-        },
-        { 
-          path: '/Report-payment',
-          element: <TransportPAyment />
-        },
-        { 
-          path: '/hotel-comfirmation-pending',
-          element: <HotelComfirmation />
-        },
-        { 
-          path: '/trans-comfirmation-pending',
-          element: <TranComfirmPending />
+          path: "/reservation-invoice",
+          element: <ViewReservationInvoice />,
         },
         {
-          path:  '/vat-invoice-report',
-          element: <VatInvoiceReport />
+          path: "/Report-payment",
+          element: <TransportPAyment />,
         },
         {
-          path: '/room-Purchase',
-          element: <RoomPurchasePaymentPending />
+          path: "/hotel-comfirmation-pending",
+          element: <HotelComfirmation />,
         },
         {
-          path: '/sells-invoice-pending',
-          element: <SalesInvoice />
+          path: "/trans-comfirmation-pending",
+          element: <TranComfirmPending />,
+        },
+        {
+          path: "/vat-invoice-report",
+          element: <VatInvoiceReport />,
+        },
+        {
+          path: "/room-Purchase",
+          element: <RoomPurchasePaymentPending />,
+        },
+        {
+          path: "/sells-invoice-pending",
+          element: <SalesInvoice />,
         },
         // {
         //   path: '/cancel-letter',
@@ -224,52 +227,62 @@ function AppNavigation() {
         //   element: <AllotmentReport />,
         // },
         {
-          path: '/transport-reservation',
+          path: "/transport-reservation",
           element: <TransportReservation />,
         },
         {
-          path: '/create-transport-reservstion',
+          path: "/create-transport-reservstion",
           element: <CreateTransportReservstion />,
         },
         {
-          path: '/post-purchase-invoice',
-          element: <PostPurchaseInvoice />
+          path: "/post-purchase-invoice",
+          element: <PostPurchaseInvoice />,
         },
         {
-          path: '/option-date-warning',
-          element: < OptionDateWarning/>
+          path: "/option-date-warning",
+          element: <OptionDateWarning />,
         },
         {
-          path: '/audit-booking',
-          element: <AuditBooking />
+          path: "/audit-booking",
+          element: <AuditBooking />,
         },
         {
-          path: '/agent-pay-schedule-report',
-          element: <AgenPayReport />
+          path: "/agent-pay-schedule-report",
+          element: <AgenPayReport />,
         },
         {
-          path: '/supplier-pay-schedule-report',
-          element: <SupplierPayReport />
+          path: "/supplier-pay-schedule-report",
+          element: <SupplierPayReport />,
         },
         {
-          path: '/transport-reservation',
-          element: <TransportReservation/>
-      },
-      {
-        path: '/reservation-view-details',
-        element: <ReservationViewDetails/>
-    },
-        
-          {path:'/cancel-letter',
-          element:<ViewCancelLetter/>
+          path: "/transport-reservation",
+          element: <TransportReservation />,
         },
         {
-          path:"/reservation_table",
-          element:<ReservationTable />
-        }
+          path: "/reservation-view-details",
+          element: <ReservationViewDetails />,
+        },
+
+        { path: "/cancel-letter", element: <ViewCancelLetter /> },
+        {
+          path: "/reservation_table",
+          element: <ReservationTable />,
+        },
+        {
+          path: "/hotel-chart",
+          element: <HotelChart />,
+        },
+        {
+          path: "/food-supplier",
+          element: <FoodSupply />,
+        },
+        {
+          path: "/creat-food-supply",
+          element: <FoodSupplyForm />,
+        },
       ],
     },
-  ])
-  return element
+  ]);
+  return element;
 }
-export default AppNavigation
+export default AppNavigation;

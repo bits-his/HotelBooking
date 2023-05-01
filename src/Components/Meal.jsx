@@ -43,7 +43,7 @@ export default function Meal() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
+      <div className="m-2">
         <Col md={12}>
           <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
                   {/* {JSON.stringify(data)} */}
@@ -87,7 +87,16 @@ export default function Meal() {
                   {i.meal_type}
                 </td>
                 <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  <Button size="sm" onClick={()=>goto(`/create-meal/${i.id}`)}>Edit</Button>
+                  <center>
+                      <button
+                        size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
+                        onClick={()=>goto(`/create-meal/${i.id}`)}
+                      >
+                        Edit
+                      </button>
+                    </center>
                 </td>{" "}
               </tbody>
             ))}

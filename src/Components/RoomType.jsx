@@ -8,31 +8,29 @@ export default function RoomType() {
   const goto = useNavigate();
   // const [data, setData] = useState([]);
 
- const [hotel,setHotel]=useState([])
+  const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    _post( 
-      'api/room_type?query_type=select',
+    _post(
+      "api/room_type?query_type=select",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-          setHotel(resp.results)
+        setHotel(resp.results);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
-  useEffect(
-    ()=>{
-      getHotels()
-    },[0]
-  )
+      }
+    );
+  };
+  useEffect(() => {
+    getHotels();
+  }, [0]);
 
   return (
     <Card className="app_card dashboard_card shadow p-4 m-3">
@@ -48,23 +46,22 @@ export default function RoomType() {
           </button>
         </Col>
       </Row>
-      <div className='card_div'>
-
+      <div className="m-2">
         <Col md={12}>
-          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-                  {/* {JSON.stringify(data)} */}
-                  <label className='label_title' >Search</label>
-                  <div className='search'>
-                    <CiSearch style={{fontSize: 30}}/>
-                      <input 
-                          className='app_input2'
-                          type='text'
-                          placeholder='Search'
-                          name='Search'
-                          // value={}
-                      />
-                  </div>
-              </div>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label className="label_title">Search</label>
+            <div className="search">
+              <CiSearch style={{ fontSize: 30 }} />
+              <input
+                className="app_input2"
+                type="text"
+                placeholder="Search"
+                name="Search"
+                // value={}
+              />
+            </div>
+          </div>
         </Col>
         <Row>
           <table
@@ -72,16 +69,36 @@ export default function RoomType() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Room Name
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Type
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Number of Pax
               </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
                 Action
               </th>
               {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
@@ -91,17 +108,45 @@ export default function RoomType() {
             {hotel &&
               hotel.map((i) => (
                 <tbody>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.room_name}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.room_type}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
                     {i.no_pax}
                   </td>
-                  <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                    <Button size="sm">Edit</Button>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <center>
+                      <button
+                        size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
+                      >
+                        Edit
+                      </button>
+                    </center>
                   </td>{" "}
                 </tbody>
               ))}
