@@ -39,7 +39,7 @@ export default function ReservationTable() {
         <hr />
       </Col>
       <button
-            className="app_button p-3 mb-3"
+            className="app_button p-2 mb-3"
             style={{ width: 150 }}
             onClick={() => navigate ("/reservation-details")}
           >

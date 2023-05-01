@@ -183,7 +183,7 @@ export default function RoomReg() {
             <Col md= {12}>
                 <center>
                     <button
-                        className="app_button p-3"
+                        className="app_button p-2"
                         style={{ width: 150}} 
                         onClick={() =>handleSubmit()}
                         >

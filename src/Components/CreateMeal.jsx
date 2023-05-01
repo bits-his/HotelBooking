@@ -79,7 +79,7 @@ export default function CreacteMeal() {
           style={{ display: 'flex', width: '100%', textAlign: 'center' }}
         >
           <button
-            className="app_button p-3 mb-3"
+            className="app_button p-2 mb-3"
             style={{ width: 150, fontSize: 16, fontWeight: 500 }}
             onClick={() => navigate('/table-meal')}
           >
@@ -125,7 +125,7 @@ export default function CreacteMeal() {
       <Row className="mt-3">
         <Col md={6}>
           <button
-            className="app_button p-3"
+            className="app_button p-2"
             style={{ width: 150, float: 'right' }}
             onClick={handleSubmit}
           >

@@ -131,7 +131,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -158,7 +158,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -185,7 +185,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -212,7 +212,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -237,7 +237,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -262,7 +262,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -298,7 +298,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -325,7 +325,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -355,7 +355,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -382,7 +382,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -412,7 +412,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >
@@ -442,7 +442,7 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: 'rgb(12, 134, 103)',
+                      color: '#0b3455',
                       fontWeight: 'bold',
                     }}
                   >

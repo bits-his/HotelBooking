@@ -35,7 +35,7 @@ export default function Meal() {
       <Row>
         <Col md={12}>
           <button
-            className="app_button p-3"
+            className="app_button p-2"
             style={{ width: 150 }}
             onClick={() => goto("/create-meal")}
           >

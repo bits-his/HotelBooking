@@ -101,7 +101,7 @@ export default function CreateNewHotel() {
           style={{ display: "flex", width: "100%", textAlign: "center" }}
         >
           <button
-            className="app_button p-3 mb-3"
+            className="app_button p-2 mb-3"
             style={{ width: 150, fontSize: 16, fontWeight: 500 }}
             onClick={() => goto("/hotel-registration")}
           >

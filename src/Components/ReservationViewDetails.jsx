@@ -270,7 +270,7 @@ export default function ReservationViewDetails() {
         <Row className="mt-3">
           <Col md={6}>
             <button
-              className="app_button p-3"
+              className="app_button p-2"
               style={{ width: 150, float: "right" }}
               onClick={handleSubmit}
             >
@@ -1250,10 +1250,13 @@ export default function ReservationViewDetails() {
         {/* ACCOUNT STATEMENT */}
 
         <Row>
-          <h5 className="app_title" style={{ fontSize: 30, marginTop: 50, width: "80%" }}>
+          <h5
+            className="app_title"
+            style={{ fontSize: 30, marginTop: 50, width: "80%" }}
+          >
             Account Statement
           </h5>
-          <div style={{ display: "flex", flexDirection: "row"   }}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
             <table id="customers" className="mt-1">
               <thead>
                 <th
@@ -1506,11 +1509,13 @@ export default function ReservationViewDetails() {
           </div>
         </Row>
 
-
         <Row>
-        <h5 className="app_title" style={{ fontSize: 30, marginTop: 50, width: "80%" }}>
-             Purchase
-            </h5>
+          <h5
+            className="app_title"
+            style={{ fontSize: 30, marginTop: 50, width: "80%" }}
+          >
+            Purchase
+          </h5>
           <table
             style={{ border: "1px solid #ccc", padding: "" }}
             className="mt-1"
@@ -1522,7 +1527,7 @@ export default function ReservationViewDetails() {
                   padding: "5px 10px",
                 }}
               >
-                Hotel 
+                Hotel
               </th>
               <th
                 style={{
@@ -1546,7 +1551,7 @@ export default function ReservationViewDetails() {
                   padding: "5px 10px",
                 }}
               >
-               Date From
+                Date From
               </th>
               <th
                 style={{

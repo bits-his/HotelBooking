@@ -16,13 +16,13 @@ import CreateTransportReservstion from "./CreateTransportReservstion";
 export default function Reserve() {
   const today = moment().format('YYYY-MM-DD')
   const [new_data, setNew_data] = useState([]);
-  // const [results,setResults]=useState([])
+  const [results,setResults]=useState([])
   const getChart =()=>{
       _get('api/getNextCode',(resp)=>{
           console.log(resp.results)
         setResults(resp.results)
 
-      setForm((p)=>({...p,reservation_number:resp.results.code}))
+      setForm((p)=>({...p,reservation_number:resp.results&&results?.code}))
       },(err)=>{
           console.log(err)
       })

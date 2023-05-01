@@ -32,8 +32,8 @@ export default function BankDetails({form={},setForm=(f)=>f}) {
     }
 
     function handleFileChange(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
+        console.log(e.target.file);
+        setFile(URL.createObjectURL(e.target.file[0]));
     }
     const [loading, setLoading] = useState(false)
     const handleSubmit = () => {

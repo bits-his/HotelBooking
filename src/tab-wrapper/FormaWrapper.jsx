@@ -49,10 +49,10 @@ function  FormWrapper(props) {
           <CustomButton
             className="px-6"
             outline
-            color="success"
+            style={{color: '#0d3a73', border: '1px solid #0d3a73'}}
             onClick={goBack}
           >
-            <AiOutlineLeft className="mr-1" size={20} /> Back
+            <AiOutlineLeft className="mr-1"  size={20} /> Back
           </CustomButton>
         )}
         {step === steps.length - 1 ? (
@@ -76,14 +76,15 @@ function  FormWrapper(props) {
         </CustomButton> */}
           <CustomButton
           className="px-6"
-          color="success"
+          // color="success"
+          style={{color: "#fff", backgroundColor: '#0d3a73'}}
           onClick={handleSubmit}
           loading={loading}
         >
           <FaCheck className="mr-1" size={20} /> Save
         </CustomButton></>
         ) : (
-          <CustomButton className="px-6" color="success" onClick={goNext}>
+          <CustomButton className="px-6" onClick={goNext}>
             Next <AiOutlineRight className="ml-1" size={20} />
           </CustomButton>
         )}

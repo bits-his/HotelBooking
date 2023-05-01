@@ -1,17 +1,22 @@
-import moment from 'moment';
-import React, { useEffect, useState } from 'react'
-import { BiTrash } from 'react-icons/bi';
-import { useSelector } from 'react-redux';
-import { Row, Table, Button, Col, Card  } from 'reactstrap'
-import InputForm from '../../CustomComponents/InputForm'
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import { Row, Table, Button, Col, Card } from "reactstrap";
+import InputForm from "../../CustomComponents/InputForm";
 import { _get, _post } from "../../Utils/Helper";
 
-export default function AllaotmentTable({form={},setForm=(f)=>f,newData=f=>f,setNewData=f=>f}) {
-    const [data, setData] = useState([])
-    const [data1, setData1] = useState([])
+export default function AllaotmentTable({
+  form = {},
+  setForm = (f) => f,
+  newData = (f) => f,
+  setNewData = (f) => f,
+}) {
+  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
 
-    const getData = () => {
-     _get(
+  const getData = () => {
+    _get(
       "api/get_views",
       (res) => {
         console.log(res);
@@ -39,367 +44,400 @@ export default function AllaotmentTable({form={},setForm=(f)=>f,newData=f=>f,set
     );
     // console.log(form)
   };
-const [room,setRoom]=useState([])
-const getHotels = () => {
-    _post( 
-      'api/room_type?query_type=select',
+  const [room, setRoom] = useState([]);
+  const getHotels = () => {
+    _post(
+      "api/room_type?query_type=select",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-          setRoom(resp.results)
+        setRoom(resp.results);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
+      }
+    );
+  };
   useEffect(() => {
     getData();
     getMeals_table();
-    getHotels()
+    getHotels();
   }, []);
 
-    const handleChange = ({ target: { name, value } }) => {
-        if(name==='nights'){
-            setForm((p) => ({ ...p, [name]: value,d_to:moment(form.d_from).add(value,'days').format("YYYY-MM-DD") }))
-        }else{
-            setForm((p) => ({ ...p, [name]: value }))
-        }
-        
+  const handleChange = ({ target: { name, value } }) => {
+    if (name === "nights") {
+      setForm((p) => ({
+        ...p,
+        [name]: value,
+        d_to: moment(form.d_from).add(value, "days").format("YYYY-MM-DD"),
+      }));
+    } else {
+      setForm((p) => ({ ...p, [name]: value }));
     }
-    const {user}=useSelector((state)=>state.auth)
-    const addData = () =>{
-   
-        setNewData(prev => [
-            ...prev,
-            {
-                room_type:form.room_type,
-                view:form.veiws,
-                date_from:form.d_from,
-                night:form.nights,
-                date_to:form.d_to,
-                room:form.rooms,
-                totals:form.totals,
-                meal_plan:form.meals_plan,
-                meal_total:form.meals_ttl,
-                net_total:form.meals_ttl,
-                vat:form.vat,
-                vat_total:form.vat_ttl,
-                total_with_vat:form.ttl_w_vat,
-                reference_no:form.ref_no,
-                purchase_source:form.pur_source
-            }]);
-          
-        }
+  };
+  const { user } = useSelector((state) => state.auth);
+  const addData = () => {
+    setNewData((prev) => [
+      ...prev,
+      {
+        room_type: form.room_type,
+        view: form.veiws,
+        date_from: form.d_from,
+        night: form.nights,
+        date_to: form.d_to,
+        room: form.rooms,
+        totals: form.totals,
+        meal_plan: form.meals_plan,
+        meal_total: form.meals_ttl,
+        net_total: form.meals_ttl,
+        vat: form.vat,
+        vat_total: form.vat_ttl,
+        total_with_vat: form.ttl_w_vat,
+        reference_no: form.ref_no,
+        purchase_source: form.pur_source,
+      },
+    ]);
+  };
 
-        const addDataClear = () =>{
-   
-            setNewData(prev => [
-                ...prev,
-                {
-                    room_type:form.room_type,
-                    view:form.veiws,
-                    date_from:form.d_from,
-                    night:form.nights,
-                    date_to:form.d_to,
-                    room:form.rooms,
-                    totals:form.totals,
-                    meal_plan:form.meals_plan,
-                    meal_total:form.meals_ttl,
-                    net_total:form.meals_ttl,
-                    vat:form.vat,
-                    vat_total:form.vat_ttl,
-                    total_with_vat:form.ttl_w_vat,
-                    reference_no:form.ref_no,
-                    purchase_source:form.pur_source
-                }]);
-                setForm({room_type: '',
-                room_type: '',
-                veiws: '',
-                d_from: '',
-                nights: '',
-                d_to: '',
-                rooms :'',
-                rate: '',
-                totals: '',
-                meals_plan: '',
-                meals_ttl: '',
-                net_ttl: '',
-                vat: '',
-                vat_ttl: '',
-                ttl_w_vat: '',
-                ref_no: '',
-                pur_source: '',
-        
-                id_no: '',
-                hotel_name: '',
-                allotment_type: '',
-                supplier_name: '',
-                reference_id: '',
-                details: ''})
-            }
+  const addDataClear = () => {
+    setNewData((prev) => [
+      ...prev,
+      {
+        room_type: form.room_type,
+        view: form.veiws,
+        date_from: form.d_from,
+        night: form.nights,
+        date_to: form.d_to,
+        room: form.rooms,
+        totals: form.totals,
+        meal_plan: form.meals_plan,
+        meal_total: form.meals_ttl,
+        net_total: form.meals_ttl,
+        vat: form.vat,
+        vat_total: form.vat_ttl,
+        total_with_vat: form.ttl_w_vat,
+        reference_no: form.ref_no,
+        purchase_source: form.pur_source,
+      },
+    ]);
+    setForm({
+      room_type: "",
+      room_type: "",
+      veiws: "",
+      d_from: "",
+      nights: "",
+      d_to: "",
+      rooms: "",
+      rate: "",
+      totals: "",
+      meals_plan: "",
+      meals_ttl: "",
+      net_ttl: "",
+      vat: "",
+      vat_ttl: "",
+      ttl_w_vat: "",
+      ref_no: "",
+      pur_source: "",
 
-           const handleDelete = (index) =>{
-        let item = newData.filter((i, idx) => index !== idx)
-        setNewData(item) 
-        console.log(index)
-       }
-       
-    //    const meal = parseInt(meals_ttl)
-    let percent = parseInt(form.vat)/100
-    const vat_total = parseInt(form.meals_ttl) * percent;
-   const total_with_vat = parseInt(form.meals_ttl)+ vat_total;
-   const net_total = total_with_vat - vat_total
-    useEffect(()=>{
-setForm((p)=>({...p, vat_ttl:vat_total,ttl_w_vat:total_with_vat,net_ttl:net_total}))
-    },[percent])
+      id_no: "",
+      hotel_name: "",
+      allotment_type: "",
+      supplier_name: "",
+      reference_id: "",
+      details: "",
+    });
+  };
 
-    let styles =  {border: '1px solid rgb(12, 134, 103)', padding: '5px 12px'}
+  const handleDelete = (index) => {
+    let item = newData.filter((i, idx) => index !== idx);
+    setNewData(item);
+    console.log(index);
+  };
+
+  //    const meal = parseInt(meals_ttl)
+  let percent = parseInt(form.vat) / 100;
+  const vat_total = parseInt(form.meals_ttl) * percent;
+  const total_with_vat = parseInt(form.meals_ttl) + vat_total;
+  const net_total = total_with_vat - vat_total;
+  useEffect(() => {
+    setForm((p) => ({
+      ...p,
+      vat_ttl: vat_total,
+      ttl_w_vat: total_with_vat,
+      net_ttl: net_total,
+    }));
+  }, [percent]);
+
+  let styles = { border: "1px solid rgb(12, 134, 103)", padding: "5px 12px" };
 
   return (
     <div>
-        {/* {JSON.stringify(form )} */}
+      {/* {JSON.stringify(form )} */}
+      <Row>
+        <Col md={4}>
+          <label className="Label mt-2">Room Type</label>
+          <select
+            id="exampleSelect"
+            className="app_input"
+            value={form.room_type}
+            name="room_type"
+            type="select"
+            onChange={handleChange}
+          >
+            <option>Select </option>
+            {room &&
+              room.map((i) => (
+                <option value={i.room_type}>{i.room_type}</option>
+              ))}
+          </select>
+          <InputForm
+            className="app_input"
+            label="Night"
+            value={form.nights}
+            onChange={handleChange}
+            name="nights"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Totals"
+            value={form.totals}
+            onChange={handleChange}
+            name="totals"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Net Total"
+            value={form.net_ttl}
+            onChange={handleChange}
+            name="net_ttl"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Total With Vat"
+            value={form.ttl_w_vat}
+            onChange={handleChange}
+            name="ttl_w_vat"
+            type="Number"
+          />
+        </Col>
+        <Col md={4}>
+          <label className="Label mt-2">View</label>
+          <select
+            id="exampleSelect"
+            className="app_input"
+            value={form.veiws}
+            name="veiws"
+            type="select"
+            onChange={handleChange}
+          >
+            <option>Select </option>
+            {data.map((item) => (
+              <option value={item.view_name}>{item.view_name} </option>
+            ))}
+          </select>
+          <InputForm
+            className="app_input"
+            label="Date To"
+            value={form.d_to}
+            onChange={handleChange}
+            name="d_to"
+            type="date"
+            disabled
+          />
+          <label className="Label mt-2">Meal Plan</label>
+          <select
+            id="exampleSelect"
+            className="app_input"
+            value={form.meals_plan}
+            name="meals_plan"
+            type="select"
+            onChange={handleChange}
+          >
+            <option>Select </option>
+            {data1.map((item) => (
+              <option value={item.view_name}>{item.meal_name} </option>
+            ))}
+          </select>
+          <InputForm
+            className="app_input"
+            label="Vat"
+            value={form.vat}
+            onChange={handleChange}
+            name="vat"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Reference No."
+            value={form.ref_no}
+            onChange={handleChange}
+            name="ref_no"
+            type="Number"
+          />
+        </Col>
+        <Col md={4}>
+          <InputForm
+            label="Date From"
+            className="app_input"
+            value={form.d_from}
+            onChange={handleChange}
+            name="d_from"
+            type="date"
+          />
+          <InputForm
+            label="Rooms"
+            className="app_input"
+            value={form.rooms}
+            onChange={handleChange}
+            name="rooms"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Meals Total"
+            value={form.meals_ttl}
+            onChange={handleChange}
+            name="meals_ttl"
+            type="Number"
+          />
+          <InputForm
+            className="app_input"
+            label="Vat Total"
+            value={form.vat_ttl}
+            onChange={handleChange}
+            name="vat_ttl"
+            type="Number"
+          />
+          <InputForm
+            // style={{width: 150 ,border: 'none ', outline: 'none', height: 20}}
+            className="app_input"
+            label="Purchase Source"
+            value={form.pur_source}
+            onChange={handleChange}
+            name="pur_source"
+          />
+        </Col>
         <Row>
-            <Col md={4}>
-                            <label className="Label mt-2">Room Type</label>
-                            <select
-                                id="exampleSelect"
-                                className="app_input"
-                                value={form.room_type}
-                                name="room_type"
-                                type="select"
-                                onChange={handleChange}
-                            >
-                                <option>Select </option>
-                                {
-                                    room&&room.map(i=><option value={i.room_type}>{i.room_type}</option>)
-                                }
-                            </select>
-                            <InputForm
-                                className="app_input"
-                                label= 'Night'
-                                value={form.nights}
-                                onChange={handleChange}
-                                name="nights"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label= 'Totals'
-                                value={form.totals}
-                                onChange={handleChange}
-                                name="totals"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label='Net Total'
-                                value={form.net_ttl}
-                                onChange={handleChange}
-                                name="net_ttl"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label= 'Total With Vat'
-                                value={form.ttl_w_vat}
-                                onChange={handleChange}
-                                name="ttl_w_vat"
-                                type= 'Number'
-                            />
-            </Col>
-            <Col md={4}>
-                            <label className="Label mt-2">View</label>
-                            <select
-                                id="exampleSelect"
-                                className="app_input"
-                                value={form.veiws}
-                                name="veiws"
-                                type="select"
-                                onChange={handleChange}
-                            >
-                                <option>Select </option>
-                            {data.map(item => ( <option value={item.view_name}>{item.view_name} </option>))}
-                            </select>
-                            <InputForm
-                                className="app_input"
-                                label= 'Date To'
-                                value={form.d_to}
-                                onChange={handleChange}
-                                name="d_to"
-                                type= 'date'
-                                disabled
-                            />
-                            <label className="Label mt-2">Meal Plan</label>
-                            <select
-                                id="exampleSelect"
-                                className="app_input"
-                                value={form.meals_plan}
-                                name="meals_plan"
-                                type="select"
-                                onChange={handleChange}
-                            >
-                                <option>Select </option>
-                                {data1.map(item => ( <option value={item.view_name}>{item.meal_name} </option>))}
-                            </select>
-                            <InputForm
-                                className="app_input"
-                                label= 'Vat'
-                                value={form.vat}
-                                onChange={handleChange}
-                                name="vat"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label= 'Reference No.'
-                                value={form.ref_no}
-                                onChange={handleChange}
-                                name="ref_no"
-                                type= 'Number'
-                            />
-            </Col>
-            <Col md={4}>
-                            <InputForm
-                                label= 'Date From'
-                                className="app_input"
-                                value={form.d_from}
-                                onChange={handleChange}
-                                name="d_from"
-                                type= 'date'
-                            />
-                            <InputForm
-                                label= 'Rooms'
-                                className="app_input"
-                                value={form.rooms}
-                                onChange={handleChange}
-                                name="rooms"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label='Meals Total'
-                                value={form.meals_ttl}
-                                onChange={handleChange}
-                                name="meals_ttl"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                className="app_input"
-                                label= 'Vat Total'
-                                value={form.vat_ttl}
-                                onChange={handleChange}
-                                name="vat_ttl"
-                                type= 'Number'
-                            />
-                            <InputForm
-                                // style={{width: 150 ,border: 'none ', outline: 'none', height: 20}}
-                                className="app_input"
-                                label= 'Purchase Source'
-                                value={form.pur_source}
-                                onChange={handleChange}
-                                name="pur_source"
-                            />
-            </Col>
-            <Row>
-            <Col md= {3}></Col>
-            <Col md= {3}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addData}>Add + </button></center>  </Col>
-            <Col md= {3}><center><button className="app_button p-3 mt-3" style={{ width: 150 }} onClick={addDataClear}>Add & clear </button></center>  </Col>
-            <Col md= {3}>  </Col>
-            </Row>
+          <Col md={3}></Col>
+          <Col md={3}>
+            <center>
+              <button
+                className="app_button p-2 mt-3"
+                style={{ width: 150 }}
+                onClick={addData}
+              >
+                Add +{" "}
+              </button>
+            </center>{" "}
+          </Col>
+          <Col md={3}>
+            <center>
+              <button
+                className="app_button p-2 mt-3"
+                style={{ width: 150 }}
+                onClick={addDataClear}
+              >
+                Add & clear{" "}
+              </button>
+            </center>{" "}
+          </Col>
+          <Col md={3}> </Col>
+        </Row>
+      </Row>
+      <Row>
+        {/* {JSON.stringify(data1)} */}
+        <Row>
+          <div>
+            <table className="mt-5 table-striped">
+              <thead>
+                <th style={styles}>Room Type</th>
+                <th style={styles}>View</th>
+                <th style={styles}>Date From</th>
+                <th style={styles}>#Night</th>
+                <th style={styles}>Date To</th>
+                <th style={styles}>#Room</th>
+                <th style={styles}>Totals</th>
+                <th style={styles}>Meal Plan</th>
+                <th style={styles}>Meals Total</th>
+                <th style={styles}>Net Total</th>
+                <th style={styles}>Vat</th>
+                <th style={styles}>Vat Total</th>
+                <th style={styles}>Total With Vat</th>
+                <th style={styles}>Reference No.</th>
+                <th style={styles}>Purchase Source</th>
+                <th style={styles}>Action</th>
+                {/* </tr> */}
+              </thead>
+              {newData &&
+                newData.map((i, index) => (
+                  <>
+                    <td>{i.view}</td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.date_from}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.night}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.date_to}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.room}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.totals}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.meal_plan}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.meal_total}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.net_total}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.vat}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.vat_total}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.total_with_vat}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.reference_no}
+                    </td>
+                    <td style={{ border: "1px solid rgb(12, 134, 103)" }}>
+                      {i.purchase_source}
+                    </td>
+                    <td
+                      className="text-center text-danger"
+                      style={{ border: "1px solid rgb(12, 134, 103)" }}
+                    >
+                      <BiTrash
+                        size="2.5rem"
+                        onClick={() => handleDelete(index)}
+                      />
+                    </td>
+                  </>
+                ))}
+            </table>
+          </div>
         </Row>
         <Row>
-            {/* {JSON.stringify(data1)} */}
-            <Row>
-                <div>
-                <table className= 'mt-5 table-striped'>
-                    <thead >
-                        
-                        <th style={styles}>Room Type</th>
-                        <th style={styles}>View</th>
-                        <th style={styles}>Date From</th>
-                        <th style={styles}>#Night</th>
-                        <th style={styles}>Date To</th>
-                        <th style={styles}>#Room</th>
-                        <th style={styles}>Totals</th>
-                        <th style={styles}>Meal Plan</th>
-                        <th style={styles}>Meals Total</th>
-                        <th style={styles}>Net Total</th>
-                        <th style={styles}>Vat</th>
-                        <th style={styles}>Vat Total</th>
-                        <th style={styles}>Total With Vat</th>
-                        <th style={styles}>Reference No.</th>
-                        <th style={styles}>Purchase Source</th>
-                        <th style={styles}>Action</th>
-                        {/* </tr> */}
-                    
-                    </thead>  
-                    {
-                        newData&&newData.map((i,index)=> (
-                            <>
-
-
-                            <td>
-                                {i.view}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.date_from}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                               {i.night} 
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.date_to}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                               {i.room} 
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.totals}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                               {i.meal_plan} 
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.meal_total}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.net_total}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                               {i.vat} 
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.vat_total}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.total_with_vat}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.reference_no}
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)'}}>
-                                {i.purchase_source}
-                                </td>
-                            <td className="text-center text-danger"style={{border: '1px solid rgb(12, 134, 103)'}}>
-                            <BiTrash size="2.5rem" onClick={()=>handleDelete(index)} />
-                            </td>
-                            </>
-                            ))}
-                </table>
-              
-                </div>
-            </Row>
-            <Row>
-                {/* <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Sumbit</button></center> </Col> */}
-            </Row>
+          {/* <Col md= {12}><center><button className="app_button p-3 mt-3" style={{ width: 150 }}>Sumbit</button></center> </Col> */}
         </Row>
+      </Row>
     </div>
-  )
+  );
 }

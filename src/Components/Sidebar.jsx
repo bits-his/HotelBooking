@@ -62,14 +62,14 @@ export default function Sidebar() {
         </li>
         {showSubMenu ? (
           <div className="sub_menu">
-            <li
+            {/* <li
               onClick={() => goto('/reservation')}
               className={`link_item ${
                 location.pathname === '/reservation' && 'active_side_menu'
               }`}
             >
               Reservation & Availability
-            </li>
+            </li> */}
             <li
               onClick={() => goto('/reservation-details')}
               className={`link_item ${
@@ -86,14 +86,14 @@ export default function Sidebar() {
             >
               Create Agent/Supplier
             </li>
-            <li
+            {/* <li
               onClick={() => goto("/reservation-view-details")}
               className={`link_item ${
                 location.pathname === "/reservation-view-details" && "active_side_menu"
               }`}
             >
               Reservation Details View 
-            </li>
+            </li> */}
           </div>
         ) : (
           ''
@@ -367,13 +367,15 @@ export default function Sidebar() {
           Create Hoetel
         </li>
 
-        <li
+        {/* <li
           onClick={() => goto('/create-transport-reservstion')}
           className="link_item"
         >
           <FaHotel className="logo shadow" />
           Transport Reservation
-        </li>
+        </li> */}
+
+        
         {/* <li onClick={() => goto('/dashboard')} className="link_item">
           <MdDashboard className="logo shadow" /> Dashboard
           </li>

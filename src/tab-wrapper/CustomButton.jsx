@@ -6,7 +6,7 @@ function CustomButton(props) {
     <Button
       {...props}
       disabled={props.loading || props.disabled}
-      color={props.color || "primary"}
+      color={props.color || "#0d3a73"}
     >
       {props.loading && (
         <span

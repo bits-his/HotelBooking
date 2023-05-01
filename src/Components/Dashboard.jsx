@@ -22,7 +22,7 @@ export default function Dashboard() {
             >
               <span
                 style={{
-                  borderBottom: page ? null : `3px solid rgb(12, 134, 103)`,
+                  borderBottom: page ? null : `3px solid #0d3a73`,
                   marginRight: 20,
                   paddingBottom: 10,
                   cursor: 'pointer',
@@ -33,7 +33,7 @@ export default function Dashboard() {
               </span>
               <span
                 style={{
-                  borderBottom: page ? `3px solid rgb(12, 134, 103)` : null,
+                  borderBottom: page ? `3px solid #0d3a73` : null,
                   marginLeft: 20,
                   paddingBottom: 10,
                   cursor: 'pointer',

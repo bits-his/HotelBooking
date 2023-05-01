@@ -34,7 +34,7 @@ export default function CreacteNewRoom() {
       <Row>
         <Col md={12}>
           <button
-            className="app_button p-3"
+            className="app_button p-2"
             style={{ width: 200 }}
             onClick={() => goto("/creact-new-room")}
           >

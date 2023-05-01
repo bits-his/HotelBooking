@@ -60,7 +60,7 @@
     float: left;
     position: relative;
     /* background-color: #d9e3f7; */
-    background-color: rgb(12, 134, 103);
+    background-color: #0b3455;
     color: white;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -132,10 +132,10 @@
   
   .arrow-steps .step.current {
     color: #fff;
-    background-color: rgb(99, 175, 99);
+    background-color: #0d3a73;
   }
   
   .arrow-steps .step.current:after {
-    border-left: 17px solid rgb(99, 175, 99)
+    border-left: 17px solid #0d3a73
   }
   

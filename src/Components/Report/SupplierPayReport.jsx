@@ -151,12 +151,12 @@ export default function SupplierPayReport() {
         <Col md= {4}>
             <div style={{display: 'flex', gap: 15}}>
                 <button
-                    className="app_button p-3 mt-3 "
+                    className="app_button p-2 mt-3 "
                     style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
                 >View Record</button>
                 <button
-                    className="app_button p-3 mt-3 "
+                    className="app_button p-2 mt-3 "
                     style={{ width: 170, fontSize: 16, fontWeight: 500 }}
                     // onClick={() => navigate('/table-meal')}
                 >Reset</button>
