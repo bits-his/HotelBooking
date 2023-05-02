@@ -203,6 +203,20 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
                         padding: '5px 10px',
                       }}
                     >
+                      <center>
+                      <button
+                        size="sm"
+                        className="app_button"
+                        style={{ borderRadius: 5 }}
+                        onClick={() =>
+                          navigate(
+                            `/create-country?country_name=${i.country_name}&id=${i.id}`
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
+                    </center>
                       <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
                     </td>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}

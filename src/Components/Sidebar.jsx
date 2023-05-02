@@ -75,9 +75,9 @@ export default function Sidebar() {
               Reservation & Availability
             </li> */}
             <li
-              onClick={() => goto("/reservation-details")}
+              onClick={() => goto("/reservation-table")}
               className={`link_item ${
-                location.pathname === "/reservation-details" &&
+                location.pathname === "/reservation-table" &&
                 "active_side_menu"
               }`}
             >
