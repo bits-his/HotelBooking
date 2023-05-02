@@ -49,7 +49,7 @@ export default function ReservationModal({
             <input
               className="app_input2"
               type="text"
-              placeholder="Search"
+              // placeholder="Search"
               name="Search"
               // value={}
             />

@@ -117,7 +117,7 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
               <input
                 className="app_input2"
                 type="text"
-                placeholder="Search"
+                // placeholder="Search"
                 name="Search"
                 // value={}
               />
