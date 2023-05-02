@@ -97,18 +97,17 @@ export default function CreacteRoomType() {
             type="number"
           /> */}
            <select
-                    id="exampleSelect"
-                    className="app_input mt-4"
-                    name="hotel_n"
-                    type="select"
-                    onChange={handleChange}
-                    value={form.hotel_n}
-                    // className="mt-3"
-                    
-                >
-                    {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
+              id="exampleSelect"
+              className="app_input mt-4"
+              name="hotel_n"
+              type="select"
+              onChange={handleChange}
+              value={form.hotel_n}
+              // className="mt-3"
+            >
+            {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
                    
-                </select>
+          </select>
           <InputForm
             className="app_input"
             label="Room Name"

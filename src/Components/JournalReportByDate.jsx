@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
-import InputForm from "../../CustomComponents/InputForm";
-// import { _get, _post } from '../Utils/Helper'
-// import { Floors } from './Floors'
+import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
-import AgentModal from "../Modal/AgentModal";
 
-export default function AgenPayReport() {
+
+export default function JournalReportByDate() {
   const [form, setForm] = useState({
-    date_frm: "",
-    date_to: "",
-    date_filter: "",
+    journal_no: "",
+    date: "",
+    date_from: '',
+    reservation_no: "",
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -29,65 +25,79 @@ export default function AgenPayReport() {
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>
-              Agent Pay Schedule Report
+              Journal Report by Date
             </h5>
             <hr />
           </center>
         </Col>
       </Row>
       <Row>
-        <Col md={3}>
-          <label className="Label mt-2">Type</label>
-          <select
-            id="exampleSelect"
+        <Col >
+          <InputForm
             className="app_input"
-            name="date_filter"
-            type="select"
-            onClick={handleChange}
-            value={form.date_filter}
-          >
-            <option>Select </option>
-          </select>
+            label="Journal Number"
+            value={form.journal_no}
+            onChange={handleChange}
+            name="journal_no"
+            type="number"
+          />
         </Col>
-        <Col md={3}>
-          <label className="Label mt-2">Agent Name</label>
+        <Col >
+          <label className="Label mt-2">Reservation Number</label>
           <div className="search_input_form">
             <input
               id="exampleSelect"
               className="app_input3"
-              value={form.hotel}
+              value={form.reservation_no}
               onClick={handleChange}
-              name="hotel"
+              name="reservation_no"
+              type="number"
             />
-            <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={open} toggle={toggle} size="xl">
-              <AgentModal />
-            </Modal>
+            <CiSearch
+              className="search_icon"
+              // onClick={toggle}
+            />
+            {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+                        <HotelReg/>
+                    </Modal> */}
           </div>
         </Col>
-        <Col md={3}>
+        <Col >
           <InputForm
             className="app_input"
-            label="Date From"
-            value={form.date_frm}
+            label="Date from"
+            value={form.date_from}
             onChange={handleChange}
-            name="date_frm"
+            name="date_from"
             type="date"
           />
         </Col>
-        <Col md={3}>
+        <Col >
           <InputForm
             className="app_input"
             label="Date To"
-            value={form.date_to}
+            value={form.date}
             onChange={handleChange}
-            name="date_to"
+            name="date"
             type="date"
           />
         </Col>
+        <Col md={4}>
+          <label className="Label mt-2">Filter Type</label>
+          <select
+            id="exampleSelect"
+            className="app_input"
+            name="filter_type"
+            type="select"
+            onClick={handleChange}
+            value={form.filter_type}
+          >
+            <option>Select </option>
+          </select>
+        </Col>
       </Row>
       <Row>
-        <Col md={4}>
+        <Col md={6}>
           <div style={{ display: "flex", gap: 15 }}>
             <button
               className="app_button p-2 mt-3 "
@@ -103,10 +113,55 @@ export default function AgenPayReport() {
             >
               Reset
             </button>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              Print
+            </button>
           </div>
         </Col>
       </Row>
       <div className="m-2">
+        <Col md={6}>
+          <div style={{ display: "flex", gap: 15 }}>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              {/* <CSVLink
+                data={news ? news : []}
+                style={{
+                    color: "#fff",
+                    textDecoration: 'none'
+                }}
+                className="csv_link"
+                filename={"Hotel Comfirma"}
+              > */}
+                <RiFileExcel2Fill /> Exel DownLoad
+              {/* </CSVLink> */}
+            </button>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              {/* <CSVLink
+                data={news ? news : []}
+                style={{
+                    color: "#fff",
+                    textDecoration: 'none'
+                }}
+                className="csv_link"
+                filename={"Hotel Comfirma"}
+              > */}
+                <RiFileExcel2Fill /> CSV DownLoad
+              {/* </CSVLink> */}
+            </button>
+          </div>
+        </Col>
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
@@ -116,7 +171,7 @@ export default function AgenPayReport() {
               <input
                 className="app_input2"
                 type="text"
-                // placeholder="Search"
+                placeholder="Search"
                 name="Search"
                 // value={}
               />
@@ -143,22 +198,6 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Reserv Id
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Agent Name
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
                     Date
                   </td>
                   <td
@@ -167,7 +206,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Remember Date
+                    Journal No
                   </td>
                   <td
                     style={{
@@ -175,7 +214,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Before Date
+                    Account Number
                   </td>
                   <td
                     style={{
@@ -183,7 +222,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Amount
+                    Account Name
                   </td>
                   <td
                     style={{
@@ -191,7 +230,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Paid
+                    Invoice Type
                   </td>
                   <td
                     style={{
@@ -199,7 +238,55 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Amount
+                    Doc No
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Debit 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Describtion
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Cost Center
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Sub Cost Center
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Reservation No
                   </td>
                 </tr>
               </thead>

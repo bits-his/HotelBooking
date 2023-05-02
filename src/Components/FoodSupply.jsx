@@ -56,20 +56,19 @@ export default function FoodSupply() {
                 type="text"
                 // placeholder="Search"
                 name="Search"
-                // value={}
               />
             </div>
           </div>
         </Col>
         <Row>
           <table
-            style={{ border: "1px solid #ccc", padding: 12 }}
+            style={{ border: "1px solid #0d3a73", padding: 12 }}
             className="mt-5"
           >
             <thead>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -77,7 +76,7 @@ export default function FoodSupply() {
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -85,7 +84,7 @@ export default function FoodSupply() {
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -93,7 +92,7 @@ export default function FoodSupply() {
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -101,7 +100,7 @@ export default function FoodSupply() {
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -109,7 +108,7 @@ export default function FoodSupply() {
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >

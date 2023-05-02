@@ -19,65 +19,7 @@ export default function TranComfirmPending() {
     setForm((p) => ({ ...p, [name]: value }));
   };
 
-  //   const handleSubmit = () => {
-  //     let finalObj = {
-  //       name: form.name,
-  //       address: form.address,
-  //       floors: selected,
-  //     }
-  //     setLoading(true)
-  //     _post(
-  //       'api/hotels?in_query_type=create',
-  //       form,
-  //       (res) => {
-  //         setForm((p) => ({
-  //           ...p,
-  //           hotel_in: '',
-  //           hotel_name: '',
-  //           address: '',
-  //           city: '',
-  //           phone: '',
-  //           email: '',
-  //           website: '',
-  //         }))
-  //         setLoading(false)
-  //         console.log(res)
-  //         getHotels()
-  //         toggle()
-  //       },
-  //       (err) => {
-  //         setLoading(false)
-  //         console.log(err)
-  //       },
-  //     )
-  //     console.log(finalObj)
-  //   }
-
-  //   const getHotels = () => {
-  //     _post(
-  //       'api/hotels?in_query_type=select-all',
-  //       {},
-  //       (resp) => {
-  //         // setLoading(false)
-  //         console.log(resp)
-  //         // if (resp ) {
-  //         setHotelList(resp.resp)
-  //         //  alert('dfasfsadf'+resp)
-  //         // }
-  //       },
-  //       (e) => {
-  //         console.log(e)
-  //         // setLoading(false)
-  //         // alert(e)
-  //       },
-  //     )
-  //   }
-
-  //   useEffect(() => {
-  //     // setLoading(true)
-  //     getHotels()
-  //   }, [])
-
+  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>

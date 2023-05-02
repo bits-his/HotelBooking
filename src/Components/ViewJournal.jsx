@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
-import InputForm from "../../CustomComponents/InputForm";
-// import { _get, _post } from '../Utils/Helper'
-// import { Floors } from './Floors'
+import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
-import AgentModal from "../Modal/AgentModal";
 
-export default function AgenPayReport() {
+
+export default function ViewJournal() {
   const [form, setForm] = useState({
-    date_frm: "",
-    date_to: "",
-    date_filter: "",
+    branch_no: "",
+    date: "",
+    journal_no: "",
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -29,72 +24,63 @@ export default function AgenPayReport() {
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>
-              Agent Pay Schedule Report
+              View Journal
             </h5>
             <hr />
           </center>
         </Col>
       </Row>
       <Row>
-        <Col md={3}>
-          <label className="Label mt-2">Type</label>
-          <select
-            id="exampleSelect"
+        <Col md={4}>
+          <InputForm
             className="app_input"
-            name="date_filter"
-            type="select"
-            onClick={handleChange}
-            value={form.date_filter}
-          >
-            <option>Select </option>
-          </select>
+            label="Branch Number"
+            value={form.branch_no}
+            onChange={handleChange}
+            name="branch_no"
+            type="number"
+          />
         </Col>
-        <Col md={3}>
-          <label className="Label mt-2">Agent Name</label>
+        <Col md={4}>
+          <label className="Label mt-2">Journal Number</label>
           <div className="search_input_form">
             <input
               id="exampleSelect"
               className="app_input3"
-              value={form.hotel}
+              value={form.journal_no}
               onClick={handleChange}
-              name="hotel"
+              name="journal_no"
+              type="number"
             />
-            <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={open} toggle={toggle} size="xl">
-              <AgentModal />
-            </Modal>
+            <CiSearch
+              className="search_icon"
+              // onClick={toggle}
+            />
+            {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+                        <HotelReg/>
+                    </Modal> */}
           </div>
         </Col>
-        <Col md={3}>
-          <InputForm
-            className="app_input"
-            label="Date From"
-            value={form.date_frm}
-            onChange={handleChange}
-            name="date_frm"
-            type="date"
-          />
-        </Col>
-        <Col md={3}>
+        <Col md={4}>
           <InputForm
             className="app_input"
             label="Date To"
-            value={form.date_to}
+            value={form.date}
             onChange={handleChange}
-            name="date_to"
+            name="date"
             type="date"
           />
         </Col>
       </Row>
       <Row>
-        <Col md={4}>
+        <Col md={6}>
           <div style={{ display: "flex", gap: 15 }}>
             <button
               className="app_button p-2 mt-3 "
               style={{ width: 170, fontSize: 16, fontWeight: 500 }}
               // onClick={() => navigate('/table-meal')}
             >
-              View Record
+              Show Journal
             </button>
             <button
               className="app_button p-2 mt-3 "
@@ -103,24 +89,53 @@ export default function AgenPayReport() {
             >
               Reset
             </button>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              Print
+            </button>
           </div>
         </Col>
       </Row>
       <div className="m-2">
-        <Col md={12}>
-          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {/* {JSON.stringify(data)} */}
-            <label className="label_title">Search</label>
-            <div className="search">
-              <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                // placeholder="Search"
-                name="Search"
-                // value={}
-              />
-            </div>
+        <Col md={6}>
+          <div style={{ display: "flex", gap: 15 }}>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              {/* <CSVLink
+                data={news ? news : []}
+                style={{
+                    color: "#fff",
+                    textDecoration: 'none'
+                }}
+                className="csv_link"
+                filename={"Hotel Comfirma"}
+              > */}
+                <RiFileExcel2Fill /> Exel DownLoad
+              {/* </CSVLink> */}
+            </button>
+            <button
+              className="app_button p-2 mt-3 "
+              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+              // onClick={() => navigate('/table-meal')}
+            >
+              {/* <CSVLink
+                data={news ? news : []}
+                style={{
+                    color: "#fff",
+                    textDecoration: 'none'
+                }}
+                className="csv_link"
+                filename={"Hotel Comfirma"}
+              > */}
+                <RiFileExcel2Fill /> CSV DownLoad
+              {/* </CSVLink> */}
+            </button>
           </div>
         </Col>
         <Row>
@@ -143,7 +158,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Reserv Id
+                    Account Number
                   </td>
                   <td
                     style={{
@@ -151,7 +166,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Agent Name
+                    Account Name
                   </td>
                   <td
                     style={{
@@ -159,7 +174,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Date
+                    Invoice Type
                   </td>
                   <td
                     style={{
@@ -167,7 +182,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Remember Date
+                    Doc No
                   </td>
                   <td
                     style={{
@@ -175,7 +190,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Before Date
+                    Debit 
                   </td>
                   <td
                     style={{
@@ -183,7 +198,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Amount
+                    Credit
                   </td>
                   <td
                     style={{
@@ -191,7 +206,7 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Paid
+                    Describtion
                   </td>
                   <td
                     style={{
@@ -199,7 +214,55 @@ export default function AgenPayReport() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pay Amount
+                    Cost Center
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Sub Cost Center
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Reservation No
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Last.ModifierUser
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Add User
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Create Date
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Last ModifierUser
                   </td>
                 </tr>
               </thead>
