@@ -28,7 +28,6 @@ export const _post = (url, data, success = (f) => f, error = (f) => f) => {
       error(err)
     })
 }
-
 export const _get = (url, success = (f) => f, error = (f) => f) => {
   fetch(`${server_url}/${url}`, {
     method: 'GET',

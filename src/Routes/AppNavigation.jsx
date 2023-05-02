@@ -55,6 +55,7 @@ import SalesInvoice from "../Components/Report/SalesInvoice";
 import HotelChart from "../Components/HotelChart";
 import FoodSupply from "../Components/FoodSupply";
 import FoodSupplyForm from "../Components/FoodSupplyForm";
+import ChartofAcc from "../Components/ChartofAcc";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -279,6 +280,10 @@ function AppNavigation() {
         {
           path: "/creat-food-supply",
           element: <FoodSupplyForm />,
+        },
+        {
+          path: "chart-of-accounts",
+          element: <ChartofAcc />,
         },
       ],
     },

@@ -374,6 +374,7 @@ export default function Sidebar() {
             >
               Supplier Pay Schedule Report
             </li>
+            
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"
@@ -393,6 +394,15 @@ export default function Sidebar() {
         >
           <FaHotel className="logo shadow" />
           Create Hoetel
+        </li>
+        <li
+          onClick={() => goto("/chart-of-accounts")}
+          className={`link_item ${
+            location.pathname === "/chart-of-accounts" && "active_side_menu"
+          }`}
+        >
+          <FaHotel className="logo shadow" />
+          Chart of Accounts
         </li>
 
         {/* <li
