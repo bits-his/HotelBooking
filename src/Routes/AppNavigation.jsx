@@ -55,7 +55,11 @@ import SalesInvoice from "../Components/Report/SalesInvoice";
 import HotelChart from "../Components/HotelChart";
 import FoodSupply from "../Components/FoodSupply";
 import FoodSupplyForm from "../Components/FoodSupplyForm";
+<<<<<<< HEAD
 import ChartofAcc from "../Components/ChartofAcc";
+=======
+import ReservationTableS from "../Components/ReservationTable";
+>>>>>>> 3843153f180c84b4199164a8da557051c79c644d
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -142,6 +146,10 @@ function AppNavigation() {
         {
           path: "/reservation-details",
           element: <Reserve />,
+        },
+        {
+          path: "/reservation-table",
+          element: <ReservationTableS />,
         },
         {
           path: "/new-reservation-details",

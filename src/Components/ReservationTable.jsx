@@ -5,7 +5,7 @@ import { Card, Col, Row, Button } from "reactstrap";
 import { _post } from "../Utils/Helper";
 
 
-export default function ReservationTable() {
+export default function ReservationTableS() {
   const [data, setData] = useState([]);
 
   const [hotel, setHotel] = useState([]);
@@ -24,7 +24,7 @@ export default function ReservationTable() {
       (e) => {
         console.log(e);
         // setLoading(false)
-        // alert(e)
+        // alert(e) 
       }
     );
   };
