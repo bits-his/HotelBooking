@@ -4,12 +4,11 @@ import { Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
 
-
 export default function TrialBalance() {
   const [form, setForm] = useState({
     journal_no: "",
     date: "",
-    date_from: '',
+    date_from: "",
     reservation_no: "",
   });
   const [open, setOpen] = useState(false);
@@ -33,88 +32,88 @@ export default function TrialBalance() {
       </Row>
       <Row>
         <Col md={6}>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Date from"
-                    value={form.date_from}
-                    onChange={handleChange}
-                    name="date_from"
-                    type="date"
-                />
-            </Col>
-            <Col md={12}>
-                <label className="Label mt-2">Account Number From</label>
-                <div className="search_input_form">
-                    <input
-                    id="exampleSelect"
-                    className="app_input3"
-                    value={form.reservation_no}
-                    onClick={handleChange}
-                    name="reservation_no"
-                    type="number"
-                    />
-                    <CiSearch
-                    className="search_icon"
-                    // onClick={toggle}
-                    />
-                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+          <Col md={12}>
+            <InputForm
+              className="app_input"
+              label="Date from"
+              value={form.date_from}
+              onChange={handleChange}
+              name="date_from"
+              type="date"
+            />
+          </Col>
+          <Col md={12}>
+            <label className="Label mt-2">Account Number From</label>
+            <div className="search_input_form">
+              <input
+                id="exampleSelect"
+                className="app_input3"
+                value={form.reservation_no}
+                onClick={handleChange}
+                name="reservation_no"
+                type="number"
+              />
+              <CiSearch
+                className="search_icon"
+                // onClick={toggle}
+              />
+              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
-                </div>
-            </Col>
-            <Col md={12}>
-                <label className="Label mt-2">Account Number To</label>
-                <div className="search_input_form">
-                    <input
-                    id="exampleSelect"
-                    className="app_input3"
-                    value={form.reservation_no}
-                    onClick={handleChange}
-                    name="reservation_no"
-                    type="number"
-                    />
-                    <CiSearch
-                    className="search_icon"
-                    // onClick={toggle}
-                    />
-                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+            </div>
+          </Col>
+          <Col md={12}>
+            <label className="Label mt-2">Account Number To</label>
+            <div className="search_input_form">
+              <input
+                id="exampleSelect"
+                className="app_input3"
+                value={form.reservation_no}
+                onClick={handleChange}
+                name="reservation_no"
+                type="number"
+              />
+              <CiSearch
+                className="search_icon"
+                // onClick={toggle}
+              />
+              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
-                </div>
-            </Col>
+            </div>
+          </Col>
         </Col>
         <Col md={6}>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Date To"
-                    value={form.date_from}
-                    onChange={handleChange}
-                    name="date_from"
-                    type="date"
-                />
-            </Col>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Account Number From"
-                    value={form.date_from}
-                    onChange={handleChange}
-                    name="date_from"
-                    type="number"
-                />
-            </Col>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Account Name To"
-                    value={form.date_from}
-                    onChange={handleChange}
-                    name="date_from"
-                    type="number"
-                />
-            </Col>
+          <Col md={12}>
+            <InputForm
+              className="app_input"
+              label="Date To"
+              value={form.date_from}
+              onChange={handleChange}
+              name="date_from"
+              type="date"
+            />
+          </Col>
+          <Col md={12}>
+            <InputForm
+              className="app_input"
+              label="Account Number From"
+              value={form.date_from}
+              onChange={handleChange}
+              name="date_from"
+              type="number"
+            />
+          </Col>
+          <Col md={12}>
+            <InputForm
+              className="app_input"
+              label="Account Name To"
+              value={form.date_from}
+              onChange={handleChange}
+              name="date_from"
+              type="text"
+            />
+          </Col>
         </Col>
       </Row>
       <Row>
@@ -161,7 +160,7 @@ export default function TrialBalance() {
                 className="csv_link"
                 filename={"Hotel Comfirma"}
               > */}
-                <RiFileExcel2Fill /> Exel DownLoad
+              <RiFileExcel2Fill /> Exel DownLoad
               {/* </CSVLink> */}
             </button>
             <button
@@ -178,7 +177,7 @@ export default function TrialBalance() {
                 className="csv_link"
                 filename={"Hotel Comfirma"}
               > */}
-                <RiFileExcel2Fill /> CSV DownLoad
+              <RiFileExcel2Fill /> CSV DownLoad
               {/* </CSVLink> */}
             </button>
           </div>
@@ -217,7 +216,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -227,7 +226,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -237,7 +236,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -247,7 +246,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -257,7 +256,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -267,7 +266,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -275,60 +274,60 @@ export default function TrialBalance() {
                   </td>
                 </tr>
                 <tr>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
                 </tr>
               </thead>
               {/* <tbody>
@@ -400,111 +399,110 @@ export default function TrialBalance() {
                     )}
                     </tbody> */}
             </table>
-            <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
-                <Col md={4}></Col>
-                <Col md={8}>
-
-                    <div className="table_overflow">
-                        <table
-                            style={{
-                                border: "1px solid #ccc",
-                                padding: 10,
-                                width: "100%",
-                                overflowX: "scroll",
-                            }}
-                            className="mt-5 mb-2"
-                        >
-                            <tr>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Prev.Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Transaction
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Balance
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Open Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Prev.Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Debit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Credit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Debit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Credit
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </Col>
+            <Col md={12} style={{ display: "flex", flexDirection: "row" }}>
+              <Col md={4}></Col>
+              <Col md={8}>
+                <div className="table_overflow">
+                  <table
+                    style={{
+                      border: "1px solid #ccc",
+                      padding: 10,
+                      width: "100%",
+                      overflowX: "scroll",
+                    }}
+                    className="mt-5 mb-2"
+                  >
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Prev.Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Transaction
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Balance
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Open Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Prev.Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Debit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Credit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Debit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Credit
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </Col>
             </Col>
           </div>
         </Row>

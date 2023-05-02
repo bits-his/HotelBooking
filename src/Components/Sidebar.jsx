@@ -81,8 +81,7 @@ export default function Sidebar() {
             <li
               onClick={() => goto("/reservation-table")}
               className={`link_item ${
-                location.pathname === "/reservation-table" &&
-                "active_side_menu"
+                location.pathname === "/reservation-table" && "active_side_menu"
               }`}
             >
               Create Reservation
@@ -378,7 +377,7 @@ export default function Sidebar() {
             >
               Supplier Pay Schedule Report
             </li>
-            
+
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"
@@ -405,8 +404,7 @@ export default function Sidebar() {
             <li
               onClick={() => goto("/view-journal")}
               className={`link_item ${
-                location.pathname === "/view-journal" &&
-                "active_side_menu"
+                location.pathname === "/view-journal" && "active_side_menu"
               }`}
             >
               View Journal
@@ -423,8 +421,7 @@ export default function Sidebar() {
             <li
               onClick={() => goto("/Trial-balance")}
               className={`link_item ${
-                location.pathname === "/Trial-balance" &&
-                "active_side_menu"
+                location.pathname === "/Trial-balance" && "active_side_menu"
               }`}
             >
               Trial Balance
