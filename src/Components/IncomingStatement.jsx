@@ -22,7 +22,7 @@ export default function IncomingStatement() {
         <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23,marginTop: 20 }}>
-              Account Payable
+              Income Statement
             </h5>
           </center>
           
