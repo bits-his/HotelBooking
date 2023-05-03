@@ -447,6 +447,24 @@ export default function Sidebar() {
             >
               Trial Balance by Master Account
             </li>
+            <li
+              onClick={() => goto("/balance-sheet")}
+              className={`link_item ${
+                location.pathname === "/balance-sheet" &&
+                "active_side_menu"
+              }`}
+            >
+              Balance Sheet
+            </li>
+            <li
+              onClick={() => goto("/account-payable")}
+              className={`link_item ${
+                location.pathname === "/account-payable" &&
+                "active_side_menu"
+              }`}
+            >
+              Account Payable / supplier
+            </li>
           </div>
         ) : (
           ""

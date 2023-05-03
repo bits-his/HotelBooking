@@ -59,6 +59,7 @@ export default function TrialBalbyMasterAcc() {
           </Col>
         </Col>
       </Row>
+      <div style={{width: '100%', border: '1px solid #cccccc', marginTop: 20, marginBottom: 20}}></div>
       <Row>
         <Col md={6}>
             <Col md={12}>
