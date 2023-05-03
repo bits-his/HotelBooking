@@ -57,6 +57,11 @@ import FoodSupply from "../Components/FoodSupply";
 import FoodSupplyForm from "../Components/FoodSupplyForm";
 import ChartofAcc from "../Components/ChartofAcc";
 import ReservationTableS from "../Components/ReservationTable";
+import ViewJournal from "../Components/ViewJournal";
+import JournalReportByDate from "../Components/JournalReportByDate";
+import TrialBalance from "../Components/TrialBalance";
+import TrialBalWithBal from "../Components/TrialBalWithBal";
+import TrialBalbyMasterAcc from "../Components/TrialBalbyMasterAcc";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -290,6 +295,26 @@ function AppNavigation() {
           path: "chart-of-accounts",
           element: <ChartofAcc />,
         },
+        {
+          path: "view-journal",
+          element: <ViewJournal />,
+        },
+        {
+          path: "journal-report-by-date",
+          element: <JournalReportByDate />,
+        },
+        {
+          path: "Trial-balance",
+          element: <TrialBalance />,
+        },
+        {
+          path: "Trial-balance-with-balance",
+          element: <TrialBalWithBal />,
+        },
+        {
+          path: "Trial-balance-by-master-account",
+          element: <TrialBalbyMasterAcc />,
+        }
       ],
     },
   ]);

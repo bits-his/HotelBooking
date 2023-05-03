@@ -25,7 +25,7 @@ export default function ChartofAcc() {
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>
-              Transport Comfirmation Pending
+              Chart of Account
             </h5>
             <hr />
           </center>

@@ -20,6 +20,7 @@ export default function Sidebar() {
   const [showSubMenuA, setShowSubMenuA] = useState(false);
   const [showSubMenuO, setShowSubMenuO] = useState(false);
   const [showSubMenuS, setShowSubMenuS] = useState(false);
+  const [showSubMenuT, setShowSubMenuT] = useState(false);
   const [showSubMenu1, setShowSubMenu1] = useState(false);
   const drop1 = () => {
     setShowSubMenu1((p) => !p);
@@ -38,6 +39,9 @@ export default function Sidebar() {
   };
   const dropS = () => {
     setShowSubMenuS((p) => !p);
+  };
+  const dropt = () => {
+    setShowSubMenuT((p) => !p);
   };
   return (
     <div className="sidebar_div">
@@ -382,6 +386,67 @@ export default function Sidebar() {
             >
               Reservation Details
             </li> */}
+          </div>
+        ) : (
+          ""
+        )}
+        <li className="link_item" onClick={dropt}>
+          <span>
+            <MdDashboard className="logo shadow" /> Financial Report{" "}
+            {showSubMenuT ? (
+              <TiArrowSortedUp size="1.4rem" />
+            ) : (
+              <TiArrowSortedDown size="1.4rem" />
+            )}
+          </span>
+        </li>
+        {showSubMenuT ? (
+          <div className="sub_menu">
+            <li
+              onClick={() => goto("/view-journal")}
+              className={`link_item ${
+                location.pathname === "/view-journal" &&
+                "active_side_menu"
+              }`}
+            >
+              View Journal
+            </li>
+            <li
+              onClick={() => goto("/journal-report-by-date")}
+              className={`link_item ${
+                location.pathname === "/journal-report-by-date" &&
+                "active_side_menu"
+              }`}
+            >
+              Journal Report by Date
+            </li>
+            <li
+              onClick={() => goto("/Trial-balance")}
+              className={`link_item ${
+                location.pathname === "/Trial-balance" &&
+                "active_side_menu"
+              }`}
+            >
+              Trial Balance
+            </li>
+            <li
+              onClick={() => goto("/Trial-balance-with-balance")}
+              className={`link_item ${
+                location.pathname === "/Trial-balance-with-balance" &&
+                "active_side_menu"
+              }`}
+            >
+              Trial Balance With Balance
+            </li>
+            <li
+              onClick={() => goto("/Trial-balance-by-master-account")}
+              className={`link_item ${
+                location.pathname === "/Trial-balance-by-master-account" &&
+                "active_side_menu"
+              }`}
+            >
+              Trial Balance by Master Account
+            </li>
           </div>
         ) : (
           ""
