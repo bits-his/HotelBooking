@@ -465,6 +465,24 @@ export default function Sidebar() {
             >
               Account Payable / supplier
             </li>
+            <li
+              onClick={() => goto("/account-recievable")}
+              className={`link_item ${
+                location.pathname === "/account-recievable" &&
+                "active_side_menu"
+              }`}
+            >
+              Account Recievable / Agent
+            </li>
+            <li
+              onClick={() => goto("/income-statement")}
+              className={`link_item ${
+                location.pathname === "/income-statement" &&
+                "active_side_menu"
+              }`}
+            >
+              Income Statement
+            </li>
           </div>
         ) : (
           ""

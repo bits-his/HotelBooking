@@ -10,7 +10,9 @@ export default function AccRecievable_Agent() {
     date_frm: "",
     date_t: '',
     sub_branch: '',
-    financial_year: ''
+    financial_year: '',
+    region:'',
+    country: ''
   });
   
   const handleChange = ({ target: { name, value } }) => {
@@ -22,14 +24,14 @@ export default function AccRecievable_Agent() {
         <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23,marginTop: 20 }}>
-              Account Payable
+              Account Recievable 
             </h5>
           </center>
         </Col>
       </Row>
       <div style={{width: '100%', border: '1px solid #cccccc', marginTop: 20, marginBottom: 20}}></div>
       <Row>
-        <Col md={2}>
+        <Col>
           <InputForm
             className="app_input"
             label="Date From"
@@ -39,7 +41,7 @@ export default function AccRecievable_Agent() {
             type="date"
           />
         </Col>
-        <Col md={2}>
+        <Col>
           <InputForm
             className="app_input"
             label="Date to"
@@ -49,7 +51,7 @@ export default function AccRecievable_Agent() {
             type="date"
           />
         </Col>
-        <Col md={2}>
+        <Col>
             <label className="Label mt-2">Filter Type</label>
             <select
                 id="exampleSelect"
@@ -62,23 +64,31 @@ export default function AccRecievable_Agent() {
                 <option>Select </option>
             </select>
         </Col>
-        <Col md={2}>
-          <InputForm
-            className="app_input"
-            label="Date From"
-            value={form.date_frm}
-            onChange={handleChange}
-            name="date"
-          />
+        <Col>
+            <label className="Label mt-2">Country</label>
+            <select
+                id="exampleSelect"
+                className="app_input"
+                name="country"
+                type="select"
+                onClick={handleChange}
+                value={form.country}
+            >
+                <option>Select </option>
+            </select>
         </Col>
-        <Col md={2}>
-          <InputForm
-            className="app_input"
-            label="Date From"
-            value={form.date_frm}
-            onChange={handleChange}
-            name="date"
-          />
+        <Col>
+            <label className="Label mt-2">Region</label>
+            <select
+                id="exampleSelect"
+                className="app_input"
+                name="region"
+                type="select"
+                onClick={handleChange}
+                value={form.region}
+            >
+                <option>Select </option>
+            </select>
         </Col>
       </Row>
       <Row>
@@ -199,6 +209,22 @@ export default function AccRecievable_Agent() {
                       padding: "5px 10px",
                     }}
                   >
+                    Country 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Open Balance 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
                     Debit 
                   </td>
                   <td
@@ -208,6 +234,38 @@ export default function AccRecievable_Agent() {
                     }}
                   >
                     Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Net Charges 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    ... 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Net Balance 
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid #0d3a73",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    Action 
                   </td>
                 </tr>
               </thead>
@@ -279,34 +337,6 @@ export default function AccRecievable_Agent() {
                         ))
                     )}
                     </tbody> */}
-                    <tr>
-                        <td
-                            style={{
-                            border: "1px solid #0d3a73",
-                            padding: "5px 10px",
-                            textAlign: 'center'
-                            }}
-                            colSpan='2'
-                        >
-                            Total
-                        </td>
-                        <td
-                            style={{
-                            border: "1px solid #0d3a73",
-                            padding: "5px 10px",
-                            }}
-                        >
-                            {`  `}
-                        </td>
-                        <td
-                            style={{
-                            border: "1px solid #0d3a73",
-                            padding: "5px 10px",
-                            }}
-                        >
-                            {`  `}
-                        </td>
-                    </tr>
             </table>
           </div>
         </Row>

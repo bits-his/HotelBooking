@@ -64,6 +64,8 @@ import TrialBalWithBal from "../Components/TrialBalWithBal";
 import TrialBalbyMasterAcc from "../Components/TrialBalbyMasterAcc";
 import BalanceSheet from "../Components/BalanceSheet";
 import AccPayalble_Suplier from "../Components/AccPayalble_Suplier";
+import AccRecievable_Agent from "../Components/AccRecievable_Agent";
+import IncomingStatement from "../Components/IncomingStatement";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -324,6 +326,14 @@ function AppNavigation() {
         {
           path: "/account-payable",
           element: <AccPayalble_Suplier />,
+        },
+        {
+          path: "/account-recievable",
+          element: <AccRecievable_Agent />,
+        },
+        {
+          path: "/income-statement",
+          element: <IncomingStatement />,
         }
       ],
     },

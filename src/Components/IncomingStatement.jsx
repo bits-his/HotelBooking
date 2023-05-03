@@ -5,12 +5,12 @@ import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
 
 
-export default function AccPayalble_Suplier() {
+export default function IncomingStatement() {
   const [form, setForm] = useState({
     date_frm: "",
     date_t: '',
     sub_branch: '',
-    financial_year: ''
+    view: ''
   });
   
   const handleChange = ({ target: { name, value } }) => {
@@ -25,6 +25,20 @@ export default function AccPayalble_Suplier() {
               Account Payable
             </h5>
           </center>
+          
+            <Col md={4} style={{marginLeft: 'auto'}}>
+                <label className="Label mt-2">Sub Branch</label>
+                <select
+                    id="exampleSelect"
+                    className="app_input"
+                    name="sub_branch"
+                    type="select"
+                    onClick={handleChange}
+                    value={form.sub_branch}
+                >
+                    <option>Select </option>
+                </select>
+            </Col>
         </Col>
       </Row>
       <div style={{width: '100%', border: '1px solid #cccccc', marginTop: 20, marginBottom: 20}}></div>
@@ -50,14 +64,14 @@ export default function AccPayalble_Suplier() {
           />
         </Col>
         <Col md={4}>
-            <label className="Label mt-2">Filter Type</label>
+            <label className="Label mt-2">View</label>
             <select
                 id="exampleSelect"
                 className="app_input"
-                name="financial_year"
+                name="view"
                 type="select"
                 onClick={handleChange}
-                value={form.financial_year}
+                value={form.view}
             >
                 <option>Select </option>
             </select>
@@ -130,20 +144,6 @@ export default function AccPayalble_Suplier() {
           </div>
         </Col>
         <Col md={12}>
-          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {/* {JSON.stringify(data)} */}
-            <label className="label_title">Search</label>
-            <div className="search">
-              <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                placeholder="Search"
-                name="Search"
-                // value={}
-              />
-            </div>
-          </div>
         </Col>
         <Row>
           <div className="table_overflow">
@@ -181,7 +181,7 @@ export default function AccPayalble_Suplier() {
                       padding: "5px 10px",
                     }}
                   >
-                    Country 
+                    Income 
                   </td>
                   <td
                     style={{
@@ -189,55 +189,7 @@ export default function AccPayalble_Suplier() {
                       padding: "5px 10px",
                     }}
                   >
-                    Open Balance 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Debit 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Credit
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Net Charges 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    ... 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Net Balance 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid #0d3a73",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Action 
+                    Expense
                   </td>
                 </tr>
               </thead>
