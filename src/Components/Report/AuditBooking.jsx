@@ -45,7 +45,7 @@ export default function AuditBooking() {
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>
-              Transportation Payment Pending
+              Audit
             </h5>
             <hr />
           </center>

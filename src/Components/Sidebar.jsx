@@ -107,7 +107,7 @@ export default function Sidebar() {
         ) : (
           ""
         )}
-        <li onClick={dropF} className="link_item">
+        {/* <li onClick={dropF} className="link_item">
           <span>
             <MdDashboard className="logo shadow" /> Follow Up
             {showSubMenuF ? (
@@ -133,6 +133,127 @@ export default function Sidebar() {
             <li onClick={() => goto("#")} className="link_item">
               Audit Booking
             </li>
+          </div>
+        ) : (
+          ""
+        )} */}
+        
+        <li onClick={drop1} className="link_item">
+          <span>
+            <MdDashboard className="logo shadow" /> Follow Up
+            {showSubMenu1 ? (
+              <TiArrowSortedUp size="1.4rem" />
+            ) : (
+              <TiArrowSortedDown size="1.4rem" />
+            )}
+          </span>
+        </li>
+        {showSubMenu1 ? (
+          <div className="sub_menu">
+            <li
+              onClick={() => goto("/Report-payment")}
+              className={`link_item ${
+                location.pathname === "/Report-payment" && "active_side_menu"
+              }`}
+            >
+              Transport Payment Pending
+            </li>
+            <li
+              onClick={() => goto("/hotel-comfirmation-pending")}
+              className={`link_item ${
+                location.pathname === "/hotel-comfirmation-pending" &&
+                "active_side_menu"
+              }`}
+            >
+              Hotel Comfirmation Pending
+            </li>
+            <li
+              onClick={() => goto("/trans-comfirmation-pending")}
+              className={`link_item ${
+                location.pathname === "/trans-comfirmation-pending" &&
+                "active_side_menu"
+              }`}
+            >
+              Transport Comfirmation Pending
+            </li>
+            <li
+              onClick={() => goto("/room-Purchase")}
+              className={`link_item ${
+                location.pathname === "/room-Purchase" && "active_side_menu"
+              }`}
+            >
+              Room Purchase Payment Pending
+            </li>
+            <li
+              onClick={() => goto("/sells-invoice-pending")}
+              className={`link_item ${
+                location.pathname === "/sells-invoice-pending" &&
+                "active_side_menu"
+              }`}
+            >
+              Sells Invoice Pending to Post
+            </li>
+            <li
+              onClick={() => goto("/vat-invoice-report")}
+              className={`link_item ${
+                location.pathname === "/vat-invoice-report" &&
+                "active_side_menu"
+              }`}
+            >
+              Vat Invoice Report
+            </li>
+            <li
+              onClick={() => goto("/post-purchase-invoice")}
+              className={`link_item ${
+                location.pathname === "/post-purchase-invoice" &&
+                "active_side_menu"
+              }`}
+            >
+              Post Purchase Incoice
+            </li>
+            <li
+              onClick={() => goto("/option-date-warning")}
+              className={`link_item ${
+                location.pathname === "/option-date-warning" &&
+                "active_side_menu"
+              }`}
+            >
+              Option Date Warning
+            </li>
+            <li
+              onClick={() => goto("/audit-booking")}
+              className={`link_item ${
+                location.pathname === "/audit-booking" && "active_side_menu"
+              }`}
+            >
+              Audit Booking
+            </li>
+            <li
+              onClick={() => goto("/agent-pay-schedule-report")}
+              className={`link_item ${
+                location.pathname === "/agent-pay-schedule-report" &&
+                "active_side_menu"
+              }`}
+            >
+              Agent Pay Schedule Report
+            </li>
+            <li
+              onClick={() => goto("/supplier-pay-schedule-report")}
+              className={`link_item ${
+                location.pathname === "/supplier-pay-schedule-report" &&
+                "active_side_menu"
+              }`}
+            >
+              Supplier Pay Schedule Report
+            </li>
+            
+            {/* <li
+              onClick={() => goto('/reservation-details')}
+              className="link_item"
+              
+            >
+              Reservation Details
+            </li> */}
           </div>
         ) : (
           ""
@@ -259,126 +380,6 @@ export default function Sidebar() {
             >
               Hotel Chart
             </li>
-            {/* <li
-              onClick={() => goto('/reservation-details')}
-              className="link_item"
-              
-            >
-              Reservation Details
-            </li> */}
-          </div>
-        ) : (
-          ""
-        )}
-        <li onClick={drop1} className="link_item">
-          <span>
-            <MdDashboard className="logo shadow" /> Report
-            {showSubMenu1 ? (
-              <TiArrowSortedUp size="1.4rem" />
-            ) : (
-              <TiArrowSortedDown size="1.4rem" />
-            )}
-          </span>
-        </li>
-        {showSubMenu1 ? (
-          <div className="sub_menu">
-            <li
-              onClick={() => goto("/Report-payment")}
-              className={`link_item ${
-                location.pathname === "/Report-payment" && "active_side_menu"
-              }`}
-            >
-              Transport Payment Pending
-            </li>
-            <li
-              onClick={() => goto("/hotel-comfirmation-pending")}
-              className={`link_item ${
-                location.pathname === "/hotel-comfirmation-pending" &&
-                "active_side_menu"
-              }`}
-            >
-              Hotel Comfirmation Pending
-            </li>
-            <li
-              onClick={() => goto("/trans-comfirmation-pending")}
-              className={`link_item ${
-                location.pathname === "/trans-comfirmation-pending" &&
-                "active_side_menu"
-              }`}
-            >
-              Transport Comfirmation Pending
-            </li>
-            <li
-              onClick={() => goto("/room-Purchase")}
-              className={`link_item ${
-                location.pathname === "/room-Purchase" && "active_side_menu"
-              }`}
-            >
-              Room Purchase Payment Pending
-            </li>
-            <li
-              onClick={() => goto("/sells-invoice-pending")}
-              className={`link_item ${
-                location.pathname === "/sells-invoice-pending" &&
-                "active_side_menu"
-              }`}
-            >
-              Sells Invoice Pending to Post
-            </li>
-            <li
-              onClick={() => goto("/vat-invoice-report")}
-              className={`link_item ${
-                location.pathname === "/vat-invoice-report" &&
-                "active_side_menu"
-              }`}
-            >
-              Vat Invoice Report
-            </li>
-            <li
-              onClick={() => goto("/post-purchase-invoice")}
-              className={`link_item ${
-                location.pathname === "/post-purchase-invoice" &&
-                "active_side_menu"
-              }`}
-            >
-              Post Purchase Incoice
-            </li>
-            <li
-              onClick={() => goto("/option-date-warning")}
-              className={`link_item ${
-                location.pathname === "/option-date-warning" &&
-                "active_side_menu"
-              }`}
-            >
-              Option Date Warning
-            </li>
-            <li
-              onClick={() => goto("/audit-booking")}
-              className={`link_item ${
-                location.pathname === "/audit-booking" && "active_side_menu"
-              }`}
-            >
-              Audit Booking
-            </li>
-            <li
-              onClick={() => goto("/agent-pay-schedule-report")}
-              className={`link_item ${
-                location.pathname === "/agent-pay-schedule-report" &&
-                "active_side_menu"
-              }`}
-            >
-              Agent Pay Schedule Report
-            </li>
-            <li
-              onClick={() => goto("/supplier-pay-schedule-report")}
-              className={`link_item ${
-                location.pathname === "/supplier-pay-schedule-report" &&
-                "active_side_menu"
-              }`}
-            >
-              Supplier Pay Schedule Report
-            </li>
-            
             {/* <li
               onClick={() => goto('/reservation-details')}
               className="link_item"
