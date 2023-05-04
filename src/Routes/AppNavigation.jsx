@@ -66,6 +66,10 @@ import BalanceSheet from "../Components/BalanceSheet";
 import AccPayalble_Suplier from "../Components/AccPayalble_Suplier";
 import AccRecievable_Agent from "../Components/AccRecievable_Agent";
 import IncomingStatement from "../Components/IncomingStatement";
+import AccStatement from "../Components/AccStatement";
+import AccSttWithVisa from "../Components/AccSttWithVisa";
+import MonthlyRevenueandExpence from "../Components/MonthlyRevenueandExpence";
+import CompareIncomeStt from "../Components/CompareIncomeStt";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -334,6 +338,22 @@ function AppNavigation() {
         {
           path: "/income-statement",
           element: <IncomingStatement />,
+        },
+        {
+          path: "/account-statement",
+          element: <AccStatement />,
+        },
+        {
+          path: "/account-statement-with-visa",
+          element: <AccSttWithVisa />,
+        },
+        {
+          path: "/monthly-revenue-and-expense",
+          element: <MonthlyRevenueandExpence />,
+        },
+        {
+          path: "/compare-incoming-statement",
+          element: <CompareIncomeStt />,
         }
       ],
     },

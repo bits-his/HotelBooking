@@ -9,7 +9,6 @@ export default function AccRecievable_Agent() {
   const [form, setForm] = useState({
     date_frm: "",
     date_t: '',
-    sub_branch: '',
     financial_year: '',
     region:'',
     country: ''

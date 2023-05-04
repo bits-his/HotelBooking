@@ -7,10 +7,12 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 
 export default function TrialBalance() {
   const [form, setForm] = useState({
-    journal_no: "",
     date: "",
     date_from: '',
-    reservation_no: "",
+    Acc_no_from: "",
+    Acc_no_to: '',
+    acc_name_from: '',
+    acc_name_to: ''
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -49,9 +51,9 @@ export default function TrialBalance() {
                     <input
                     id="exampleSelect"
                     className="app_input3"
-                    value={form.reservation_no}
+                    value={form.Acc_no_from}
                     onClick={handleChange}
-                    name="reservation_no"
+                    name="Acc_no_from"
                     type="number"
                     />
                     <CiSearch
@@ -69,9 +71,9 @@ export default function TrialBalance() {
                     <input
                     id="exampleSelect"
                     className="app_input3"
-                    value={form.reservation_no}
+                    value={form.Acc_no_to}
                     onClick={handleChange}
-                    name="reservation_no"
+                    name="Acc_no_to"
                     type="number"
                     />
                     <CiSearch
@@ -89,19 +91,19 @@ export default function TrialBalance() {
                 <InputForm
                     className="app_input"
                     label="Date To"
-                    value={form.date_from}
+                    value={form.date}
                     onChange={handleChange}
-                    name="date_from"
+                    name="date"
                     type="date"
                 />
             </Col>
             <Col md={12}>
                 <InputForm
                     className="app_input"
-                    label="Account Number From"
-                    value={form.date_from}
+                    label="Account Name From"
+                    value={form.acc_name_from}
                     onChange={handleChange}
-                    name="date_from"
+                    name="acc_name_from"
                     type="number"
                 />
             </Col>
@@ -109,9 +111,9 @@ export default function TrialBalance() {
                 <InputForm
                     className="app_input"
                     label="Account Name To"
-                    value={form.date_from}
+                    value={form.acc_name_to}
                     onChange={handleChange}
-                    name="date_from"
+                    name="acc_name_to"
                     type="number"
                 />
             </Col>

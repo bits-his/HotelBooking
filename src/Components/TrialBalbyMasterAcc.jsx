@@ -7,10 +7,14 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 
 export default function TrialBalbyMasterAcc() {
   const [form, setForm] = useState({
-    journal_no: "",
+    financial_year: "",
     date: "",
     date_from: '',
-    reservation_no: "",
+    sub_brnch: "",
+    acc_n_frm: '',
+    acc_n_t: '',
+    acc_name_frm: '',
+    acc_name_t: '',
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -25,20 +29,20 @@ export default function TrialBalbyMasterAcc() {
         <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23,marginTop: 20 }}>
-              Trial Balance By Master Account
+              Trial Balance by Master Account
             </h5>
           </center>
           <Col md={3}></Col>
-          <Col md={5} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Col style={{marginRight: 4}}>
+          <Col md={5} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',marginLeft: 'auto'}}>
+            <Col style={{marginRight: 10, marginLeft: 54}}>
                 <label className="Label mt-2">Financial Year</label>
                 <select
                     id="exampleSelect"
                     className="app_input"
-                    name="filter_type"
+                    name="financial_year"
                     type="select"
                     onClick={handleChange}
-                    value={form.filter_type}
+                    value={form.financial_year}
                 >
                     <option>2023 </option>
                 </select>
@@ -48,10 +52,10 @@ export default function TrialBalbyMasterAcc() {
                 <select
                     id="exampleSelect"
                     className="app_input"
-                    name="filter_type"
+                    name="sub_brnch"
                     type="select"
                     onClick={handleChange}
-                    value={form.filter_type}
+                    value={form.sub_brnch}
                 >
                     <option>Select </option>
                 </select>
@@ -78,9 +82,9 @@ export default function TrialBalbyMasterAcc() {
                     <input
                     id="exampleSelect"
                     className="app_input3"
-                    value={form.reservation_no}
+                    value={form.acc_n_frm}
                     onClick={handleChange}
-                    name="reservation_no"
+                    name="acc_n_frm"
                     type="number"
                     />
                     <CiSearch
@@ -98,9 +102,9 @@ export default function TrialBalbyMasterAcc() {
                     <input
                     id="exampleSelect"
                     className="app_input3"
-                    value={form.reservation_no}
+                    value={form.acc_n_t}
                     onClick={handleChange}
-                    name="reservation_no"
+                    name="acc_n_t"
                     type="number"
                     />
                     <CiSearch
@@ -118,19 +122,19 @@ export default function TrialBalbyMasterAcc() {
                 <InputForm
                     className="app_input"
                     label="Date To"
-                    value={form.date_from}
+                    value={form.date}
                     onChange={handleChange}
-                    name="date_from"
+                    name="date"
                     type="date"
                 />
             </Col>
             <Col md={12}>
                 <InputForm
                     className="app_input"
-                    label="Account Number From"
-                    value={form.date_from}
+                    label="Account Name From"
+                    value={form.acc_name_frm}
                     onChange={handleChange}
-                    name="date_from"
+                    name="acc_name_frm"
                     type="number"
                 />
             </Col>
@@ -138,39 +142,12 @@ export default function TrialBalbyMasterAcc() {
                 <InputForm
                     className="app_input"
                     label="Account Name To"
-                    value={form.date_from}
+                    value={form.acc_name_t}
                     onChange={handleChange}
-                    name="date_from"
+                    name="acc_name_t"
                     type="number"
                 />
             </Col>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <div style={{ display: "flex", gap: 15 }}>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              View Record
-            </button>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              Reset
-            </button>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              Print
-            </button>
-          </div>
         </Col>
       </Row>
       <div className="m-2">

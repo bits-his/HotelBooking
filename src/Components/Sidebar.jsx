@@ -483,6 +483,42 @@ export default function Sidebar() {
             >
               Income Statement
             </li>
+            <li
+              onClick={() => goto("/account-statement")}
+              className={`link_item ${
+                location.pathname === "/account-statement" &&
+                "active_side_menu"
+              }`}
+            >
+              Account Statement
+            </li>
+            <li
+              onClick={() => goto("/account-statement-with-visa")}
+              className={`link_item ${
+                location.pathname === "/account-statement-with-visa" &&
+                "active_side_menu"
+              }`}
+            >
+              Account Statement with Visa
+            </li>
+            <li
+              onClick={() => goto("/monthly-revenue-and-expense")}
+              className={`link_item ${
+                location.pathname === "/monthly-revenue-and-expense" &&
+                "active_side_menu"
+              }`}
+            >
+              Monthly Revenue And Expense
+            </li>
+            <li
+              onClick={() => goto("/compare-incoming-statement")}
+              className={`link_item ${
+                location.pathname === "/compare-incoming-statement" &&
+                "active_side_menu"
+              }`}
+            >
+              Compare Incoming Statement
+            </li>
           </div>
         ) : (
           ""
