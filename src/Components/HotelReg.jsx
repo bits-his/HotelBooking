@@ -94,6 +94,8 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
     getHotels()
   }, [])
   
+  // const percent = 
+
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
        <Row>
@@ -201,13 +203,18 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
                       style={{
                         border: '1px solid rgb(12, 134, 103)',
                         padding: '5px 10px',
+                        width: 150
                       }}
                     >
-                      <center>
+                    <center>
                       <button
                         size="sm"
                         className="app_button"
-                        style={{ borderRadius: 5 }}
+                        style={{
+                          border: '1px solid rgb(12, 134, 103)',
+                          padding: '5px 10px',
+                          marginRight: 8
+                        }}
                         onClick={() =>
                           navigate(
                             `/create-country?country_name=${i.country_name}&id=${i.id}`
@@ -216,8 +223,16 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
                       >
                         Edit
                       </button>
+                      <button 
+                        style={{
+                          border: '1px solid rgb(12, 134, 103)',
+                          padding: '5px 10px',
+                        }}
+                        className="app_button"
+                        onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}
+
+                      >select</button>
                     </center>
-                      <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
                     </td>
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
                     <td

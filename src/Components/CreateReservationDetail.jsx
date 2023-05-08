@@ -11,11 +11,26 @@ import ReservationModal from './Modal/ReservationModal'
 // import HotelReg from './Modal/HotelModal'
 // import ReservationTable from './Table/ReservationTable'
 import { _get, _post } from '../Utils/Helper'
+import Tables from './Table/Tables'
+import TableForm from './Table/TableForm'
 
-export default function CreateReservationDetail({
-  form = {},
-  setForm = (f) => f,
-}) {
+export default function CreateReservationDetail() {
+  const [form, setForm] = useState({
+      reservation_type: "",
+      booking_status: "",
+      option_date: "",
+      booking_type: "",
+      agent_name: "",
+      vat_reg_no: "",
+      sub_agent_name: "",
+      price_category: "",
+      guest_name: "",
+      country_name: "",
+      phone: "",
+      email: "",
+      BRN_hotel: "",
+      BRN_transport: "",
+    })
   const [modal, setModal] = useState(false)
   const [modal1, setModal1] = useState(false)
   const [modal2, setModal2] = useState(false)
@@ -30,6 +45,7 @@ export default function CreateReservationDetail({
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
+    console.log(form)
   }
   const [data, setData] = useState([])
 
@@ -162,260 +178,263 @@ export default function CreateReservationDetail({
   }, [0])
   const [selected, setSelected] = useState({})
   return (
-    <div className="">
-      {/* {JSON.stringify(country[0].length)} */}
+    <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
+      <div className="">
+        {/* {JSON.stringify(country[0].length)} */}
 
-      <Row>
-        <Col md={12}>
-          <h5 className="app_title" style={{ fontSize: 30 }}>
-            <center>Create New Reservation</center>
-          </h5>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={4}>
-          <label className="Label mt-2">Reservation Number</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.reservation_number}
-              onChange={handleChange}
-              name="reservation_number"
-              type="number"
-              disabled
-            />
-            <CiSearch className="search_icon" onClick={toggle2} />
-            <Modal isOpen={modal2} toggle={toggle2} size="xl">
-              <ReservationModal setForm={setForm} toggle={toggle2} />
-            </Modal>
-          </div>
-          <InputForm
-            className="app_input"
-            label="Option Date"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="date"
-          />
-          <InputForm
-            className="app_input"
-            label="Vat Reg No."
-            value={form.vat_reg_no}
-            onChange={handleChange}
-            name="vat_reg_no"
-            type="number"
-          />
-          <label className="Label mt-2">Price Category</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            name="price_category"
-            type="select"
-            onChange={handleChange}
-            value={form.price_category}
-          >
-            <option>Select </option>
-            <option>Value-based pricing </option>
-            <option>Dynamic pricing</option>
-            <option>Cost-plus pricing </option>
-          </select>
-          <InputForm
-            className="app_input"
-            label="Phone Number"
-            value={form.phone}
-            onChange={handleChange}
-            name="phone"
-            type="number"
-          />
-          {/* <label className="Label mt-2">VIP Category</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.view}
-            name="view"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-          </select> */}
-          {/* <InputForm
-            className="app_input"
-            label="Group Number"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="number"
-          /> */}
-        </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Reservation Type</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.reservation_type}
-            name="reservation_type"
-            onChange={handleChange}
-          >
-            <option>Select</option>
-            <option>Comfirmed Reservation</option>
-            <option>Waitlisted Reservation </option>
-            <option>Tentative Reservation </option>
-          </select>
-          <label className="Label mt-2">Booking Type</label>
-          <select
-            // id="exampleSelect"
-            className="app_input"
-            value={form.booking_type}
-            name="booking_type"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-            <option value="Comfirmed Reservation">Comfirmed Reservation</option>
-            <option value="Waitlisted Reservation">
-              Waitlisted Reservation{' '}
-            </option>
-            <option>Tentative Reservation </option>
-          </select>
-          <label className="Label mt-2">Sub Agent Name</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.sub_agent_name}
-            name="sub_agent_name"
-            type="select"
-            onChange={handleChange}
-          >
-            <option>Select </option>
-            <option>Abdulsalam </option>
-          </select>
-          <label className="Label mt-2">Guest Full Name</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.guest_name}
-              onChange={handleChange}
-              name="guest_name"
-            />
-            <CiSearch className="search_icon" onClick={toggle1} />
-            <Modal isOpen={modal1} toggle={toggle1} size="xl">
-              <QuestModal setForm={setForm} toggle={toggle1} />
-            </Modal>
-          </div>
-          {/* <InputForm
-            className="app_input"
-            label="Local Mobile Number"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="number"
-          /> */}
-          <InputForm
-            className="app_input"
-            label="BRN Hotel"
-            value={form.BRN_hotel}
-            onChange={handleChange}
-            name="BRN_hotel"
-          />
-          {/* <InputForm
-            className="app_input"
-            label="Local Ref Number"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="number"
-          /> */}
-        </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Booking Status</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            value={form.booking_status}
-            name="booking_status"
-            // type="select"
-            onChange={handleChange}
-          >
-            {/* <option>Select </option> */}
-            <option value="active">Active</option>
-            <option value="pending">pending</option>
-          </select>
-          <label className="Label mt-2">Agent Name</label>
-          <div className="search_input_form">
-            <input
-              className="app_input3"
-              value={form.agent_name}
-              onChange={handleChange}
-              name="agent_name"
-            />
-            <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={modal} toggle={toggle} size="xl">
-              <AgentModal
-                setForm={setForm}
-                toggle={toggle}
-                names="agent_name"
+        <Row>
+          <Col md={12}>
+            <h5 className="app_title" style={{ fontSize: 30 }}>
+              <center>Create New Reservation</center>
+            </h5>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={4}>
+            <label className="Label mt-2">Reservation Number</label>
+            <div className="search_input_form">
+              <input
+                className="app_input3"
+                value={form.reservation_number}
+                onChange={handleChange}
+                name="reservation_number"
+                type="number"
+                disabled
               />
-            </Modal>
-          </div>
-          {/* <InputForm
-            className="app_input"
-            label="Client Ref Number"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="number"
-          /> */}
-          <label className="Label mt-2">Country </label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            name="country_name"
-            type="select"
-            onChange={handleChange}
-            value={form.country_name}
-          >
-            <option>----select-----</option>
-            {country.map((i) => (
-              <option value={i.country_name}>{i.country_name}</option>
-            ))}
-          </select>
-          <InputForm
-            className="app_input"
-            label="Email Address"
-            value={form.email}
-            onChange={handleChange}
-            name="email"
-            type="email"
-          />
-          <InputForm
-            className="app_input"
-            label="BRN Transport"
-            value={form.BRN_transport}
-            onChange={handleChange}
-            name="BRN_transport"
-          />
-        </Col>
-        {/* <Col md={12} style={{ display: 'flex', gap: 10 }}>
-          <div>
-            <button
-              className="app_button p-3 mt-3"
-              style={{ width: 150 }}
-              onChange={()=>handleSubmit()}
+              <CiSearch className="search_icon" onClick={toggle2} />
+              <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                <ReservationModal setForm={setForm} toggle={toggle2} />
+              </Modal>
+            </div>
+            <InputForm
+              className="app_input"
+              label="Option Date"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              type="date"
+            />
+            <InputForm
+              className="app_input"
+              label="Vat Reg No."
+              value={form.vat_reg_no}
+              onChange={handleChange}
+              name="vat_reg_no"
+              type="number"
+            />
+            <label className="Label mt-2">Price Category</label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              name="price_category"
+              type="select"
+              onChange={handleChange}
+              value={form.price_category}
             >
-              Save
-            </button>
-          </div>
-          <div>
-            <button
-              className="app_button p-3 mt-3"
-              style={{ width: 150 }}
-              // onChange={handleSubmit}
+              <option>Select </option>
+              <option>Value-based pricing </option>
+              <option>Dynamic pricing</option>
+              <option>Cost-plus pricing </option>
+            </select>
+            <InputForm
+              className="app_input"
+              label="Phone Number"
+              value={form.phone}
+              onChange={handleChange}
+              name="phone"
+              type="number"
+            />
+            {/* <label className="Label mt-2">VIP Category</label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              value={form.view}
+              name="view"
+              type="select"
+              onChange={handleChange}
             >
-              New
-            </button>
-          </div>
-        </Col> */}
-      </Row>
-    </div>
+              <option>Select </option>
+            </select> */}
+            {/* <InputForm
+              className="app_input"
+              label="Group Number"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              type="number"
+            /> */}
+          </Col>
+          <Col md={4}>
+            <label className="Label mt-2">Reservation Type</label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              value={form.reservation_type}
+              name="reservation_type"
+              onChange={handleChange}
+            >
+              <option>Select</option>
+              <option>Comfirmed Reservation</option>
+              <option>Waitlisted Reservation </option>
+              <option>Tentative Reservation </option>
+            </select>
+            <label className="Label mt-2">Booking Type</label>
+            <select
+              // id="exampleSelect"
+              className="app_input"
+              value={form.booking_type}
+              name="booking_type"
+              type="select"
+              onChange={handleChange}
+            >
+              <option>Select </option>
+              <option value="Comfirmed Reservation">Comfirmed Reservation</option>
+              <option value="Waitlisted Reservation">
+                Waitlisted Reservation{' '}
+              </option>
+              <option>Tentative Reservation </option>
+            </select>
+            <label className="Label mt-2">Sub Agent Name</label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              value={form.sub_agent_name}
+              name="sub_agent_name"
+              type="select"
+              onChange={handleChange}
+            >
+              <option>Select </option>
+              <option>Abdulsalam </option>
+            </select>
+            <label className="Label mt-2">Guest Full Name</label>
+            <div className="search_input_form">
+              <input
+                className="app_input3"
+                value={form.guest_name}
+                onChange={handleChange}
+                name="guest_name"
+              />
+              <CiSearch className="search_icon" onClick={toggle1} />
+              <Modal isOpen={modal1} toggle={toggle1} size="xl">
+                <QuestModal setForm={setForm} toggle={toggle1} />
+              </Modal>
+            </div>
+            {/* <InputForm
+              className="app_input"
+              label="Local Mobile Number"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              type="number"
+            /> */}
+            <InputForm
+              className="app_input"
+              label="BRN Hotel"
+              value={form.BRN_hotel}
+              onChange={handleChange}
+              name="BRN_hotel"
+            />
+            {/* <InputForm
+              className="app_input"
+              label="Local Ref Number"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              type="number"
+            /> */}
+          </Col>
+          <Col md={4}>
+            <label className="Label mt-2">Booking Status</label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              value={form.booking_status}
+              name="booking_status"
+              // type="select"
+              onChange={handleChange}
+            >
+              {/* <option>Select </option> */}
+              <option value="active">Active</option>
+              <option value="pending">pending</option>
+            </select>
+            <label className="Label mt-2">Agent Name</label>
+            <div className="search_input_form">
+              <input
+                className="app_input3"
+                value={form.agent_name}
+                onChange={handleChange}
+                name="agent_name"
+              />
+              <CiSearch className="search_icon" onClick={toggle} />
+              <Modal isOpen={modal} toggle={toggle} size="xl">
+                <AgentModal
+                  setForm={setForm}
+                  toggle={toggle}
+                  names="agent_name"
+                />
+              </Modal>
+            </div>
+            {/* <InputForm
+              className="app_input"
+              label="Client Ref Number"
+              value={form.date}
+              onChange={handleChange}
+              name="date"
+              type="number"
+            /> */}
+            <label className="Label mt-2">Country </label>
+            <select
+              id="exampleSelect"
+              className="app_input"
+              name="country_name"
+              type="select"
+              onChange={handleChange}
+              value={form.country_name}
+            >
+              <option>----select-----</option>
+              {country.map((i) => (
+                <option value={i.country_name}>{i.country_name}</option>
+              ))}
+            </select>
+            <InputForm
+              className="app_input"
+              label="Email Address"
+              value={form.email}
+              onChange={handleChange}
+              name="email"
+              type="email"
+            />
+            <InputForm
+              className="app_input"
+              label="BRN Transport"
+              value={form.BRN_transport}
+              onChange={handleChange}
+              name="BRN_transport"
+            />
+          </Col>
+          {/* <Col md={12} style={{ display: 'flex', gap: 10 }}>
+            <div>
+              <button
+                className="app_button p-3 mt-3"
+                style={{ width: 150 }}
+                onChange={()=>handleSubmit()}
+              >
+                Save
+              </button>
+            </div>
+            <div>
+              <button
+                className="app_button p-3 mt-3"
+                style={{ width: 150 }}
+                // onChange={handleSubmit}
+              >
+                New
+              </button>
+            </div>
+          </Col> */}
+        </Row>
+      </div>
+      <TableForm />
+    </Card>
   )
 }

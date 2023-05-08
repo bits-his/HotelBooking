@@ -155,7 +155,7 @@ function AppNavigation() {
         },
         {
           path: "/reservation-details",
-          element: <Reserve />,
+          element: <CreateReservationDetail />,
         },
         {
           path: "/reservation-table",
