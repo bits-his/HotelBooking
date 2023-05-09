@@ -6,10 +6,12 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 
 export default function TrialBalance() {
   const [form, setForm] = useState({
-    journal_no: "",
     date: "",
-    date_from: "",
-    reservation_no: "",
+    date_from: '',
+    Acc_no_from: "",
+    Acc_no_to: '',
+    acc_name_from: '',
+    acc_name_to: ''
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -32,88 +34,88 @@ export default function TrialBalance() {
       </Row>
       <Row>
         <Col md={6}>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Date from"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="date"
-            />
-          </Col>
-          <Col md={12}>
-            <label className="Label mt-2">Account Number From</label>
-            <div className="search_input_form">
-              <input
-                id="exampleSelect"
-                className="app_input3"
-                value={form.reservation_no}
-                onClick={handleChange}
-                name="reservation_no"
-                type="number"
-              />
-              <CiSearch
-                className="search_icon"
-                // onClick={toggle}
-              />
-              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Date from"
+                    value={form.date_from}
+                    onChange={handleChange}
+                    name="date_from"
+                    type="date"
+                />
+            </Col>
+            <Col md={12}>
+                <label className="Label mt-2">Account Number From</label>
+                <div className="search_input_form">
+                    <input
+                    id="exampleSelect"
+                    className="app_input3"
+                    value={form.Acc_no_from}
+                    onClick={handleChange}
+                    name="Acc_no_from"
+                    type="number"
+                    />
+                    <CiSearch
+                    className="search_icon"
+                    // onClick={toggle}
+                    />
+                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
-            </div>
-          </Col>
-          <Col md={12}>
-            <label className="Label mt-2">Account Number To</label>
-            <div className="search_input_form">
-              <input
-                id="exampleSelect"
-                className="app_input3"
-                value={form.reservation_no}
-                onClick={handleChange}
-                name="reservation_no"
-                type="number"
-              />
-              <CiSearch
-                className="search_icon"
-                // onClick={toggle}
-              />
-              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+                </div>
+            </Col>
+            <Col md={12}>
+                <label className="Label mt-2">Account Number To</label>
+                <div className="search_input_form">
+                    <input
+                    id="exampleSelect"
+                    className="app_input3"
+                    value={form.Acc_no_to}
+                    onClick={handleChange}
+                    name="Acc_no_to"
+                    type="number"
+                    />
+                    <CiSearch
+                    className="search_icon"
+                    // onClick={toggle}
+                    />
+                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
             </div>
           </Col>
         </Col>
         <Col md={6}>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Date To"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="date"
-            />
-          </Col>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Account Number From"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="number"
-            />
-          </Col>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Account Name To"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="text"
-            />
-          </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Date To"
+                    value={form.date}
+                    onChange={handleChange}
+                    name="date"
+                    type="date"
+                />
+            </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Account Name From"
+                    value={form.acc_name_from}
+                    onChange={handleChange}
+                    name="acc_name_from"
+                    type="number"
+                />
+            </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Account Name To"
+                    value={form.acc_name_to}
+                    onChange={handleChange}
+                    name="acc_name_to"
+                    type="number"
+                />
+            </Col>
         </Col>
       </Row>
       <Row>

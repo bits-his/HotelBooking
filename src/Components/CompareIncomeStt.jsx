@@ -5,107 +5,91 @@ import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
 
 
-export default function JournalReportByDate() {
+export default function CompareIncomeStt() {
   const [form, setForm] = useState({
-    journal_no: "",
-    date: "",
-    date_from: '',
-    reservation_no: "",
-    filter_type: ''
+    sub_branch: '',
+    mouth_of:'',
+    financial_to: '',
+    financial_from: ''
   });
-  const [open, setOpen] = useState(false);
-  const toggle = () => {
-    setOpen(!open);
-  };
+  
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-        <Col md={12}>
+        <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
           <center>
-            <h5 className="app_title" style={{ fontSize: 23 }}>
-              Journal Report by Date
+            <h5 className="app_title" style={{ fontSize: 23,marginTop: 20 }}>
+              Compare Incoming Statement
             </h5>
-            <hr />
           </center>
+          <Col md={3}></Col>
+          <Col md={3} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginLeft: 'auto'}}>
+            <Col>
+                <label className="Label mt-2">Sub Branch</label>
+                <select
+                    id="exampleSelect"
+                    className="app_input"
+                    value={form.sub_branch}
+                    name="sub_branch"
+                    type="select"
+                    onClick={handleChange}
+                >
+                    <option>Select </option>
+                </select>
+            </Col>
+          </Col>
         </Col>
       </Row>
+      <div style={{width: '100%', border: '1px solid #cccccc', marginTop: 20, marginBottom: 20}}></div>
       <Row>
-        <Col >
+        <Col>
+            <label className="Label mt-2">Financial From</label>
+            <select
+                id="exampleSelect"
+                className="app_input"
+                value={form.financial_from}
+                name="financial_from"
+                type="select"
+                onClick={handleChange}
+            >
+                <option>Select </option>
+            </select>
+        </Col>
+        <Col>
+            <label className="Label mt-2">Financial To</label>
+            <select
+                id="exampleSelect"
+                className="app_input"
+                value={form.financial_to}
+                name="financial_to"
+                type="select"
+                onClick={handleChange}
+            >
+                <option>Select </option>
+            </select>
+        </Col>
+        <Col>
           <InputForm
             className="app_input"
-            label="Journal Number"
-            value={form.journal_no}
+            label="Month Of"
+            value={form.mouth_of}
             onChange={handleChange}
-            name="journal_no"
-            type="number"
+            name="mouth_of"
           />
-        </Col>
-        <Col >
-          <label className="Label mt-2">Reservation Number</label>
-          <div className="search_input_form">
-            <input
-              id="exampleSelect"
-              className="app_input3"
-              value={form.reservation_no}
-              onClick={handleChange}
-              name="reservation_no"
-              type="number"
-            />
-            <CiSearch
-              className="search_icon"
-              // onClick={toggle}
-            />
-            {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
-                        <HotelReg/>
-                    </Modal> */}
-          </div>
-        </Col>
-        <Col >
-          <InputForm
-            className="app_input"
-            label="Date from"
-            value={form.date_from}
-            onChange={handleChange}
-            name="date_from"
-            type="date"
-          />
-        </Col>
-        <Col >
-          <InputForm
-            className="app_input"
-            label="Date To"
-            value={form.date}
-            onChange={handleChange}
-            name="date"
-            type="date"
-          />
-        </Col>
-        <Col md={4}>
-          <label className="Label mt-2">Filter Type</label>
-          <select
-            id="exampleSelect"
-            className="app_input"
-            name="filter_type"
-            type="select"
-            onClick={handleChange}
-            value={form.filter_type}
-          >
-            <option>Select </option>
-          </select>
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
+      <Row style={{marginTop: 10}}>
+        <Col md={8} style={{marginTop: 12}}>
           <div style={{ display: "flex", gap: 15 }}>
             <button
               className="app_button p-2 mt-3 "
               style={{ width: 170, fontSize: 16, fontWeight: 500 }}
               // onClick={() => navigate('/table-meal')}
             >
-              View Record
+              View Record   
             </button>
             <button
               className="app_button p-2 mt-3 "
@@ -192,26 +176,10 @@ export default function JournalReportByDate() {
             >
               <thead>
                 <tr>
-                  {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
+                  {/* <td style={{border: '1px solid #0d3a73', padding: "5px 10px"}}>Hotel In</td> */}
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Date
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Journal No
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
+                      border: "1px solid #0d3a73",
                       padding: "5px 10px",
                     }}
                   >
@@ -219,7 +187,7 @@ export default function JournalReportByDate() {
                   </td>
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
+                      border: "1px solid #0d3a73",
                       padding: "5px 10px",
                     }}
                   >
@@ -227,67 +195,27 @@ export default function JournalReportByDate() {
                   </td>
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
+                      border: "1px solid #0d3a73",
                       padding: "5px 10px",
                     }}
                   >
-                    Invoice Type
+                    Balance 
                   </td>
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
+                      border: "1px solid #0d3a73",
                       padding: "5px 10px",
                     }}
                   >
-                    Doc No
+                    Balance 
                   </td>
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
+                      border: "1px solid #0d3a73",
                       padding: "5px 10px",
                     }}
                   >
-                    Debit 
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Credit
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Describtion
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Cost Center
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Sub Cost Center
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Reservation No
+                    Diffrent 
                   </td>
                 </tr>
               </thead>
@@ -300,16 +228,16 @@ export default function JournalReportByDate() {
                         <tr>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
                             <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
                             </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
+                            <td style={{border: '1px solid #0d3a73', padding: "5px 10px"}}>{item.hotel_in}</td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -317,7 +245,7 @@ export default function JournalReportByDate() {
                             </td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -325,7 +253,7 @@ export default function JournalReportByDate() {
                             </td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -333,7 +261,7 @@ export default function JournalReportByDate() {
                             </td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -341,7 +269,7 @@ export default function JournalReportByDate() {
                             </td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -349,7 +277,7 @@ export default function JournalReportByDate() {
                             </td>
                             <td
                             style={{
-                                border: '1px solid rgb(12, 134, 103)',
+                                border: '1px solid #0d3a73',
                                 padding: '5px 10px',
                             }}
                             >
@@ -366,3 +294,4 @@ export default function JournalReportByDate() {
     </Card>
   );
 }
+CompareIncomeStt

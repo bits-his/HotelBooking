@@ -62,6 +62,14 @@ import JournalReportByDate from "../Components/JournalReportByDate";
 import TrialBalance from "../Components/TrialBalance";
 import TrialBalWithBal from "../Components/TrialBalWithBal";
 import TrialBalbyMasterAcc from "../Components/TrialBalbyMasterAcc";
+import BalanceSheet from "../Components/BalanceSheet";
+import AccPayalble_Suplier from "../Components/AccPayalble_Suplier";
+import AccRecievable_Agent from "../Components/AccRecievable_Agent";
+import IncomingStatement from "../Components/IncomingStatement";
+import AccStatement from "../Components/AccStatement";
+import AccSttWithVisa from "../Components/AccSttWithVisa";
+import MonthlyRevenueandExpence from "../Components/MonthlyRevenueandExpence";
+import CompareIncomeStt from "../Components/CompareIncomeStt";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -292,28 +300,60 @@ function AppNavigation() {
           element: <FoodSupplyForm />,
         },
         {
-          path: "chart-of-accounts",
+          path: "/chart-of-accounts",
           element: <ChartofAcc />,
         },
         {
-          path: "view-journal",
+          path: "/view-journal",
           element: <ViewJournal />,
         },
         {
-          path: "journal-report-by-date",
+          path: "/journal-report-by-date",
           element: <JournalReportByDate />,
         },
         {
-          path: "Trial-balance",
+          path: "/Trial-balance",
           element: <TrialBalance />,
         },
         {
-          path: "Trial-balance-with-balance",
+          path: "/Trial-balance-with-balance",
           element: <TrialBalWithBal />,
         },
         {
-          path: "Trial-balance-by-master-account",
+          path: "/Trial-balance-by-master-account",
           element: <TrialBalbyMasterAcc />,
+        },
+        {
+          path: "/balance-sheet",
+          element: <BalanceSheet />,
+        },
+        {
+          path: "/account-payable",
+          element: <AccPayalble_Suplier />,
+        },
+        {
+          path: "/account-recievable",
+          element: <AccRecievable_Agent />,
+        },
+        {
+          path: "/income-statement",
+          element: <IncomingStatement />,
+        },
+        {
+          path: "/account-statement",
+          element: <AccStatement />,
+        },
+        {
+          path: "/account-statement-with-visa",
+          element: <AccSttWithVisa />,
+        },
+        {
+          path: "/monthly-revenue-and-expense",
+          element: <MonthlyRevenueandExpence />,
+        },
+        {
+          path: "/compare-incoming-statement",
+          element: <CompareIncomeStt />,
         }
       ],
     },

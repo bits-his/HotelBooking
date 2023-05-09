@@ -6,10 +6,14 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 
 export default function TrialBalbyMasterAcc() {
   const [form, setForm] = useState({
-    journal_no: "",
+    financial_year: "",
     date: "",
-    date_from: "",
-    reservation_no: "",
+    date_from: '',
+    sub_brnch: "",
+    acc_n_frm: '',
+    acc_n_t: '',
+    acc_name_frm: '',
+    acc_name_t: '',
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -23,159 +27,126 @@ export default function TrialBalbyMasterAcc() {
       <Row>
         <Col md={12} style={{ display: "flex", flexDirection: "row" }}>
           <center>
-            <h5 className="app_title" style={{ fontSize: 23, marginTop: 20 }}>
-              Trial Balance By Master Account
+            <h5 className="app_title" style={{ fontSize: 23,marginTop: 20 }}>
+              Trial Balance by Master Account
             </h5>
           </center>
           <Col md={3}></Col>
-          <Col
-            md={5}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Col style={{ marginRight: 4 }}>
-              <label className="Label mt-2">Financial Year</label>
-              <select
-                id="exampleSelect"
-                className="app_input"
-                name="filter_type"
-                type="select"
-                onClick={handleChange}
-                value={form.filter_type}
-              >
-                <option>2023 </option>
-              </select>
+          <Col md={5} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',marginLeft: 'auto'}}>
+            <Col style={{marginRight: 10, marginLeft: 54}}>
+                <label className="Label mt-2">Financial Year</label>
+                <select
+                    id="exampleSelect"
+                    className="app_input"
+                    name="financial_year"
+                    type="select"
+                    onClick={handleChange}
+                    value={form.financial_year}
+                >
+                    <option>2023 </option>
+                </select>
             </Col>
             <Col>
-              <label className="Label mt-2">Sub Branch</label>
-              <select
-                id="exampleSelect"
-                className="app_input"
-                name="filter_type"
-                type="select"
-                onClick={handleChange}
-                value={form.filter_type}
-              >
-                <option>Select </option>
-              </select>
+                <label className="Label mt-2">Sub Branch</label>
+                <select
+                    id="exampleSelect"
+                    className="app_input"
+                    name="sub_brnch"
+                    type="select"
+                    onClick={handleChange}
+                    value={form.sub_brnch}
+                >
+                    <option>Select </option>
+                </select>
             </Col>
           </Col>
         </Col>
       </Row>
+      <div style={{width: '100%', border: '1px solid #cccccc', marginTop: 20, marginBottom: 20}}></div>
       <Row>
         <Col md={6}>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Date from"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="date"
-            />
-          </Col>
-          <Col md={12}>
-            <label className="Label mt-2">Account Number From</label>
-            <div className="search_input_form">
-              <input
-                id="exampleSelect"
-                className="app_input3"
-                value={form.reservation_no}
-                onClick={handleChange}
-                name="reservation_no"
-                type="number"
-              />
-              <CiSearch
-                className="search_icon"
-                // onClick={toggle}
-              />
-              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Date from"
+                    value={form.date_from}
+                    onChange={handleChange}
+                    name="date_from"
+                    type="date"
+                />
+            </Col>
+            <Col md={12}>
+                <label className="Label mt-2">Account Number From</label>
+                <div className="search_input_form">
+                    <input
+                    id="exampleSelect"
+                    className="app_input3"
+                    value={form.acc_n_frm}
+                    onClick={handleChange}
+                    name="acc_n_frm"
+                    type="number"
+                    />
+                    <CiSearch
+                    className="search_icon"
+                    // onClick={toggle}
+                    />
+                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
-            </div>
-          </Col>
-          <Col md={12}>
-            <label className="Label mt-2">Account Number To</label>
-            <div className="search_input_form">
-              <input
-                id="exampleSelect"
-                className="app_input3"
-                value={form.reservation_no}
-                onClick={handleChange}
-                name="reservation_no"
-                type="number"
-              />
-              <CiSearch
-                className="search_icon"
-                // onClick={toggle}
-              />
-              {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
+                </div>
+            </Col>
+            <Col md={12}>
+                <label className="Label mt-2">Account Number To</label>
+                <div className="search_input_form">
+                    <input
+                    id="exampleSelect"
+                    className="app_input3"
+                    value={form.acc_n_t}
+                    onClick={handleChange}
+                    name="acc_n_t"
+                    type="number"
+                    />
+                    <CiSearch
+                    className="search_icon"
+                    // onClick={toggle}
+                    />
+                    {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
             </div>
           </Col>
         </Col>
         <Col md={6}>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Date To"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="date"
-            />
-          </Col>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Account Number From"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="number"
-            />
-          </Col>
-          <Col md={12}>
-            <InputForm
-              className="app_input"
-              label="Account Name To"
-              value={form.date_from}
-              onChange={handleChange}
-              name="date_from"
-              type="number"
-            />
-          </Col>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <div style={{ display: "flex", gap: 15 }}>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              View Record
-            </button>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              Reset
-            </button>
-            <button
-              className="app_button p-2 mt-3 "
-              style={{ width: 170, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
-            >
-              Print
-            </button>
-          </div>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Date To"
+                    value={form.date}
+                    onChange={handleChange}
+                    name="date"
+                    type="date"
+                />
+            </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Account Name From"
+                    value={form.acc_name_frm}
+                    onChange={handleChange}
+                    name="acc_name_frm"
+                    type="number"
+                />
+            </Col>
+            <Col md={12}>
+                <InputForm
+                    className="app_input"
+                    label="Account Name To"
+                    value={form.acc_name_t}
+                    onChange={handleChange}
+                    name="acc_name_t"
+                    type="number"
+                />
+            </Col>
         </Col>
       </Row>
       <div className="m-2">
