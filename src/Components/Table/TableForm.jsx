@@ -69,6 +69,9 @@ export default function TableForm() {
       }
     );
   };
+  // const [print,setPrint]=useState(false)
+  const [no,setNo]=useState()
+
 
   const getHotels = () => {
     _post(
@@ -241,12 +244,12 @@ export default function TableForm() {
 
   return (
     <div>
-      {/* {JSON.stringify(meal)} */}
       <div>
         <div style={{ overflowX: "auto", marginTop: 50 }}>
           <table id="customers">
             {/* <thead style={{ border: '1px solid rgb(12, 134, 103)' }}> */}
             <tr>
+      {JSON.stringify(form)}
               <th style={{ border: "none" }} colspan="13"></th>
               <th
                 style={{
