@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import InputForm from '../../CustomComponents/InputForm'
 import { useState } from 'react'
 import { _get, _post } from '../../Utils/Helper'
+import { MdDeleteOutline } from 'react-icons/md'
 
 export default function TableForm() {
     const [form, setForm] = useState({
@@ -452,7 +453,7 @@ export default function TableForm() {
                   id="exampleSelect"
                   className="app_input_table"
                   value={form.rm_sale_source}
-                  name="country_name"
+                  name="rm_sale_source"
                   type="select"
                   onChange={handleChange}
                 >
@@ -784,7 +785,21 @@ export default function TableForm() {
                   type="number"
                 />
               </td>
-              <td></td>
+              <td>
+                
+                <div>
+                    <button
+                      // className="app_button"
+                      style={{ 
+                        width: 50 ,
+                        
+                      }}
+                      // onChange={()=>handleSubmit()}
+                    >
+                      <MdDeleteOutline />
+                    </button>
+                </div>
+              </td>
             </tr>
           </table>
          </div>

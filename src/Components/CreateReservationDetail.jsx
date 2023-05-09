@@ -13,6 +13,7 @@ import ReservationModal from './Modal/ReservationModal'
 import { _get, _post } from '../Utils/Helper'
 import Tables from './Table/Tables'
 import TableForm from './Table/TableForm'
+import { MdDeleteOutline } from 'react-icons/md'
 
 export default function CreateReservationDetail() {
   const [form, setForm] = useState({

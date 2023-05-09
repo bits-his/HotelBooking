@@ -70,6 +70,7 @@ import AccStatement from "../Components/AccStatement";
 import AccSttWithVisa from "../Components/AccSttWithVisa";
 import MonthlyRevenueandExpence from "../Components/MonthlyRevenueandExpence";
 import CompareIncomeStt from "../Components/CompareIncomeStt";
+import TransportTable from "../Components/Table/TransportTable";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -155,7 +156,7 @@ function AppNavigation() {
         },
         {
           path: "/reservation-details",
-          element: <CreateReservationDetail />,
+          element: <Reserve />,
         },
         {
           path: "/reservation-table",
@@ -354,6 +355,14 @@ function AppNavigation() {
         {
           path: "/compare-incoming-statement",
           element: <CompareIncomeStt />,
+        },
+        {
+          path: "/transport-table",
+          element: <TransportTable />,
+        },
+        {
+          path: "/create-transport-reservation",
+          element: <CreateTransportReservstion />,
         }
       ],
     },
