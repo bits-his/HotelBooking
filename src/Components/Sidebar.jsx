@@ -87,6 +87,15 @@ export default function Sidebar() {
               Create Reservation
             </li>
             <li
+              onClick={() => goto("/transport-table")}
+              className={`link_item ${
+                location.pathname === "/transport-table" &&
+                "active_side_menu"
+              }`}
+            >
+              Create Transport Reservstion
+            </li>
+            <li
               onClick={() => goto("/agent")}
               className={`link_item ${
                 location.pathname === "/agent" && "active_side_menu"

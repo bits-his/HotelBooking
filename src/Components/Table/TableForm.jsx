@@ -1,73 +1,94 @@
-import React, { useEffect } from 'react'
-import InputForm from '../../CustomComponents/InputForm'
-import { useState } from 'react'
-import { _get, _post } from '../../Utils/Helper'
+import React, { useEffect } from "react";
+import InputForm from "../../CustomComponents/InputForm";
+import { useState } from "react";
+import { _get, _post } from "../../Utils/Helper";
+import { MdDeleteOutline } from "react-icons/md";
+import { Button } from "reactstrap";
 
 export default function TableForm() {
-    const [form, setForm] = useState({
-        hotel: '',
-        check_in: '',
-        check_out:'',
-        nigth:'',
-        view: '',
-        room_type: '',
-        meal_type:'',
-        no_of_rm:'',
-        no_of_pax:'',
-        rm_sale_source: '',
-        rm_sale_source_supplier: '',
-        meal_sale_source:'',
-        meal_sale_source_supplier: '',
-        room_sale_rate_exc_tax:'',
-        room_sale_municipal :'',
-        room_sale_purch_vat: '',
-        room_sale_rat_inc_all_tax: '',
-        total_room_sale_rate:'',
-        meal_sale_rate_exc_tax:'',
-        meal_sale_purch_vat:'',
-        meal_sale_rat_inc_all_tax: '',
-        total_meal_sale_rate:'',
-        room_cost_rate_exc_tax:'',
-        room_cost_municipal :'',
-        room_cost_purch_vat: '',
-        room_cost_rat_inc_all_tax: '',
-        total_room_cost_rate: '',
-        meal_cost_rate_exc_tax:'',
-        meal_cost_purch_vat:'',
-        meal_cost_rat_inc_all_tax: '',
-        total_meal_cost_rate:'',
-        net_total_sale: '',
-        net_total_cost: ''
-    })
-    const [view, setView] = useState([])
-    const [hotelList, setHotelList] = useState([])
-    const [roomType, setRoomType] = useState([])
-    const [meal, setMeal] = useState([])
+  const [form, setForm] = useState({
+    hotel: "",
+    check_in: "",
+    check_out: "",
+    nigth: "",
+    view: "",
+    room_type: "",
+    meal_type: "",
+    no_of_rm: "",
+    no_of_pax: "",
+    rm_sale_source: "",
+    rm_sale_source_supplier: "",
+    meal_sale_source: "",
+    meal_sale_source_supplier: "",
+    room_sale_rate_exc_tax: "",
+    room_sale_municipal: "",
+    room_sale_purch_vat: "",
+    room_sale_rat_inc_all_tax: "",
+    total_room_sale_rate: "",
+    meal_sale_rate_exc_tax: "",
+    meal_sale_purch_vat: "",
+    meal_sale_rat_inc_all_tax: "",
+    total_meal_sale_rate: "",
+    room_cost_rate_exc_tax: "",
+    room_cost_municipal: "",
+    room_cost_purch_vat: "",
+    room_cost_rat_inc_all_tax: "",
+    total_room_cost_rate: "",
+    meal_cost_rate_exc_tax: "",
+    meal_cost_purch_vat: "",
+    meal_cost_rat_inc_all_tax: "",
+    total_meal_cost_rate: "",
+    net_total_sale: "",
+    net_total_cost: "",
+  });
+  const [view, setView] = useState([]);
+  const [hotelList, setHotelList] = useState([]);
+  const [roomType, setRoomType] = useState([]);
+  const [meal, setMeal] = useState([]);
 
-    const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }))
-        console.log(form)
-    }
-
-    const getHotels = () => {
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }));
+    console.log(form);
+  };
+  const handleSubmit = () => {
     _post(
-      'api/hotels?in_query_type=select-all',
-      {},
+      "api/reservations_and_availability",
+      form,
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(form);
         // if (resp ) {
-        setHotelList(resp.resp)
+        // setForm(resp.resp);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
+      }
+    );
+  };
+
+  const getHotels = () => {
+    _post(
+      "api/hotels?in_query_type=select-all",
+      {},
+      (resp) => {
+        // setLoading(false)
+        console.log(resp);
+        // if (resp ) {
+        setHotelList(resp.resp);
+        //  alert('dfasfsadf'+resp)
+        // }
       },
-    )
-  }
+      (e) => {
+        console.log(e);
+        // setLoading(false)
+        // alert(e)
+      }
+    );
+  };
 
   const getViews = () => {
     _get(
@@ -109,7 +130,7 @@ export default function TableForm() {
     _get(
       "api/meals_tables",
       (res) => {
-          // navigate(-1)
+        // navigate(-1)
         console.log(res);
         setMeal(res.results[0]);
       },
@@ -120,136 +141,157 @@ export default function TableForm() {
     );
     // console.log(form)
   };
-  
-  {/* //////////////////////////////ROOM RATE SALE/////////////////////////// */}
 
-  let fivePofRate = form.room_sale_rate_exc_tax*0.05
-  let fifteenPofRoomRate =  (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate))*0.15
-  let RatRoomIncAllTax = (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate)+parseFloat(fifteenPofRoomRate))
-  let totalRoomSales = (form.nigth*form.no_of_rm*RatRoomIncAllTax)
+  {
+    /* //////////////////////////////ROOM RATE SALE/////////////////////////// */
+  }
 
-  {/* //////////////////////////////MEAL RATE SALE/////////////////////////// */}
+  let fivePofRate = form.room_sale_rate_exc_tax * 0.05;
+  let fifteenPofRoomRate =
+    (parseFloat(form.room_sale_rate_exc_tax) + parseFloat(fivePofRate)) * 0.15;
+  let RatRoomIncAllTax =
+    parseFloat(form.room_sale_rate_exc_tax) +
+    parseFloat(fivePofRate) +
+    parseFloat(fifteenPofRoomRate);
+  let totalRoomSales = form.nigth * form.no_of_rm * RatRoomIncAllTax;
 
-  let fifteenPofMealRate = form.meal_sale_rate_exc_tax*0.15
-  let RatMealsIncAllTax = (parseFloat(form.meal_sale_rate_exc_tax)+parseFloat(fifteenPofMealRate))
-  let totalsMealSales = (form.nigth*form.no_of_pax*RatMealsIncAllTax)
+  {
+    /* //////////////////////////////MEAL RATE SALE/////////////////////////// */
+  }
 
-  {/* //////////////////////////////ROOM RATE COST/////////////////////////// */}
+  let fifteenPofMealRate = form.meal_sale_rate_exc_tax * 0.15;
+  let RatMealsIncAllTax =
+    parseFloat(form.meal_sale_rate_exc_tax) + parseFloat(fifteenPofMealRate);
+  let totalsMealSales = form.nigth * form.no_of_pax * RatMealsIncAllTax;
 
-  let fivePofRoomCost = form.room_cost_rate_exc_tax*0.05
-  let fifteenPofRoomCost =  (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost))*0.15
-  let RatRoomCostIncAllTax = (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost)+parseFloat(fifteenPofRoomCost))
-  let totalRoomCost = (form.nigth*form.no_of_rm*RatRoomCostIncAllTax)
+  {
+    /* //////////////////////////////ROOM RATE COST/////////////////////////// */
+  }
 
-  {/* //////////////////////////////MEAL RATE COST/////////////////////////// */}
-  let fifteenPofMealCost = form.meal_cost_rate_exc_tax*0.15
-  let RatMealsCostIncAllTax = (parseFloat(form.meal_cost_rate_exc_tax)+parseFloat(fifteenPofMealCost))
-  let totalsMealCost = (form.nigth*form.no_of_pax*RatMealsCostIncAllTax)
-  
-  {/* //////////////////////////////NET TOTAL/////////////////////////// */}
-  let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales)
-  let 	NetTotalCost = parseFloat(form.total_room_cost_rate)+parseFloat(totalsMealCost)
+  let fivePofRoomCost = form.room_cost_rate_exc_tax * 0.05;
+  let fifteenPofRoomCost =
+    (parseFloat(form.room_cost_rate_exc_tax) + parseFloat(fivePofRoomCost)) *
+    0.15;
+  let RatRoomCostIncAllTax =
+    parseFloat(form.room_cost_rate_exc_tax) +
+    parseFloat(fivePofRoomCost) +
+    parseFloat(fifteenPofRoomCost);
+  let totalRoomCost = form.nigth * form.no_of_rm * RatRoomCostIncAllTax;
+
+  {
+    /* //////////////////////////////MEAL RATE COST/////////////////////////// */
+  }
+  let fifteenPofMealCost = form.meal_cost_rate_exc_tax * 0.15;
+  let RatMealsCostIncAllTax =
+    parseFloat(form.meal_cost_rate_exc_tax) + parseFloat(fifteenPofMealCost);
+  let totalsMealCost = form.nigth * form.no_of_pax * RatMealsCostIncAllTax;
+
+  {
+    /* //////////////////////////////NET TOTAL/////////////////////////// */
+  }
+  let NetTotalSale = parseFloat(totalRoomSales) + parseFloat(totalsMealSales);
+  let NetTotalCost =
+    parseFloat(form.total_room_cost_rate) + parseFloat(totalsMealCost);
   useEffect(() => {
-        setForm(p => ({
-          ...p, room_sale_municipal: fivePofRate,
-          room_sale_purch_vat:(fifteenPofRoomRate), 
-          room_sale_rat_inc_all_tax: parseFloat(RatRoomIncAllTax),
-          total_room_sale_rate: parseFloat(totalRoomSales),
+    setForm((p) => ({
+      ...p,
+      room_sale_municipal: fivePofRate,
+      room_sale_purch_vat: fifteenPofRoomRate,
+      room_sale_rat_inc_all_tax: parseFloat(RatRoomIncAllTax),
+      total_room_sale_rate: parseFloat(totalRoomSales),
 
-          meal_sale_purch_vat: parseFloat(fifteenPofMealRate),
-          meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
-          total_meal_sale_rate: parseFloat(totalsMealSales),
+      meal_sale_purch_vat: parseFloat(fifteenPofMealRate),
+      meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
+      total_meal_sale_rate: parseFloat(totalsMealSales),
 
-          room_cost_municipal: fivePofRoomCost,
-          room_cost_purch_vat: (fifteenPofRoomCost),
-          room_cost_rat_inc_all_tax: parseFloat(RatRoomCostIncAllTax),
-          total_room_cost_rate: parseFloat(totalRoomCost),
+      room_cost_municipal: fivePofRoomCost,
+      room_cost_purch_vat: fifteenPofRoomCost,
+      room_cost_rat_inc_all_tax: parseFloat(RatRoomCostIncAllTax),
+      total_room_cost_rate: parseFloat(totalRoomCost),
 
-          meal_cost_purch_vat: parseFloat(fifteenPofMealCost),
-          meal_cost_rat_inc_all_tax: parseFloat(RatMealsCostIncAllTax),
-          total_meal_cost_rate: parseFloat(totalsMealCost),
+      meal_cost_purch_vat: parseFloat(fifteenPofMealCost),
+      meal_cost_rat_inc_all_tax: parseFloat(RatMealsCostIncAllTax),
+      total_meal_cost_rate: parseFloat(totalsMealCost),
 
-          net_total_sale: parseFloat(NetTotalSale),
-          net_total_cost: parseFloat(NetTotalCost)
-        }))
-        getViews();
-        getHotels();
-        getRoomType();
-        getMeals();
-    }, [ 
-        form.room_sale_rate_exc_tax, 
-        fivePofRate, 
-        fifteenPofRoomRate,
-        RatRoomIncAllTax,
-        fifteenPofMealRate,
-        RatMealsIncAllTax,
-        form.room_cost_rate_exc_tax,
-        fivePofRoomCost,
-        fifteenPofRoomCost,
-        RatRoomCostIncAllTax,
-        fifteenPofMealCost,
-        RatMealsCostIncAllTax,
-        totalsMealSales,
-        totalRoomSales,
-        totalsMealCost,
-        totalRoomCost,
-      ]);
-
-
+      net_total_sale: parseFloat(NetTotalSale),
+      net_total_cost: parseFloat(NetTotalCost),
+    }));
+    getViews();
+    getHotels();
+    getRoomType();
+    getMeals();
+  }, [
+    form.room_sale_rate_exc_tax,
+    fivePofRate,
+    fifteenPofRoomRate,
+    RatRoomIncAllTax,
+    fifteenPofMealRate,
+    RatMealsIncAllTax,
+    form.room_cost_rate_exc_tax,
+    fivePofRoomCost,
+    fifteenPofRoomCost,
+    RatRoomCostIncAllTax,
+    fifteenPofMealCost,
+    RatMealsCostIncAllTax,
+    totalsMealSales,
+    totalRoomSales,
+    totalsMealCost,
+    totalRoomCost,
+  ]);
 
   return (
     <div>
       {/* {JSON.stringify(meal)} */}
       <div>
-        <div style={{ overflowX: 'auto', marginTop: 50 }}>
+        <div style={{ overflowX: "auto", marginTop: 50 }}>
           <table id="customers">
             {/* <thead style={{ border: '1px solid rgb(12, 134, 103)' }}> */}
             <tr>
-              <th style={{ border: 'none' }} colspan="13"></th>
+              <th style={{ border: "none" }} colspan="13"></th>
               <th
                 style={{
-                  textAlign: 'center',
-                  backgroundColor: 'rgb(211, 211, 211)',
+                  textAlign: "center",
+                  backgroundColor: "rgb(211, 211, 211)",
                 }}
                 colspan="4"
               >
                 Room Rate Sale
               </th>
-              <th style={{ border: 'none' }} colspan="1"></th>
+              <th style={{ border: "none" }} colspan="1"></th>
               <th
                 style={{
-                  textAlign: 'center',
-                  backgroundColor: 'rgb(211, 211, 211)',
+                  textAlign: "center",
+                  backgroundColor: "rgb(211, 211, 211)",
                 }}
                 colspan="3"
               >
                 Meal Rate Sale
               </th>
-              <th style={{ border: 'none' }} colspan="1"></th>
+              <th style={{ border: "none" }} colspan="1"></th>
               <th
                 style={{
-                  textAlign: 'center',
-                  backgroundColor: 'rgb(211, 211, 211)',
+                  textAlign: "center",
+                  backgroundColor: "rgb(211, 211, 211)",
                 }}
                 colspan="4"
               >
                 Room Rate Cost
               </th>
-              <th style={{ border: 'none' }} colspan="1"></th>
+              <th style={{ border: "none" }} colspan="1"></th>
               <th
                 style={{
-                  textAlign: 'center',
-                  backgroundColor: 'rgb(211, 211, 211)',
+                  textAlign: "center",
+                  backgroundColor: "rgb(211, 211, 211)",
                 }}
                 colspan="3"
               >
                 Meal Rate Cost
               </th>
-              <th style={{ border: 'none' }} colspan="1"></th>
+              <th style={{ border: "none" }} colspan="1"></th>
               <th
                 style={{
-                  textAlign: 'center',
-                  backgroundColor: 'rgb(211, 211, 211)',
+                  textAlign: "center",
+                  backgroundColor: "rgb(211, 211, 211)",
                 }}
                 colspan="2"
               >
@@ -306,7 +348,7 @@ export default function TableForm() {
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -325,7 +367,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 130,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.check_in}
@@ -338,7 +380,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 130,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.check_out}
@@ -351,7 +393,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.nigth}
@@ -364,7 +406,7 @@ export default function TableForm() {
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -383,7 +425,7 @@ export default function TableForm() {
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -393,16 +435,16 @@ export default function TableForm() {
                   onChange={handleChange}
                 >
                   <option>----select-----</option>
-                  {roomType.map((i) => (
+                  {/* {roomType.map((i) => (
                     <option value={i.room_name}>{i.room_name}</option>
-                  ))}
+                  ))} */}
                 </select>
               </td>
               <td>
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -421,7 +463,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.no_of_rm}
@@ -434,7 +476,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.no_of_pax}
@@ -447,27 +489,27 @@ export default function TableForm() {
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
                   value={form.rm_sale_source}
-                  name="country_name"
+                  name="rm_sale_source"
                   type="select"
                   onChange={handleChange}
                 >
                   <option>----select-----</option>
-                    <option value="direct ">Direct </option>
-                    <option value="allotment ">Allotment </option>
-                    <option value="broker ">Broker </option>
-                    <option value="agent ">Agent </option>
+                  <option value="direct ">Direct </option>
+                  <option value="allotment ">Allotment </option>
+                  <option value="broker ">Broker </option>
+                  <option value="agent ">Agent </option>
                 </select>
               </td>
               <td>
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -477,19 +519,19 @@ export default function TableForm() {
                   onChange={handleChange}
                 >
                   <option>----select-----</option>
-                  <option value='al_barakah_co'>Al Barakah Co</option>
-                  <option value='shaer_co'>Shaer Co</option>
-                  <option value='chiroma_travel'>Chiroma Travel</option>
-                  <option value='al_roudha_travel '>Al Roudha Travel </option>
-                  <option value='roya_internaional'>Roya Internaional</option>
-                  <option value='al_rayan_ethiopia'>Al Rayan Ethiopia</option>
+                  <option value="al_barakah_co">Al Barakah Co</option>
+                  <option value="shaer_co">Shaer Co</option>
+                  <option value="chiroma_travel">Chiroma Travel</option>
+                  <option value="al_roudha_travel ">Al Roudha Travel </option>
+                  <option value="roya_internaional">Roya Internaional</option>
+                  <option value="al_rayan_ethiopia">Al Rayan Ethiopia</option>
                 </select>
               </td>
               <td>
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -499,15 +541,15 @@ export default function TableForm() {
                   onChange={handleChange}
                 >
                   <option>----select-----</option>
-                  <option value='direct'>Direct</option>
-                  <option value='out_restaurant'>Out Restaurant</option>
+                  <option value="direct">Direct</option>
+                  <option value="out_restaurant">Out Restaurant</option>
                 </select>
               </td>
               <td>
                 <select
                   style={{
                     width: 150,
-                    border: 'none'
+                    border: "none",
                   }}
                   id="exampleSelect"
                   className="app_input_table"
@@ -517,18 +559,18 @@ export default function TableForm() {
                   onChange={handleChange}
                 >
                   <option>----select-----</option>
-                  <option value='turkish_al_mazaq'>Turkish Al Mazaq</option>
-                  <option value='morocco_al_mazaq'>Morocco Al Mazaq</option>
-                  <option value='indonesia_rest'>Indonesia Rest</option>
-                  <option value='indian_rest'>Indian Rest </option>
-                  <option value='pakistani_rest'>Pakistani Res</option>
+                  <option value="turkish_al_mazaq">Turkish Al Mazaq</option>
+                  <option value="morocco_al_mazaq">Morocco Al Mazaq</option>
+                  <option value="indonesia_rest">Indonesia Rest</option>
+                  <option value="indian_rest">Indian Rest </option>
+                  <option value="pakistani_rest">Pakistani Res</option>
                 </select>
               </td>
               <td>
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_sale_rate_exc_tax}
@@ -541,7 +583,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_sale_municipal}
@@ -554,7 +596,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_sale_purch_vat}
@@ -567,7 +609,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_sale_rat_inc_all_tax}
@@ -580,7 +622,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.total_room_sale_rate}
@@ -593,7 +635,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_sale_rate_exc_tax}
@@ -606,7 +648,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_sale_purch_vat}
@@ -619,7 +661,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_sale_rat_inc_all_tax}
@@ -632,7 +674,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.total_meal_sale_rate}
@@ -645,7 +687,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_cost_rate_exc_tax}
@@ -658,7 +700,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_cost_municipal}
@@ -671,7 +713,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_cost_purch_vat}
@@ -684,7 +726,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.room_cost_rat_inc_all_tax}
@@ -697,7 +739,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.total_room_cost_rate}
@@ -710,7 +752,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_cost_rate_exc_tax}
@@ -723,7 +765,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_cost_purch_vat}
@@ -736,7 +778,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.meal_cost_rat_inc_all_tax}
@@ -749,7 +791,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.total_meal_cost_rate}
@@ -762,7 +804,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.net_total_sale}
@@ -775,7 +817,7 @@ export default function TableForm() {
                 <InputForm
                   style={{
                     width: 100,
-                    border: 'none'
+                    border: "none",
                   }}
                   className="app_input_table"
                   value={form.net_total_cost}
@@ -784,10 +826,32 @@ export default function TableForm() {
                   type="number"
                 />
               </td>
-              <td></td>
+              <td>
+                <div>
+                  <button
+                    // className="app_button"
+                    style={{
+                      width: 50,
+                    }}
+                    // onChange={()=>handleSubmit()}
+                  >
+                    <MdDeleteOutline />
+                  </button>
+                </div>
+              </td>
             </tr>
           </table>
-         </div>
+        </div>
+        <center>
+          <button
+            className="app_button p-2 mt-3 "
+            style={{ width: 170, fontSize: 16, fontWeight: 500 }}
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </center>
+
         {/*<div style={{ float: 'right' }}>
           Meal Rat Inc. All Tax :<b> {calc}</b>
         </div>
@@ -801,5 +865,5 @@ export default function TableForm() {
         </div> */}
       </div>
     </div>
-  )
+  );
 }

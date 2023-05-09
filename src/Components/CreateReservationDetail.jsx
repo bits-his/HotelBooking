@@ -10,9 +10,10 @@ import QuestModal from "./Modal/QuestModal";
 import ReservationModal from "./Modal/ReservationModal";
 // import HotelReg from './Modal/HotelModal'
 // import ReservationTable from './Table/ReservationTable'
-import { _get, _post } from "../Utils/Helper";
-import Tables from "./Table/Tables";
-import TableForm from "./Table/TableForm";
+import { _get, _post } from '../Utils/Helper'
+import Tables from './Table/Tables'
+import TableForm from './Table/TableForm'
+import { MdDeleteOutline } from 'react-icons/md'
 
 export default function CreateReservationDetail() {
   const [form, setForm] = useState({
@@ -179,7 +180,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {/* {JSON.stringify(country[0].length)} */}
+        {JSON.stringify(form)}
 
         <Row>
           <Col md={12}>

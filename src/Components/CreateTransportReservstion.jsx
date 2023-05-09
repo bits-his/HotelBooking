@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
+import { CiSearch } from "react-icons/ci";
 
 export default function CreateTransportReservstion({
   data = [],
@@ -69,7 +70,7 @@ export default function CreateTransportReservstion({
   }, [vat, purch]);
   return (
     <div>
-      {/* <Card className="app_card dashboard_card shadow p-3 m-3"> */}
+      <Card className="app_card dashboard_card shadow p-3 m-3">
       <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
         Create Transport Reservation
       </h5>
@@ -317,7 +318,14 @@ export default function CreateTransportReservstion({
           />
         </Col>
       </Row>
-      <div className="mt-3 text-center">
+      <div className="mt-5 text-center">
+        <button
+          className="p-2 app_button"
+          style={{ width: 100, marginRight: 20}}
+          onClick={handleSubmit}
+        >
+          Add Row
+        </button>
         <button
           className="p-2 app_button"
           style={{ width: 100 }}
@@ -327,12 +335,12 @@ export default function CreateTransportReservstion({
         </button>
       </div>
       <Row>
-        <div style={{ overflowX: "auto", marginTop: 50 }}>
+        <div style={{ overflowX: "auto", marginTop: 20 }}>
           <table id="customers" className="mt-5">
             <thead>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -340,7 +348,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -348,7 +356,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -356,7 +364,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -364,15 +372,23 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
-                Adult child
+                Adult
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
+                  padding: "5px 10px",
+                }}
+              >
+                Child
+              </th>
+              <th
+                style={{
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -380,7 +396,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -388,7 +404,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -396,7 +412,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -404,7 +420,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -412,7 +428,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -420,7 +436,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -428,7 +444,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -436,7 +452,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -444,7 +460,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -452,7 +468,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -460,7 +476,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -468,7 +484,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -476,7 +492,7 @@ export default function CreateTransportReservstion({
               </th>{" "}
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -484,7 +500,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -492,7 +508,7 @@ export default function CreateTransportReservstion({
               </th>
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -500,7 +516,7 @@ export default function CreateTransportReservstion({
               </th>{" "}
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
@@ -508,303 +524,366 @@ export default function CreateTransportReservstion({
               </th>{" "}
               <th
                 style={{
-                  border: "1px solid rgb(12, 134, 103)",
+                  border: "1px solid #0d3a73",
                   padding: "5px 10px",
                 }}
               >
                 Remark
               </th>
             </thead>
-            {/* {JSON.stringify(data)} */}
-            {data &&
-              data?.map((i) => (
-                <tbody>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
+            <tbody>
+              <tr>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <div className="search_input_form" style={{width: 150, border: 'none'}}>
                     <input
-                      className="table_input"
-                      value={i.route}
-                      name="route"
+                      className="app_input3"
+                      // value={form.reservation_number}
+                      // onChange={handleChange}
+                      name="reservation_number"
+                      type="number"
                     />
-                  </td>
-                  <td
+                    <CiSearch className="search_icon" />
+                    {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                      <ReservationModal setForm={setForm} toggle={toggle2} />
+                    </Modal> */}
+                  </div>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <select
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 150,
+                      border: 'none'
                     }}
+                    id="exampleSelect"
+                    className="app_input_table"
+                    value={form.rm_sale_source}
+                    name="rm_sale_source"
+                    type="select"
+                    onChange={handleChange}
                   >
+                    <option>----select-----</option>
+                      <option value="direct ">Direct </option>
+                      <option value="allotment ">Allotment </option>
+                      <option value="broker ">Broker </option>
+                      <option value="agent ">Agent </option>
+                  </select>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <div className="search_input_form" style={{width: 150, border: 'none'}}>
                     <input
-                      className="table_input"
-                      value={i.mov_type}
-                      name="mov_type"
+                      className="app_input3"
+                      // value={form.reservation_number}
+                      // onChange={handleChange}
+                      name="reservation_number"
+                      type="number"
                     />
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
+                    <CiSearch className="search_icon" />
+                    {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                      <ReservationModal setForm={setForm} toggle={toggle2} />
+                    </Modal> */}
+                  </div>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <div className="search_input_form" style={{width: 150, border: 'none'}}>
                     <input
-                      className="table_input"
-                      value={i.pickup_from}
-                      name="pickup_from"
+                      className="app_input3"
+                      // value={form.reservation_number}
+                      // onChange={handleChange}
+                      name="reservation_number"
+                      type="number"
                     />
-                  </td>
-                  <td
+                    <CiSearch className="search_icon" />
+                    {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                      <ReservationModal setForm={setForm} toggle={toggle2} />
+                    </Modal> */}
+                  </div>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.pickup_to}
-                      name="pickup_to"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.aduil_child}
-                      name="aduil_child"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 150,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.pickup_date}
-                      name="pickup_date"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="date"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <select
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 150,
+                      border: 'none'
                     }}
+                    id="exampleSelect"
+                    className="app_input_table"
+                    value={form.rm_sale_source}
+                    name="rm_sale_source"
+                    type="select"
+                    onChange={handleChange}
                   >
-                    <input
-                      className="table_input"
-                      value={i.transport_company}
-                      name="transport_company"
-                    />
-                  </td>
-                  <td
+                    <option>----select-----</option>
+                      <option value="direct ">Direct </option>
+                      <option value="allotment ">Allotment </option>
+                      <option value="broker ">Broker </option>
+                      <option value="agent ">Agent </option>
+                  </select>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <select
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 150,
+                      border: 'none'
                     }}
+                    id="exampleSelect"
+                    className="app_input_table"
+                    value={form.rm_sale_source}
+                    name="rm_sale_source"
+                    type="select"
+                    onChange={handleChange}
                   >
-                    <input
-                      className="table_input"
-                      value={i.transport_type}
-                      name="transport_type"
-                    />
-                  </td>
-                  <td
+                    <option>----select-----</option>
+                      <option value="direct ">Direct </option>
+                      <option value="allotment ">Allotment </option>
+                      <option value="broker ">Broker </option>
+                      <option value="agent ">Agent </option>
+                  </select>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input className="table_input" value={i.qty} name="qty" />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.sale_rote}
-                      name="sale_rote"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.total}
-                      name="total"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.discount}
-                      name="discount"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input className="table_input" value={i.vat} name="vat" />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.vat_amount}
-                      name="vat_amount"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.net_total}
-                      name="net_total"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.purch_rate}
-                      name="purch_rate"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input className="table_input" value={i.vat1} name="vat1" />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.vat_cost}
-                      name="vat_cost"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <select
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 150,
+                      border: 'none'
                     }}
+                    id="exampleSelect"
+                    className="app_input_table"
+                    value={form.rm_sale_source}
+                    name="rm_sale_source"
+                    type="select"
+                    onChange={handleChange}
                   >
-                    <input
-                      className="table_input"
-                      value={i.flight}
-                      name="flight"
-                    />
-                  </td>
-                  <td
+                    <option>----select-----</option>
+                      <option value="direct ">Direct </option>
+                      <option value="allotment ">Allotment </option>
+                      <option value="broker ">Broker </option>
+                      <option value="agent ">Agent </option>
+                  </select>
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.flight_no}
-                      name="flight_no"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input className="table_input" value={i.city} name="city" />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.arrive_or_dep_time}
-                      name="arrive_or_dep_time"
-                    />
-                  </td>
-                  <td
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                    type="number"
+                  />
+                </td>
+                <td style={{border: '1px solid #0d3a73'}}>
+                  <InputForm
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      width: 100,
+                      border: 'none'
                     }}
-                  >
-                    <input
-                      className="table_input"
-                      value={i.remark}
-                      name="remark"
-                    />
-                  </td>
-                  {/* <td
-                      style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                      }}
-                    >
-                      <center>
-                        <Button
-                          size="sm"
-                            onClick={() =>
-                              navigate(
-                                `/create-country?country_name=$&id=${i.id}`
-                              )
-                            }
-                        >
-                          Edit
-                        </Button>
-                      </center>
-                    </td>{" "} */}
-                </tbody>
-              ))}
+                    className="app_input"
+                    name="flight_no"
+                    // value={form.flight_no}
+                    // onChange={handleChange}
+                  />
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Row>
       {/* <center><button className="app_button p-3 mt-2" onClick={handleSubmiting}>Submit</button></center> */}
-      {/* </Card> */}
+      </Card>
     </div>
   );
 }
