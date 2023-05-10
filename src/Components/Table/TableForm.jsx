@@ -77,6 +77,11 @@ export default function TableForm({data=f=>f,setData=f=>f}) {
       setData(p => [...p, {...form}])
     }
 
+    function handleDelete(id) {
+      const deleteRow = data.filter((p, idc) => idc !== id);
+      setData(deleteRow);
+    }
+
     const getHotels = () => {
     _post(
       'api/hotels?in_query_type=select-all',
@@ -888,7 +893,7 @@ export default function TableForm({data=f=>f,setData=f=>f}) {
                         width: 50 ,
 
                       }}
-                      // onChange={()=>handleSubmit()}
+                      onClick={()=>handleDelete(idx)}
                     >
                       <MdDeleteOutline />
                     </button>
