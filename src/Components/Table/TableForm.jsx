@@ -3,14 +3,15 @@ import InputForm from '../../CustomComponents/InputForm'
 import { useState } from 'react'
 import { _get, _post } from '../../Utils/Helper'
 import { MdDeleteOutline } from 'react-icons/md'
+import { Button } from 'reactstrap'
 
-export default function TableForm() {
-    const [form, setForm] = useState({
+export default function TableForm({data=f=>f,setData=f=>f}) {
+  let _form ={
         hotel: '',
         check_in: '',
         check_out:'',
         nigth:'',
-        view: '',
+        view: '', 
         room_type: '',
         meal_type:'',
         no_of_rm:'',
@@ -39,15 +40,41 @@ export default function TableForm() {
         total_meal_cost_rate:'',
         net_total_sale: '',
         net_total_cost: ''
-    })
+    }
+    // useEffect(()=>{
+    //   setData([_form])
+    // },[])
+    const [form, setForm] = useState(_form)
     const [view, setView] = useState([])
     const [hotelList, setHotelList] = useState([])
     const [roomType, setRoomType] = useState([])
     const [meal, setMeal] = useState([])
+    // const [data, setData] = useState([_form])
 
-    const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }))
-        console.log(form)
+    const handleChange = (name, value, index) => {
+      let arr =[]
+        data?.forEach((item,i) => {
+           let fivePofRate = item.room_sale_rate_exc_tax*0.5
+           let fifteenPofRoomRate = (item.room_sale_rate_exc_tax+fivePofRate)*0.15
+           let RatRoomIncAllTax = parseInt(item.room_sale_rate_exc_tax)+parseFloat(fivePofRate)+parseFloat(fifteenPofRoomRate)
+      if(index === i){
+      arr.push({...item, [name]: value, 
+          room_sale_municipal: fivePofRate,
+          room_sale_purch_vat:(fifteenPofRoomRate),
+          room_sale_rat_inc_all_tax: RatRoomIncAllTax,
+        })
+    }else{
+      arr.push(item)
+    }
+  })
+  setData(arr)
+ }
+  // const handleChange = ({target:{name, value}}) => {
+  //   setForm(p => ({[name]: value}))
+  // }
+
+    const handleAdd =() => {
+      setData(p => [...p, {...form}])
     }
 
     const getHotels = () => {
@@ -124,83 +151,83 @@ export default function TableForm() {
   
   {/* //////////////////////////////ROOM RATE SALE/////////////////////////// */}
 
-  let fivePofRate = form.room_sale_rate_exc_tax*0.05
-  let fifteenPofRoomRate =  (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate))*0.15
-  let RatRoomIncAllTax = (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate)+parseFloat(fifteenPofRoomRate))
-  let totalRoomSales = (form.nigth*form.no_of_rm*RatRoomIncAllTax)
+  // let fivePofRate = form.room_sale_rate_exc_tax*0.05
+  // let fifteenPofRoomRate =  (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate))*0.15
+  // let RatRoomIncAllTax = (parseFloat(form.room_sale_rate_exc_tax)+parseFloat(fivePofRate)+parseFloat(fifteenPofRoomRate))
+  // let totalRoomSales = (form.nigth*form.no_of_rm*RatRoomIncAllTax)
 
   {/* //////////////////////////////MEAL RATE SALE/////////////////////////// */}
 
-  let fifteenPofMealRate = form.meal_sale_rate_exc_tax*0.15
-  let RatMealsIncAllTax = (parseFloat(form.meal_sale_rate_exc_tax)+parseFloat(fifteenPofMealRate))
-  let totalsMealSales = (form.nigth*form.no_of_pax*RatMealsIncAllTax)
+  // let fifteenPofMealRate = form.meal_sale_rate_exc_tax*0.15
+  // let RatMealsIncAllTax = (parseFloat(form.meal_sale_rate_exc_tax)+parseFloat(fifteenPofMealRate))
+  // let totalsMealSales = (form.nigth*form.no_of_pax*RatMealsIncAllTax)
 
   {/* //////////////////////////////ROOM RATE COST/////////////////////////// */}
 
-  let fivePofRoomCost = form.room_cost_rate_exc_tax*0.05
-  let fifteenPofRoomCost =  (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost))*0.15
-  let RatRoomCostIncAllTax = (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost)+parseFloat(fifteenPofRoomCost))
-  let totalRoomCost = (form.nigth*form.no_of_rm*RatRoomCostIncAllTax)
+  // let fivePofRoomCost = form.room_cost_rate_exc_tax*0.05
+  // let fifteenPofRoomCost =  (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost))*0.15
+  // let RatRoomCostIncAllTax = (parseFloat(form.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost)+parseFloat(fifteenPofRoomCost))
+  // let totalRoomCost = (form.nigth*form.no_of_rm*RatRoomCostIncAllTax)
 
   {/* //////////////////////////////MEAL RATE COST/////////////////////////// */}
-  let fifteenPofMealCost = form.meal_cost_rate_exc_tax*0.15
-  let RatMealsCostIncAllTax = (parseFloat(form.meal_cost_rate_exc_tax)+parseFloat(fifteenPofMealCost))
-  let totalsMealCost = (form.nigth*form.no_of_pax*RatMealsCostIncAllTax)
+  // let fifteenPofMealCost = form.meal_cost_rate_exc_tax*0.15
+  // let RatMealsCostIncAllTax = (parseFloat(form.meal_cost_rate_exc_tax)+parseFloat(fifteenPofMealCost))
+  // let totalsMealCost = (form.nigth*form.no_of_pax*RatMealsCostIncAllTax)
   
   {/* //////////////////////////////NET TOTAL/////////////////////////// */}
-  let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales)
-  let 	NetTotalCost = parseFloat(form.total_room_cost_rate)+parseFloat(totalsMealCost)
+  // let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales)
+  // let 	NetTotalCost = parseFloat(form.total_room_cost_rate)+parseFloat(totalsMealCost)
   useEffect(() => {
-        setForm(p => ({
-          ...p, room_sale_municipal: fivePofRate,
-          room_sale_purch_vat:(fifteenPofRoomRate.toFixed()), 
-          room_sale_rat_inc_all_tax: parseFloat(RatRoomIncAllTax),
-          total_room_sale_rate: parseFloat(totalRoomSales),
+        // setForm(p => ([{
+        //   ...p, room_sale_municipal: fivePofRate,
+        //   room_sale_purch_vat:(fifteenPofRoomRate.toFixed()), 
+        //   room_sale_rat_inc_all_tax: parseFloat(RatRoomIncAllTax),
+        //   total_room_sale_rate: parseFloat(totalRoomSales),
 
-          meal_sale_purch_vat: parseFloat(fifteenPofMealRate.toFixed()),
-          meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
-          total_meal_sale_rate: parseFloat(totalsMealSales),
+        //   meal_sale_purch_vat: parseFloat(fifteenPofMealRate.toFixed()),
+        //   meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
+        //   total_meal_sale_rate: parseFloat(totalsMealSales),
 
-          room_cost_municipal: fivePofRoomCost,
-          room_cost_purch_vat: (fifteenPofRoomCost.toFixed()),
-          room_cost_rat_inc_all_tax: parseFloat(RatRoomCostIncAllTax),
-          total_room_cost_rate: parseFloat(totalRoomCost),
+        //   room_cost_municipal: fivePofRoomCost,
+        //   room_cost_purch_vat: (fifteenPofRoomCost.toFixed()),
+        //   room_cost_rat_inc_all_tax: parseFloat(RatRoomCostIncAllTax),
+        //   total_room_cost_rate: parseFloat(totalRoomCost),
 
-          meal_cost_purch_vat: parseFloat(fifteenPofMealCost.toFixed()),
-          meal_cost_rat_inc_all_tax: parseFloat(RatMealsCostIncAllTax),
-          total_meal_cost_rate: parseFloat(totalsMealCost),
+        //   meal_cost_purch_vat: parseFloat(fifteenPofMealCost.toFixed()),
+        //   meal_cost_rat_inc_all_tax: parseFloat(RatMealsCostIncAllTax),
+        //   total_meal_cost_rate: parseFloat(totalsMealCost),
 
-          net_total_sale: parseFloat(NetTotalSale),
-          net_total_cost: parseFloat(NetTotalCost)
-        }))
+        //   net_total_sale: parseFloat(NetTotalSale),
+        //   net_total_cost: parseFloat(NetTotalCost)
+        // }]))
         getViews();
         getHotels();
         getRoomType();
         getMeals();
     }, [ 
-        form.room_sale_rate_exc_tax, 
-        fivePofRate, 
-        fifteenPofRoomRate,
-        RatRoomIncAllTax,
-        fifteenPofMealRate,
-        RatMealsIncAllTax,
-        form.room_cost_rate_exc_tax,
-        fivePofRoomCost,
-        fifteenPofRoomCost,
-        RatRoomCostIncAllTax,
-        fifteenPofMealCost,
-        RatMealsCostIncAllTax,
-        totalsMealSales,
-        totalRoomSales,
-        totalsMealCost,
-        totalRoomCost,
+        // form.room_sale_rate_exc_tax, 
+        // fivePofRate, 
+        // fifteenPofRoomRate,
+        // RatRoomIncAllTax,
+        // fifteenPofMealRate,
+        // RatMealsIncAllTax,
+        // form.room_cost_rate_exc_tax,
+        // fivePofRoomCost,
+        // fifteenPofRoomCost,
+        // RatRoomCostIncAllTax,
+        // fifteenPofMealCost,
+        // RatMealsCostIncAllTax,
+        // totalsMealSales,
+        // totalRoomSales,
+        // totalsMealCost,
+        // totalRoomCost,
       ]);
 
 
 
   return (
     <div>
-      {/* {JSON.stringify(meal)} */}
+      {JSON.stringify(data)}
       <div>
         <div style={{ overflowX: 'auto', marginTop: 50 }}>
           <table id="customers">
@@ -302,7 +329,8 @@ export default function TableForm() {
               <th>Net Total Cost</th>
               <th>Action</th>
             </tr>
-            <tr>
+           {data.map((item, idx) => (
+             <tr key={idx}>
               <td>
                 <select
                   style={{
@@ -311,11 +339,13 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.hotel}
-                  onChange={handleChange}
+                  value={item.hotel}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange("hotel", val, idx)}}
                   name="hotel"
                   type="select"
-                >
+                > 
                   <option>----select-----</option>
                   {hotelList.map((i) => (
                     <option value={i.hotel_name}>{i.hotel_name}</option>
@@ -329,8 +359,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.check_in}
-                  onChange={handleChange}
+                  value={item.check_in}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange("check_in", val, idx)}}
                   name="check_in"
                   type="date"
                 />
@@ -342,8 +374,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.check_out}
-                  onChange={handleChange}
+                  value={item.check_out}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('check_out', val, idx)}}
                   name="check_out"
                   type="date"
                 />
@@ -355,8 +389,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.nigth}
-                  onChange={handleChange}
+                  value={item.nigth}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('nigth', val, idx)}}
                   name="nigth"
                   type="number"
                 />
@@ -369,10 +405,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.view}
+                  value={item.view}
                   name="view"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('view', val, idx)}}
                 >
                   <option>----select-----</option>
                   {view.map((i) => (
@@ -388,10 +426,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.room_type}
+                  value={item.room_type}
                   name="room_type"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_type', val, idx)}}
                 >
                   <option>----select-----</option>
                   {roomType.map((i) => (
@@ -407,10 +447,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.meal_type}
+                  value={item.meal_type}
                   name="meal_type"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_type', val, idx)}}
                 >
                   <option>----select-----</option>
                   {meal.map((i) => (
@@ -425,10 +467,12 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.no_of_rm}
-                  onChange={handleChange}
+                  value={item.no_of_rm}
                   name="no_of_rm"
                   type="number"
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('no_of_rm', val, idx)}}
                 />
               </td>
               <td>
@@ -438,8 +482,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.no_of_pax}
-                  onChange={handleChange}
+                  value={item.no_of_pax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('no_of_pax', val, idx)}}
                   name="no_of_pax"
                   type="number"
                 />
@@ -452,10 +498,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.rm_sale_source}
+                  value={item.rm_sale_source}
                   name="rm_sale_source"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('rm_sale_source', val, idx)}}
                 >
                   <option>----select-----</option>
                     <option value="direct ">Direct </option>
@@ -472,10 +520,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.rm_sale_source_supplier}
+                  value={item.rm_sale_source_supplier}
                   name="rm_sale_source_supplier"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('rm_sale_source_supplier', val, idx)}}
                 >
                   <option>----select-----</option>
                   <option value='al_barakah_co'>Al Barakah Co</option>
@@ -494,10 +544,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.meal_sale_source}
+                  value={item.meal_sale_source}
                   name="meal_sale_source"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_sale_source', val, idx)}}
                 >
                   <option>----select-----</option>
                   <option value='direct'>Direct</option>
@@ -512,10 +564,12 @@ export default function TableForm() {
                   }}
                   id="exampleSelect"
                   className="app_input_table"
-                  value={form.meal_sale_source_supplier}
+                  value={item.meal_sale_source_supplier}
                   name="meal_sale_source_supplier"
                   type="select"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_sale_source_supplier', val, idx)}}
                 >
                   <option>----select-----</option>
                   <option value='turkish_al_mazaq'>Turkish Al Mazaq</option>
@@ -532,8 +586,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_sale_rate_exc_tax}
-                  onChange={handleChange}
+                  value={item.room_sale_rate_exc_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_sale_rate_exc_tax', val, idx)}}
                   name="room_sale_rate_exc_tax"
                   type="number"
                 />
@@ -545,8 +601,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_sale_municipal}
-                  onChange={handleChange}
+                  value={item.room_sale_municipal}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_sale_municipal', val, idx)}}
                   name="room_sale_municipal"
                   type="number"
                 />
@@ -558,8 +616,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_sale_purch_vat}
-                  onChange={handleChange}
+                  value={item.room_sale_purch_vat}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_sale_purch_vat', val, idx)}}
                   name="room_sale_purch_vat"
                   type="number"
                 />
@@ -571,8 +631,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_sale_rat_inc_all_tax}
-                  onChange={handleChange}
+                  value={item.room_sale_rat_inc_all_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_sale_rat_inc_all_tax', val, idx)}}
                   name="room_sale_rat_inc_all_tax"
                   type="number"
                 />
@@ -584,8 +646,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.total_room_sale_rate}
-                  onChange={handleChange}
+                  value={item.total_room_sale_rate}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('total_room_sale_rate', val, idx)}}
                   name="total_room_sale_rate"
                   type="number"
                 />
@@ -597,8 +661,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_sale_rate_exc_tax}
-                  onChange={handleChange}
+                  value={item.meal_sale_rate_exc_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_sale_rate_exc_tax', val, idx)}}
                   name="meal_sale_rate_exc_tax"
                   type="number"
                 />
@@ -610,8 +676,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_sale_purch_vat}
-                  onChange={handleChange}
+                  value={item.meal_sale_purch_vat}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_sale_purch_vat', val, idx)}}
                   name="meal_sale_purch_vat"
                   type="number"
                 />
@@ -623,8 +691,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_sale_rat_inc_all_tax}
-                  onChange={handleChange}
+                  value={item.meal_sale_rat_inc_all_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_sale_rat_inc_all_tax', val, idx)}}
                   name="meal_sale_rat_inc_all_tax"
                   type="number"
                 />
@@ -636,8 +706,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.total_meal_sale_rate}
-                  onChange={handleChange}
+                  value={item.total_meal_sale_rate}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('total_meal_sale_rate', val, idx)}}
                   name="total_meal_sale_rate"
                   type="number"
                 />
@@ -649,8 +721,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_cost_rate_exc_tax}
-                  onChange={handleChange}
+                  value={item.room_cost_rate_exc_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_cost_rate_exc_tax', val, idx)}}
                   name="room_cost_rate_exc_tax"
                   type="number"
                 />
@@ -662,8 +736,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_cost_municipal}
-                  onChange={handleChange}
+                  value={item.room_cost_municipal}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_cost_municipal', val, idx)}}
                   name="room_cost_municipal"
                   type="number"
                 />
@@ -675,8 +751,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_cost_purch_vat}
-                  onChange={handleChange}
+                  value={item.room_cost_purch_vat}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_cost_purch_vat', val, idx)}}
                   name="room_cost_purch_vat"
                   type="number"
                 />
@@ -688,8 +766,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.room_cost_rat_inc_all_tax}
-                  onChange={handleChange}
+                  value={item.room_cost_rat_inc_all_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('room_cost_rat_inc_all_tax', val, idx)}}
                   name="room_cost_rat_inc_all_tax"
                   type="number"
                 />
@@ -701,8 +781,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.total_room_cost_rate}
-                  onChange={handleChange}
+                  value={item.total_room_cost_rate}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('total_room_cost_rate', val, idx)}}
                   name="total_room_cost_rate"
                   type="number"
                 />
@@ -714,8 +796,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_cost_rate_exc_tax}
-                  onChange={handleChange}
+                  value={item.meal_cost_rate_exc_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_cost_rate_exc_tax', val, idx)}}
                   name="meal_cost_rate_exc_tax"
                   type="number"
                 />
@@ -727,8 +811,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_cost_purch_vat}
-                  onChange={handleChange}
+                  value={item.meal_cost_purch_vat}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_cost_purch_vat', val, idx)}}
                   name="meal_cost_purch_vat"
                   type="number"
                 />
@@ -740,8 +826,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.meal_cost_rat_inc_all_tax}
-                  onChange={handleChange}
+                  value={item.meal_cost_rat_inc_all_tax}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('meal_cost_rat_inc_all_tax', val, idx)}}
                   name="meal_cost_rat_inc_all_tax"
                   type="number"
                 />
@@ -753,8 +841,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.total_meal_cost_rate}
-                  onChange={handleChange}
+                  value={item.total_meal_cost_rate}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('total_meal_cost_rate', val, idx)}}
                   name="total_meal_cost_rate"
                   type="number"
                 />
@@ -766,8 +856,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.net_total_sale}
-                  onChange={handleChange}
+                  value={item.net_total_sale}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('net_total_sale', val, idx)}}
                   name="net_total_sale"
                   type="number"
                 />
@@ -779,8 +871,10 @@ export default function TableForm() {
                     border: 'none'
                   }}
                   className="app_input_table"
-                  value={form.net_total_cost}
-                  onChange={handleChange}
+                  value={item.net_total_cost}
+                  onChange={(e) => {
+                    let val = e.target.value
+                    handleChange('net_total_cost', val, idx)}}
                   name="net_total_cost"
                   type="number"
                 />
@@ -792,7 +886,7 @@ export default function TableForm() {
                       // className="app_button"
                       style={{ 
                         width: 50 ,
-                        
+
                       }}
                       // onChange={()=>handleSubmit()}
                     >
@@ -801,20 +895,22 @@ export default function TableForm() {
                 </div>
               </td>
             </tr>
+           ))}
           </table>
          </div>
         {/*<div style={{ float: 'right' }}>
           Meal Rat Inc. All Tax :<b> {calc}</b>
-        </div>
-        <br />
-        <div style={{ float: 'right' }}>
+          </div>
+          <br />
+          <div style={{ float: 'right' }}>
           Sale Rat Inc. All Tax :<b> {saleCalc}</b>
-        </div>
-        <br />
-        <div style={{ float: 'right' }}>
+          </div>
+          <br />
+          <div style={{ float: 'right' }}>
           Cost Rat Inc. All Tax :<b> {costCalc}</b>
         </div> */}
       </div>
+        <Button onClick={handleAdd}> Add</Button>
     </div>
   )
 }

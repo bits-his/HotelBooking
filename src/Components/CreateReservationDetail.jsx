@@ -48,7 +48,43 @@ export default function CreateReservationDetail() {
     setForm((p) => ({ ...p, [name]: value }))
     console.log(form)
   }
+   let _form ={
+        hotel: '',
+        check_in: '',
+        check_out:'',
+        nigth:'',
+        view: '', 
+        room_type: '',
+        meal_type:'',
+        no_of_rm:'',
+        no_of_pax:'',
+        rm_sale_source: '',
+        rm_sale_source_supplier: '',
+        meal_sale_source:'',
+        meal_sale_source_supplier: '',
+        room_sale_rate_exc_tax:'',
+        room_sale_municipal :'',
+        room_sale_purch_vat: '',
+        room_sale_rat_inc_all_tax: '',
+        total_room_sale_rate:'',
+        meal_sale_rate_exc_tax:'',
+        meal_sale_purch_vat:'',
+        meal_sale_rat_inc_all_tax: '',
+        total_meal_sale_rate:'',
+        room_cost_rate_exc_tax:'',
+        room_cost_municipal :'',
+        room_cost_purch_vat: '',
+        room_cost_rat_inc_all_tax: '',
+        total_room_cost_rate: '',
+        meal_cost_rate_exc_tax:'',
+        meal_cost_purch_vat:'',
+        meal_cost_rat_inc_all_tax: '',
+        total_meal_cost_rate:'',
+        net_total_sale: '',
+        net_total_cost: ''
+    }
   const [data, setData] = useState([])
+  const [datas, setDatas] = useState([_form])
 
   const getViews = () => {
     _get(
@@ -435,7 +471,7 @@ export default function CreateReservationDetail() {
           </Col> */}
         </Row>
       </div>
-      <TableForm />
+      <TableForm data={datas} setData={setDatas} />
     </Card>
   )
 }
