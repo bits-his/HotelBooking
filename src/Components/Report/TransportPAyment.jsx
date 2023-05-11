@@ -29,8 +29,8 @@ export default function TransportPAyment() {
       "api/getTransport?query_type=pending",
       {},
       (resp) => {
-        console.log(resp);
-        setTransport(resp.results);
+        if(resp.success)
+          setTransport(resp.results);
       },
       (e) => {
         console.log(e);

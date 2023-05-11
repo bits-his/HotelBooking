@@ -45,26 +45,62 @@ export default function CreateReservationDetail() {
   const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-    console.log(form);
-  };
-  const [data, setData] = useState([]);
+    setForm((p) => ({ ...p, [name]: value }))
+    console.log(form)
+  }
+   let _form ={
+        hotel: '',
+        check_in: '',
+        check_out:'',
+        night:'',
+        view: '', 
+        room_type: '',
+        meal_type:'',
+        no_of_rm:'',
+        no_of_pax:'',
+        rm_sale_source: '',
+        rm_sale_source_supplier: '',
+        meal_sale_source:'',
+        meal_sale_source_supplier: '',
+        room_sale_rate_exc_tax:'',
+        room_sale_municipal :'',
+        room_sale_purch_vat: '',
+        room_sale_rat_inc_all_tax: '',
+        total_room_sale_rate:'',
+        meal_sale_rate_exc_tax:'',
+        meal_sale_purch_vat:'',
+        meal_sale_rat_inc_all_tax: '',
+        total_meal_sale_rate:'',
+        room_cost_rate_exc_tax:'',
+        room_cost_municipal :'',
+        room_cost_purch_vat: '',
+        room_cost_rat_inc_all_tax: '',
+        total_room_cost_rate: '',
+        meal_cost_rate_exc_tax:'',
+        meal_cost_purch_vat:'',
+        meal_cost_rat_inc_all_tax: '',
+        total_meal_cost_rate:'',
+        net_total_sale: '',
+        net_total_cost: ''
+    }
+  // const [data, setData] = useState([])
+  const [datas, setDatas] = useState([_form])
 
-  const getViews = () => {
-    _get(
-      "api/get_views",
-      (res) => {
-        //   navigate(`/agent`)
-        console.log(res);
-        setData(res.results[0]);
-      },
-      (err) => {
-        // setLoading(false)
-        console.log(err);
-      }
-    );
-    // console.log(form)
-  };
+  // const getViews = () => {
+  //   _get(
+  //     "api/get_views",
+  //     (res) => {
+  //       //   navigate(`/agent`)
+  //       console.log(res);
+  //       setData(res.results[0]);
+  //     },
+  //     (err) => {
+  //       // setLoading(false)
+  //       console.log(err);
+  //     }
+  //   );
+  //   // console.log(form)
+  // };
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _post(
@@ -120,11 +156,12 @@ export default function CreateReservationDetail() {
   };
 
   useEffect(() => {
-    getViews();
+    // getViews();
     getHotels();
     getMeals_table();
     getAgent();
   }, []);
+  
   const handleSubmit = () => {
     console.log(form);
     _post(
@@ -436,7 +473,7 @@ export default function CreateReservationDetail() {
           </Col> */}
         </Row>
       </div>
-      <TableForm />
+      <TableForm data={datas} setData={setDatas} forms={form} />
     </Card>
   );
 }
