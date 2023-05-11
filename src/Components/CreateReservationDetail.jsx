@@ -217,7 +217,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {JSON.stringify(form)}
+        {/* {JSON.stringify(form)} */}
 
         <Row>
           <Col md={12}>

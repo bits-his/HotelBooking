@@ -102,7 +102,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
           total_meal_cost_rate: parseFloat(totalsMealCost),
 
           net_total_sale: parseFloat(NetTotalSale),
-          net_total_cost: parseFloat(NetTotalCost),
+          net_total_cost: parseFloat(NetTotalCost)
 
         });
       } else {
