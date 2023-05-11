@@ -885,7 +885,6 @@ export default function TableForm({data=f=>f,setData=f=>f}) {
                 />
               </td>
               <td>
-                
                 <div>
                     <button
                       // className="app_button"
