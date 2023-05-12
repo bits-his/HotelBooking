@@ -71,6 +71,7 @@ import AccSttWithVisa from "../Components/AccSttWithVisa";
 import MonthlyRevenueandExpence from "../Components/MonthlyRevenueandExpence";
 import CompareIncomeStt from "../Components/CompareIncomeStt";
 import TransportTable from "../Components/Table/TransportTable";
+import TransportationTable from "../Components/Table/TransportationTable";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -362,7 +363,7 @@ function AppNavigation() {
         },
         {
           path: "/create-transport-reservation",
-          element: <CreateTransportReservstion />,
+          element: <TransportationTable />,
         }
       ],
     },

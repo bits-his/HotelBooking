@@ -4,6 +4,7 @@ import { useState } from "react";
 import { _get, _post } from "../../Utils/Helper";
 import { MdDeleteOutline } from "react-icons/md";
 import { Button } from "reactstrap";
+import moment from "moment";
 
 export default function TableForm({ data = (f) => f, setData = (f) => f,forms }) {
   let _form = {
@@ -77,7 +78,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
       let totalsMealCost = (item.night*item.no_of_pax*RatMealsCostIncAllTax);
 
       let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales);
-      let NetTotalCost = parseFloat(form.total_room_cost_rate)+parseFloat(totalsMealCost);
+      let NetTotalCost = parseFloat(item.total_room_cost_rate)+parseFloat(totalsMealCost);
 
       if (index === i) {
         arr.push({
@@ -87,7 +88,9 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
           room_sale_purch_vat: fifteenPofRoomRate,
           room_sale_rat_inc_all_tax: RatRoomIncAllTax,
           total_room_sale_rate: totalRoomSales ,
-          
+          check_out: moment(item.check_in)
+          .add("days", parseInt(value))
+          .format("YYYY-MM-DD"),
           meal_sale_purch_vat: parseFloat(fifteenPofMealRate.toFixed()),
           meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
           total_meal_sale_rate: parseFloat(totalsMealSales),
@@ -308,7 +311,7 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
 
   return (
     <div>
-      {JSON.stringify(form)}
+      {/* {JSON.stringify(form)} */}
       <div>
         <div style={{ overflowX: "auto", marginTop: 50 }}>
           <table id="customers">
@@ -368,8 +371,8 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
             <tr>
               <th>Hotel</th>
               <th>Check In</th>
-              <th>Check Out</th>
               <th>Night</th>
+              <th>Check Out</th>
               <th>View</th>
               <th>Room Type</th>
               <th>Meal Type</th>
@@ -453,22 +456,6 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
                 <td>
                   <InputForm
                     style={{
-                      width: 130,
-                      border: "none",
-                    }}
-                    className="app_input_table"
-                    value={item.check_out}
-                    onChange={(e) => {
-                      let val = e.target.value;
-                      handleChange("check_out", val, idx);
-                    }}
-                    name="check_out"
-                    type="date"
-                  />
-                </td>
-                <td>
-                  <InputForm
-                    style={{
                       width: 100,
                       border: "none",
                     }}
@@ -480,6 +467,22 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
                     }}
                     name="night"
                     type="float"
+                  />
+                </td>
+                <td>
+                  <InputForm
+                    style={{
+                      width: 130,
+                      border: "none",
+                    }}
+                    className="app_input_table"
+                    value={item.check_out}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      handleChange("check_out", val, idx);
+                    }}
+                    name="check_out"
+                    type="date"
                   />
                 </td>
                 <td>

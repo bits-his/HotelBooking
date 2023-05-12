@@ -3,7 +3,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _get, _post } from "../../Utils/Helper";
 import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
@@ -19,9 +19,28 @@ export default function TranComfirmPending() {
     setForm((p) => ({ ...p, [name]: value }));
   };
 
+
+  const [data,setData]=useState([])
+
+  const getData =()=>{
+    _get('api/getTpayment',
+    (res)=>{
+      setData(res.results)
+    }),
+    (err)=>{
+      console.log(err)
+    }
+  }
+
+  useEffect(
+    ()=>{
+      getData()
+    },[]
+  )
   
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(data)} */}
       <Row>
         <Col md={12}>
           <center>
@@ -123,7 +142,7 @@ export default function TranComfirmPending() {
               style={{
                 border: "1px solid #ccc",
                 padding: 10,
-                width: "3000px",
+                width: "100%",
                 overflowX: "scroll",
               }}
               className="mt-5 mb-2"
@@ -153,14 +172,6 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    CI RefNo
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
                     Agent Name
                   </td>
                   <td
@@ -169,7 +180,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    City Code
+                    Company Name
                   </td>
                   <td
                     style={{
@@ -177,7 +188,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Check In
+                    Quest Name
                   </td>
                   <td
                     style={{
@@ -185,7 +196,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Check Out
+                    Location From
                   </td>
                   <td
                     style={{
@@ -193,7 +204,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Conf.No
+                    Location To
                   </td>
                   <td
                     style={{
@@ -201,7 +212,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Costomer Name
+                    Transport Type
                   </td>
                   <td
                     style={{
@@ -209,7 +220,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Hotel Id
+                    Vehicle Type
                   </td>
                   <td
                     style={{
@@ -217,81 +228,25 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Hotel
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    No of Room
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Room Type
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    View
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    No. of Days
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Cr.Date
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Exec
+                    PickUp Date
                   </td>
                 </tr>
               </thead>
-              {/* <tbody>
-                    {JSON.stringify(hotelList)}
-                    {hotelList.length === 0 ? (
+                    {/* {JSON.stringify(data)} */}
+              <tbody>
+                    {data.length === 0 ? (
                         <span>Loading Rooms...</span>
                     ) : (
-                        hotelList.map((item, index) => (
+                        data.map((item, index) => (
                         <tr>
+                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.comfirm}</td>
                             <td
                             style={{
                                 border: '1px solid rgb(12, 134, 103)',
                                 padding: '5px 10px',
                             }}
                             >
-                            <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.hotel_name}
+                            {item.reserve_Id}
                             </td>
                             <td
                             style={{
@@ -299,7 +254,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.address}
+                            {item.agent_name}
                             </td>
                             <td
                             style={{
@@ -307,7 +262,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.city}
+                            {item.company_name}
                             </td>
                             <td
                             style={{
@@ -315,7 +270,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.phone}
+                            {item.company_name}
                             </td>
                             <td
                             style={{
@@ -323,7 +278,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.email}
+                            {item.location_from}
                             </td>
                             <td
                             style={{
@@ -331,12 +286,36 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.website}
+                            {item.location_to}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.transport_type}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.vahicle_type}
+                            </td>
+                            <td
+                            style={{
+                                border: '1px solid rgb(12, 134, 103)',
+                                padding: '5px 10px',
+                            }}
+                            >
+                            {item.pickup_date}
                             </td>
                         </tr>
                         ))
                     )}
-                    </tbody> */}
+                    </tbody>
             </table>
           </div>
         </Row>
