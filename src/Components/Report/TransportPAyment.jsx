@@ -29,8 +29,8 @@ export default function TransportPAyment() {
       "api/getTransport?query_type=pending",
       {},
       (resp) => {
-        console.log(resp);
-        setTransport(resp.results);
+        if(resp.success)
+          setTransport(resp.results);
       },
       (e) => {
         console.log(e);
@@ -139,7 +139,7 @@ export default function TransportPAyment() {
               <input
                 className="app_input2"
                 type="text"
-                placeholder="Search"
+                // placeholder="Search"
                 name="Search"
                 // value={}
               />

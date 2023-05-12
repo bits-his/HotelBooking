@@ -56,7 +56,7 @@ export default function AllotmentReport() {
             Pagination
             <InputForm
               className="app_input"
-              placeholder="Search"
+              // placeholder="Search"
               name="date"
               type="search"
             />

@@ -4,7 +4,6 @@ import { Card, Col, Row } from "reactstrap";
 import InputForm from "../CustomComponents/InputForm";
 import { RiFileExcel2Fill } from "react-icons/ri";
 
-
 export default function TrialBalance() {
   const [form, setForm] = useState({
     date: "",
@@ -83,8 +82,8 @@ export default function TrialBalance() {
                     {/* <Modal isOpen={modal} toggle={toggle}size="xl" >
                                 <HotelReg/>
                             </Modal> */}
-                </div>
-            </Col>
+            </div>
+          </Col>
         </Col>
         <Col md={6}>
             <Col md={12}>
@@ -163,7 +162,7 @@ export default function TrialBalance() {
                 className="csv_link"
                 filename={"Hotel Comfirma"}
               > */}
-                <RiFileExcel2Fill /> Exel DownLoad
+              <RiFileExcel2Fill /> Exel DownLoad
               {/* </CSVLink> */}
             </button>
             <button
@@ -180,7 +179,7 @@ export default function TrialBalance() {
                 className="csv_link"
                 filename={"Hotel Comfirma"}
               > */}
-                <RiFileExcel2Fill /> CSV DownLoad
+              <RiFileExcel2Fill /> CSV DownLoad
               {/* </CSVLink> */}
             </button>
           </div>
@@ -219,7 +218,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -229,7 +228,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -239,7 +238,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     rowspan="2"
                   >
@@ -249,7 +248,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -259,7 +258,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -269,7 +268,7 @@ export default function TrialBalance() {
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                     colspan="2"
                   >
@@ -277,60 +276,60 @@ export default function TrialBalance() {
                   </td>
                 </tr>
                 <tr>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Debit
-                    </td>
-                    <td
-                        style={{
-                        border: "1px solid rgb(12, 134, 103)",
-                        padding: "5px 10px",
-                        textAlign: 'center'
-                        }}
-                    >
-                        Credit
-                    </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Debit
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Credit
+                  </td>
                 </tr>
               </thead>
               {/* <tbody>
@@ -402,111 +401,110 @@ export default function TrialBalance() {
                     )}
                     </tbody> */}
             </table>
-            <Col md={12} style={{display: 'flex', flexDirection: 'row'}}>
-                <Col md={4}></Col>
-                <Col md={8}>
-
-                    <div className="table_overflow">
-                        <table
-                            style={{
-                                border: "1px solid #ccc",
-                                padding: 10,
-                                width: "100%",
-                                overflowX: "scroll",
-                            }}
-                            className="mt-5 mb-2"
-                        >
-                            <tr>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Prev.Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Transaction
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                    colspan="2"
-                                >
-                                    Balance
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Open Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Prev.Balance
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Debit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Credit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Debit
-                                </td>
-                                <td
-                                    style={{
-                                    border: "1px solid rgb(12, 134, 103)",
-                                    padding: "5px 10px",
-                                    textAlign: 'center'
-                                    }}
-                                >
-                                    Credit
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </Col>
+            <Col md={12} style={{ display: "flex", flexDirection: "row" }}>
+              <Col md={4}></Col>
+              <Col md={8}>
+                <div className="table_overflow">
+                  <table
+                    style={{
+                      border: "1px solid #ccc",
+                      padding: 10,
+                      width: "100%",
+                      overflowX: "scroll",
+                    }}
+                    className="mt-5 mb-2"
+                  >
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Prev.Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Transaction
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                        colspan="2"
+                      >
+                        Balance
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Open Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Prev.Balance
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Debit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Credit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Debit
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Credit
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </Col>
             </Col>
           </div>
         </Row>

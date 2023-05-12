@@ -12,13 +12,12 @@ import { CSVLink } from "react-csv";
 export default function ChartofAcc() {
   const [form, setForm] = useState({
     category: "",
-    search: ""
+    search: "",
   });
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
 
-  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
@@ -91,7 +90,7 @@ export default function ChartofAcc() {
                 className="csv_link"
                 filename={"Hotel Comfirma"}
               > */}
-                <RiFileExcel2Fill /> Exel DownLoad
+              <RiFileExcel2Fill /> Exel DownLoad
               {/* </CSVLink> */}
             </button>
           </div>

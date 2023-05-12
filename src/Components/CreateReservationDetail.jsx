@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { BiTrash } from 'react-icons/bi'
-import { CiSearch } from 'react-icons/ci'
-import { FaArrowLeft } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import { Card, Col, Modal, Label, Row, Table, Input } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
-import AgentModal from './Modal/AgentModal'
-import QuestModal from './Modal/QuestModal'
-import ReservationModal from './Modal/ReservationModal'
+import React, { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
+import { CiSearch } from "react-icons/ci";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { Card, Col, Modal, Label, Row, Table, Input } from "reactstrap";
+import InputForm from "../CustomComponents/InputForm";
+import AgentModal from "./Modal/AgentModal";
+import QuestModal from "./Modal/QuestModal";
+import ReservationModal from "./Modal/ReservationModal";
 // import HotelReg from './Modal/HotelModal'
 // import ReservationTable from './Table/ReservationTable'
 import { _get, _post } from '../Utils/Helper'
@@ -17,32 +17,32 @@ import { MdDeleteOutline } from 'react-icons/md'
 
 export default function CreateReservationDetail() {
   const [form, setForm] = useState({
-      reservation_type: "",
-      booking_status: "",
-      option_date: "",
-      booking_type: "",
-      agent_name: "",
-      vat_reg_no: "",
-      sub_agent_name: "",
-      price_category: "",
-      guest_name: "",
-      country_name: "",
-      phone: "",
-      email: "",
-      BRN_hotel: "",
-      BRN_transport: "",
-    })
-  const [modal, setModal] = useState(false)
-  const [modal1, setModal1] = useState(false)
-  const [modal2, setModal2] = useState(false)
-  const [modal3, setModal3] = useState(false)
-  const [page, setPage] = useState(false)
+    reservation_type: "",
+    booking_status: "",
+    option_date: "",
+    booking_type: "",
+    agent_name: "",
+    vat_reg_no: "",
+    sub_agent_name: "",
+    price_category: "",
+    guest_name: "",
+    country_name: "",
+    phone: "",
+    email: "",
+    BRN_hotel: "",
+    BRN_transport: "",
+  });
+  const [modal, setModal] = useState(false);
+  const [modal1, setModal1] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const [modal3, setModal3] = useState(false);
+  const [page, setPage] = useState(false);
 
-  const toggle = () => setModal(!modal)
-  const toggle1 = () => setModal1(!modal1)
-  const toggle2 = () => setModal2(!modal2)
-  const toggle3 = () => setModal3(!modal3)
-  const navigate = useNavigate()
+  const toggle = () => setModal(!modal);
+  const toggle1 = () => setModal1(!modal1);
+  const toggle2 = () => setModal2(!modal2);
+  const toggle3 = () => setModal3(!modal3);
+  const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
@@ -52,7 +52,7 @@ export default function CreateReservationDetail() {
         hotel: '',
         check_in: '',
         check_out:'',
-        nigth:'',
+        night:'',
         view: '', 
         room_type: '',
         meal_type:'',
@@ -83,141 +83,141 @@ export default function CreateReservationDetail() {
         net_total_sale: '',
         net_total_cost: ''
     }
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [datas, setDatas] = useState([_form])
 
-  const getViews = () => {
-    _get(
-      'api/get_views',
-      (res) => {
-        //   navigate(`/agent`)
-        console.log(res)
-        setData(res.results[0])
-      },
-      (err) => {
-        // setLoading(false)
-        console.log(err)
-      },
-    )
-    // console.log(form)
-  }
-  const [hotel, setHotel] = useState([])
+  // const getViews = () => {
+  //   _get(
+  //     "api/get_views",
+  //     (res) => {
+  //       //   navigate(`/agent`)
+  //       console.log(res);
+  //       setData(res.results[0]);
+  //     },
+  //     (err) => {
+  //       // setLoading(false)
+  //       console.log(err);
+  //     }
+  //   );
+  //   // console.log(form)
+  // };
+  const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _post(
-      'api/room_type?query_type=select',
+      "api/room_type?query_type=select",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-        setHotel(resp.results)
+        setHotel(resp.results);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
-  const [meal, setMeal] = useState([])
+      }
+    );
+  };
+  const [meal, setMeal] = useState([]);
   const getMeals_table = () => {
     _get(
-      'api/meals_tables',
+      "api/meals_tables",
       (res) => {
         // navigate(-1)
-        console.log(res)
-        setMeal(res.results[0])
+        console.log(res);
+        setMeal(res.results[0]);
       },
       (err) => {
         // setLoading(false)
-        console.log(err)
-      },
-    )
+        console.log(err);
+      }
+    );
     // console.log(form)
-  }
-  const [agent, setAgent] = useState([])
+  };
+  const [agent, setAgent] = useState([]);
   const getAgent = () => {
     _post(
-      'api/bank_account_details',
+      "api/bank_account_details",
       {},
       (res) => {
         //   navigate(`/agent`)
-        console.log(res)
-        setAgent(res.results)
+        console.log(res);
+        setAgent(res.results);
       },
       (err) => {
         // setLoading(false)
-        console.log(err)
-      },
-    )
+        console.log(err);
+      }
+    );
     // console.log(form)
-  }
- 
+  };
+
   useEffect(() => {
-    getViews()
-    getHotels()
-    getMeals_table()
-    getAgent()
-   
-  }, [])
+    // getViews();
+    getHotels();
+    getMeals_table();
+    getAgent();
+  }, []);
+  
   const handleSubmit = () => {
-    console.log(form)
+    console.log(form);
     _post(
-      'api/new-reservation?query_type=insert',
+      "api/new-reservation?query_type=insert",
       form,
       (res) => {
         //   navigate(`/agent`)
         if (res.success) {
-          alert('submitted successfully!!')
+          alert("submitted successfully!!");
           setForm({
-            reservation_number: '',
-            reservation_type: '',
-            booking_status: '',
-            option_date: '',
-            booking_type: '',
-            agent_name: '',
-            vat_reg_no: '',
-            sub_agent_name: '',
-            price_category: '',
-            guest_name: '',
-            country_name: '',
-            phone: '',
-            email: '',
-            BRN_hotel: '',
-            BRN_transport: '',
-          })
+            reservation_number: "",
+            reservation_type: "",
+            booking_status: "",
+            option_date: "",
+            booking_type: "",
+            agent_name: "",
+            vat_reg_no: "",
+            sub_agent_name: "",
+            price_category: "",
+            guest_name: "",
+            country_name: "",
+            phone: "",
+            email: "",
+            BRN_hotel: "",
+            BRN_transport: "",
+          });
         }
-        console.log(res)
+        console.log(res);
         // setAgent(res.results)
       },
       (err) => {
         // setLoading(false)
-        console.log(err)
-      },
-    )
-  }
-  const [country, setCountry] = useState([])
+        console.log(err);
+      }
+    );
+  };
+  const [country, setCountry] = useState([]);
   useEffect(() => {
     _get(
-      'api/get_countries',
+      "api/get_countries",
       (res) => {
         //   navigate(`/agent`)
-        console.log('contryyyyyyyyyyyyyyyy',res)
-        setCountry(res.results)
+        console.log("contryyyyyyyyyyyyyyyy", res);
+        setCountry(res.results);
       },
       (err) => {
         // setLoading(false)
-        console.log(err)
-      },
-    )
-  }, [0])
-  const [selected, setSelected] = useState({})
+        console.log(err);
+      }
+    );
+  }, [0]);
+  const [selected, setSelected] = useState({});
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {/* {JSON.stringify(country[0].length)} */}
+        {JSON.stringify(form)}
 
         <Row>
           <Col md={12}>
@@ -325,9 +325,11 @@ export default function CreateReservationDetail() {
               onChange={handleChange}
             >
               <option>Select </option>
-              <option value="Comfirmed Reservation">Comfirmed Reservation</option>
+              <option value="Comfirmed Reservation">
+                Comfirmed Reservation
+              </option>
               <option value="Waitlisted Reservation">
-                Waitlisted Reservation{' '}
+                Waitlisted Reservation{" "}
               </option>
               <option>Tentative Reservation </option>
             </select>
@@ -407,7 +409,7 @@ export default function CreateReservationDetail() {
                 <AgentModal
                   setForm={setForm}
                   toggle={toggle}
-                  names="agent_name"
+                  names="agent_name" 
                 />
               </Modal>
             </div>
@@ -471,7 +473,7 @@ export default function CreateReservationDetail() {
           </Col> */}
         </Row>
       </div>
-      <TableForm data={datas} setData={setDatas} />
+      <TableForm data={datas} setData={setDatas} forms={form} />
     </Card>
-  )
+  );
 }
