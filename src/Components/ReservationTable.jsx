@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button } from "reactstrap";
-import { _post } from "../Utils/Helper";
+import { _get, _post } from "../Utils/Helper";
 
 
 export default function ReservationTableS() {
@@ -10,8 +10,8 @@ export default function ReservationTableS() {
 
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    _post(
-      "api/new-reservation?query_type=select_reservation",
+    _get(
+      "api/get_new_reservation_new?query_type=select_reservation_pending",
       {},
       (resp) => {
         // setLoading(false)
@@ -37,6 +37,7 @@ export default function ReservationTableS() {
       <Col md={12}>
         <h5 className="app_title">Reservation List</h5>
         <hr />
+        {JSON.stringify({hotel,dd: "LSS"})}
       </Col>
       <button
             className="app_button p-2 mb-3"

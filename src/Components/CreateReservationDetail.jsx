@@ -187,7 +187,7 @@ export default function CreateReservationDetail() {
   const handleSubmit = () => {
     console.log(form);
     _post(
-      "api/new-reservation?query_type=insert",
+      "api/booking_with_reservation?query_type=insert",
       form,
       (res) => {
         //   navigate(`/agent`)
