@@ -145,7 +145,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-             option ate
+             option date
             </th>
             {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}

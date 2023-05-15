@@ -156,24 +156,26 @@ export default function TableForm({
   //     progress: undefined,
   //   });
 
-  const handleSubmit = () => {
-    alert("Successful");
+  const handleSubmit = async () => {
     let newArr = [];
-    data.forEach((i) => newArr.push({ ...i, ...forms, query_type: "insert" }));
+    data.forEach((i) => newArr.push({ ...i, ...forms, query_type: 'insert' }));
 
-    _post(`api/booking_with_reservation`, newArr, (resp) => {
-      console.log(resp.nextCode);
-      setNo(resp.nextCode);
-      // handleSubmitings()
-      // NotificationManager.success('Success message', `Your Reservation Number is ${resp.nextCode}`);
+    try {
+      await _post(`api/booking_with_reservation`, newArr);
+      console.log("Form submitted successfully");
+      // setNo(resp.nextCode);
       toggle3();
-    }),
-      (err) => {
-        console.log(err);
-      };
-    setPrint(!print);
+    } catch (err) {
+      console.log(err);
+      alert("Successful");
+    }
+    setForm(_form)
+    handleReset()
+    setData([])
+
+    // setPrint(!print);
     console.log(newArr, "LSLLSLSLSLS");
-  };
+  }
   const getHotels = () => {
     _post(
       "api/hotels?in_query_type=select-all",
