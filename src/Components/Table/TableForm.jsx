@@ -4,8 +4,13 @@ import { useState } from "react";
 import { _get, _post } from "../../Utils/Helper";
 import { MdDeleteOutline } from "react-icons/md";
 import { Button } from "reactstrap";
+import moment from "moment";
 
-export default function TableForm({ data = (f) => f, setData = (f) => f,forms }) {
+export default function TableForm({
+  data = (f) => f,
+  setData = (f) => f,
+  forms,
+}) {
   let _form = {
     hotel: "",
     check_in: "",
@@ -40,7 +45,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
     total_meal_cost_rate: "",
     net_total_sale: "",
     net_total_cost: "",
-    query_type:"insert"
+    query_type: "insert",
   };
   // useEffect(()=>{
   //   setData([_form])
@@ -55,29 +60,43 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
   const handleChange = (name, value, index) => {
     let arr = [];
     data?.forEach((item, i) => {
-      let fivePofRate = parseFloat(item.room_sale_rate_exc_tax)*(0.5);
-      let fifteenPofRoomRate =(parseFloat(item.room_sale_rate_exc_tax) + parseFloat(fivePofRate))*(0.15) ;
+      let fivePofRate = parseFloat(item.room_sale_rate_exc_tax) * 0.5;
+      let fifteenPofRoomRate =
+        (parseFloat(item.room_sale_rate_exc_tax) + parseFloat(fivePofRate)) *
+        0.15;
       let RatRoomIncAllTax =
         parseFloat(item.room_sale_rate_exc_tax) +
         parseFloat(fivePofRate) +
         parseFloat(fifteenPofRoomRate);
-      let totalRoomSales = (item.night*item.no_of_room*RatRoomIncAllTax);
+      let totalRoomSales = item.night * item.no_of_room * RatRoomIncAllTax;
 
-      let fifteenPofMealRate = item.meal_sale_rate_exc_tax*0.15;
-      let RatMealsIncAllTax = (parseFloat(item.meal_sale_rate_exc_tax)+parseFloat(fifteenPofMealRate));
-      let totalsMealSales = (item.night*item.no_of_pax*RatMealsIncAllTax);
+      let fifteenPofMealRate = item.meal_sale_rate_exc_tax * 0.15;
+      let RatMealsIncAllTax =
+        parseFloat(item.meal_sale_rate_exc_tax) +
+        parseFloat(fifteenPofMealRate);
+      let totalsMealSales = item.night * item.no_of_pax * RatMealsIncAllTax;
 
-      let fivePofRoomCost = item.room_cost_rate_exc_tax*0.05;
-      let fifteenPofRoomCost =  (parseFloat(item.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost))*0.15;
-      let RatRoomCostIncAllTax = (parseFloat(item.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost)+parseFloat(fifteenPofRoomCost))
-      let totalRoomCost = (item.night*item.no_of_room*RatRoomCostIncAllTax)
+      let fivePofRoomCost = item.room_cost_rate_exc_tax * 0.05;
+      let fifteenPofRoomCost =
+        (parseFloat(item.room_cost_rate_exc_tax) +
+          parseFloat(fivePofRoomCost)) *
+        0.15;
+      let RatRoomCostIncAllTax =
+        parseFloat(item.room_cost_rate_exc_tax) +
+        parseFloat(fivePofRoomCost) +
+        parseFloat(fifteenPofRoomCost);
+      let totalRoomCost = item.night * item.no_of_room * RatRoomCostIncAllTax;
 
-      let fifteenPofMealCost = item.meal_cost_rate_exc_tax*0.15;
-      let RatMealsCostIncAllTax = (parseFloat(item.meal_cost_rate_exc_tax)+parseFloat(fifteenPofMealCost));
-      let totalsMealCost = (item.night*item.no_of_pax*RatMealsCostIncAllTax);
+      let fifteenPofMealCost = item.meal_cost_rate_exc_tax * 0.15;
+      let RatMealsCostIncAllTax =
+        parseFloat(item.meal_cost_rate_exc_tax) +
+        parseFloat(fifteenPofMealCost);
+      let totalsMealCost = item.night * item.no_of_pax * RatMealsCostIncAllTax;
 
-      let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales);
-      let NetTotalCost = parseFloat(form.total_room_cost_rate)+parseFloat(totalsMealCost);
+      let NetTotalSale =
+        parseFloat(totalRoomSales) + parseFloat(totalsMealSales);
+      let NetTotalCost =
+        parseFloat(form.total_room_cost_rate) + parseFloat(totalsMealCost);
 
       if (index === i) {
         arr.push({
@@ -86,8 +105,11 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
           room_sale_municipal: fivePofRate,
           room_sale_purch_vat: fifteenPofRoomRate,
           room_sale_rat_inc_all_tax: RatRoomIncAllTax,
-          total_room_sale_rate: totalRoomSales ,
-          
+          total_room_sale_rate: totalRoomSales,
+          check_out: moment(item.check_in)
+            .add("days", parseInt(value))
+            .format("YYYY-MM-DD"),
+
           meal_sale_purch_vat: parseFloat(fifteenPofMealRate.toFixed()),
           meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
           total_meal_sale_rate: parseFloat(totalsMealSales),
@@ -102,8 +124,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
           total_meal_cost_rate: parseFloat(totalsMealCost),
 
           net_total_sale: parseFloat(NetTotalSale),
-          net_total_cost: parseFloat(NetTotalCost)
-
+          net_total_cost: parseFloat(NetTotalCost),
         });
       } else {
         arr.push(item);
@@ -124,22 +145,34 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
   //   console.log(form);
   // };
 
+  // const notify = () =>
+  //   toast.success(`${studentArray.length} student(s) created`, {
+  //     position: "bottom-center",
+  //     autoClose: 2500,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+
   const handleSubmit = () => {
-    let newArr = []
-data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
+    alert("Successful");
+    let newArr = [];
+    data.forEach((i) => newArr.push({ ...i, ...forms, query_type: "insert" }));
 
     _post(`api/booking_with_reservation`, newArr, (resp) => {
       console.log(resp.nextCode);
-      setNo(resp.nextCode)
+      setNo(resp.nextCode);
       // handleSubmitings()
       // NotificationManager.success('Success message', `Your Reservation Number is ${resp.nextCode}`);
-      toggle3()
+      toggle3();
     }),
       (err) => {
         console.log(err);
       };
-   setPrint(!print)
-  console.log(newArr, "LSLLSLSLSLS")
+    setPrint(!print);
+    console.log(newArr, "LSLLSLSLSLS");
   };
   const getHotels = () => {
     _post(
@@ -179,7 +212,7 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
 
   const getRoomType = () => {
     _post(
-      "api/room_type?query_type=select",
+      "api/room_type?query_type=select-all",
       {},
       (resp) => {
         // setLoading(false)
@@ -302,7 +335,7 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
 
   return (
     <div>
-      {JSON.stringify(form)}
+      {/* {JSON.stringify({roomType, ff:'FFFF'})} */}
       <div>
         <div style={{ overflowX: "auto", marginTop: 50 }}>
           <table id="customers">
@@ -362,8 +395,8 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
             <tr>
               <th>Hotel</th>
               <th>Check In</th>
-              <th>Check Out</th>
               <th>Night</th>
+              <th>Check Out</th>
               <th>View</th>
               <th>Room Type</th>
               <th>Meal Type</th>
@@ -447,22 +480,6 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
                 <td>
                   <InputForm
                     style={{
-                      width: 130,
-                      border: "none",
-                    }}
-                    className="app_input_table"
-                    value={item.check_out}
-                    onChange={(e) => {
-                      let val = e.target.value;
-                      handleChange("check_out", val, idx);
-                    }}
-                    name="check_out"
-                    type="date"
-                  />
-                </td>
-                <td>
-                  <InputForm
-                    style={{
                       width: 100,
                       border: "none",
                     }}
@@ -474,6 +491,22 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
                     }}
                     name="night"
                     type="float"
+                  />
+                </td>
+                <td>
+                  <InputForm
+                    style={{
+                      width: 130,
+                      border: "none",
+                    }}
+                    className="app_input_table"
+                    value={item.check_out}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      handleChange("check_out", val, idx);
+                    }}
+                    name="check_out"
+                    type="date"
                   />
                 </td>
                 <td>
@@ -516,8 +549,8 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
                   >
                     <option>----select-----</option>
                     {roomType &&
-                      roomType?.map((i) => (
-                        <option value={i.room_name}>{i.room_name}</option>
+                      roomType.map((i) => (
+                        <option value={i.room_name}>{i.room_type}</option>
                       ))}
                   </select>
                 </td>
@@ -1029,7 +1062,7 @@ data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
         className="app_button mt-3 p-2 shadow"
         onClick={handleAdd}
       >
-        Add 
+        Add
       </button>
     </div>
   );

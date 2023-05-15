@@ -13,7 +13,7 @@ export default function ReservationModal({
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _post(
-      "api/new-reservation?query_type=select",
+      "api/new-reservation?query_type=select_reservation",
       {},
       (resp) => {
         // setLoading(false)
@@ -40,7 +40,7 @@ export default function ReservationModal({
         <h5 className="app_title">Reservation List</h5>
         <hr />
       </Col>
-      {/* {JSON.stringify(hotel)} */}
+       {/* {JSON.stringify(hotel)}  */}
       <Col md={12}>
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
           <label className="label_title">Search</label>
@@ -139,7 +139,7 @@ export default function ReservationModal({
                 padding: "5px 10px",
               }}
             >
-             option ate
+             option date
             </th>
             {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}

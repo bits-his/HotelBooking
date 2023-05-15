@@ -385,7 +385,7 @@ export default function RoomPurchasePaymentPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.night}
+                        {item.room}
                       </td>
                       <td
                         style={{

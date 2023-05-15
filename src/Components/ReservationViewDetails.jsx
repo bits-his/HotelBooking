@@ -45,7 +45,7 @@ export default function ReservationViewDetails() {
         <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
           Create Transport Reservation
         </h5>
-        {JSON.stringify(data)}
+        {/* {JSON.stringify(data)} */}
         <Row>
           <Col md={4}>
             <InputForm

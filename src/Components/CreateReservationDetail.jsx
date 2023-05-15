@@ -14,6 +14,7 @@ import { _get, _post } from '../Utils/Helper'
 import Tables from './Table/Tables'
 import TableForm from './Table/TableForm'
 import { MdDeleteOutline } from 'react-icons/md'
+import moment from "moment";
 
 export default function CreateReservationDetail() {
   const [form, setForm] = useState({
@@ -43,6 +44,8 @@ export default function CreateReservationDetail() {
   const toggle2 = () => setModal2(!modal2);
   const toggle3 = () => setModal3(!modal3);
   const navigate = useNavigate();
+  const today = moment().format('YYYY-MM-DD')
+  const d_to = moment(today).add(1, 'days').format('YYYY-MM-DD')
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
@@ -50,9 +53,9 @@ export default function CreateReservationDetail() {
   }
    let _form ={
         hotel: '',
-        check_in: '',
-        check_out:'',
-        night:'',
+        check_in: today,
+        check_out: d_to,
+        night:1,
         view: '', 
         room_type: '',
         meal_type:'',
@@ -81,7 +84,8 @@ export default function CreateReservationDetail() {
         meal_cost_rat_inc_all_tax: '',
         total_meal_cost_rate:'',
         net_total_sale: '',
-        net_total_cost: ''
+        net_total_cost: '',
+        option_date: ''
     }
   // const [data, setData] = useState([])
   const [datas, setDatas] = useState([_form])
@@ -217,7 +221,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {/* {JSON.stringify(form)} */}
+        {/* {JSON.stringify(today)} */}
 
         <Row>
           <Col md={12}>
