@@ -92,7 +92,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
       let NetTotalSale =
         parseFloat(totalRoomSales) + parseFloat(totalsMealSales);
       let NetTotalCost =
-        parseFloat(form.total_room_cost_rate) + parseFloat(totalsMealCost);
+        parseFloat(item.total_room_cost_rate) + parseFloat(totalsMealCost);
 
       if (index === i) {
         arr.push({
