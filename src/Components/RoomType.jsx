@@ -134,8 +134,7 @@ export default function RoomType() {
                   </td>
                   <td
                     style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
+                      border: "1px solid rgb(12, 134, 103)",padding: "5px 10px",
                     }}
                   >
                     <center>

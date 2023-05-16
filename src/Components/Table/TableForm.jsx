@@ -41,7 +41,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
     total_meal_cost_rate: "",
     net_total_sale: "",
     net_total_cost: "",
-    query_type:"insert"
+    query_type: "insert",
   };
   // useEffect(()=>{
   //   setData([_form])
@@ -56,29 +56,43 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
   const handleChange = (name, value, index) => {
     let arr = [];
     data?.forEach((item, i) => {
-      let fivePofRate = parseFloat(item.room_sale_rate_exc_tax)*(0.5);
-      let fifteenPofRoomRate =(parseFloat(item.room_sale_rate_exc_tax) + parseFloat(fivePofRate))*(0.15) ;
+      let fivePofRate = parseFloat(item.room_sale_rate_exc_tax) * 0.5;
+      let fifteenPofRoomRate =
+        (parseFloat(item.room_sale_rate_exc_tax) + parseFloat(fivePofRate)) *
+        0.15;
       let RatRoomIncAllTax =
         parseFloat(item.room_sale_rate_exc_tax) +
         parseFloat(fivePofRate) +
         parseFloat(fifteenPofRoomRate);
-      let totalRoomSales = (item.night*item.no_of_room*RatRoomIncAllTax);
+      let totalRoomSales = item.night * item.no_of_room * RatRoomIncAllTax;
 
-      let fifteenPofMealRate = item.meal_sale_rate_exc_tax*0.15;
-      let RatMealsIncAllTax = (parseFloat(item.meal_sale_rate_exc_tax)+parseFloat(fifteenPofMealRate));
-      let totalsMealSales = (item.night*item.no_of_pax*RatMealsIncAllTax);
+      let fifteenPofMealRate = item.meal_sale_rate_exc_tax * 0.15;
+      let RatMealsIncAllTax =
+        parseFloat(item.meal_sale_rate_exc_tax) +
+        parseFloat(fifteenPofMealRate);
+      let totalsMealSales = item.night * item.no_of_pax * RatMealsIncAllTax;
 
-      let fivePofRoomCost = item.room_cost_rate_exc_tax*0.05;
-      let fifteenPofRoomCost =  (parseFloat(item.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost))*0.15;
-      let RatRoomCostIncAllTax = (parseFloat(item.room_cost_rate_exc_tax)+parseFloat(fivePofRoomCost)+parseFloat(fifteenPofRoomCost))
-      let totalRoomCost = (item.night*item.no_of_room*RatRoomCostIncAllTax)
+      let fivePofRoomCost = item.room_cost_rate_exc_tax * 0.05;
+      let fifteenPofRoomCost =
+        (parseFloat(item.room_cost_rate_exc_tax) +
+          parseFloat(fivePofRoomCost)) *
+        0.15;
+      let RatRoomCostIncAllTax =
+        parseFloat(item.room_cost_rate_exc_tax) +
+        parseFloat(fivePofRoomCost) +
+        parseFloat(fifteenPofRoomCost);
+      let totalRoomCost = item.night * item.no_of_room * RatRoomCostIncAllTax;
 
-      let fifteenPofMealCost = item.meal_cost_rate_exc_tax*0.15;
-      let RatMealsCostIncAllTax = (parseFloat(item.meal_cost_rate_exc_tax)+parseFloat(fifteenPofMealCost));
-      let totalsMealCost = (item.night*item.no_of_pax*RatMealsCostIncAllTax);
+      let fifteenPofMealCost = item.meal_cost_rate_exc_tax * 0.15;
+      let RatMealsCostIncAllTax =
+        parseFloat(item.meal_cost_rate_exc_tax) +
+        parseFloat(fifteenPofMealCost);
+      let totalsMealCost = item.night * item.no_of_pax * RatMealsCostIncAllTax;
 
-      let NetTotalSale = parseFloat(totalRoomSales)+parseFloat(totalsMealSales);
-      let NetTotalCost = parseFloat(item.total_room_cost_rate)+parseFloat(totalsMealCost);
+      let NetTotalSale =
+        parseFloat(totalRoomSales) + parseFloat(totalsMealSales);
+      let NetTotalCost =
+        parseFloat(form.total_room_cost_rate) + parseFloat(totalsMealCost);
 
       if (index === i) {
         arr.push({
@@ -87,10 +101,11 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
           room_sale_municipal: fivePofRate,
           room_sale_purch_vat: fifteenPofRoomRate,
           room_sale_rat_inc_all_tax: RatRoomIncAllTax,
-          total_room_sale_rate: totalRoomSales ,
+          total_room_sale_rate: totalRoomSales,
           check_out: moment(item.check_in)
-          .add("days", parseInt(value))
-          .format("YYYY-MM-DD"),
+            .add("days", parseInt(value))
+            .format("YYYY-MM-DD"),
+
           meal_sale_purch_vat: parseFloat(fifteenPofMealRate.toFixed()),
           meal_sale_rat_inc_all_tax: parseFloat(RatMealsIncAllTax),
           total_meal_sale_rate: parseFloat(totalsMealSales),
@@ -106,7 +121,6 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
 
           net_total_sale: parseFloat(NetTotalSale),
           net_total_cost: parseFloat(NetTotalCost),
-
         });
       } else {
         arr.push(item);
@@ -122,12 +136,6 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
     setData((p) => [...p, { ...form }]);
   };
 
-    function handleDelete(id) {
-      const deleteRow = data.filter((p, idc) => idc !== id);
-      setData(deleteRow);
-    }
-
-    // const getHotels = () => {
   // const handleSubmit = () => {
   //   setForm(form);
   //   console.log(form);
@@ -192,7 +200,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
 
   const getRoomType = () => {
     _post(
-      "api/room_type?query_type=select",
+      "api/room_type?query_type=select-all",
       {},
       (resp) => {
         // setLoading(false)
@@ -315,7 +323,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
 
   return (
     <div>
-      {/* {JSON.stringify(form)} */}
+      {/* {JSON.stringify({roomType, ff:'FFFF'})} */}
       <div>
         <div style={{ overflowX: "auto", marginTop: 50 }}>
           <table id="customers">
@@ -529,8 +537,8 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
                   >
                     <option>----select-----</option>
                     {roomType &&
-                      roomType?.map((i) => (
-                        <option value={i.room_name}>{i.room_name}</option>
+                      roomType.map((i) => (
+                        <option value={i.room_name}>{i.room_type}</option>
                       ))}
                   </select>
                 </td>
@@ -1008,7 +1016,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
                       style={{
                         width: 50,
                       }}
-                      onClick={()=>handleDelete(idx)}
+                      // onChange={()=>handleSubmit()}
                     >
                       <MdDeleteOutline />
                     </button>
@@ -1042,7 +1050,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
         className="app_button mt-3 p-2 shadow"
         onClick={handleAdd}
       >
-        Add 
+        Add
       </button>
     </div>
   );

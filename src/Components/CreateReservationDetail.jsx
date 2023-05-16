@@ -102,7 +102,8 @@ export default function CreateReservationDetail() {
         meal_cost_rat_inc_all_tax: '',
         total_meal_cost_rate:'',
         net_total_sale: '',
-        net_total_cost: ''
+        net_total_cost: '',
+        option_date: ''
     }
   // const [data, setData] = useState([])
   const [datas, setDatas] = useState([_form])
@@ -238,7 +239,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {JSON.stringify(today)}
+        {/* {JSON.stringify(today)} */}
 
         <Row>
           <Col md={12}>

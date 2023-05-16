@@ -11,7 +11,7 @@ export default function ReservationTableS() {
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _post(
-      "api/new-reservation?query_type=select",
+      "api/new-reservation?query_type=select_reservation",
       {},
       (resp) => {
         // setLoading(false)
@@ -46,8 +46,8 @@ export default function ReservationTableS() {
             Add Reservation +
           </button>
         
-      {/* {JSON.stringify(hotel)} */}
       <Col md={12}>
+      {/* {JSON.stringify(hotel)} */}
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
           <label className="label_title">Search</label>
           <div className="search">
@@ -145,7 +145,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-             option ate
+             option date
             </th>
             {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}

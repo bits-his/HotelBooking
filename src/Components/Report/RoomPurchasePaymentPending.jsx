@@ -96,7 +96,7 @@ export default function RoomPurchasePaymentPending() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(hotelList)}
+      {/* {JSON.stringify(hotelList)} */}
       <Row>
         <Col md={12}>
           <center>
