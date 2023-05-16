@@ -22,7 +22,6 @@ export default function TransportationTable() {
     total: "",
     discount: "",
     vat: "",
-    vat_amount: "",
     net_total: "",
     purch_rate: "",
     vat1: "",
@@ -39,6 +38,74 @@ export default function TransportationTable() {
     const [form, setForm] = useState(_form)
     const [data, setData] = useState([_form])
 
+    const handleChange1 = (name, value, index) => {
+    let arr = [];
+    data?.forEach((item, i) => {
+      if(i === index) {
+      let total = parseFloat(value) + parseFloat(item.sale_rate||0)
+      let discount = parseFloat(total) * 0.05
+      let vat = parseFloat(total) * 0.05
+      let net_total = parseFloat(total) + parseFloat(discount) + parseFloat(vat)
+
+        arr.push({
+          ...item,
+          [name]: value,
+          total,
+          discount,
+          vat,
+          net_total
+        });
+      } else {
+        arr.push(item);
+      }
+    });
+    setData(arr);
+  };
+
+  const handleChange2 = (name, value, index) => {
+    let arr = [];
+    data?.forEach((item, i) => {
+      if(i === index) {
+      let total = parseFloat(item.qty||0) + parseFloat(value)
+      let discount = parseFloat(total) * 0.05
+      let vat = parseFloat(total) * 0.05
+      let net_total = parseFloat(total) + parseFloat(discount) + parseFloat(vat)
+
+        arr.push({
+          ...item,
+          [name]: value,
+          total,
+          discount,
+          vat,
+          net_total
+        });
+      } else {
+        arr.push(item);
+      }
+    });
+    setData(arr);
+  };
+
+  const handleChange3 = (name, value, index) => {
+    let arr = [];
+    data?.forEach((item, i) => {
+      if(i === index) {
+      let fivePercent = parseFloat(value)* 0.05
+      let vat_cost = parseFloat(value)* 0.15
+
+        arr.push({
+          ...item,
+          [name]: value,
+          vat1: fivePercent,
+          vat_cost
+        });
+      } else {
+        arr.push(item);
+      }
+    });
+    setData(arr);
+  }
+
     const handleChange = (name, value, index) => {
       let arr =[]
         data?.forEach((item,i) => {
@@ -54,28 +121,35 @@ export default function TransportationTable() {
   //   setForm(p => ({[name]: value}))
   // }
 
-    const handleAdd =() => {
-      setData(p => [...p, {...form}])
+    const handleAdd = () => {
+    if (data.length) {
+      
+      setData((p) => [...p, data[0]]);
+    }else{
+      setData([form])
     }
+  };
 
     function handleDelete(id) {
       const deleteRow = data.filter((p, idc) => idc !== id);
       setData(deleteRow);
     }
       const handleSubmiting = () => {
-    _post(
-      "api/create_transport?query_type=insert",
-      data,
-      (res) => {
-        if (res.success) {
-          alert("success");
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  };
+        _post(
+          "api/create_transport?query_type=insert",
+          data,
+          (res) => {
+            if (res.success) {
+              alert("Successful");
+            }
+            setData([])
+          },
+          (err) => {
+            console.log(err);
+          }
+          
+          );
+      };
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -83,7 +157,7 @@ export default function TransportationTable() {
         <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
           Create Transport Reservation
         </h5>
-        {JSON.stringify(data)}
+        {/* {JSON.stringify(data)} */}
           <div style={{ overflowX: "auto", marginTop: 20 }}>
             <table id="customers" className="mt-5">
               <thead>
@@ -198,14 +272,6 @@ export default function TransportationTable() {
                   }}
                 >
                   Vat %
-                </th>
-                <th
-                  style={{
-                    border: "1px solid #0d3a73",
-                    padding: "5px 10px",
-                  }}
-                >
-                  Vat Amount
                 </th>
                 <th
                   style={{
@@ -472,7 +538,7 @@ export default function TransportationTable() {
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("qty", val, idx)
+                        handleChange1("qty", val, idx)
                       }}
                     />
                   </td>
@@ -488,7 +554,7 @@ export default function TransportationTable() {
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("sale_rate", val, idx)
+                        handleChange2("sale_rate", val, idx)
                       }}
                     />
                   </td>
@@ -504,7 +570,7 @@ export default function TransportationTable() {
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("total", val, idx)
+                        handleChange1("total", val, idx)
                       }}
                     />
                   </td>
@@ -539,23 +605,7 @@ export default function TransportationTable() {
                         handleChange("vat", val, idx)
                       }}
                     />
-                  </td>
-                  <td style={{border: '1px solid #0d3a73'}}>
-                    <InputForm
-                      style={{
-                        width: 100,
-                        border: 'none'
-                      }}
-                      className="app_input"
-                      value={item.vat_amount}
-                      name="vat_amount"
-                      type="number"
-                      onChange={(e) => {
-                        let val = e.target.value
-                        handleChange("vat_amount", val, idx)
-                      }}
-                    />
-                  </td>
+                  </td> 
                   <td style={{border: '1px solid #0d3a73'}}>
                     <InputForm
                       style={{
@@ -583,7 +633,7 @@ export default function TransportationTable() {
                       name="purch_rate"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("purch_rate", val, idx)
+                        handleChange3("purch_rate", val, idx)
                       }}
                       type="number"
                     />
@@ -600,7 +650,7 @@ export default function TransportationTable() {
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("vat1", val, idx)
+                        handleChange3("vat1", val, idx)
                       }}
                     />
                   </td>
@@ -616,7 +666,7 @@ export default function TransportationTable() {
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value
-                        handleChange("vat_cost", val, idx)
+                        handleChange3("vat_cost", val, idx)
                       }}
                     />
                   </td>

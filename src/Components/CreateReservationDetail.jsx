@@ -83,26 +83,26 @@ export default function CreateReservationDetail() {
         rm_sale_source_supplier: '',
         meal_sale_source:'',
         meal_sale_source_supplier: '',
-        room_sale_rate_exc_tax:'',
-        room_sale_municipal :'',
-        room_sale_purch_vat: '',
-        room_sale_rat_inc_all_tax: '',
-        total_room_sale_rate:'',
-        meal_sale_rate_exc_tax:'',
-        meal_sale_purch_vat:'',
-        meal_sale_rat_inc_all_tax: '',
-        total_meal_sale_rate:'',
-        room_cost_rate_exc_tax:'',
-        room_cost_municipal :'',
-        room_cost_purch_vat: '',
-        room_cost_rat_inc_all_tax: '',
-        total_room_cost_rate: '',
-        meal_cost_rate_exc_tax:'',
-        meal_cost_purch_vat:'',
-        meal_cost_rat_inc_all_tax: '',
-        total_meal_cost_rate:'',
-        net_total_sale: '',
-        net_total_cost: '',
+        room_sale_rate_exc_tax:0,
+        room_sale_municipal :0,
+        room_sale_purch_vat: 0,
+        room_sale_rat_inc_all_tax: 0,
+        total_room_sale_rate:0,
+        meal_sale_rate_exc_tax:0,
+        meal_sale_purch_vat:0,
+        meal_sale_rat_inc_all_tax: 0,
+        total_meal_sale_rate:0,
+        room_cost_rate_exc_tax:0,
+        room_cost_municipal :0,
+        room_cost_purch_vat: 0,
+        room_cost_rat_inc_all_tax: 0,
+        total_room_cost_rate: 0,
+        meal_cost_rate_exc_tax:0,
+        meal_cost_purch_vat:0,
+        meal_cost_rat_inc_all_tax: 0,
+        total_meal_cost_rate:0,
+        net_total_sale: 0,
+        net_total_cost: 0,
         option_date: ''
     }
   // const [data, setData] = useState([])
@@ -404,7 +404,7 @@ export default function CreateReservationDetail() {
               type="number"
             /> */}
           </Col>
-          <Col md={4}>
+          <Col md={4} className="mb-5">
             <label className="Label mt-2">Booking Status</label>
             <select
               id="exampleSelect"
@@ -494,6 +494,8 @@ export default function CreateReservationDetail() {
             </div>
           </Col> */}
         </Row>
+        
+      
       </div>
       <TableForm data={datas} setData={setDatas} forms={form} handleReset={handleReset}/>
     </Card>
