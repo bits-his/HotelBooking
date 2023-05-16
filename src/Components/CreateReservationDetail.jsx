@@ -17,7 +17,7 @@ import { MdDeleteOutline } from 'react-icons/md'
 import moment from "moment";
 
 export default function CreateReservationDetail() {
-  const [form, setForm] = useState({
+  const __form = {
     reservation_type: "",
     booking_status: "",
     option_date: "",
@@ -32,12 +32,30 @@ export default function CreateReservationDetail() {
     email: "",
     BRN_hotel: "",
     BRN_transport: "",
-  });
+  }
+  const [form, setForm] = useState(__form);
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
   const [page, setPage] = useState(false);
+
+  const handleReset = () => {
+    setForm({reservation_type: "",
+    booking_status: "",
+    option_date: "",
+    booking_type: "",
+    agent_name: "",
+    vat_reg_no: "",
+    sub_agent_name: "",
+    price_category: "",
+    guest_name: "",
+    country_name: "",
+    phone: "",
+    email: "",
+    BRN_hotel: "",
+    BRN_transport: "",})
+  }
 
   const toggle = () => setModal(!modal);
   const toggle1 = () => setModal1(!modal1);
@@ -45,7 +63,7 @@ export default function CreateReservationDetail() {
   const toggle3 = () => setModal3(!modal3);
   const navigate = useNavigate();
   const today = moment().format('YYYY-MM-DD')
-  const d_to = moment(today).add(1, 'days').format('YYYY-MM-DD')
+  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
@@ -476,7 +494,7 @@ export default function CreateReservationDetail() {
           </Col> */}
         </Row>
       </div>
-      <TableForm data={datas} setData={setDatas} forms={form} />
+      <TableForm data={datas} setData={setDatas} forms={form} handleReset={handleReset}/>
     </Card>
   );
 }

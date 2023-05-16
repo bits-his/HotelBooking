@@ -6,7 +6,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { Button } from "reactstrap";
 import moment from "moment";
 
-export default function TableForm({ data = (f) => f, setData = (f) => f,forms }) {
+export default function TableForm({ data = (f) => f, setData = (f) => f,forms, handleReset }) {
   let _form = {
     hotel: "",
     check_in: "",
@@ -133,23 +133,27 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms })
   //   console.log(form);
   // };
     // }
-  const handleSubmit = () => {
-    let newArr = []
-data.forEach((i) => newArr.push({...i, ...forms,query_type:'insert' }))
+  const handleSubmit = async () => {
+    let newArr = [];
+    data.forEach((i) => newArr.push({ ...i, ...forms, query_type: 'insert' }));
 
-    _post(`api/booking_with_reservation`, newArr, (resp) => {
-      console.log(resp.nextCode);
-      setNo(resp.nextCode)
-      // handleSubmitings()
-      // NotificationManager.success('Success message', `Your Reservation Number is ${resp.nextCode}`);
-      toggle3()
-    }),
-      (err) => {
-        console.log(err);
-      };
-   setPrint(!print)
-  console.log(newArr, "LSLLSLSLSLS")
-  };
+    try {
+      await _post(`api/booking_with_reservation`, newArr);
+      console.log("Form submitted successfully");
+      // setNo(resp.nextCode);
+      toggle3();
+    } catch (err) {
+      console.log(err);
+      alert("Successful");
+    }
+    setForm(_form)
+    handleReset()
+    setData([])
+
+    // setPrint(!print);
+    console.log(newArr, "LSLLSLSLSLS");
+  }
+
   const getHotels = () => {
     _post(
       "api/hotels?in_query_type=select-all",

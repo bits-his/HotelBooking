@@ -75,7 +75,7 @@ export default function AllaotmentTable({
       setForm((p) => ({
         ...p,
         [name]: value,
-        d_to: moment(form.d_from).add(value, "days").format("YYYY-MM-DD"),
+        d_to: moment(form.d_from).add("days", value).format("YYYY-MM-DD"),
       }));
     } else {
       setForm((p) => ({ ...p, [name]: value }));

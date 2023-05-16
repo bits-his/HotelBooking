@@ -9,7 +9,7 @@ import AllaotmentTable from './Table/AllaotmentTable'
 
 export default function Allotmentstep() {
   const today = moment().format('YYYY-MM-DD')
-  const d_to = moment(today).add(1, 'days').format('YYYY-MM-DD')
+  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
   const { user } = useSelector((state) => state.auth)
   const [form, setForm] = useState({
     room_type: '',
