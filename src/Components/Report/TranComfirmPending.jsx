@@ -23,13 +23,22 @@ export default function TranComfirmPending() {
   const [data,setData]=useState([])
 
   const getData =()=>{
-    _get('api/getTpayment',
-    (res)=>{
-      setData(res.results)
-    }),
-    (err)=>{
-      console.log(err)
-    }
+    _get(
+      "api/get_new_reservation_new?query_type=select_transport_pending",
+      (resp) => {
+        // setLoading(false)
+        console.log(resp);
+        // if (resp ) {
+          setData(resp.results);
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e);
+        // setLoading(false)
+        // alert(e) 
+      }
+    );
   }
 
   useEffect(
@@ -158,14 +167,14 @@ export default function TranComfirmPending() {
                   >
                     Comfirm
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Reserve id
-                  </td>
+                  </td> */}
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -180,7 +189,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Company Name
+                    Transport Company
                   </td>
                   <td
                     style={{
@@ -188,7 +197,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Quest Name
+                    Guest Name
                   </td>
                   <td
                     style={{
@@ -240,14 +249,14 @@ export default function TranComfirmPending() {
                         data.map((item, index) => (
                         <tr>
                             <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.comfirm}</td>
-                            <td
+                            {/* <td
                             style={{
                                 border: '1px solid rgb(12, 134, 103)',
                                 padding: '5px 10px',
                             }}
                             >
                             {item.reserve_Id}
-                            </td>
+                            </td> */}
                             <td
                             style={{
                                 border: '1px solid rgb(12, 134, 103)',
@@ -262,7 +271,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.company_name}
+                            {item.transport_company}
                             </td>
                             <td
                             style={{
@@ -270,7 +279,7 @@ export default function TranComfirmPending() {
                                 padding: '5px 10px',
                             }}
                             >
-                            {item.company_name}
+                            {item.guest_name}
                             </td>
                             <td
                             style={{

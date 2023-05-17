@@ -242,12 +242,13 @@ export default function CreateReservationDetail() {
 
   const getReservations = useCallback(() => {
     _get(
-      `api/get_new_reservation_new?query_type=select_reservation&reservation_number=${reservation_number}&reservation_no=${reservation_number}`,
+      `api/get_new_reservation_new?query_type=select_reservation_by_id&reservation_number=${reservation_number}&reservation_no=${reservation_number}`,
       (resp) => {
         // setLoading(false)
         console.log(resp);
         // if (resp ) {
         setReservation(resp.results);
+        setForm(p=>({...p, ...resp.results[0]}))
         //  alert('dfasfsadf'+resp)
         // }
       },
@@ -523,7 +524,7 @@ export default function CreateReservationDetail() {
         
       
       </div>
-      {JSON.stringify(reservation_number)}
+      {JSON.stringify(reservation)}
       <TableForm data={datas} setData={setDatas} forms={form} handleReset={handleReset}/>
     </Card>
   );
