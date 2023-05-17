@@ -11,8 +11,7 @@ export default function ReservationTableS() {
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _get(
-      "api/get_new_reservation_new?query_type=select_reservation_pending",
-      {},
+      "api/get_new_reservation_new?query_type=select_new_reservation",
       (resp) => {
         // setLoading(false)
         console.log(resp);
@@ -37,7 +36,7 @@ export default function ReservationTableS() {
       <Col md={12}>
         <h5 className="app_title">Reservation List</h5>
         <hr />
-        {JSON.stringify({hotel,dd: "LSS"})}
+        {/* {JSON.stringify({hotel,dd: "LSS"})} */}
       </Col>
       <button
             className="app_button p-2 mb-3"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
 import { FaArrowLeft } from "react-icons/fa";
@@ -10,7 +10,7 @@ import QuestModal from "./Modal/QuestModal";
 import ReservationModal from "./Modal/ReservationModal";
 // import HotelReg from './Modal/HotelModal'
 // import ReservationTable from './Table/ReservationTable'
-import { _get, _post } from '../Utils/Helper'
+import useQuery, { _get, _post } from '../Utils/Helper'
 import Tables from './Table/Tables'
 import TableForm from './Table/TableForm'
 import { MdDeleteOutline } from 'react-icons/md'
@@ -61,6 +61,8 @@ export default function CreateReservationDetail() {
   const toggle1 = () => setModal1(!modal1);
   const toggle2 = () => setModal2(!modal2);
   const toggle3 = () => setModal3(!modal3);
+  const query = useQuery();
+  const reservation_number = query.get('reservation_number');
   const navigate = useNavigate();
   const today = moment().format('YYYY-MM-DD')
   const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
@@ -185,9 +187,9 @@ export default function CreateReservationDetail() {
   }, []);
   
   const handleSubmit = () => {
-    console.log(form);
+    // console.log(form);
     _post(
-      "api/booking_with_reservation?query_type=insert",
+      "api/new_reservation2?query_type=insert",
       form,
       (res) => {
         //   navigate(`/agent`)
@@ -236,6 +238,30 @@ export default function CreateReservationDetail() {
     );
   }, [0]);
   const [selected, setSelected] = useState({});
+  const [reservation, setReservation] = useState([]);
+
+  const getReservations = useCallback(() => {
+    _get(
+      `api/get_new_reservation_new?query_type=select_reservation&reservation_number=${reservation_number}&reservation_no=${reservation_number}`,
+      (resp) => {
+        // setLoading(false)
+        console.log(resp);
+        // if (resp ) {
+        setReservation(resp.results);
+        //  alert('dfasfsadf'+resp)
+        // }
+      },
+      (e) => {
+        console.log(e);
+        // setLoading(false)
+        // alert(e) 
+      }
+    );
+  },[reservation_number]);
+
+  useEffect(()=>{
+    getReservations()
+  },[getReservations])
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
@@ -495,6 +521,7 @@ export default function CreateReservationDetail() {
           </Col> */}
         </Row>
       </div>
+      {JSON.stringify(reservation_number)}
       <TableForm data={datas} setData={setDatas} forms={form} handleReset={handleReset}/>
     </Card>
   );
