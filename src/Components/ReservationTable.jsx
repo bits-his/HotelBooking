@@ -15,10 +15,10 @@ export default function ReservationTableS() {
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.success ) {
         setHotel(resp.results);
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
