@@ -242,15 +242,15 @@ export default function CreateReservationDetail() {
 
   const getReservations = useCallback(() => {
     _get(
-      `api/get_new_reservation_new?query_type=select_reservation_by_id&reservation_number=${reservation_number}&reservation_no=${reservation_number}`,
+      `api/get_new_reservation_new?query_type=select_reservation_by_id&id=${reservation_number}&reservation_no=${reservation_number}`,
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.success) {
         setReservation(resp.results);
         setForm(p=>({...p, ...resp.results[0]}))
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
@@ -266,7 +266,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {/* {JSON.stringify(today)} */}
+        {/* {JSON.stringify(reservation)} */}
 
         <Row>
           <Col md={12}>

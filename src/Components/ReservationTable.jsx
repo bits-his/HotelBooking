@@ -164,7 +164,7 @@ export default function ReservationTableS() {
                 >
                   <Button
                     onClick={() => {
-                      navigate(`/reservation-details?reservation_number=${i.reservation_number}`)
+                      navigate(`/reservation-details?reservation_number=${i.id}`)
                     }}
                     // onClick={}
                   >
@@ -194,7 +194,7 @@ export default function ReservationTableS() {
                     padding: "5px 10px",
                   }}
                 >
-                  {i.booking_status}
+                  {i.status}
                 </td>
                 <td
                   style={{

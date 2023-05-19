@@ -46,7 +46,7 @@ const navigate = useNavigate ()
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(data)} */}
+      
       <Row>
         <Col md={12}>
           <center>
@@ -240,10 +240,10 @@ const navigate = useNavigate ()
               </thead>
               {/* {JSON.stringify(data)} */}
               <tbody>
-                {data.length === 0 ? (
+                {data?.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
-                  data.map((item, index) => (
+                  data?.map((item, index) => (
                     <tr>
                       <td
                         style={{

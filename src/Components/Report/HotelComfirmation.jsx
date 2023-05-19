@@ -33,8 +33,8 @@ export default function HotelComfirmation() {
         // setLoading(false)
         console.log(resp);
         if (resp.success ) {
-        // setData(resp.results);
-         alert(JSON.stringify(resp))
+        setData(resp.results);
+        //  alert(JSON.stringify(resp))
         }
       },
       (e) => {
@@ -123,7 +123,7 @@ export default function HotelComfirmation() {
               style={{ width: 170, fontSize: 16, fontWeight: 500 }}
               // onClick={() => navigate('/table-meal')}
             >
-              <CSVLink
+              {/* <CSVLink
                 data={news ? news : []}
                 style={{
                     color: "#fff",
@@ -133,7 +133,7 @@ export default function HotelComfirmation() {
                 filename={"Hotel Comfirma"}
               >
                 <RiFileExcel2Fill /> Exel DownLoad
-              </CSVLink>
+              </CSVLink> */}
             </button>
           </div>
         </Col>
@@ -141,7 +141,7 @@ export default function HotelComfirmation() {
       <div className="m-2">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {/* {JSON.stringify(data)} */}
+            {JSON.stringify(data)}
             <label className="label_title">Search</label>
             <div className="search">
               <CiSearch style={{ fontSize: 30 }} />
@@ -312,7 +312,7 @@ export default function HotelComfirmation() {
                 {data.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
-                  data[0]?.map((item, index) => (
+                  data&& data?.map((item, index) => (
                     <tr>
                       <td
                         style={{
