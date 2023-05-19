@@ -141,7 +141,7 @@ export default function HotelComfirmation() {
       <div className="m-2">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {JSON.stringify(data)}
+            {/* {JSON.stringify(data)} */}
             <label className="label_title">Search</label>
             <div className="search">
               <CiSearch style={{ fontSize: 30 }} />

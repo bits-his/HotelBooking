@@ -524,7 +524,7 @@ export default function CreateReservationDetail() {
         
       
       </div>
-      {JSON.stringify(reservation)}
+      {/* {JSON.stringify(reservation)} */}
       <TableForm data={datas} setData={setDatas} forms={form} handleReset={handleReset}/>
     </Card>
   );
