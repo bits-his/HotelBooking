@@ -236,7 +236,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
     data.forEach((i) => newArr.push({ ...i, ...forms, query_type: 'insert' }));
 
     try {
-      await _post(`api/booking_with_reservation`, newArr);
+      await _post(`api/new_reservation2?query_type=insert`, newArr);
       console.log("Form submitted successfully");
       // setNo(resp.nextCode);
       toggle3();

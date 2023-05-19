@@ -18,35 +18,32 @@ export default function TranComfirmPending() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
+const navigate = useNavigate ()
+  const [data, setData] = useState([]);
 
-
-  const [data,setData]=useState([])
-
-  const getData =()=>{
+  const getData = () => {
     _get(
       "api/get_new_reservation_new?query_type=select_transport_pending",
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
-          setData(resp.results);
+        if (resp.success ) {
+        setData(resp.results);
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
         // setLoading(false)
-        // alert(e) 
+        // alert(e)
       }
     );
-  }
+  };
 
-  useEffect(
-    ()=>{
-      getData()
-    },[]
-  )
-  
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       {/* {JSON.stringify(data)} */}
@@ -165,7 +162,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Comfirm
+                    Action
                   </td>
                   {/* <td
                     style={{
@@ -205,7 +202,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Location From
+                    Pick Uf From
                   </td>
                   <td
                     style={{
@@ -213,7 +210,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Location To
+                    Pick Uf To
                   </td>
                   <td
                     style={{
@@ -241,15 +238,32 @@ export default function TranComfirmPending() {
                   </td>
                 </tr>
               </thead>
-                    {/* {JSON.stringify(data)} */}
+              {/* {JSON.stringify(data)} */}
               <tbody>
-                    {data.length === 0 ? (
-                        <span>Loading Rooms...</span>
-                    ) : (
-                        data.map((item, index) => (
-                        <tr>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.comfirm}</td>
-                            {/* <td
+                {data.length === 0 ? (
+                  <span>Loading Rooms...</span>
+                ) : (
+                  data.map((item, index) => (
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        <Button
+                          onClick={() => {
+                            navigate(
+                              `/create-transport-reservation?reservation_number=${item.reservation_number}`
+                            );
+                          }}
+                          // onClick={}
+                        >
+                          {" "}
+                          Select
+                        </Button>
+                      </td>
+                      {/* <td
                             style={{
                                 border: '1px solid rgb(12, 134, 103)',
                                 padding: '5px 10px',
@@ -257,74 +271,74 @@ export default function TranComfirmPending() {
                             >
                             {item.reserve_Id}
                             </td> */}
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.agent_name}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.transport_company}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.guest_name}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.location_from}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.location_to}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.transport_type}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.vahicle_type}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.pickup_date}
-                            </td>
-                        </tr>
-                        ))
-                    )}
-                    </tbody>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.agent_name}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.transport_company}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.guest_name}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.pick_up_from}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.pick_up_to}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.transport_type}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.vahicle_type}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.pickup_date}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
             </table>
           </div>
         </Row>

@@ -19,7 +19,7 @@ import moment from "moment";
 export default function CreateReservationDetail() {
   const __form = {
     reservation_type: "",
-    booking_status: "",
+    status: "",
     option_date: "",
     booking_type: "",
     agent_name: "",
@@ -42,7 +42,7 @@ export default function CreateReservationDetail() {
 
   const handleReset = () => {
     setForm({reservation_type: "",
-    booking_status: "",
+    status: "",
     option_date: "",
     booking_type: "",
     agent_name: "",
@@ -198,7 +198,7 @@ export default function CreateReservationDetail() {
           setForm({
             reservation_number: "",
             reservation_type: "",
-            booking_status: "",
+            status: "",
             option_date: "",
             booking_type: "",
             agent_name: "",
@@ -436,8 +436,8 @@ export default function CreateReservationDetail() {
             <select
               id="exampleSelect"
               className="app_input"
-              value={form.booking_status}
-              name="booking_status"
+              value={form.status}
+              name="status"
               // type="select"
               onChange={handleChange}
             >

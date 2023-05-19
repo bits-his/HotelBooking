@@ -31,6 +31,8 @@ export default function ReservationTableS() {
   useEffect(() => {
     getHotels();
   }, [0]);
+
+  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <Col md={12}>
@@ -98,7 +100,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              booking status
+               status
             </th>
             <th
               style={{

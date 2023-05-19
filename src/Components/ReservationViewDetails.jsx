@@ -6,14 +6,14 @@ export default function ReservationViewDetails() {
   const _form = {
     route: "",
     mov_type: "",
-    pickup_from: "",
-    pickup_to: "",
-    aduil_child: "",
-    pickup_date: "",
+    pick_up_from: "",
+    pick_up_to: "",
+    adult_child: "",
+    pick_up_date: "",
     transport_company: "",
     transport_type: "",
     qty: "",
-    sale_rote: "",
+    sale_rate: "",
     total: "",
     discount: "",
     vat: "",
@@ -69,8 +69,8 @@ export default function ReservationViewDetails() {
             <InputForm
               className="app_input"
               label="Pickup From"
-              name="pickup_from"
-              value={form.pickup_from}
+              name="pick_up_from"
+              value={form.pick_up_from}
               onChange={handleChange}
             />
           </Col>
@@ -78,8 +78,8 @@ export default function ReservationViewDetails() {
             <InputForm
               className="app_input"
               label="Pickup To"
-              name="pickup_to"
-              value={form.pickup_to}
+              name="pick_up_to"
+              value={form.pick_up_to}
               onChange={handleChange}
             />
           </Col>
@@ -87,8 +87,8 @@ export default function ReservationViewDetails() {
             <InputForm
               className="app_input"
               label="Aduil Child"
-              name="aduil_child"
-              value={form.aduil_child}
+              name="adult_child"
+              value={form.adult_child}
               onChange={handleChange}
             />
           </Col>
@@ -97,8 +97,8 @@ export default function ReservationViewDetails() {
               className="app_input"
               label="Pickup Date"
               type="date"
-              name="pickup_date"
-              value={form.pickup_date}
+              name="pick_up_date"
+              value={form.pick_up_date}
               onChange={handleChange}
             />
           </Col>
@@ -134,8 +134,8 @@ export default function ReservationViewDetails() {
             <InputForm
               className="app_input"
               label="Sale Rote"
-              name="sale_rote"
-              value={form.sale_rote}
+              name="sale_rate"
+              value={form.sale_rate}
               onChange={handleChange}
             />
           </Col>
@@ -507,8 +507,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_from}
-                        name="pickup_from"
+                        value={i.pick_up_from}
+                        name="pick_up_from"
                       />
                     </td>
                     <td
@@ -519,8 +519,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_to}
-                        name="pickup_to"
+                        value={i.pick_up_to}
+                        name="pick_up_to"
                       />
                     </td>
                     <td
@@ -531,8 +531,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.aduil_child}
-                        name="aduil_child"
+                        value={i.adult_child}
+                        name="adult_child"
                       />
                     </td>
                     <td
@@ -543,8 +543,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_date}
-                        name="pickup_date"
+                        value={i.pick_up_date}
+                        name="pick_up_date"
                       />
                     </td>
                     <td
@@ -587,8 +587,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.sale_rote}
-                        name="sale_rote"
+                        value={i.sale_rate}
+                        name="sale_rate"
                       />
                     </td>
                     <td
@@ -997,8 +997,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_from}
-                        name="pickup_from"
+                        value={i.pick_up_from}
+                        name="pick_up_from"
                       />
                     </td>
                     <td
@@ -1009,8 +1009,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_to}
-                        name="pickup_to"
+                        value={i.pick_up_to}
+                        name="pick_up_to"
                       />
                     </td>
                     <td
@@ -1021,8 +1021,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.aduil_child}
-                        name="aduil_child"
+                        value={i.adult_child}
+                        name="adult_child"
                       />
                     </td>
                     <td
@@ -1033,8 +1033,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_date}
-                        name="pickup_date"
+                        value={i.pick_up_date}
+                        name="pick_up_date"
                       />
                     </td>
                     <td
@@ -1066,8 +1066,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.sale_rote}
-                        name="sale_rote"
+                        value={i.sale_rate}
+                        name="sale_rate"
                       />
                     </td>
                     <td
@@ -1359,8 +1359,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_from}
-                        name="pickup_from"
+                        value={i.pick_up_from}
+                        name="pick_up_from"
                       />
                     </td>
                     <td
@@ -1371,8 +1371,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_to}
-                        name="pickup_to"
+                        value={i.pick_up_to}
+                        name="pick_up_to"
                       />
                     </td>
                     <td
@@ -1383,8 +1383,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.aduil_child}
-                        name="aduil_child"
+                        value={i.adult_child}
+                        name="adult_child"
                       />
                     </td>
                     <td
@@ -1395,8 +1395,8 @@ export default function ReservationViewDetails() {
                     >
                       <input
                         className="table_input"
-                        value={i.pickup_date}
-                        name="pickup_date"
+                        value={i.pick_up_date}
+                        name="pick_up_date"
                       />
                     </td>
                     <td

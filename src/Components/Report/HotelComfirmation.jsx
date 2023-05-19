@@ -3,7 +3,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _get, _post } from "../../Utils/Helper";
 import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
@@ -27,16 +27,15 @@ export default function HotelComfirmation() {
   const [data, setData] = useState([]);
 
   const getHotels = () => {
-    _post(
-      "api/getALLReserve",
-      {},
+    _get(
+      "api/get_new_reservation_new?query_type=select_hotel_pending",
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
-        setData(resp.results);
-        //  alert('dfasfsadf'+resp)
-        // }
+        if (resp.success ) {
+        // setData(resp.results);
+         alert(JSON.stringify(resp))
+        }
       },
       (e) => {
         console.log(e);

@@ -75,7 +75,7 @@ export default function RoomPurchasePaymentPending() {
 
   const getRoom_purchase_pending = () => {
     _get(
-      "api/get_room_purchase_pending",
+      "api/get_room_purchase_pending?query_type=select",
       (res) => {
         // navigate(-1)
         console.log(res);

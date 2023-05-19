@@ -3,7 +3,7 @@ import InputForm from '../../CustomComponents/InputForm'
 import { useState } from 'react'
 import { _get, _post } from '../../Utils/Helper'
 import { MdDeleteOutline } from 'react-icons/md'
-import { Button, Card, Row } from 'reactstrap'
+import { Button, Card, Col, Row } from 'reactstrap'
 import { CiSearch } from 'react-icons/ci'
 
 export default function TransportationTable() {
@@ -31,6 +31,7 @@ export default function TransportationTable() {
     city: "",
     arrive_or_dep_time: "",
     remark: "",
+    query_type: "insert_transport"
   };
     // useEffect(()=>{
     //   setData([_form])
@@ -136,7 +137,7 @@ export default function TransportationTable() {
     }
       const handleSubmiting = () => {
         _post(
-          "api/create_transport?query_type=insert",
+          "api/new_reservation2?query_type=insert",
           data,
           (res) => {
             if (res.success) {
@@ -155,10 +156,16 @@ export default function TransportationTable() {
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
         <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
-          Create Transport Reservation
+          Create Transport Reservation  
         </h5>
         {/* {JSON.stringify(data)} */}
           <div style={{ overflowX: "auto", marginTop: 20 }}>
+        <Row>
+          <Col md={3}><b>Agent Name:</b></Col>
+          <Col md={3}><b>Transport Company:</b></Col>
+          <Col md={3}><b>Guest Name:</b></Col>
+          <Col md={3}><b>Transport Type:</b></Col>
+        </Row>
             <table id="customers" className="mt-5">
               <thead>
                 <th
