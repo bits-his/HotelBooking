@@ -3,7 +3,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _get, _post } from "../../Utils/Helper";
 import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
@@ -27,16 +27,15 @@ export default function HotelComfirmation() {
   const [data, setData] = useState([]);
 
   const getHotels = () => {
-    _post(
-      "api/getALLReserve",
-      {},
+    _get(
+      "api/get_new_reservation_new?query_type=select_hotel_pending",
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.success ) {
         setData(resp.results);
-        //  alert('dfasfsadf'+resp)
-        // }
+        //  alert(JSON.stringify(resp))
+        }
       },
       (e) => {
         console.log(e);
@@ -124,7 +123,7 @@ export default function HotelComfirmation() {
               style={{ width: 170, fontSize: 16, fontWeight: 500 }}
               // onClick={() => navigate('/table-meal')}
             >
-              <CSVLink
+              {/* <CSVLink
                 data={news ? news : []}
                 style={{
                     color: "#fff",
@@ -134,7 +133,7 @@ export default function HotelComfirmation() {
                 filename={"Hotel Comfirma"}
               >
                 <RiFileExcel2Fill /> Exel DownLoad
-              </CSVLink>
+              </CSVLink> */}
             </button>
           </div>
         </Col>
@@ -313,7 +312,7 @@ export default function HotelComfirmation() {
                 {data.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
-                  data[0]?.map((item, index) => (
+                  data&& data?.map((item, index) => (
                     <tr>
                       <td
                         style={{

@@ -18,10 +18,10 @@ export default function ReservationModal({
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.success ) {
         setHotel(resp.results);
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
@@ -188,7 +188,7 @@ export default function ReservationModal({
                     padding: "5px 10px",
                   }}
                 >
-                  {i.booking_status}
+                  {i.status}
                 </td>
                 <td
                   style={{

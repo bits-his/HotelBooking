@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button } from "reactstrap";
-import { _post } from "../Utils/Helper";
+import { _get, _post } from "../Utils/Helper";
 
 
 export default function ReservationTableS() {
@@ -10,16 +10,15 @@ export default function ReservationTableS() {
 
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    _post(
-      "api/new-reservation?query_type=select_reservation",
-      {},
+    _get(
+      "api/get_new_reservation_new?query_type=select_new_reservation",
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.success ) {
         setHotel(resp.results);
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
@@ -32,11 +31,14 @@ export default function ReservationTableS() {
   useEffect(() => {
     getHotels();
   }, [0]);
+
+  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <Col md={12}>
         <h5 className="app_title">Reservation List</h5>
         <hr />
+        {/* {JSON.stringify({hotel,dd: "LSS"})} */}
       </Col>
       <button
             className="app_button p-2 mb-3"
@@ -98,7 +100,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              booking status
+               status
             </th>
             <th
               style={{
@@ -162,7 +164,7 @@ export default function ReservationTableS() {
                 >
                   <Button
                     onClick={() => {
-                      navigate(`/reservation-details?reservation_number=${i.reservation_number}`)
+                      navigate(`/reservation-details?reservation_number=${i.id}`)
                     }}
                     // onClick={}
                   >
@@ -192,7 +194,7 @@ export default function ReservationTableS() {
                     padding: "5px 10px",
                   }}
                 >
-                  {i.booking_status}
+                  {i.status}
                 </td>
                 <td
                   style={{
