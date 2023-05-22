@@ -188,7 +188,7 @@ export default function ReservationModal({
                     padding: "5px 10px",
                   }}
                 >
-                  {i.status}
+                  {i.booking_status}
                 </td>
                 <td
                   style={{
