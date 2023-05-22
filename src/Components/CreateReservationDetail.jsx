@@ -404,7 +404,7 @@ export default function CreateReservationDetail() {
               />
               <CiSearch className="search_icon" onClick={toggle1} />
               <Modal isOpen={modal1} toggle={toggle1} size="xl">
-                <QuestModal setForm={setForm} toggle={toggle1} />
+                <QuestModal setForm={setForm} toggle={toggle1} /> 
               </Modal>
             </div>
             {/* <InputForm
