@@ -17,10 +17,13 @@ import { MdDeleteOutline } from 'react-icons/md'
 import moment from "moment";
 
 export default function CreateReservationDetail() {
+  const today = moment().format('YYYY-MM-DD')
+  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
+  
   const __form = {
     reservation_type: "",
     booking_status: "",
-    option_date: "",
+    option_date: today,
     booking_type: "",
     agent_name: "",
     vat_reg_no: "",
@@ -43,7 +46,7 @@ export default function CreateReservationDetail() {
   const handleReset = () => {
     setForm({reservation_type: "",
     booking_status: "",
-    option_date: "",
+    option_date: today,
     booking_type: "",
     agent_name: "",
     vat_reg_no: "",
@@ -62,8 +65,6 @@ export default function CreateReservationDetail() {
   const toggle2 = () => setModal2(!modal2);
   const toggle3 = () => setModal3(!modal3);
   const navigate = useNavigate();
-  const today = moment().format('YYYY-MM-DD')
-  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
@@ -239,7 +240,7 @@ export default function CreateReservationDetail() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">
-        {/* {JSON.stringify(today)} */}
+        {JSON.stringify(today)}
 
         <Row>
           <Col md={12}>
@@ -268,9 +269,9 @@ export default function CreateReservationDetail() {
             <InputForm
               className="app_input"
               label="Option Date"
-              value={form.date}
+              value={form.option_date}
               onChange={handleChange}
-              name="date"
+              name="option_date"
               type="date"
             />
             <InputForm

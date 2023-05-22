@@ -75,9 +75,6 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
           room_sale_purch_vat: fifteenPofRoomRate,
           room_sale_rat_inc_all_tax: RatRoomIncAllTax,
           total_room_sale_rate: totalRoomSales,
-          check_out: moment(item.check_in)
-            .add("days", parseInt(value))
-            .format("YYYY-MM-DD"),
           net_total_sale
         });
       } else {
@@ -199,7 +196,10 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
       if(i === index) {
         arr.push({
           ...item,
-          [name]: value
+          [name]: value,
+          check_out: moment(item.check_in)
+            .add("days", parseInt(value))
+            .format("YYYY-MM-DD"),
         });
       } else {
         arr.push(item);
