@@ -17,10 +17,13 @@ import { MdDeleteOutline } from 'react-icons/md'
 import moment from "moment";
 
 export default function CreateReservationDetail() {
+  const today = moment().format('YYYY-MM-DD')
+  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
+
   const __form = {
     reservation_type: "",
     status: "",
-    option_date: "",
+    option_date: today,
     booking_type: "",
     agent_name: "",
     vat_reg_no: "",
@@ -43,7 +46,7 @@ export default function CreateReservationDetail() {
   const handleReset = () => {
     setForm({reservation_type: "",
     status: "",
-    option_date: "",
+    option_date: today,
     booking_type: "",
     agent_name: "",
     vat_reg_no: "",
@@ -64,8 +67,6 @@ export default function CreateReservationDetail() {
   const query = useQuery();
   const reservation_number = query.get('reservation_number');
   const navigate = useNavigate();
-  const today = moment().format('YYYY-MM-DD')
-  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
 
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }))
@@ -295,9 +296,9 @@ export default function CreateReservationDetail() {
             <InputForm
               className="app_input"
               label="Option Date"
-              value={form.date}
+              value={form.option_date}
               onChange={handleChange}
-              name="date"
+              name="option_date"
               type="date"
             />
             <InputForm
