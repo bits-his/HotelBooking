@@ -185,14 +185,14 @@ export default function HotelComfirmation() {
                   >
                     Reserve id
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     CI RefNo
-                  </td>
+                  </td> */}
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -201,14 +201,14 @@ export default function HotelComfirmation() {
                   >
                     Agent Name
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     City Code
-                  </td>
+                  </td> */}
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -225,30 +225,30 @@ export default function HotelComfirmation() {
                   >
                     Check Out
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Conf.No
-                  </td>
+                  </td> */}
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
-                    Costomer Name
+                    Customer Name
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Hotel Id
-                  </td>
+                  </td> */}
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -281,34 +281,12 @@ export default function HotelComfirmation() {
                   >
                     View
                   </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    No. of Days
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Cr.Date
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Exec
-                  </td>
+                  
+                  
                 </tr>
               </thead>
               <tbody>
-                {/* {JSON.stringify(hotelList)} */}
+                {/* {JSON.stringify(data)} */}
                 {data.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
@@ -320,7 +298,7 @@ export default function HotelComfirmation() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.reservation_type}
+                        {item.booking_type}
                       </td>
                       <td
                         style={{
@@ -328,15 +306,7 @@ export default function HotelComfirmation() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.reservation_number}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.id}
+                        {item.reservation_no}
                       </td>
                       <td
                         style={{
@@ -345,14 +315,6 @@ export default function HotelComfirmation() {
                         }}
                       >
                         {item.agent_name}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.country_name}
                       </td>
                       <td
                         style={{
@@ -376,23 +338,7 @@ export default function HotelComfirmation() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.reservation_number}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
                         {item.guest_name}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.id}
                       </td>
                       <td
                         style={{
@@ -426,7 +372,39 @@ export default function HotelComfirmation() {
                       >
                         {item.view}
                       </td>
-                      <td
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.no_of_d}
+                      </td> */}
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.no_of_room}
+                      </td> */}
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.room_type}
+                      </td> */}
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.view}
+                      </td> */}
+                      {/* <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
@@ -449,7 +427,7 @@ export default function HotelComfirmation() {
                         }}
                       >
                         {item.meal_cost_municipal_vat}
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 )}
