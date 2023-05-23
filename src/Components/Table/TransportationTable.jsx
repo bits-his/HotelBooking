@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import InputForm from '../../CustomComponents/InputForm'
 import { useState } from 'react'
-import { _get, _post } from '../../Utils/Helper'
+import useQuery, { _get, _post } from '../../Utils/Helper'
 import { MdDeleteOutline } from 'react-icons/md'
 import { Button, Card, Col, Row } from 'reactstrap'
 import { CiSearch } from 'react-icons/ci'
@@ -38,6 +38,11 @@ export default function TransportationTable() {
     // },[])
     const [form, setForm] = useState(_form)
     const [data, setData] = useState([_form])
+    const query = useQuery()
+    const agent_name= query.get("agent_name")
+    const transport_company= query.get("transport_company")
+    const guest_name= query.get("guest_name")
+    const transport_type= query.get('transport_type')
 
     const handleChange1 = (name, value, index) => {
     let arr = [];
@@ -161,10 +166,10 @@ export default function TransportationTable() {
         {/* {JSON.stringify(data)} */}
           <div style={{ overflowX: "auto", marginTop: 20 }}>
         <Row>
-          <Col md={3}><b>Agent Name:</b></Col>
-          <Col md={3}><b>Transport Company:</b></Col>
-          <Col md={3}><b>Guest Name:</b></Col>
-          <Col md={3}><b>Transport Type:</b></Col>
+          <Col md={3}><b>Agent Name:</b> {agent_name}</Col>
+          <Col md={3}><b>Transport Company:</b> {transport_company}</Col>
+          <Col md={3}><b>Guest Name:</b> {guest_name}</Col>
+          <Col md={3}><b>Transport Type:</b> {transport_type} </Col>
         </Row>
             <table id="customers" className="mt-5">
               <thead>
