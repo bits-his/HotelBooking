@@ -254,7 +254,7 @@ const navigate = useNavigate ()
                         <Button
                           onClick={() => {
                             navigate(
-                              `/create-transport-reservation?reservation_number=${item.reservation_number}`
+                              `/create-transport-reservation?agent_name=${item.agent_name}&transport_company=${item.transport_company}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
                             );
                           }}
                           // onClick={}
