@@ -18,18 +18,18 @@ export default function TranComfirmPending() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
-const navigate = useNavigate ()
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const getData = () => {
     _get(
-      "api/get_new_reservation_new?query_type=select_transport_pending",
+      "api/get_transport_confirmation_pending?query_type=select",
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        if (resp.success ) {
-        setData(resp.results);
-        //  alert('dfasfsadf'+resp)
+        if (resp.success) {
+          setData(resp.results);
+          //  alert('dfasfsadf'+resp)
         }
       },
       (e) => {
@@ -46,7 +46,7 @@ const navigate = useNavigate ()
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      
+      {JSON.stringify(data)}{" "}
       <Row>
         <Col md={12}>
           <center>
@@ -254,7 +254,7 @@ const navigate = useNavigate ()
                         <Button
                           onClick={() => {
                             navigate(
-                              `/create-transport-reservation?agent_name=${item.agent_name}&transport_company=${item.transport_company}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
+                              `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
                             );
                           }}
                           // onClick={}
@@ -285,7 +285,7 @@ const navigate = useNavigate ()
                           padding: "5px 10px",
                         }}
                       >
-                        {item.transport_company}
+                        {item.BRN_transport}
                       </td>
                       <td
                         style={{
@@ -301,7 +301,7 @@ const navigate = useNavigate ()
                           padding: "5px 10px",
                         }}
                       >
-                        {item.pick_up_from}
+                        {item.pickup_from}
                       </td>
                       <td
                         style={{
@@ -309,7 +309,7 @@ const navigate = useNavigate ()
                           padding: "5px 10px",
                         }}
                       >
-                        {item.pick_up_to}
+                        {item.pickup_to}
                       </td>
                       <td
                         style={{
@@ -325,7 +325,7 @@ const navigate = useNavigate ()
                           padding: "5px 10px",
                         }}
                       >
-                        {item.vahicle_type}
+                        {item.mov_type}
                       </td>
                       <td
                         style={{
