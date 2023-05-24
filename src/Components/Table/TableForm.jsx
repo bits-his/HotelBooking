@@ -259,10 +259,10 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        // if (resp ) {
+        if (resp.succes ) {
         setHotelList(resp.resp);
         //  alert('dfasfsadf'+resp)
-        // }
+        }
       },
       (e) => {
         console.log(e);
@@ -444,6 +444,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
               <th>Net Total Cost</th>
               <th>Action</th>
             </tr>
+            {JSON.stringify(hotelList)}
             {data.map((item, idx) => (
               <tr key={idx}>
                 <td>

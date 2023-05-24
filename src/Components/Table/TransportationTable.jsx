@@ -12,7 +12,7 @@ export default function TransportationTable() {
     mov_type: "",
     pickup_from: "",
     pickup_to: "",
-    aduil: "",
+    adult: "",
     child: "",
     pickup_date: "",
     transport_company: "",
@@ -468,12 +468,12 @@ export default function TransportationTable() {
                         border: "none",
                       }}
                       className="app_input"
-                      value={item.aduil}
-                      name="aduil"
+                      value={item.adult}
+                      name="adult"
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value;
-                        handleChange("aduil", val, idx);
+                        handleChange("adult", val, idx);
                       }}
                     />
                   </td>
