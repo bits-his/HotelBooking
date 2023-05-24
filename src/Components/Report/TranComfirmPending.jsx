@@ -202,7 +202,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pick Uf From
+                    PickUp From
                   </td>
                   <td
                     style={{
@@ -210,7 +210,7 @@ export default function TranComfirmPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    Pick Uf To
+                    PickUp To
                   </td>
                   <td
                     style={{
