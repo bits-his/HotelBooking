@@ -388,13 +388,22 @@ export default function Sidebar() {
             >
               Hotel Chart
             </li>
-            {/* <li
-              onClick={() => goto('/reservation-details')}
-              className="link_item"
-              
+            <li
+              onClick={() => goto('/location_table')}
+              className={`link_item ${
+                location.pathname === "/location_table" && "active_side_menu"
+              }`}
             >
-              Reservation Details
-            </li> */}
+              Location
+            </li>
+            <li
+              onClick={() => goto('/route_table')}
+              className={`link_item ${
+                location.pathname === "/route_table" && "active_side_menu"
+              }`}
+            >
+              Route
+            </li>
           </div>
         ) : (
           ""
