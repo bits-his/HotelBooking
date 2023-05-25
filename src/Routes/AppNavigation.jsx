@@ -72,6 +72,10 @@ import MonthlyRevenueandExpence from "../Components/MonthlyRevenueandExpence";
 import CompareIncomeStt from "../Components/CompareIncomeStt";
 import TransportTable from "../Components/Table/TransportTable";
 import TransportationTable from "../Components/Table/TransportationTable";
+import Location from "../Components/Location";
+import LocationTable from "../Components/LocationTable";
+import RouteTable from "../Components/RouteTable";
+import Routers from "../Components/Routers";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -364,6 +368,22 @@ function AppNavigation() {
         {
           path: "/create-transport-reservation",
           element: <TransportationTable />,
+        },
+        {
+          path: "/location_table",
+          element: <LocationTable />,
+        },
+        {
+          path: "/location",
+          element: <Location />,
+        },
+        {
+          path: "/route_table",
+          element: <RouteTable />,
+        },
+        {
+          path: "/route",
+          element: <Routers />,
         }
       ],
     },
