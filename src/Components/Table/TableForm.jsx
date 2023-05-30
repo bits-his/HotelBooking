@@ -821,7 +821,8 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
                   />
                 </td>
                 <td>
-                  <InputForm
+
+ <InputForm
                     style={{
                       width: 100,
                       border: "none",
