@@ -5,8 +5,18 @@ import useQuery, { _get, _post } from "../../Utils/Helper";
 import { MdDeleteOutline } from "react-icons/md";
 import { Button, Card, Col, Modal, Row } from "reactstrap";
 import { CiSearch } from "react-icons/ci";
+import ReservationModal from "../Modal/ReservationModal";
+import RouteModal from "../Modal/RouteModal";
+import LocationModal from "../Modal/LocationModal";
 
 export default function TransportationTable() {
+  const [modal, setModal] = useState(false);
+  const [modal1, setModal1] = useState(false);
+  const [modal2, setModal2] = useState(false);
+
+  const toggle = () => setModal(!modal);
+  const toggle1 = () => setModal1(!modal1);
+  const toggle2 = () => setModal2(!modal2);
   const _form = {
     route: "",
     mov_type: "",
@@ -392,10 +402,10 @@ export default function TransportationTable() {
                           handleChange("route", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" />
-                      {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
-                        <ReservationModal setForm={setForm} toggle={toggle2} />
-                      </Modal> */}
+                      <CiSearch className="search_icon" onClick={toggle}/>
+                      <Modal isOpen={modal} toggle={toggle} size="xl">
+                        <RouteModal setForm={setForm} toggle={toggle} />
+                      </Modal>
                     </div>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
@@ -435,10 +445,10 @@ export default function TransportationTable() {
                           handleChange("pickup_from", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" />
-                      {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
-                        <ReservationModal setForm={setForm} toggle={toggle2} />
-                      </Modal> */}
+                      <CiSearch className="search_icon" onClick={toggle1}/>
+                      <Modal isOpen={modal1} toggle={toggle1} size="xl">
+                        <LocationModal setForm={setForm} toggle={toggle1} />
+                      </Modal>
                     </div>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
@@ -455,10 +465,10 @@ export default function TransportationTable() {
                           handleChange("pickup_to", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" />
-                      {/* <Modal isOpen={modal2} toggle={toggle2} size="xl">
-                        <ReservationModal setForm={setForm} toggle={toggle2} />
-                      </Modal> */}
+                      <CiSearch className="search_icon" onClick={toggle2}/>
+                      <Modal isOpen={modal2} toggle={toggle2} size="xl">
+                        <LocationModal setForm={setForm} toggle={toggle2} />
+                      </Modal>
                     </div>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
