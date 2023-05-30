@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get } from "../../Utils/Helper";
 
-export default function LocationModal({ handleChange = (f) => f, toggle1 }) {
+export default function Location1Modal({ handleChange = (f) => f, toggle2 }) {
   const navigate = useNavigate();
   const goto = useNavigate();
   const [data, setData] = useState([]);
@@ -94,8 +94,8 @@ export default function LocationModal({ handleChange = (f) => f, toggle1 }) {
                   >
                     <Button
                       onClick={() => {
-                        handleChange("pickup_from", i.location);
-                        toggle1();
+                        handleChange("pickup_to", i.location);
+                        toggle2();
                       }}
                     >
                       {" "}

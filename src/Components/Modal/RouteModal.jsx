@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get } from "../../Utils/Helper";
 
-export default function RouteModal() {
+export default function RouteModal({handleChange=f=>f, toggle}) {
   const navigate = useNavigate();
   const goto = useNavigate();
   const [data, setData] = useState([]);
@@ -96,11 +96,10 @@ export default function RouteModal() {
                     }}
                     >
                     <Button
-                        // onClick={() => {
-                        //   setForm((p) => ({ ...p, reservation_number: i.reservation_number }));
-                        //   toggle();
-                        //   navigate(`/reservation-details?reservation_number=${i.reservation_number}`)
-                        // }}
+                        onClick={() => {
+                          handleChange("route", i.route);
+                          toggle();
+                        }}
                     >
                         {" "}
                         Select

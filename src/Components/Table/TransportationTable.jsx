@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import ReservationModal from "../Modal/ReservationModal";
 import RouteModal from "../Modal/RouteModal";
 import LocationModal from "../Modal/LocationModal";
+import Location1Modal from "../Modal/Location1Modal";
 
 export default function TransportationTable() {
   const [modal, setModal] = useState(false);
@@ -41,7 +42,7 @@ export default function TransportationTable() {
     city: "",
     arrive_or_dep_time: "",
     remark: "",
-    query_type: "insert",
+    query_type: "insert_transport",
   };
   // useEffect(()=>{
   //   setData([_form])
@@ -124,14 +125,10 @@ export default function TransportationTable() {
     setData(arr);
   };
 
-  const handleChange = (name, value, index) => {
+  const handleChange = (name, value) => {
     let arr = [];
     data?.forEach((item, i) => {
-      if (index === i) {
-        arr.push({ ...item, [name]: value });
-      } else {
-        arr.push(item);
-      }
+      arr.push({ ...item, [name]: value });
     });
     setData(arr);
   };
@@ -189,6 +186,8 @@ export default function TransportationTable() {
               <b>Transport Type:</b> {transport_type}{" "}
             </Col>
           </Row>
+          {/* {JSON.stringify(data)} */}
+
           <table id="customers" className="mt-5">
             <thead>
               <th
@@ -396,15 +395,18 @@ export default function TransportationTable() {
                         className="app_input3"
                         value={item.route}
                         name="route"
-                        type="number"
+                        // type="number"
                         onChange={(e) => {
                           let val = e.target.value;
                           handleChange("route", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" onClick={toggle}/>
+                      <CiSearch className="search_icon" onClick={toggle} />
                       <Modal isOpen={modal} toggle={toggle} size="xl">
-                        <RouteModal setForm={setForm} toggle={toggle} />
+                        <RouteModal
+                          handleChange={handleChange}
+                          toggle={toggle}
+                        />
                       </Modal>
                     </div>
                   </td>
@@ -445,9 +447,9 @@ export default function TransportationTable() {
                           handleChange("pickup_from", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" onClick={toggle1}/>
+                      <CiSearch className="search_icon" onClick={toggle1} />
                       <Modal isOpen={modal1} toggle={toggle1} size="xl">
-                        <LocationModal setForm={setForm} toggle={toggle1} />
+                        <LocationModal handleChange={handleChange} toggle1={toggle1} />
                       </Modal>
                     </div>
                   </td>
@@ -465,9 +467,9 @@ export default function TransportationTable() {
                           handleChange("pickup_to", val, idx);
                         }}
                       />
-                      <CiSearch className="search_icon" onClick={toggle2}/>
+                      <CiSearch className="search_icon" onClick={toggle2} />
                       <Modal isOpen={modal2} toggle={toggle2} size="xl">
-                        <LocationModal setForm={setForm} toggle={toggle2} />
+                        <Location1Modal handleChange={handleChange} toggle2={toggle2} />
                       </Modal>
                     </div>
                   </td>
