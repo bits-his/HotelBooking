@@ -5,33 +5,33 @@ import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
 export default function LocationTable() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
-//   const getMeals_table = () => {
-//     _get(
-//       "api/meals_tables",
-//       (res) => {
-//           // navigate(-1)
-//         console.log(res);
-//         setData(res.results[0]);
-//       },
-//       (err) => {
-//         // setLoading(false)
-//         console.log(err);
-//       }
-//     );
-//     // console.log(form)
-//   };
+  const getMeals_table = () => {
+    _get(
+      "api/get_locations?query_type=select_location",
+      (res) => {
+        // navigate(-1)
+        console.log(res);
+        setData(res.results);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
 
-//   useEffect(() => {
-//     getMeals_table();
-//   }, []);
+  useEffect(() => {
+    getMeals_table();
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(data)} */}
+      {JSON.stringify(data)}
       <Row>
         <Col md={12}>
           <button
@@ -45,20 +45,20 @@ export default function LocationTable() {
       </Row>
       <div className="m-2">
         <Col md={12}>
-          <div style={{display: 'flex', flexDirection: 'row', marginTop: 50}}>
-                  {/* {JSON.stringify(data)} */}
-                  <label className='label_title' >Search</label>
-                  <div className='search'>
-                    <CiSearch style={{fontSize: 30}}/>
-                      <input 
-                          className='app_input2'
-                          type='text'
-                          placeholder='Search'
-                          name='Search'
-                          // value={}
-                      />
-                  </div>
-              </div>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
+            {/* {JSON.stringify(data)} */}
+            <label className="label_title">Search</label>
+            <div className="search">
+              <CiSearch style={{ fontSize: 30 }} />
+              <input
+                className="app_input2"
+                type="text"
+                placeholder="Search"
+                name="Search"
+                // value={}
+              />
+            </div>
+          </div>
         </Col>
         <Row>
           <table
@@ -66,43 +66,28 @@ export default function LocationTable() {
             className="mt-5"
           >
             <thead>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Location From
-              </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Location To
-              </th>
-              <th style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>
-                Action
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Location
               </th>
             </thead>
-
-          {/* {data &&
+            
+            {data &&
             data.map((i) => (
               <tbody>
                 <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.meal_name}
+                  {i.location}
                 </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.meal_type}
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  <center>
-                      <button
-                        size="sm"
-                        className="app_button"
-                        style={{ borderRadius: 5 }}
-                        onClick={()=>goto(`/create-meal/${i.id}`)}
-                      >
-                        Edit
-                      </button>
-                    </center>
-                </td>{" "}
+               
               </tbody>
-            ))} */}
-        </table>
-      </Row>
-    </div>
+            ))}
+          </table>
+        </Row>
+      </div>
     </Card>
   );
 }

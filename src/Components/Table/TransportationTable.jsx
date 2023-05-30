@@ -3,7 +3,7 @@ import InputForm from "../../CustomComponents/InputForm";
 import { useState } from "react";
 import useQuery, { _get, _post } from "../../Utils/Helper";
 import { MdDeleteOutline } from "react-icons/md";
-import { Button, Card, Col, Row } from "reactstrap";
+import { Button, Card, Col, Modal, Row } from "reactstrap";
 import { CiSearch } from "react-icons/ci";
 
 export default function TransportationTable() {
@@ -31,7 +31,7 @@ export default function TransportationTable() {
     city: "",
     arrive_or_dep_time: "",
     remark: "",
-    query_type: "insert_transport",
+    query_type: "insert",
   };
   // useEffect(()=>{
   //   setData([_form])
