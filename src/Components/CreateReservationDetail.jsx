@@ -44,20 +44,22 @@ export default function CreateReservationDetail() {
   const [page, setPage] = useState(false);
 
   const handleReset = () => {
-    setForm({reservation_type: "",
-    status: "",
-    option_date: today,
-    booking_type: "",
-    agent_name: "",
-    vat_reg_no: "",
-    sub_agent_name: "",
-    price_category: "",
-    guest_name: "",
-    country_name: "",
-    phone: "",
-    email: "",
-    BRN_hotel: "",
-    BRN_transport: "",})
+    setForm({
+      reservation_type: "",
+      status: "",
+      option_date: today,
+      booking_type: "",
+      agent_name: "",
+      vat_reg_no: "",
+      sub_agent_name: "",
+      price_category: "",
+      guest_name: "",
+      country_name: "",
+      phone: "",
+      email: "",
+      BRN_hotel: "",
+      BRN_transport: ""
+    })
   }
 
   const toggle = () => setModal(!modal);
