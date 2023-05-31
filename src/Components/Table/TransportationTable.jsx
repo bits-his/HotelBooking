@@ -38,7 +38,7 @@ export default function TransportationTable() {
     vat: "",
     net_total: "",
     purch_rate: "",
-    vat1: "",
+    vat_amount: "",
     vat_cost: "",
     flight: "",
     flight_no: "",
@@ -119,7 +119,7 @@ export default function TransportationTable() {
         arr.push({
           ...item,
           [name]: value,
-          vat1: fivePercent,
+          vat_amount: fivePercent,
           vat_cost,
         });
       } else {
@@ -219,7 +219,7 @@ export default function TransportationTable() {
                   padding: "5px 10px",
                 }}
               >
-                Router
+                Route
               </th>
               <th
                 style={{
@@ -347,7 +347,7 @@ export default function TransportationTable() {
                   padding: "5px 10px",
                 }}
               >
-                Vat %
+                Vat Amount%
               </th>
               <th
                 style={{
@@ -715,12 +715,12 @@ export default function TransportationTable() {
                         border: "none",
                       }}
                       className="app_input"
-                      value={item.vat1}
-                      name="vat1"
+                      value={item.vat_amount}
+                      name="vat_amount"
                       type="number"
                       onChange={(e) => {
                         let val = e.target.value;
-                        handleChange3("vat1", val, idx);
+                        handleChange3("vat_amount", val, idx);
                       }}
                     />
                   </td>

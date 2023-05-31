@@ -13,17 +13,13 @@ export default function ReservationTableS() {
     _get(
       "api/get_new_reservation_new?query_type=select_new_reservation",
       (resp) => {
-        // setLoading(false)
         console.log(resp);
         if (resp.success ) {
         setHotel(resp.results);
-        //  alert('dfasfsadf'+resp)
         }
       },
       (e) => {
         console.log(e);
-        // setLoading(false)
-        // alert(e) 
       }
     );
   };
