@@ -14,10 +14,13 @@ export default function TransportationTable() {
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [modal3, setModal3] = useState(false);
 
   const toggle = () => setModal(!modal);
   const toggle1 = () => setModal1(!modal1);
   const toggle2 = () => setModal2(!modal2);
+  const toggle3 = () => setModal3(p=>!p);
+
   const _form = {
     route: "",
     mov_type: "",
@@ -43,6 +46,7 @@ export default function TransportationTable() {
     arrive_or_dep_time: "",
     remark: "",
     query_type: "insert_transport",
+    reservation_number: "",
   };
   // useEffect(()=>{
   //   setData([_form])
@@ -149,9 +153,10 @@ export default function TransportationTable() {
     setData(deleteRow);
   }
   const handleSubmiting = () => {
+    let completeData = data.map(a => ({...a, reservation_number: form.reservation_number }))
     _post(
       "api/new_reservation2?query_type=insert",
-      data,
+      completeData,
       (res) => {
         if (res.success) {
           alert("Successful");
@@ -171,6 +176,7 @@ export default function TransportationTable() {
           Create Transport Reservation
         </h5>
         {/* {JSON.stringify(data)} */}
+
         <div style={{ overflowX: "auto", marginTop: 20 }}>
           <Row>
             <Col md={3}>
@@ -187,8 +193,25 @@ export default function TransportationTable() {
             </Col>
           </Row>
           {/* {JSON.stringify(data)} */}
+          <Col md={4} className="mt-3">
+            <label className="Label mt-2">Reservation Number</label>
+            <div className="search_input_form">
+              <input
+                className="app_input3"
+                value={form.reservation_number}
+                onChange={handleChange}
+                name="reservation_number"
+                type="number"
+                disabled
+              />
+              <CiSearch className="search_icon" onClick={toggle3} />
+              <Modal isOpen={modal3} toggle={toggle3} size="xl">
+                <ReservationModal handleChange={(k,v)=>setForm(p=>({...p,[k]:v}))} toggle3={toggle3} />
+              </Modal>
+            </div>
+          </Col>
 
-          <table id="customers" className="mt-5">
+          <table id="customers" className="mt-3">
             <thead>
               <th
                 style={{
@@ -449,7 +472,10 @@ export default function TransportationTable() {
                       />
                       <CiSearch className="search_icon" onClick={toggle1} />
                       <Modal isOpen={modal1} toggle={toggle1} size="xl">
-                        <LocationModal handleChange={handleChange} toggle1={toggle1} />
+                        <LocationModal
+                          handleChange={handleChange}
+                          toggle1={toggle1}
+                        />
                       </Modal>
                     </div>
                   </td>
@@ -469,7 +495,10 @@ export default function TransportationTable() {
                       />
                       <CiSearch className="search_icon" onClick={toggle2} />
                       <Modal isOpen={modal2} toggle={toggle2} size="xl">
-                        <Location1Modal handleChange={handleChange} toggle2={toggle2} />
+                        <Location1Modal
+                          handleChange={handleChange}
+                          toggle2={toggle2}
+                        />
                       </Modal>
                     </div>
                   </td>

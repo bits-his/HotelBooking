@@ -2,19 +2,17 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _get } from "../../Utils/Helper";
+// import { _get, _post } from "../Utils/Helper";
 
-export default function ReservationModal({
-  setForm = (f) => f,
-  toggle = (f) => f,
-}) {
+
+export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
   const [data, setData] = useState([]);
 
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    _post(
-      "api/new-reservation?query_type=select_reservation",
-      {},
+    _get(
+      "api/get_new_reservation_new?query_type=select_new_reservation",
       (resp) => {
         // setLoading(false)
         console.log(resp);
@@ -26,22 +24,33 @@ export default function ReservationModal({
       (e) => {
         console.log(e);
         // setLoading(false)
-        // alert(e)
+        // alert(e) 
       }
     );
   };
   const navigate =useNavigate()
   useEffect(() => {
     getHotels();
-  }, [0]);
+  }, []);
+
+  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <Col md={12}>
         <h5 className="app_title">Reservation List</h5>
         <hr />
+        {/* {JSON.stringify({hotel,dd: "LSS"})} */}
       </Col>
-       {/* {JSON.stringify(hotel)}  */}
+      <button
+            className="app_button p-2 mb-3"
+            style={{ width: 150 }}
+            onClick={() => navigate ("/reservation-details")}
+          >
+            Add Reservation +
+          </button>
+        
       <Col md={12}>
+      {/* {JSON.stringify(hotel)} */}
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
           <label className="label_title">Search</label>
           <div className="search">
@@ -92,7 +101,7 @@ export default function ReservationModal({
                 padding: "5px 10px",
               }}
             >
-              booking status
+               status
             </th>
             <th
               style={{
@@ -155,12 +164,10 @@ export default function ReservationModal({
                   }}
                 >
                   <Button
-                    onClick={() => {
-                      setForm((p) => ({ ...p, reservation_number: i.reservation_number }));
-                      toggle();
-                      navigate(`/reservation-details?reservation_number=${i.reservation_number}`)
-                    }}
-                    // onClick={}
+                      onClick={() => {
+                        handleChange("reservation_number", i.reservation_number);
+                        toggle3();
+                      }}
                   >
                     {" "}
                     Select
@@ -188,7 +195,7 @@ export default function ReservationModal({
                     padding: "5px 10px",
                   }}
                 >
-                  {i.booking_status}
+                  {i.status}
                 </td>
                 <td
                   style={{

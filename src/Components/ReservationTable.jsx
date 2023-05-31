@@ -30,7 +30,7 @@ export default function ReservationTableS() {
   const navigate =useNavigate()
   useEffect(() => {
     getHotels();
-  }, [0]);
+  }, []);
 
   
   return (
