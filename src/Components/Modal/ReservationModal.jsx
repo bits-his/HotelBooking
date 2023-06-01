@@ -165,6 +165,9 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 >
                   <Button
                       onClick={() => {
+                        navigate(
+                              `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
+                            );
                         handleChange("reservation_number", i.reservation_number);
                         toggle3();
                       }}
