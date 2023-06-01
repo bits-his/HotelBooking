@@ -5,7 +5,6 @@ import { Card, Col, Row, Button } from "reactstrap";
 import { _get } from "../../Utils/Helper";
 // import { _get, _post } from "../Utils/Helper";
 
-
 export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
   const [data, setData] = useState([]);
 
@@ -16,8 +15,8 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        if (resp.success ) {
-        setHotel(resp.results);
+        if (resp.success) {
+          setHotel(resp.results);
         }
       },
       (e) => {
@@ -25,29 +24,28 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
       }
     );
   };
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     getHotels();
   }, []);
 
-  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <Col md={12}>
-        <h5 className="app_title">Reservation List</h5>
+        <h5 className="app_title">Reservation Number</h5>
         <hr />
         {/* {JSON.stringify({hotel,dd: "LSS"})} */}
       </Col>
       <button
-            className="app_button p-2 mb-3"
-            style={{ width: 150 }}
-            onClick={() => navigate ("/reservation-details")}
-          >
-            Add Reservation +
-          </button>
-        
+        className="app_button p-2 mb-3"
+        style={{ width: 150 }}
+        onClick={() => navigate("/reservation-details")}
+      >
+        Add Reservation +
+      </button>
+
       <Col md={12}>
-      {/* {JSON.stringify(hotel)} */}
+        {/* {JSON.stringify(hotel)} */}
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
           <label className="label_title">Search</label>
           <div className="search">
@@ -98,7 +96,7 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 padding: "5px 10px",
               }}
             >
-               status
+              status
             </th>
             <th
               style={{
@@ -113,14 +111,16 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 border: "1px solid rgb(12, 134, 103)",
                 padding: "5px 10px",
               }}
-            >agent name
+            >
+              agent name
             </th>
             <th
               style={{
                 border: "1px solid rgb(12, 134, 103)",
                 padding: "5px 10px",
               }}
-            >guest name
+            >
+              guest name
             </th>
             <th
               style={{
@@ -136,7 +136,7 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 padding: "5px 10px",
               }}
             >
-             country name
+              country name
             </th>
             <th
               style={{
@@ -144,7 +144,7 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 padding: "5px 10px",
               }}
             >
-             price category
+              price category
             </th>
             <th
               style={{
@@ -152,7 +152,7 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 padding: "5px 10px",
               }}
             >
-             option date
+              option date
             </th>
             {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
@@ -168,16 +168,13 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                   }}
                 >
                   <Button
-                      onClick={() => {
-                        navigate(
-                              `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
-                            );
-                        handleChange("reservation_number", i.reservation_number);
-                        toggle3();
-                        navigate(
-                          `/create-transport-reservation?agent_name=${i.agent_name}&BRN_transport=${i.BRN_transport}&guest_name=${i.guest_name}&transport_type=${i.transport_type}`
-                        );
-                      }}
+                    onClick={() => {
+                      handleChange("reservation_number", i.reservation_number);
+                      toggle3();
+                      navigate(
+                        `/create-transport-reservation?agent_name=${i.agent_name}&BRN_transport=${i.BRN_transport}&guest_name=${i.guest_name}&transport_type=${i.transport_type}`
+                      );
+                    }}
                   >
                     {" "}
                     Select

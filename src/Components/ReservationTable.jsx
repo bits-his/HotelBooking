@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
-
 export default function ReservationTableS() {
   const [data, setData] = useState([]);
 
@@ -14,8 +13,8 @@ export default function ReservationTableS() {
       "api/get_new_reservation_new?query_type=select_new_reservation",
       (resp) => {
         console.log(resp);
-        if (resp.success ) {
-        setHotel(resp.results);
+        if (resp.success) {
+          setHotel(resp.results);
         }
       },
       (e) => {
@@ -23,12 +22,11 @@ export default function ReservationTableS() {
       }
     );
   };
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     getHotels();
   }, []);
 
-  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <Col md={12}>
@@ -37,15 +35,15 @@ export default function ReservationTableS() {
         {/* {JSON.stringify({hotel,dd: "LSS"})} */}
       </Col>
       <button
-            className="app_button p-2 mb-3"
-            style={{ width: 150 }}
-            onClick={() => navigate ("/reservation-details")}
-          >
-            Add Reservation +
-          </button>
-        
+        className="app_button p-2 mb-3"
+        style={{ width: 150 }}
+        onClick={() => navigate("/reservation-details")}
+      >
+        Add Reservation +
+      </button>
+
       <Col md={12}>
-      {/* {JSON.stringify(hotel)} */}
+        {/* {JSON.stringify(hotel)} */}
         <div style={{ display: "flex", flexDirection: "row", marginTop: 0 }}>
           <label className="label_title">Search</label>
           <div className="search">
@@ -96,7 +94,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-               status
+              status
             </th>
             <th
               style={{
@@ -111,7 +109,8 @@ export default function ReservationTableS() {
                 border: "1px solid rgb(12, 134, 103)",
                 padding: "5px 10px",
               }}
-            >agent name
+            >
+              agent name
             </th>
             <th
               style={{
@@ -127,7 +126,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-             country name
+              country name
             </th>
             <th
               style={{
@@ -135,7 +134,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-             price category
+              price category
             </th>
             <th
               style={{
@@ -143,7 +142,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-             option date
+              option date
             </th>
             {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
@@ -160,7 +159,9 @@ export default function ReservationTableS() {
                 >
                   <Button
                     onClick={() => {
-                      navigate(`/reservation-details?reservation_number=${i.id}`)
+                      navigate(
+                        `/reservation-details?reservation_number=${i.reservation_number}`
+                      );
                     }}
                     // onClick={}
                   >

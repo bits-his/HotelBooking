@@ -45,6 +45,20 @@ export default function HotelComfirmation() {
     );
   };
 
+  const handleUpadte = (reservation_no) => {
+    _post(
+      `api/transport_comfirmation_active?query_type=update_transport&reservation_no=${reservation_no}`,
+      {},
+      (resp) => {
+        if(resp.success)
+         alert("Updated")
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+  }
+
   useEffect(() => {
     // setLoading(true)
     getHotels();
@@ -292,14 +306,35 @@ export default function HotelComfirmation() {
                 ) : (
                   data&& data?.map((item, index) => (
                     <tr>
-                      <td
+                      {/* <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
                         {item.booking_type}
+                      </td> */}
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        <Button
+                          onClick={() => {
+                            handleUpadte(item.reservation_no)
+                            getHotels()
+                            // navigate(
+                            //   `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
+                            // );
+                          }}
+                          // onClick={}
+                        >
+                          {" "}
+                          Comfirm
+                        </Button>
                       </td>
+                      
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
