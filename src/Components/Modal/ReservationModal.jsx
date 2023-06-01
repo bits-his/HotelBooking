@@ -18,13 +18,10 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
         console.log(resp);
         if (resp.success ) {
         setHotel(resp.results);
-        //  alert('dfasfsadf'+resp)
         }
       },
       (e) => {
         console.log(e);
-        // setLoading(false)
-        // alert(e) 
       }
     );
   };
@@ -123,6 +120,13 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                 border: "1px solid rgb(12, 134, 103)",
                 padding: "5px 10px",
               }}
+            >guest name
+            </th>
+            <th
+              style={{
+                border: "1px solid rgb(12, 134, 103)",
+                padding: "5px 10px",
+              }}
             >
               sub agent name
             </th>
@@ -170,6 +174,9 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                             );
                         handleChange("reservation_number", i.reservation_number);
                         toggle3();
+                        navigate(
+                          `/create-transport-reservation?agent_name=${i.agent_name}&BRN_transport=${i.BRN_transport}&guest_name=${i.guest_name}&transport_type=${i.transport_type}`
+                        );
                       }}
                   >
                     {" "}
@@ -215,6 +222,14 @@ export default function ReservationModal({ handleChange = (f) => f, toggle3 }) {
                   }}
                 >
                   {i.agent_name}
+                </td>
+                <td
+                  style={{
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
+                  }}
+                >
+                  {i.guest_name}
                 </td>
                 <td
                   style={{

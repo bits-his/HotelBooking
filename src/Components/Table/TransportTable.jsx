@@ -70,7 +70,7 @@ export default function TransportTable() {
                     padding: "5px 10px",
                   }}
                 >
-                  Router
+                  Route
                 </th>
                 <th
                   style={{
@@ -482,7 +482,7 @@ export default function TransportTable() {
                       >
                         <input
                           className="table_input"
-                          value={data.vat1}
+                          value={data.vat_amount}
                           name="vat1"
                         />
                       </td>

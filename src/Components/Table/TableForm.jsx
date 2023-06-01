@@ -463,7 +463,7 @@ export default function TableForm({ data = (f) => f, setData = (f) => f,forms, h
                     type="select"
                   >
                     <option>----select-----</option>
-                    {hotelList.map((i) => (
+                    {hotelList&&hotelList?.map((i) => (
                       <option value={i.hotel_name}>{i.hotel_name}</option>
                     ))}
                   </select>

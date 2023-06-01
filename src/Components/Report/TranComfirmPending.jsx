@@ -40,6 +40,19 @@ export default function TranComfirmPending() {
     );
   };
 
+  const handleUpadte = (reservation_no) => {
+    _post(
+      `api/transport_comfirmation_active?query_type=update_transport&reservation_no=${reservation_no}`,
+      {},
+      (resp) => {
+        if(resp.success)
+         alert("Updated")
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+  }
   useEffect(() => {
     getData();
   }, []);
@@ -253,14 +266,16 @@ export default function TranComfirmPending() {
                       >
                         <Button
                           onClick={() => {
-                            navigate(
-                              `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
-                            );
+                            handleUpadte(item.reservation_no)
+                            getData()
+                            // navigate(
+                            //   `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
+                            // );
                           }}
                           // onClick={}
                         >
                           {" "}
-                          Select
+                          Comfirm
                         </Button>
                       </td>
                       {/* <td
@@ -268,8 +283,8 @@ export default function TranComfirmPending() {
                                 border: '1px solid rgb(12, 134, 103)',
                                 padding: '5px 10px',
                             }}
-                            >
                             {item.reserve_Id}
+                            >
                             </td> */}
                       <td
                         style={{

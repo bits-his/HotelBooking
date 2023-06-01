@@ -26,7 +26,7 @@ export default function TransportPAyment() {
 
   const getTransport = () => {
     _post(
-      "api/getTransport?query_type=pending",
+      "api/transport_comfirmation_active?query_type=select",
       {},
       (resp) => {
         if(resp.success)
@@ -210,7 +210,7 @@ export default function TransportPAyment() {
                 >
                   Date To
                 </td>
-                <td
+                {/* <td
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
@@ -233,7 +233,7 @@ export default function TransportPAyment() {
                   }}
                 >
                   Balance
-                </td>
+                </td> */}
                 <td
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
@@ -281,7 +281,7 @@ export default function TransportPAyment() {
                         padding: "5px 10px",
                       }}
                     >
-                      {item.hotel_in}
+                      {item.agent_name}
                     </td>
                     <td
                       style={{
@@ -289,7 +289,7 @@ export default function TransportPAyment() {
                         padding: "5px 10px",
                       }}
                     >
-                      {item.hotel_name}
+                      {item.agent_name}
                     </td>
                     <td
                       style={{
@@ -297,7 +297,7 @@ export default function TransportPAyment() {
                         padding: "5px 10px",
                       }}
                     >
-                      {item.transport_company}
+                      {item.BRN_transport}
                     </td>
                     <td
                       style={{
@@ -305,7 +305,7 @@ export default function TransportPAyment() {
                         padding: "5px 10px",
                       }}
                     >
-                      {item.transport_company}
+                      {item.supplier_account_no}
                     </td>
                     <td
                       style={{
@@ -321,17 +321,17 @@ export default function TransportPAyment() {
                         padding: "5px 10px",
                       }}
                     >
-                      {item.arrive_or_dep_time}
+                      {item.pickup_date}
                     </td>
-                    <td
+                    {/* <td
                       style={{
                         border: "1px solid rgb(12, 134, 103)",
                         padding: "5px 10px",
                       }}
                     >
-                      {item.vat_amount}
-                    </td>
-                    <td
+                      {item.vat_cost}
+                    </td> */}
+                    {/* <td
                       style={{
                         border: "1px solid rgb(12, 134, 103)",
                         padding: "5px 10px",
@@ -346,14 +346,14 @@ export default function TransportPAyment() {
                       }}
                     >
                       {item.qty}
-                    </td>
+                    </td> */}
                     <td
                       style={{
                         border: "1px solid rgb(12, 134, 103)",
                         padding: "5px 10px",
                       }}
                     >
-                      {item.vat}
+                      {item.vat_amount}
                     </td>
                     <td
                       style={{

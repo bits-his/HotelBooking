@@ -130,7 +130,7 @@ export default function CreateReservationDetail() {
   // };
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    alert('bbbb')
+    // alert('bbbb')
     _post(
       "api/room_type?query_type=select",
       {},
