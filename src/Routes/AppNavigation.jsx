@@ -76,6 +76,7 @@ import Location from "../Components/Location";
 import LocationTable from "../Components/LocationTable";
 import RouteTable from "../Components/RouteTable";
 import Routers from "../Components/Routers";
+import RoomPurchasePaymentComfirmationPending from "../Components/Report/RoomPurchasePaymentComfirmationPending";
 function AppNavigation() {
   let element = useRoutes([
     {
@@ -247,10 +248,10 @@ function AppNavigation() {
         //   path: '/cancel-letter',
         //   element: <ViewCancelLetter />,
         // },
-        // {
-        //   path: '/allotment-report',
-        //   element: <AllotmentReport />,
-        // },
+        {
+          path: '/room-comfirmation-payment-pending',
+          element: <RoomPurchasePaymentComfirmationPending />,
+        },
         {
           path: "/transport-reservation",
           element: <TransportReservation />,
