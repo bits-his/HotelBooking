@@ -11,7 +11,7 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 import HotelReg from "../Modal/HotelModal";
 import { CSVLink } from "react-csv";
 
-export default function HotelComfirmation() {
+function HotelComfirmation() {
   const [form, setForm] = useState({
     check_in: "",
     check_out: "",
@@ -474,3 +474,4 @@ export default function HotelComfirmation() {
     </Card>
   );
 }
+export default HotelComfirmation

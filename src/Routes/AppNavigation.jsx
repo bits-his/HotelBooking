@@ -48,7 +48,7 @@ import ReservationTable from "../Components/Table/ReservationTable";
 import AllotmentReport from "../Components/AllotmentReport";
 import ViewCancelLetter from "../Components/Invoices/ViewCancelLetter";
 import TransportPAyment from "../Components/Report/TransportPAyment";
-import HotelComfirmation from "../Components/Report/HotelComfirmation";
+// import HotelComfirmation from "../Components/Report/HotelComfirmation";
 import TranComfirmPending from "../Components/Report/TranComfirmPending";
 import RoomPurchasePaymentPending from "../Components/Report/RoomPurchasePaymentPending";
 import SalesInvoice from "../Components/Report/SalesInvoice";
@@ -77,6 +77,8 @@ import LocationTable from "../Components/LocationTable";
 import RouteTable from "../Components/RouteTable";
 import Routers from "../Components/Routers";
 import RoomPurchasePaymentComfirmationPending from "../Components/Report/RoomPurchasePaymentComfirmationPending";
+import HotelComfirmation from "../Components/Report/HotelComfirmation";
+
 function AppNavigation() {
   let element = useRoutes([
     {
