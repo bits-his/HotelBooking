@@ -193,6 +193,14 @@ export default function Sidebar() {
               Room Purchase Payment Pending
             </li>
             <li
+              onClick={() => goto("/room-comfirmation-payment-pending")}
+              className={`link_item ${
+                location.pathname === "/room-comfirmation-payment-pending" && "active_side_menu"
+              }`}
+            >
+              Room Purchase Comfirmation Payment Pending
+            </li>
+            <li
               onClick={() => goto("/sells-invoice-pending")}
               className={`link_item ${
                 location.pathname === "/sells-invoice-pending" &&
