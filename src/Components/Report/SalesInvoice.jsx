@@ -19,66 +19,67 @@ export default function SalesInvoice() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
+  const [hotelList, setHotelList] = useState([])
 
   const [data, setData] = useState([])
-  //   const handleSubmit = () => {
-  //     let finalObj = {
-  //       name: form.name,
-  //       address: form.address,
-  //       floors: selected,
-  //     }
-  //     setLoading(true)
-  //     _post(
-  //       'api/hotels?in_query_type=create',
-  //       form,
-  //       (res) => {
-  //         setForm((p) => ({
-  //           ...p,
-  //           hotel_in: '',
-  //           hotel_name: '',
-  //           address: '',
-  //           city: '',
-  //           phone: '',
-  //           email: '',
-  //           website: '',
-  //         }))
-  //         setLoading(false)
-  //         console.log(res)
-  //         getHotels()
-  //         toggle()
-  //       },
-  //       (err) => {
-  //         setLoading(false)
-  //         console.log(err)
-  //       },
-  //     )
-  //     console.log(finalObj)
-  //   }
+    // const handleSubmit = () => {
+    //   let finalObj = {
+    //     name: form.name,
+    //     address: form.address,
+    //     floors: selected,
+    //   }
+    //   setLoading(true)
+    //   _post(
+    //     'api/hotels?in_query_type=create',
+    //     form,
+    //     (res) => {
+    //       setForm((p) => ({
+    //         ...p,
+    //         hotel_in: '',
+    //         hotel_name: '',
+    //         address: '',
+    //         city: '',
+    //         phone: '',
+    //         email: '',
+    //         website: '',
+    //       }))
+    //       setLoading(false)
+    //       console.log(res)
+    //       getHotels()
+    //       toggle()
+    //     },
+    //     (err) => {
+    //       setLoading(false)
+    //       console.log(err)
+    //     },
+    //   )
+    //   console.log(finalObj)
+    // }
 
-  //   const getHotels = () => {
-  //     _post(
-  //       'api/hotels?in_query_type=select-all',
-  //       {},
-  //       (resp) => {
-  //         // setLoading(false)
-  //         console.log(resp)
-  //         // if (resp ) {
-  //         setHotelList(resp.resp)
-  //         //  alert('dfasfsadf'+resp)
-  //         // }
-  //       },
-  //       (e) => {
-  //         console.log(e)
-  //         // setLoading(false)
-  //         // alert(e)
-  //       },
-  //     )
-  //   }
+    const getHotels = () => {
+      _post(
+        'api/hotels?in_query_type=select-all',
+        {},
+        (resp) => {
+          // setLoading(false)
+          console.log(resp)
+          // if (resp ) {
+          setHotelList(resp.resp)
+          //  alert('dfasfsadf'+resp)
+          // }
+        },
+        (e) => {
+          console.log(e)
+          // setLoading(false)
+          // alert(e)
+        },
+      )
+    }
 
-  //   useEffect(() => {
-  //     // setLoading(true)
-  //     getHotels()
-  //   }, [])
+    useEffect(() => {
+      // setLoading(true)
+      getHotels()
+    }, [])
 
   let news = data[0];
   
@@ -328,8 +329,8 @@ export default function SalesInvoice() {
                   </td>
                 </tr>
               </thead>
+                    {/* {JSON.stringify(hotelList)} */}
               {/* <tbody>
-                    {JSON.stringify(hotelList)}
                     {hotelList.length === 0 ? (
                         <span>Loading Rooms...</span>
                     ) : (

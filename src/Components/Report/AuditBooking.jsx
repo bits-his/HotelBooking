@@ -20,24 +20,24 @@ export default function AuditBooking() {
   };
   const [transport, setTransport] = useState([]);
 
-  const getTransport = () => {
-    _post(
-      "api/getTransport?query_type=select",
-      {},
-      (resp) => {
-        console.log(resp);
-        setTransport(resp.results);
-      },
-      (e) => {
-        console.log(e);
-      }
-    );
-  };
+  // const getTransport = () => {
+  //   _post(
+  //     "api/getTransport?query_type=select",
+  //     {},
+  //     (resp) => {
+  //       console.log(resp);
+  //       setTransport(resp.results);
+  //     },
+  //     (e) => {
+  //       console.log(e);
+  //     }
+  //   );
+  // };
 
-  useEffect(() => {
-    // setLoading(true)
-    getTransport();
-  }, []);
+  // useEffect(() => {
+  //   // setLoading(true)
+  //   getTransport();
+  // }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -304,7 +304,7 @@ export default function AuditBooking() {
               </thead>
               <tbody>
                 {/* {JSON.stringify(hotelList)} */}
-                {transport.length === 0 ? (
+                {!transport.length  ? (
                   <span>Loading Rooms...</span>
                 ) : (
                   transport.map((item, index) => (
