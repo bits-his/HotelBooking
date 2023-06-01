@@ -320,7 +320,7 @@ export default function RoomPurchasePaymentPending() {
                         </Button>
                       </td> */}
                     <td
-                        style={{
+                        style={{ 
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
