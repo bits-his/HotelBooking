@@ -6,7 +6,7 @@ import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
 import HotelReg from "../Modal/HotelModal";
 
-export default function HotelComfirmation() {
+function HotelComfirmation() {
   const [form, setForm] = useState({
     check_in: "",
     check_out: "",
@@ -42,7 +42,7 @@ export default function HotelComfirmation() {
 
   const handleUpadte = (reservation_no) => {
     _post(
-      `api/transport_comfirmation_active?query_type=update_transport&reservation_no=${reservation_no}`,
+      `api/hotel_confirmation_active?query_type=update_hotel&reservation_no=${reservation_no}`,
       {},
       (resp) => {
         if(resp.success)
@@ -469,3 +469,4 @@ export default function HotelComfirmation() {
     </Card>
   );
 }
+export default HotelComfirmation

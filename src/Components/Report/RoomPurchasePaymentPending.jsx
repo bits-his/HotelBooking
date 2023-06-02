@@ -88,6 +88,19 @@ export default function RoomPurchasePaymentPending() {
     );
     // console.log(form)
   };
+  const handleUpadte = (reservation_no) => {
+    _post(
+      `api/room_purchase_active?query_type=update_room_purchase&reservation_no=${reservation_no}`,
+      {},
+      (resp) => {
+        if(resp.success)
+         alert("Updated")
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+  }
 
   useEffect(() => {
     // setLoading(true)
@@ -144,7 +157,7 @@ export default function RoomPurchasePaymentPending() {
                       padding: "5px 10px",
                     }}
                   >
-                    rv Id
+                    Action
                   </td>
                   <td
                     style={{
@@ -306,13 +319,25 @@ export default function RoomPurchasePaymentPending() {
                           select
                         </Button>
                       </td> */}
-                      <td
-                        style={{
+                    <td
+                        style={{ 
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
-                        {item.id}
+                        <Button
+                          onClick={() => {
+                            handleUpadte(item.reservation_no)
+                            getRoom_purchase_pending()
+                            // navigate(
+                            //   `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
+                            // );
+                          }}
+                          // onClick={}
+                        >
+                          {" "}
+                          Comfirm
+                        </Button>
                       </td>
                       <td
                         style={{
