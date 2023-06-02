@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
 import { _get, _post } from "../../Utils/Helper";
 import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
-// import { Floors } from './Floors'
-import { RiFileExcel2Fill } from "react-icons/ri";
 import HotelReg from "../Modal/HotelModal";
-import { CSVLink } from "react-csv";
 
 export default function HotelComfirmation() {
   const [form, setForm] = useState({
