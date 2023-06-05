@@ -6,26 +6,26 @@ import InputForm from "../CustomComponents/InputForm";
 import { _post } from "../Utils/Helper";
 
 export default function CreacteRoomType() {
-    const goto = useNavigate()
-    const [form, setForm] = useState({
-      room_type:"",
-      room_name:"",
-      no_pax:""
-    });
+  const goto = useNavigate();
+  const [form, setForm] = useState({
+    room_type: "",
+    room_name: "",
+    no_pax: "",
+  });
 
   const handleChange = ({ target: { name, value } }) => {
     // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
-  };    
+  };
   const [Loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (form.room_name && form.room_type && form.no_pax) {
       setForm({
         // id,
-        room_type:"",
-        room_name:"",
-        no_pax:""
+        room_type: "",
+        room_name: "",
+        no_pax: "",
       });
     }
     setLoading(true);
@@ -34,7 +34,7 @@ export default function CreacteRoomType() {
       form,
       (res) => {
         // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
-        navigate(-1)
+        navigate(-1);
         setLoading(false);
       },
       (err) => {
@@ -45,47 +45,50 @@ export default function CreacteRoomType() {
     // console.log(form)
   };
 
-  const [hotel,setHotel]=useState([])
+  const [hotel, setHotel] = useState([]);
   const getHotels = () => {
-    _post( 
-      'api/hotels?in_query_type=select-all',
+    _post(
+      "api/hotels?in_query_type=select-all",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-          setHotel(resp.resp)
+        setHotel(resp.resp);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
-  useEffect(
-    ()=>{
-      getHotels()
-    },[0]
-  )
+      }
+    );
+  };
+  useEffect(() => {
+    getHotels();
+  }, [0]);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-      {/* {JSON.stringify(form)} */}
-            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
-                <button
-                    className="app_button p-2 mb-3"
-                    style={{ width: 150, fontSize: 16, fontWeight: 500}} 
-                    onClick={() => goto('/room-type')}
-                >
-                    <FaArrowLeft style={{marginRight: 10}} /> Back
-                </button>
-                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Create New Room</h5>
-            </Col>
-        </Row>
+        {JSON.stringify(form)}
+        <Col
+          md={12}
+          style={{ display: "flex", width: "100%", textAlign: "center" }}
+        >
+          <button
+            className="app_button p-2 mb-3"
+            style={{ width: 150, fontSize: 16, fontWeight: 500 }}
+            onClick={() => goto("/room-type")}
+          >
+            <FaArrowLeft style={{ marginRight: 10 }} /> Back
+          </button>
+          <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+            Create New Room
+          </h5>
+        </Col>
+      </Row>
       <Row>
         <Col md={6}>
           {/* <InputForm
@@ -96,17 +99,23 @@ export default function CreacteRoomType() {
             name="room_id"
             type="number"
           /> */}
-           <select
-              id="exampleSelect"
-              className="app_input mt-4"
-              name="hotel_n"
-              type="select"
-              onChange={handleChange}
-              value={form.hotel_n}
-              // className="mt-3"
-            >
-            {hotel.map(i=> <option value='select' onClick={()=>setForm((p)=>({...p,hotel_id:i.id}))}>{i.hotel_name}</option>)}
-                   
+          <select
+            id="exampleSelect"
+            className="app_input mt-4"
+            name="hotel_n"
+            type="select"
+            onChange={handleChange}
+            value={form.hotel_n}
+            // className="mt-3"
+          >
+            {hotel.map((i) => (
+              <option
+                value="select"
+                onClick={() => setForm((p) => ({ ...p, hotel_id: i.id }))}
+              >
+                {i.hotel_name}
+              </option>
+            ))}
           </select>
           <InputForm
             className="app_input"
@@ -123,14 +132,15 @@ export default function CreacteRoomType() {
             name="no_pax"
           />
         </Col>
-        <Col md= {6}>
-        <InputForm
+        <Col md={6}>
+          <InputForm
             className="app_input"
             label="Room Type"
             value={form.room_type}
             onChange={handleChange}
             name="room_type"
-          /></Col>
+          />
+        </Col>
       </Row>
       <Row className="mt-3">
         <Col md={6}>

@@ -30,18 +30,18 @@ export default function RoomType() {
   };
   useEffect(() => {
     getHotels();
-  }, [0]);
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-4 m-3">
-      {/* {JSON.stringify(hotel)} */}
+      {JSON.stringify(hotel)}
       <Row>
         <Col md={12}>
           <button
             className="app_button p-2"
             style={{ width: 200 }}
             onClick={() => goto("/creact-room-type")}
-          >
+          >git add .
             Add New Room +
           </button>
         </Col>

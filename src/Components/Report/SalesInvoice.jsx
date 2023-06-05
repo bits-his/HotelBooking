@@ -191,146 +191,146 @@ export default function SalesInvoice() {
               <thead>
                 <tr>
                   {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
-                  <td
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Post
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Delete
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Reserve Id
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     #
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Comfirm Date
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Agent Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     CI.RefNo
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Quest Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Costomer Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check In
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check Out
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Debit
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Credit
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Balance
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Create Date
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Cr.User
-                  </td>
+                  </th>
                 </tr>
               </thead>
                     {/* {JSON.stringify(hotelList)} */}
-              {/* <tbody>
+              <tbody>
                     {hotelList.length === 0 ? (
                         <span>Loading Rooms...</span>
                     ) : (
@@ -396,7 +396,7 @@ export default function SalesInvoice() {
                         </tr>
                         ))
                     )}
-                    </tbody> */}
+                    </tbody>
             </table>
           </div>
         </Row>
