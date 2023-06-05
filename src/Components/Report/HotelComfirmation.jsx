@@ -184,7 +184,7 @@ function HotelComfirmation() {
                       padding: "5px 10px",
                     }}
                   >
-                    Comfirm
+                    Confirm
                   </th>
                   <th
                     style={{
@@ -326,7 +326,7 @@ function HotelComfirmation() {
                           // onClick={}
                         >
                           {" "}
-                          Comfirm
+                          Confirm
                         </Button>
                       </td>
                       

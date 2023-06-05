@@ -18,28 +18,30 @@ export default function RoomPurchasePaymentComfirmationPending() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
-  const [hotelList, setHotelList] = useState([]);
+  // const [hotelList, setHotelList] = useState([]);
+  const [transport, setTransport] = useState([]);
 
-//   const getRoom_purchase_pending = () => {
-//     _get(
-//       "api/get_room_purchase_pending?query_type=select",
-//       (res) => {
-//         console.log(res);
-//         setHotelList(res.results);
-//       },
-//       (err) => {
-//         console.log(err);
-//       }
-//     );
-//   };
+  const getRoom_purchase_pending = () => {
+    _post(
+      "api/room_purchase_active?query_type=select",
+      {},
+      (resp) => {
+        if (resp.success) setTransport(resp.results);
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+  };
 
-//   useEffect(() => {
-//     getRoom_purchase_pending();
-//   }, []);
+  useEffect(() => {
+    getRoom_purchase_pending();
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
+        {JSON.stringify(transport)}
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>
@@ -55,11 +57,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
             <label className="label_title">Search</label>
             <div className="search">
               <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                name="Search"
-              />
+              <input className="app_input2" type="text" name="Search" />
             </div>
           </div>
         </Col>
@@ -76,157 +74,158 @@ export default function RoomPurchasePaymentComfirmationPending() {
             >
               <thead>
                 <tr>
-                  <td
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     rv Id
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Quest Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Agent Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Hotel Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Room Type
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Opt.Date
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check In
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check Out
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Night
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Room
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Sales Rate
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Purch Rate
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total.Purch
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Pay To
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Amount Payable
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Sup.AccNo
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Ref No
-                  </td>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {/* {hotelList.length === 0 ? (
+                {/* {JSON.stringify(transport)} */}
+                {transport.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
-                  hotelList.map((item, index) => (
+                  transport.map((item, index) => (
                     <tr>
                       <td
                         style={{
@@ -234,15 +233,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.id}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.guest_name}
+                        {index + 1}
                       </td>
                       <td
                         style={{
@@ -251,6 +242,14 @@ export default function RoomPurchasePaymentComfirmationPending() {
                         }}
                       >
                         {item.agent_name}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.guest_name}
                       </td>
                       <td
                         style={{
@@ -268,7 +267,6 @@ export default function RoomPurchasePaymentComfirmationPending() {
                       >
                         {item.room_type}
                       </td>
-
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
@@ -286,12 +284,36 @@ export default function RoomPurchasePaymentComfirmationPending() {
                         {item.check_in}
                       </td>
                       <td
+                      style={{
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      {item.check_out}
+                    </td>
+                       <td
+                      style={{
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      {item.night}
+                    </td> 
+                    <td
+                      style={{
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      {item.qty}
+                    </td> 
+                      <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
-                        {item.check_out}
+                        {item.sale_rate}
                       </td>
                       <td
                         style={{
@@ -299,7 +321,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.night}
+                        {item.total}
                       </td>
                       <td
                         style={{
@@ -307,40 +329,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.room}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.sale_rate_exc_tax}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.total_room_sale_rate}
-                      </td>
-
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.sale_purch_vat}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.cost_purch_vat}
+                        {item.net_total}
                       </td>
                       <td
                         style={{
@@ -350,7 +339,6 @@ export default function RoomPurchasePaymentComfirmationPending() {
                       >
                         {item.pay_to}
                       </td>
-
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
@@ -359,7 +347,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
                       >
                         {item.amount_payable}
                       </td>
-                       <td
+                      <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
@@ -367,7 +355,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
                       >
                         {item.supplier_account_no}
                       </td>
-                        <td
+                      <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
@@ -375,11 +363,18 @@ export default function RoomPurchasePaymentComfirmationPending() {
                       >
                         {item.ref_no}
                       </td>
-                      
-                        
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.ref_no}
+                      </td>
                     </tr>
+                    
                   ))
-                )} */}
+                )}
               </tbody>
             </table>
           </div>

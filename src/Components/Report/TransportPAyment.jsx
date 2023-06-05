@@ -154,110 +154,110 @@ export default function TransportPAyment() {
             <thead>
               <tr>
                 {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
-                <td
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Reserve id
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Quest Name
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Agent Name
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Transport Company
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Acc No.
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Date From
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Date To
-                </td>
-                {/* <td
+                </th>
+                {/* <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Debit
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Credit
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Balance
-                </td> */}
-                <td
+                </th> */}
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Vat
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Total
-                </td>
-                <td
+                </th>
+                <th
                   style={{
                     border: "1px solid rgb(12, 134, 103)",
                     padding: "5px 10px",
                   }}
                 >
                   Net Total
-                </td>
+                </th>
               </tr>
             </thead>
             <tbody>

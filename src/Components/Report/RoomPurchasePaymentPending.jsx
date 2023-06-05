@@ -151,150 +151,150 @@ export default function RoomPurchasePaymentPending() {
               <thead>
                 <tr>
                   {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
-                  <td
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Action
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Quest Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Agent Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Hotel Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Room Type
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Opt.Date
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check In
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Check Out
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Night
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Room
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Sales Rate
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Purch Rate
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total.Purch
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Pay To
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Amount Payable
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Sup.AccNo
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Ref No
-                  </td>
+                  </th>
                 </tr>
               </thead>
               <tbody>

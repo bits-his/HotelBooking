@@ -169,86 +169,86 @@ export default function TranComfirmPending() {
               <thead>
                 <tr>
                   {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
-                  <td
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Action
-                  </td>
-                  {/* <td
+                  </th>
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Reserve id
-                  </td> */}
-                  <td
+                  </th> */}
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Agent Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Transport Company
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Guest Name
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     PickUp From
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     PickUp To
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Transport Type
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Vehicle Type
-                  </td>
-                  <td
+                  </th>
+                  <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     PickUp Date
-                  </td>
+                  </th>
                 </tr>
               </thead>
               {/* {JSON.stringify(data)} */}
