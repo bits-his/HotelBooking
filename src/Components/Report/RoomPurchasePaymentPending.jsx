@@ -109,7 +109,7 @@ export default function RoomPurchasePaymentPending() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {/* {JSON.stringify(hotelList)} */}
+      {JSON.stringify(hotelList)}
       <Row>
         <Col md={12}>
           <center>
@@ -239,14 +239,14 @@ export default function RoomPurchasePaymentPending() {
                   >
                     Sales Rate
                   </th>
-                  <th
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total
-                  </th>
+                  </th> */}
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -255,14 +255,14 @@ export default function RoomPurchasePaymentPending() {
                   >
                     Purch Rate
                   </th>
-                  <th
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total.Purch
-                  </th>
+                  </th> */}
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -410,15 +410,7 @@ export default function RoomPurchasePaymentPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.room}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.sale_rate_exc_tax}
+                        {item.no_of_room}
                       </td>
                       <td
                         style={{
@@ -428,6 +420,14 @@ export default function RoomPurchasePaymentPending() {
                       >
                         {item.total_room_sale_rate}
                       </td>
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.total_room_sale_rate}
+                      </td> */}
 
                       <td
                         style={{
@@ -435,16 +435,16 @@ export default function RoomPurchasePaymentPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.sale_purch_vat}
+                        {item.room_sale_purch_vat}
                       </td>
-                      <td
+                      {/* <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
-                        {item.cost_purch_vat}
-                      </td>
+                        {item.purch_rate}
+                      </td> */}
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",

@@ -99,7 +99,7 @@ export default function CreacteRoomType() {
             name="room_id"
             type="number"
           /> */}
-          <select
+          {/* <select
             id="exampleSelect"
             className="app_input mt-4"
             name="hotel_n"
@@ -116,7 +116,7 @@ export default function CreacteRoomType() {
                 {i.hotel_name}
               </option>
             ))}
-          </select>
+          </select> */}
           <InputForm
             className="app_input"
             label="Room Name"

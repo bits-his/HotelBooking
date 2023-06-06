@@ -76,6 +76,7 @@ import LocationTable from "../Components/LocationTable";
 import RouteTable from "../Components/RouteTable";
 import Routers from "../Components/Routers";
 import HotelComfirmation from "../Components/Report/HotelComfirmation";
+import RoomPurchasePaymentComfirmationPending from "../Components/Report/RoomPurchasePaymentComfirmationPending";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -385,7 +386,11 @@ function AppNavigation() {
         {
           path: "/route",
           element: <Routers />,
-        }
+        },
+        {
+          path: "/room-comfirmation-payment-pending",
+          element: <RoomPurchasePaymentComfirmationPending />,
+        },
       ],
     },
   ]);

@@ -162,14 +162,14 @@ export default function RoomPurchasePaymentComfirmationPending() {
                   >
                     Sales Rate
                   </th>
-                  <th
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total
-                  </th>
+                  </th> */}
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -178,14 +178,14 @@ export default function RoomPurchasePaymentComfirmationPending() {
                   >
                     Purch Rate
                   </th>
-                  <th
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     Total.Purch
-                  </th>
+                  </th> */}
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -313,32 +313,32 @@ export default function RoomPurchasePaymentComfirmationPending() {
                           padding: "5px 10px",
                         }}
                       >
-                        {item.sale_rate}
+                        {item.total_room_sale_rate}
                       </td>
-                      <td
+                      {/* <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
                         {item.total}
-                      </td>
+                      </td> */}
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
-                        {item.net_total}
+                        {item.room_sale_purch_vat}
                       </td>
-                      <td
+                      {/* <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
                           padding: "5px 10px",
                         }}
                       >
                         {item.pay_to}
-                      </td>
+                      </td> */}
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",

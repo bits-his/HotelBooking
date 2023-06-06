@@ -41,7 +41,7 @@ export default function RoomType() {
             className="app_button p-2"
             style={{ width: 200 }}
             onClick={() => goto("/creact-room-type")}
-          >git add .
+          >
             Add New Room +
           </button>
         </Col>
@@ -122,7 +122,7 @@ export default function RoomType() {
                       padding: "5px 10px",
                     }}
                   >
-                    {i.room_type}
+                    {i.room_type }
                   </td>
                   <td
                     style={{
