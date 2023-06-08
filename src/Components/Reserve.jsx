@@ -43,7 +43,6 @@ export default function Reserve() {
     room_sale_source: "",
     supplier: "",
     meal_sale_source: "",
-    supplier: "",
 
     sale_rate_exc_tax: "",
     sale_municipal_vat: "",

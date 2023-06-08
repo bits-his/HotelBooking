@@ -390,7 +390,7 @@ function AppNavigation() {
         {
           path: "/room-comfirmation-payment-pending",
           element: <RoomPurchasePaymentComfirmationPending />,
-        },
+        }
       ],
     },
   ]);

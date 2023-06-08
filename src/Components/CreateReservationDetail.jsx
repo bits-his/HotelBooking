@@ -18,8 +18,7 @@ import moment from "moment";
 
 export default function CreateReservationDetail() {
   const today = moment().format('YYYY-MM-DD')
-  const d_to = moment(today).add('days', 1).format('YYYY-MM-DD')
-
+  
   const __form = {
     reservation_type: "",
     status: "",
@@ -42,7 +41,7 @@ export default function CreateReservationDetail() {
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
   const [page, setPage] = useState(false);
-
+  
   const handleReset = () => {
     setForm({
       reservation_type: "",
@@ -66,6 +65,7 @@ export default function CreateReservationDetail() {
   const toggle1 = () => setModal1(!modal1);
   const toggle2 = () => setModal2(!modal2);
   const toggle3 = () => setModal3(!modal3);
+    
   const query = useQuery();
   const reservation_number = query.get('reservation_number');
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ export default function CreateReservationDetail() {
    let _form ={
         hotel: '',
         check_in: today,
-        check_out: d_to,
+        check_out: today,
         night:1,
         view: '', 
         room_type: '',

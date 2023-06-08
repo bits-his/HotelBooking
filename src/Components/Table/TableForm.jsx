@@ -505,6 +505,8 @@ export default function TableForm({
                       onChange={(e) => {
                         let val = e.target.value;
                         handleChanger("night", val, idx);
+                        const d_to = moment(check_in).add('days', val).format('MM-DD-YYYY')
+                        handleChanger("check_out", d_to, idx);
                       }}
                       name="night"
                       type="float"
@@ -521,6 +523,8 @@ export default function TableForm({
                       onChange={(e) => {
                         let val = e.target.value;
                         handleChanger("check_out", val, idx);
+                        const d_to = moment(val).diff(item.check_in, 'days')
+                        handleChanger("night", d_to, idx);
                       }}
                       name="check_out"
                       type="date"

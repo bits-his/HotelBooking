@@ -128,7 +128,6 @@ export default function AllaotmentTable({
     ]);
     setForm({
       room_type: "",
-      room_type: "",
       veiws: "",
       d_from: "",
       nights: "",

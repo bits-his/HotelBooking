@@ -412,6 +412,15 @@ export default function Sidebar() {
             >
               Route
             </li>
+            <li
+              onClick={() => goto("/hotel-registration")}
+              className={`link_item ${
+                location.pathname === "/hotel-registration" && "active_side_menu"
+              }`}
+            >
+              {/* <FaHotel className="logo shadow" /> */}
+              Create Hotel
+            </li>
           </div>
         ) : (
           ""
@@ -547,15 +556,6 @@ export default function Sidebar() {
         ) : (
           ""
         )}
-        <li
-          onClick={() => goto("/hotel-registration")}
-          className={`link_item ${
-            location.pathname === "/hotel-registration" && "active_side_menu"
-          }`}
-        >
-          <FaHotel className="logo shadow" />
-          Create Hoetel
-        </li>
         <li
           onClick={() => goto("/chart-of-accounts")}
           className={`link_item ${
