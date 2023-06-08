@@ -84,17 +84,6 @@ export default function CreacteCountry() {
             onChange={handleChange}
             name="nationalism"
           />
-          {/* <label className="Label mt-2">Country Type</label>
-                <select
-                    id="exampleSelect"
-                    className="app_input"
-                    value={form.nationalism}
-                    name="nationalism"
-                    type="select"
-                    onChange={handleChange}
-                >
-                    <option>Select </option>
-                </select> */}
         </Col>
       </Row>
       <Row className="mt-3">
