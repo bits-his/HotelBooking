@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
-import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
-import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-// import { _get, _post } from '../Utils/Helper'
-// import { Floors } from './Floors'
+import { Card, Col, Modal, Row } from "reactstrap";
 import { RiFileExcel2Fill } from "react-icons/ri";
 import InputForm from "../CustomComponents/InputForm";
-import { CSVLink } from "react-csv";
+import AddMasterAcc from "./Modal/AddMasterAcc";
+import AddSubAcc from "./Modal/AddSubAcc";
 
 export default function ChartofAcc() {
   const [form, setForm] = useState({
     category: "",
     search: "",
   });
+
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const toggle = () => setModal(!modal);
+  const toggle2 = () => setModal2(!modal2);
+
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
@@ -58,17 +60,23 @@ export default function ChartofAcc() {
             <button
               className="app_button p-2 mt-3 "
               style={{ width: "20%", fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
+              onClick={toggle2}
             >
               Add Master Account
             </button>
+            <Modal isOpen={modal2} toggle={toggle2} size="xl" style={{height: 200}}>
+              <AddMasterAcc setForm={setForm} toggle={toggle2} />
+            </Modal>
             <button
               className="app_button p-2 mt-3 "
               style={{ width: 150, fontSize: 16, fontWeight: 500 }}
-              // onClick={() => navigate('/table-meal')}
+              onClick={toggle}
             >
               Add Sub Account
             </button>
+            <Modal isOpen={modal} toggle={toggle} size="xl" style={{height: 200}}>
+              <AddSubAcc setForm={setForm} toggle={toggle} />
+            </Modal>
             <button
               className="app_button p-2 mt-3 "
               style={{ width: 150, fontSize: 16, fontWeight: 500 }}
