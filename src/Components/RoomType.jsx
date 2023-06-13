@@ -11,7 +11,7 @@ export default function RoomType() {
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _post(
-      "api/room_type?query_type=select",
+      "api/room_type?query_type=select-all",
       {},
       (resp) => {
         // setLoading(false)
@@ -34,7 +34,7 @@ export default function RoomType() {
 
   return (
     <Card className="app_card dashboard_card shadow p-4 m-3">
-      {JSON.stringify(hotel)}
+      {/* {JSON.stringify(hotel)} */}
       <Row>
         <Col md={12}>
           <button
@@ -49,17 +49,10 @@ export default function RoomType() {
       <div className="m-2">
         <Col md={12}>
           <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
-            {/* {JSON.stringify(data)} */}
             <label className="label_title">Search</label>
             <div className="search">
               <CiSearch style={{ fontSize: 30 }} />
-              <input
-                className="app_input2"
-                type="text"
-                // placeholder="Search"
-                name="Search"
-                // value={}
-              />
+              <input className="app_input2" type="text" name="Search" />
             </div>
           </div>
         </Col>
@@ -75,22 +68,6 @@ export default function RoomType() {
                   padding: "5px 10px",
                 }}
               >
-                Room Name
-              </th>
-              <th
-                style={{
-                  border: "1px solid rgb(12, 134, 103)",
-                  padding: "5px 10px",
-                }}
-              >
-                Type
-              </th>
-              <th
-                style={{
-                  border: "1px solid rgb(12, 134, 103)",
-                  padding: "5px 10px",
-                }}
-              >
                 Number of Pax
               </th>
               <th
@@ -99,8 +76,24 @@ export default function RoomType() {
                   padding: "5px 10px",
                 }}
               >
-                Action
+                Room Name
               </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Room Type
+              </th>
+              {/* <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                Action
+              </th> */}
               {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
                       <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
             </thead>
@@ -108,6 +101,14 @@ export default function RoomType() {
             {hotel &&
               hotel.map((i) => (
                 <tbody>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.no_pax}
+                  </td>
                   <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -122,19 +123,12 @@ export default function RoomType() {
                       padding: "5px 10px",
                     }}
                   >
-                    {i.room_type }
+                    {i.room_type}
                   </td>
-                  <td
+                  {/* <td
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
-                    }}
-                  >
-                    {i.no_pax}
-                  </td>
-                  <td
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",padding: "5px 10px",
                     }}
                   >
                     <center>
@@ -146,7 +140,7 @@ export default function RoomType() {
                         Edit
                       </button>
                     </center>
-                  </td>{" "}
+                  </td>{" "} */}
                 </tbody>
               ))}
           </table>
