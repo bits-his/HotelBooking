@@ -115,36 +115,6 @@ export default function Sidebar() {
         ) : (
           ""
         )}
-        {/* <li onClick={dropF} className="link_item">
-          <span>
-            <MdDashboard className="logo shadow" /> Follow Up
-            {showSubMenuF ? (
-              <TiArrowSortedUp size="1.4rem" />
-            ) : (
-              <TiArrowSortedDown size="1.4rem" />
-            )}
-          </span>
-        </li>
-        {showSubMenuF ? (
-          <div className="sub_menu">
-            <li
-              onClick={() => goto("#")}
-              className={`link_item ${
-                location.pathname === "#" && "active_side_menu"
-              }`}
-            >
-              Hotel Confirmation Pending
-            </li>
-            <li onClick={() => goto("#")} className="link_item">
-              Option Date Warning
-            </li>{" "}
-            <li onClick={() => goto("#")} className="link_item">
-              Audit Booking
-            </li>
-          </div>
-        ) : (
-          ""
-        )} */}
         
         <li onClick={drop1} className="link_item">
           <span>

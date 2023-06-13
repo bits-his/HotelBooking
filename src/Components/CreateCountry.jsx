@@ -38,17 +38,13 @@ export default function CreacteCountry() {
       "api/countries",
       form,
       (res) => {
-
-        // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
         setLoading(false);
-        // navigate(-1)
       },
       (err) => {
         setLoading(false);
         console.log(err);
       }
     );
-    // console.log(form)
   };
 
   return (
