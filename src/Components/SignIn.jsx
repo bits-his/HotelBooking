@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Card, Col, FormGroup, Input, Label, Row } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
 import { login } from '../redux/actions/authActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -42,7 +40,6 @@ export default function SignIn() {
             },
             (e) => {
               setLoading(false)
-              // alert(JSON.stringify(e))
               console.log(e)
             },
           ),
@@ -59,41 +56,6 @@ export default function SignIn() {
         height: '90vh',
       }}
     >
-    {/* <Card className="app_card shadow p-3 m-3" style={{width: 350, height: 400}}> */}
-        {/* <Row >
-            <Col md={12}>
-                <center><h5 className="app_title">Sign IN</h5></center>
-            </Col>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Email"
-                    value={form.email}
-                    onChange={handleChange}
-                    name="email"
-                    type= 'email'
-                />
-            </Col>
-            <Col md={12}>
-                <InputForm
-                    className="app_input"
-                    label="Password"
-                    value={form.password}
-                    onChange={handleChange}
-                    name="password"
-                    type= 'password'
-                />
-            </Col>
-            <Col md={12}>
-                <button className="app_button mt-3 p-2 shadow" style={{width: '100%'}} onClick= {submit}> {loading ? (
-                        <span>Loading...</span>
-                      ) : (
-                        <span>
-                          Login
-                        </span>
-                      )}</button>
-            </Col>
-        </Row> */}
         <div className='sign-in-div1'>
           <div className='sign-in-div2'>
             <div className='sign-in-div3' style={{display: 'flex', justifyContent: 'space-between'}}>

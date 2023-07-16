@@ -69,7 +69,7 @@ export default function Reservation({ form = {}, setForm = (f) => f }) {
               <option>Select </option>
             </select>
             <CiSearch className="search_icon" onClick={toggle} />
-            <Modal isOpen={modal} toggle={toggle} size="xl">
+            <Modal isOpen={modal} toggle={toggle}   >
               <HotelReg />
             </Modal>
           </div>
