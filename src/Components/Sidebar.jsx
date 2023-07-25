@@ -93,7 +93,7 @@ export default function Sidebar() {
                 "active_side_menu"
               }`}
             >
-              Create Transport Reservstion
+              Create Transport Reservation
             </li>
             <li
               onClick={() => goto("/agent")}

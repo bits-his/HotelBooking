@@ -5,8 +5,11 @@ import { Card, Col, Row, Button } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
 export default function ReservationTableS() {
+  const _form = {
+    search: "",
+  };
   const [data, setData] = useState([]);
-
+  const [form, setForm] = useState(_form);
   const [hotel, setHotel] = useState([]);
   const getHotels = () => {
     _get(
@@ -22,10 +25,21 @@ export default function ReservationTableS() {
       }
     );
   };
+  const handleChange = ({ target: { name, value } }) => {
+    setForm((p) => ({ ...p, [name]: value }));
+  };
   const navigate = useNavigate();
   useEffect(() => {
     getHotels();
   }, []);
+
+  const new_hotel = hotel.length
+    ? hotel.filter(
+        (item) =>
+          item.guest_name.toLowerCase().includes(form.search.toLowerCase()) ||
+          item.sub_agent_name.toLowerCase().includes(form.search.toLowerCase())
+      )
+    : hotel;
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
@@ -51,8 +65,10 @@ export default function ReservationTableS() {
             <input
               className="app_input2"
               type="text"
+              name="search"
+              value={form.search}
+              onChange={handleChange}
               // placeholder="Search"
-              name="Search"
               // value={}
             />
           </div>
@@ -94,7 +110,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              status
+              Status
             </th>
             <th
               style={{
@@ -102,7 +118,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              booking type
+              Booking Type
             </th>
             <th
               style={{
@@ -110,7 +126,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              agent name
+              Gust Name
             </th>
             <th
               style={{
@@ -118,7 +134,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              sub agent name
+              Sub Agent Name
             </th>
             <th
               style={{
@@ -126,7 +142,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              country name
+              Country Name
             </th>
             <th
               style={{
@@ -134,7 +150,7 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              price category
+              Price Category
             </th>
             <th
               style={{
@@ -142,14 +158,12 @@ export default function ReservationTableS() {
                 padding: "5px 10px",
               }}
             >
-              option date
+              Option Date
             </th>
-            {/* <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>City</th>
-                      <th style={{border: '1px solid #ccc', padding: "5px 10px"}}>Zip</th> */}
           </thead>
 
-          {hotel &&
-            hotel.map((i) => (
+          {new_hotel &&
+            new_hotel.map((i) => (
               <tbody>
                 <td
                   style={{
@@ -166,7 +180,7 @@ export default function ReservationTableS() {
                     // onClick={}
                   >
                     {" "}
-                    Select
+                    Edit
                   </Button>
                 </td>
                 <td
@@ -207,7 +221,7 @@ export default function ReservationTableS() {
                     padding: "5px 10px",
                   }}
                 >
-                  {i.agent_name}
+                  {i.guest_name}
                 </td>
                 <td
                   style={{

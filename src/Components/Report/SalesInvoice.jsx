@@ -49,7 +49,7 @@ export default function SalesInvoice() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-      {JSON.stringify(sells_invoice_pending_post)}
+      {/* {JSON.stringify(sells_invoice_pending_post)} */}
       <Row>
         <Col md={12}>
           <center>

@@ -41,7 +41,7 @@ export default function RoomPurchasePaymentComfirmationPending() {
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-        {JSON.stringify(transport)}
+        {/* {JSON.stringify(transport)} */}
         <Col md={12}>
           <center>
             <h5 className="app_title" style={{ fontSize: 23 }}>

@@ -88,7 +88,7 @@ export default function TransportationTable() {
     let arr = [];
     data?.forEach((item, i) => {
       if (i === index) {
-        let total = parseFloat(item.qty || 0) + parseFloat(value);
+        let total = parseFloat(item.qty || 0) * parseFloat(value);
         let discount = parseFloat(total) * 0.05;
         let vat = parseFloat(total) * 0.05;
         let net_total =
@@ -434,7 +434,20 @@ export default function TransportationTable() {
                     </div>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
-                    <select
+                      <input
+                        style={{
+                          width: 150,
+                          border: "none",
+                        }}
+                        className="app_input3"
+                        value={item.mov_type}
+                        name="mov_type"
+                        onChange={(e) => {
+                          let val = e.target.value;
+                          handleChange("mov_type", val, idx);
+                        }}
+                      />
+                    {/* <select
                       style={{
                         width: 150,
                         border: "none",
@@ -454,7 +467,7 @@ export default function TransportationTable() {
                       <option value="allotment ">Allotment </option>
                       <option value="broker ">Broker </option>
                       <option value="agent ">Agent </option>
-                    </select>
+                    </select> */}
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
                     <div
@@ -567,10 +580,10 @@ export default function TransportationTable() {
                       }}
                     >
                       <option>----select-----</option>
-                      <option value="direct ">Direct </option>
+                      {/* <option value="direct ">Direct </option>
                       <option value="allotment ">Allotment </option>
                       <option value="broker ">Broker </option>
-                      <option value="agent ">Agent </option>
+                      <option value="agent ">Agent </option> */}
                     </select>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
@@ -757,10 +770,10 @@ export default function TransportationTable() {
                       }}
                     >
                       <option>----select-----</option>
-                      <option value="direct ">Direct </option>
+                      {/* <option value="direct ">Direct </option>
                       <option value="allotment ">Allotment </option>
                       <option value="broker ">Broker </option>
-                      <option value="agent ">Agent </option>
+                      <option value="agent ">Agent </option> */}
                     </select>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>

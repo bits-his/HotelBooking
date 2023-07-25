@@ -74,17 +74,27 @@ export default function LocationTable() {
               >
                 Location
               </th>
+              <th
+                style={{
+                  border: "1px solid rgb(12, 134, 103)",
+                  padding: "5px 10px",
+                }}
+              >
+                City
+              </th>
             </thead>
-            
+
             {data &&
-            data.map((i) => (
-              <tbody>
-                <td style={{ border: "1px solid #ccc", padding: "5px 10px" }}>
-                  {i.location}
-                </td>
-               
-              </tbody>
-            ))}
+              data.map((i) => (
+                <tbody>
+                  <td style={{ border: "1px solid rgb(12, 134, 103)", padding: "5px 10px" }}>
+                    {i.location}
+                  </td>
+                  <td style={{ border: "1px solid rgb(12, 134, 103)", padding: "5px 10px" }}>
+                    {i.city}
+                  </td>
+                </tbody>
+              ))}
           </table>
         </Row>
       </div>

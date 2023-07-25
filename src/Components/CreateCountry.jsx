@@ -18,7 +18,6 @@ export default function CreacteCountry() {
     query_type: country_name ? "update" : "create",
   });
   const handleChange = ({ target: { name, value } }) => {
-    // console.log({ target })
     setForm((p) => ({ ...p, [name]: value }));
   };
 

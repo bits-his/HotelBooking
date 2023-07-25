@@ -6,24 +6,24 @@ import { _post } from "../../Utils/Helper";
 
 export default function AddSubAcc() {
   const _form = {
-    master_account: "",
-    master_account_name: "",
-    new_account_no: "",
-    account_name_english: "",
-    account_name_arabic: "",
-    status: "",
-    cost_center: "",
-  };
-  const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
+    master_account:"",
+    master_account_name:"",
+    new_account_no:"",
+    account_name_english:"",
+    account_name_arabic:"",
+    status:"",
+    cost_center:"",
   };
   const [form, setForm] = useState(_form);
+  const handleChange = ({ target: { name, value }}) => {
+    setForm((p) => ({ ...p, [name]: value }));
+  };
   const [loading, setLoading] = useState();
   const handleSubmit = () => {
     setLoading(true);
     _post(
       "api/add_sub_account?query_type=insert",
-      _form,
+      form,
       (res) => {
         navigate(-1);
       },
@@ -37,6 +37,7 @@ export default function AddSubAcc() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(form)} */}
       <Row>
         <Col
           md={12}

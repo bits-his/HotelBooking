@@ -38,11 +38,11 @@ export default function AllaotmentTable({
         setData1(res.results[0]);
       },
       (err) => {
-        // setLoading(false)
         console.log(err);
+        navigate(-1);
       }
     );
-    // console.log(form)
+    console.log(form);
   };
   const [room, setRoom] = useState([]);
   const getHotels = () => {
@@ -50,17 +50,13 @@ export default function AllaotmentTable({
       "api/room_type?query_type=select",
       {},
       (resp) => {
-        // setLoading(false)
         console.log(resp);
         // if (resp ) {
         setRoom(resp.results);
-        //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
         console.log(e);
-        // setLoading(false)
-        // alert(e)
       }
     );
   };

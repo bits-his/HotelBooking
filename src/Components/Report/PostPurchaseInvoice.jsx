@@ -43,7 +43,7 @@ export default function PostPurchaseInvoice() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-        {JSON.stringify(post_purchase_invoice)}
+        {/* {JSON.stringify(post_purchase_invoice)} */}
       <Row>
         <Col md={12}>
           <center>

@@ -67,12 +67,12 @@ export default function CreacteRoomType() {
   };
   useEffect(() => {
     getHotels();
-  }, [0]);
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
       <Row>
-        {JSON.stringify(form)}
+        {/* {JSON.stringify(form)} */}
         <Col
           md={12}
           style={{ display: "flex", width: "100%", textAlign: "center" }}
