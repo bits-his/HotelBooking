@@ -17,7 +17,7 @@ export default function BankDetails({ form = {}, setForm = (f) => f }) {
     console.log(e.target.file);
     setFile(URL.createObjectURL(e.target.file[0]));
   }
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const handleSubmit = () => {
   //   if (
   //     form.bank_acc_no &&
