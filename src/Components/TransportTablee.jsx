@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Input, Label, Row } from "reactstrap";
 import { _get, _post } from "../Utils/Helper";
 
-export default function LocationTable() {
+export default function TransportTablee() {
   const navigate = useNavigate();
   const goto = useNavigate();
   const [data, setData] = useState([]);
 
   const getMeals_table = () => {
     _get(
-      "api/get_locations?query_type=select_location",
+      "api/get_transport?query_type=select_transport_company",
       (res) => {
         // navigate(-1)
         console.log(res);
@@ -37,9 +37,9 @@ export default function LocationTable() {
           <button
             className="app_button p-2"
             style={{ width: 150 }}
-            onClick={() => goto("/location")}
+            onClick={() => goto("/transport")}
           >
-            Add Location +
+            Add Transport +
           </button>
         </Col>
       </Row>
@@ -72,7 +72,7 @@ export default function LocationTable() {
                   padding: "5px 10px",
                 }}
               >
-                Location
+                Transport Company
               </th>
               <th
                 style={{
@@ -80,7 +80,7 @@ export default function LocationTable() {
                   padding: "5px 10px",
                 }}
               >
-                City
+                Transport Type	
               </th>
             </thead>
 
@@ -88,10 +88,10 @@ export default function LocationTable() {
               data.map((i) => (
                 <tbody>
                   <td style={{ border: "1px solid rgb(12, 134, 103)", padding: "5px 10px" }}>
-                    {i.location}
+                    {i.transport_company}
                   </td>
                   <td style={{ border: "1px solid rgb(12, 134, 103)", padding: "5px 10px" }}>
-                    {i.city}
+                    {i.transport_type	}
                   </td>
                 </tbody>
               ))}

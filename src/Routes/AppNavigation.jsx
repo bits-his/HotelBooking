@@ -77,6 +77,8 @@ import RouteTable from "../Components/RouteTable";
 import Routers from "../Components/Routers";
 import HotelComfirmation from "../Components/Report/HotelComfirmation";
 import RoomPurchasePaymentComfirmationPending from "../Components/Report/RoomPurchasePaymentComfirmationPending";
+import TransportTablee from "../Components/TransportTablee";
+import Transport from "../Components/Transport";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -378,6 +380,14 @@ function AppNavigation() {
         {
           path: "/location",
           element: <Location />,
+        },
+        {
+          path: "/transport-tablee",
+          element: <TransportTablee />,
+        },
+        {
+          path: "/transport",
+          element: <Transport />,
         },
         {
           path: "/route_table",
