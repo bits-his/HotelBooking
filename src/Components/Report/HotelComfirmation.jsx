@@ -27,9 +27,9 @@ function HotelComfirmation() {
       (resp) => {
         // setLoading(false)
         console.log(resp);
-        if (resp.success ) {
-        setData(resp.results);
-        //  alert(JSON.stringify(resp))
+        if (resp.success) {
+          setData(resp.results);
+          //  alert(JSON.stringify(resp))
         }
       },
       (e) => {
@@ -45,14 +45,13 @@ function HotelComfirmation() {
       `api/hotel_confirmation_active?query_type=update_hotel&reservation_no=${reservation_no}`,
       {},
       (resp) => {
-        if(resp.success)
-         alert("Updated")
+        if (resp.success) alert("Updated");
       },
       (e) => {
         console.log(e);
       }
     );
-  }
+  };
 
   useEffect(() => {
     // setLoading(true)
@@ -290,8 +289,6 @@ function HotelComfirmation() {
                   >
                     View
                   </th>
-                  
-                  
                 </tr>
               </thead>
               <tbody>
@@ -299,7 +296,8 @@ function HotelComfirmation() {
                 {data.length === 0 ? (
                   <span>Loading Rooms...</span>
                 ) : (
-                  data&& data?.map((item, index) => (
+                  data &&
+                  data?.map((item, index) => (
                     <tr>
                       {/* <td
                         style={{
@@ -317,8 +315,8 @@ function HotelComfirmation() {
                       >
                         <Button
                           onClick={() => {
-                            handleUpadte(item.reservation_no)
-                            getHotels()
+                            handleUpadte(item.reservation_no);
+                            getHotels();
                             // navigate(
                             //   `/create-transport-reservation?agent_name=${item.agent_name}&BRN_transport=${item.BRN_transport}&guest_name=${item.guest_name}&transport_type=${item.transport_type}`
                             // );
@@ -329,7 +327,7 @@ function HotelComfirmation() {
                           Confirm
                         </Button>
                       </td>
-                      
+
                       <td
                         style={{
                           border: "1px solid rgb(12, 134, 103)",
@@ -402,62 +400,6 @@ function HotelComfirmation() {
                       >
                         {item.view}
                       </td>
-                      {/* <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.no_of_d}
-                      </td> */}
-                      {/* <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.no_of_room}
-                      </td> */}
-                      {/* <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.room_type}
-                      </td> */}
-                      {/* <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.view}
-                      </td> */}
-                      {/* <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.night}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.meal_cost_rat_Inc_all_tax}
-                      </td>
-                      <td
-                        style={{
-                          border: "1px solid rgb(12, 134, 103)",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {item.meal_cost_municipal_vat}
-                      </td> */}
                     </tr>
                   ))
                 )}
@@ -469,4 +411,4 @@ function HotelComfirmation() {
     </Card>
   );
 }
-export default HotelComfirmation
+export default HotelComfirmation;

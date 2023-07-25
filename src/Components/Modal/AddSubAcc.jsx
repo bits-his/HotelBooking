@@ -2,48 +2,72 @@ import React, { useState } from "react";
 import { Card, Col, Row } from "reactstrap";
 import InputForm from "../../CustomComponents/InputForm";
 import { CiSearch } from "react-icons/ci";
+import { _post } from "../../Utils/Helper";
 
 export default function AddSubAcc() {
-  const [form, setForm] = useState({
-    master_acc: "",
-    master_acc_name: '',
-    new_acc_no: '',
-    acc_name_eng: '',
-    acc_name_arabic: '',
-    status: '',
-    cost_center: ''
-  });
-  const handleChange = ({ target: { name, value } }) => {
+  const _form = {
+    master_account:"",
+    master_account_name:"",
+    new_account_no:"",
+    account_name_english:"",
+    account_name_arabic:"",
+    status:"",
+    cost_center:"",
+  };
+  const [form, setForm] = useState(_form);
+  const handleChange = ({ target: { name, value }}) => {
     setForm((p) => ({ ...p, [name]: value }));
+  };
+  const [loading, setLoading] = useState();
+  const handleSubmit = () => {
+    setLoading(true);
+    _post(
+      "api/add_sub_account?query_type=insert",
+      form,
+      (res) => {
+        navigate(-1);
+      },
+      (err) => {
+        setLoading(false);
+        console.log(err);
+      }
+    );
+    console.log(form);
   };
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(form)} */}
       <Row>
-            <Col md={12} style={{display: 'flex', width: '100%',textAlign: 'center'}}>
-                <h5 className="app_title" style={{fontSize: 30, width: '80%'}}>Add Master Account</h5>
-            </Col>
-        </Row>
+        <Col
+          md={12}
+          style={{ display: "flex", width: "100%", textAlign: "center" }}
+        >
+          <h5 className="app_title" style={{ fontSize: 30, width: "80%" }}>
+            Add Sub Account
+          </h5>
+        </Col>
+      </Row>
       <Row>
-        <Col md= {6}>
-            <label className="Label mt-2">Master Account</label>
-            <div className="search_input_form">
-              <input
-                className="app_input3"
-                value={form.master_acc}
-                name="master_acc"
-                onChange={handleChange}
-                type="number"
-              />
-              <CiSearch className="search_icon" />
-            </div>
+        <Col md={6}>
+          <label className="Label mt-2">Master Account</label>
+          <div className="search_input_form">
+            <input
+              className="app_input3"
+              value={form.master_account}
+              name="master_account"
+              onChange={handleChange}
+              type="number"
+            />
+            <CiSearch className="search_icon" />
+          </div>
         </Col>
         <Col md={6}>
           <InputForm
             className="app_input"
             label="Master Account Name"
-            value={form.master_acc_name}
-            name="master_acc_name"
+            value={form.master_account_name}
+            name="master_account_name"
             onChange={handleChange}
           />
         </Col>
@@ -52,9 +76,9 @@ export default function AddSubAcc() {
         <Col md={6}>
           <InputForm
             className="app_input"
-            label= "New Account No"
-            value={form.new_acc_no}
-            name="new_acc_no"
+            label="New Account No"
+            value={form.new_account_no}
+            name="new_account_no"
             onChange={handleChange}
           />
         </Col>
@@ -62,8 +86,8 @@ export default function AddSubAcc() {
           <InputForm
             className="app_input"
             label="Account Name English"
-            value={form.acc_name_eng}
-            name="acc_name_eng"
+            value={form.account_name_english}
+            name="account_name_english"
             onChange={handleChange}
           />
         </Col>
@@ -73,8 +97,8 @@ export default function AddSubAcc() {
           <InputForm
             className="app_input"
             label="Account Name Arabic"
-            value={form.acc_name_arabic}
-            name="acc_name_arabic"
+            value={form.account_name_arabic}
+            name="account_name_arabic"
             onChange={handleChange}
           />
         </Col>
@@ -111,7 +135,7 @@ export default function AddSubAcc() {
           <button
             className="app_button p-2"
             style={{ width: 150, float: "right" }}
-            // onClick={handleSubmit}
+            onClick={handleSubmit}
           >
             Submit
           </button>

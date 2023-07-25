@@ -3,12 +3,12 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
-import { _post } from "../../Utils/Helper";
+import { _get, _post } from "../../Utils/Helper";
 import InputForm from "../../CustomComponents/InputForm";
 // import { _get, _post } from '../Utils/Helper'
 // import { Floors } from './Floors'
-import { RiFileExcel2Fill } from "react-icons/ri";
-import { CSVLink } from "react-csv";
+// import { RiFileExcel2Fill } from "react-icons/ri";
+// import { CSVLink } from "react-csv";
 
 export default function SalesInvoice() {
   const [form, setForm] = useState({
@@ -19,72 +19,37 @@ export default function SalesInvoice() {
   const handleChange = ({ target: { name, value } }) => {
     setForm((p) => ({ ...p, [name]: value }));
   };
-  const [hotelList, setHotelList] = useState([])
+  const [hotelList, setHotelList] = useState([]);
+  const [sells_invoice_pending_post, setSells_invoice_pending_post] = useState(
+    []
+  );
 
-  const [data, setData] = useState([])
-    // const handleSubmit = () => {
-    //   let finalObj = {
-    //     name: form.name,
-    //     address: form.address,
-    //     floors: selected,
-    //   }
-    //   setLoading(true)
-    //   _post(
-    //     'api/hotels?in_query_type=create',
-    //     form,
-    //     (res) => {
-    //       setForm((p) => ({
-    //         ...p,
-    //         hotel_in: '',
-    //         hotel_name: '',
-    //         address: '',
-    //         city: '',
-    //         phone: '',
-    //         email: '',
-    //         website: '',
-    //       }))
-    //       setLoading(false)
-    //       console.log(res)
-    //       getHotels()
-    //       toggle()
-    //     },
-    //     (err) => {
-    //       setLoading(false)
-    //       console.log(err)
-    //     },
-    //   )
-    //   console.log(finalObj)
-    // }
+  const get_sells_invoice_pending_post = () => {
+    _get(
+      "api/get_sells_invoice_pending_post?query_type=select",
+      (res) => {
+        // navigate(-1)
+        console.log(res);
+        setSells_invoice_pending_post(res.results);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+    // console.log(form)
+  };
 
-    const getHotels = () => {
-      _post(
-        'api/hotels?in_query_type=select-all',
-        {},
-        (resp) => {
-          // setLoading(false)
-          console.log(resp)
-          // if (resp ) {
-          setHotelList(resp.resp)
-          //  alert('dfasfsadf'+resp)
-          // }
-        },
-        (e) => {
-          console.log(e)
-          // setLoading(false)
-          // alert(e)
-        },
-      )
-    }
+  useEffect(() => {
+    // setLoading(true)
+    get_sells_invoice_pending_post();
+  }, []);
 
-    useEffect(() => {
-      // setLoading(true)
-      getHotels()
-    }, [])
+  // let news = data[0];
 
-  let news = data[0];
-  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(sells_invoice_pending_post)} */}
       <Row>
         <Col md={12}>
           <center>
@@ -145,7 +110,7 @@ export default function SalesInvoice() {
               style={{ width: 170, fontSize: 16, fontWeight: 500 }}
               // onClick={() => navigate('/table-meal')}
             >
-              <CSVLink
+              {/* <CSVLink
                 data={news ? news : []}
                 style={{
                   color: "#fff",
@@ -155,7 +120,7 @@ export default function SalesInvoice() {
                 filename={"Sells Invoice"}
               >
                 <RiFileExcel2Fill /> Exel DownLoad
-              </CSVLink>
+              </CSVLink> */}
             </button>
           </div>
         </Col>
@@ -215,14 +180,14 @@ export default function SalesInvoice() {
                   >
                     Reserve Id
                   </th>
-                  <th
+                  {/* <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
                       padding: "5px 10px",
                     }}
                   >
                     #
-                  </th>
+                  </th> */}
                   <th
                     style={{
                       border: "1px solid rgb(12, 134, 103)",
@@ -254,14 +219,6 @@ export default function SalesInvoice() {
                     }}
                   >
                     Quest Name
-                  </th>
-                  <th
-                    style={{
-                      border: "1px solid rgb(12, 134, 103)",
-                      padding: "5px 10px",
-                    }}
-                  >
-                    Costomer Name
                   </th>
                   <th
                     style={{
@@ -329,74 +286,152 @@ export default function SalesInvoice() {
                   </th>
                 </tr>
               </thead>
-                    {/* {JSON.stringify(hotelList)} */}
+              {/* {JSON.stringify(hotelList)} */}
               <tbody>
-                    {hotelList.length === 0 ? (
-                        <span>Loading Rooms...</span>
-                    ) : (
-                        hotelList.map((item, index) => (
-                        <tr>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.hotel_name}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.address}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.city}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.phone}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.email}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.website}
-                            </td>
-                        </tr>
-                        ))
-                    )}
-                    </tbody>
+                {sells_invoice_pending_post.length === 0 ? (
+                  <span>Loading Rooms...</span>
+                ) : (
+                  sells_invoice_pending_post.map((item, index) => (
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        <Button
+                          onClick={() => {
+                            setForms((p) => ({ ...p, hotel: item.hotel_name })),
+                              toggles();
+                          }}
+                        >
+                          Post   
+                        </Button>
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.hotel_in}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.reservation_id}
+                      </td>
+                      {/* <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.address}
+                      </td> */}
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.city}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.agent_name}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.ref_no}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.guest_name}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.check_in}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.check_out}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.total}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.a}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.a}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.a}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.a}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid rgb(12, 134, 103)",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {item.a}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
             </table>
           </div>
         </Row>

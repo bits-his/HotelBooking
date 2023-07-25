@@ -1,109 +1,109 @@
-import React, { useEffect, useState } from 'react'
-import { Typeahead } from 'react-bootstrap-typeahead'
-import { CiSearch } from 'react-icons/ci'
-import { useNavigate } from 'react-router-dom'
-import { Button, Card, Col, Modal, Row, Table } from 'reactstrap'
-import InputForm from '../CustomComponents/InputForm'
-import { _get, _post } from '../Utils/Helper'
-import { Floors } from './Floors'
+import React, { useEffect, useState } from "react";
+// import { Typeahead } from "react-bootstrap-typeahead";
+import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Col, Modal, Row, Table } from "reactstrap";
+// import InputForm from "../CustomComponents/InputForm";
+import { _get, _post } from "../Utils/Helper";
+// import { Floors } from "./Floors";
 
-export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
-  const goto = useNavigate()
-  const [loading, setLoading] = useState(false)
+export default function HotelReg({ setForms = (f) => f, toggles = (f) => f }) {
+  const goto = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    hotel_in: '',
-    hotel_name: '',
-    address: '',
-    city: '',
-    phone: '',
-    email: '',
-    website: '',
-  })
+    hotel_in: "",
+    hotel_name: "",
+    address: "",
+    city: "",
+    phone: "",
+    email: "",
+    website: "",
+  });
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const toggle = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
-  const [hotelList, setHotelList] = useState([])
+  const [hotelList, setHotelList] = useState([]);
 
   const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }))
-  }
-  const [selected, setSelected] = useState([])
+    setForm((p) => ({ ...p, [name]: value }));
+  };
+  const [selected, setSelected] = useState([]);
   const handleSelected = (s) => {
-    setSelected(s)
-  }
+    setSelected(s);
+  };
 
   const handleSubmit = () => {
     let finalObj = {
       name: form.name,
       address: form.address,
       floors: selected,
-    }
-    setLoading(true)
+    };
+    setLoading(true);
     _post(
-      'api/hotels?in_query_type=create',
+      "api/hotels?in_query_type=create",
       form,
       (res) => {
         setForm((p) => ({
           ...p,
-          hotel_in: '',
-          hotel_name: '',
-          address: '',
-          city: '',
-          phone: '',
-          email: '',
-          website: '',
-        }))
-        setLoading(false)
-        console.log(res)
-        getHotels()
-        toggle()
+          hotel_in: "",
+          hotel_name: "",
+          address: "",
+          city: "", 
+          phone: "",
+          email: "",
+          website: "",
+        }));
+        setLoading(false);
+        console.log(res);
+        getHotels();
+        toggle();
       },
       (err) => {
-        setLoading(false)
-        console.log(err)
-      },
-    )
-    console.log(finalObj)
-  }
+        setLoading(false);
+        console.log(err);
+      }
+    );
+    console.log(finalObj);
+  };
 
   const getHotels = () => {
     _post(
-      'api/hotels?in_query_type=select-all',
+      "api/hotels?in_query_type=select-all",
       {},
       (resp) => {
         // setLoading(false)
-        console.log(resp)
+        console.log(resp);
         // if (resp ) {
-        setHotelList(resp.resp)
+        setHotelList(resp.resp);
         //  alert('dfasfsadf'+resp)
         // }
       },
       (e) => {
-        console.log(e)
+        console.log(e);
         // setLoading(false)
         // alert(e)
-      },
-    )
-  }
+      }
+    );
+  };
 
   useEffect(() => {
     // setLoading(true)
-    getHotels()
-  }, [])
-  
-  // const percent = 
+    getHotels();
+  }, []);
+
+  // const percent =
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
-       <Row>
+      <Row>
         <Col md={12}>
           <button
             className="app_button p-2"
             style={{ width: 150 }}
-            onClick={() => goto('/create-hotel')}
+            onClick={() => goto("/create-hotel")}
           >
             Add Hotel +
           </button>
@@ -111,7 +111,7 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
       </Row>
       <div className="m-2">
         <Col md={12}>
-          <div style={{ display: 'flex', flexDirection: 'row', marginTop: 50 }}>
+          <div style={{ display: "flex", flexDirection: "row", marginTop: 50 }}>
             {/* {JSON.stringify(data)} */}
             <label className="label_title">Search</label>
             <div className="search">
@@ -128,7 +128,7 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
         </Col>
         <Row>
           <table
-            style={{ border: '1px solid #ccc', padding: 12 }}
+            style={{ border: "1px solid #ccc", padding: 12 }}
             className="mt-5"
           >
             <thead>
@@ -136,56 +136,56 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
                 {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>Hotel In</td> */}
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Action
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Hotel Name
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Address
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   City
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Phone
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Email
                 </td>
                 <td
                   style={{
-                    border: '1px solid rgb(12, 134, 103)',
-                    padding: '5px 10px',
+                    border: "1px solid rgb(12, 134, 103)",
+                    padding: "5px 10px",
                   }}
                 >
                   Website
@@ -199,86 +199,69 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
               ) : (
                 hotelList.map((item, index) => (
                   <tr>
-                    <td
-                      style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
-                        width: 150
-                      }}
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <button
+                      size="sm"
+                      className="app_button"
+                      style={{ borderRadius: 5 }}
+                      onClick={() =>
+                        goto(`/create-hotel?hotel_name=${item.hotel_name}&id=${item.id}`
+                        )
+                      }
                     >
-                    <center>
-                      <button
-                        size="sm"
-                        className="app_button"
-                        style={{
-                          border: '1px solid rgb(12, 134, 103)',
-                          padding: '5px 10px',
-                          marginRight: 8
-                        }}
-                        onClick={() =>
-                          navigate(
-                            `/create-country?country_name=${i.country_name}&id=${i.id}`
-                          )
-                        }
-                      >
-                        Edit
-                      </button>
-                      <button 
-                        style={{
-                          border: '1px solid rgb(12, 134, 103)',
-                          padding: '5px 10px',
-                        }}
-                        className="app_button"
-                        onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}
-
-                      >select</button>
-                    </center>
-                    </td>
+                      Edit
+                    </button>
+                  </td>{" "}
                     {/* <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td> */}
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.hotel_name}
                     </td>
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.address}
                     </td>
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.city}
                     </td>
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.phone}
                     </td>
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.email}
                     </td>
                     <td
                       style={{
-                        border: '1px solid rgb(12, 134, 103)',
-                        padding: '5px 10px',
+                        border: "1px solid rgb(12, 134, 103)",
+                        padding: "5px 10px",
                       }}
                     >
                       {item.website}
@@ -291,5 +274,5 @@ export default function HotelReg({setForms=f=>f,toggles=f=>f}) {
         </Row>
       </div>
     </Card>
-  )
+  );
 }

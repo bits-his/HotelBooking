@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, Table } from "reactstrap";
 
-function ScheduleCalendar({ data, hideUnpaid = false,hearders=[], title='Reservation ID' }) {
-
+function ScheduleCalendar({
+  data,
+  hideUnpaid = false,
+  hearders = [],
+  title = "Reservation ID",
+}) {
   const getStatusColor = (s) => {
     switch (s) {
       case "unpaid":
@@ -45,7 +49,6 @@ function ScheduleCalendar({ data, hideUnpaid = false,hearders=[], title='Reserva
       bg: "bg-grey",
       hide: hideUnpaid,
     },
-    
   ];
 
   return (
@@ -76,7 +79,9 @@ function ScheduleCalendar({ data, hideUnpaid = false,hearders=[], title='Reserva
         <Table className="table-borderless responsive">
           <thead>
             <tr>
-              <th className="text-center font-weight-bold">{title || 'Reservation ID'}</th>
+              <th className="text-center font-weight-bold">
+                {title || "Reservation ID"}
+              </th>
               {hearders &&
                 hearders.map((month) => (
                   <th className="text-center font-weight-bold">{month}</th>
@@ -89,9 +94,7 @@ function ScheduleCalendar({ data, hideUnpaid = false,hearders=[], title='Reserva
                 <tr>
                   <td className=" p-0 text-center ">{it}</td>
                   {hearders.map((m) => {
-                    let currentMonth = data[it].find(
-                      (a) => a.date === m
-                    );
+                    let currentMonth = data[it].find((a) => a.date === m);
                     return (
                       <td
                         className={`p-0 rounded ${getStatusColor(

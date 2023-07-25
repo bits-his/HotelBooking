@@ -4,12 +4,36 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 import InputForm from "../CustomComponents/InputForm";
 import AddMasterAcc from "./Modal/AddMasterAcc";
 import AddSubAcc from "./Modal/AddSubAcc";
+import { _get, _post } from "../Utils/Helper";
 
 export default function ChartofAcc() {
   const [form, setForm] = useState({
     category: "",
     search: "",
   });
+  
+  const [data, setData] = useState([]);
+  const getAgent = () => {
+    _get(
+      "api/get_add_master_account?query_type=select",
+      (res) => {
+        console.log(res);
+        if (res.results.length) {
+          setData(res.results);
+          navigate(-1);
+        }
+      },
+      (err) => {
+        setLoading(false);
+        console.log(err);
+      }
+    );
+    console.log(form)
+  };
+
+  useEffect(() => {
+    getAgent();
+  }, []);
 
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
@@ -22,6 +46,7 @@ export default function ChartofAcc() {
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
+      {/* {JSON.stringify(data)} */}
       <Row>
         <Col md={12}>
           <center>
@@ -193,74 +218,93 @@ export default function ChartofAcc() {
                   </td>
                 </tr>
               </thead>
-              {/* <tbody>
-                    {JSON.stringify(hotelList)}
-                    {hotelList.length === 0 ? (
-                        <span>Loading Rooms...</span>
-                    ) : (
-                        hotelList.map((item, index) => (
-                        <tr>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            <Button onClick={()=>{setForms((p)=>({...p,hotel:item.hotel_name})),toggles()}}>select</Button>
-                            </td>
-                            <td style={{border: '1px solid rgb(12, 134, 103)', padding: "5px 10px"}}>{item.hotel_in}</td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.hotel_name}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.address}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.city}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.phone}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.email}
-                            </td>
-                            <td
-                            style={{
-                                border: '1px solid rgb(12, 134, 103)',
-                                padding: '5px 10px',
-                            }}
-                            >
-                            {item.website}
-                            </td>
-                        </tr>
-                        ))
-                    )}
-                    </tbody> */}
+              {data &&
+              data.map((i) => (
+                <tbody>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.account_number}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.account_name_english}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.master_account_number}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.parent_account}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.transaction_method}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.income_statement}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.master_account_number}
+                  </td> <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {i.status}
+                  </td>
+                  <td
+                    style={{
+                      border: "1px solid rgb(12, 134, 103)",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    <button
+                      size="sm"
+                      className="app_button"
+                      style={{ borderRadius: 5 }}
+                      onClick={() =>
+                        goto(
+                          `/new-agent?agent_name=${i.agent_name}&agent_id=${i.agent_id}`
+                        )
+                      }
+                    >
+                      Edit
+                    </button>
+                  </td>{" "}
+                </tbody>
+              ))}
             </table>
           </div>
         </Row>

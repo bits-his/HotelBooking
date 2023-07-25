@@ -17,6 +17,11 @@ export default function CreateNewHotel() {
     phone: "",
     email: "",
     website: "",
+    contact_person: "",
+    contact_no1: "",
+    phone2: "",
+    country: "",
+    email2: "",
   });
 
   const [open, setOpen] = useState(false);
@@ -54,6 +59,11 @@ export default function CreateNewHotel() {
           phone: "",
           email: "",
           website: "",
+          contact_person: "",
+          contact_no1: "",
+          phone2: "",
+          country: "",
+          email2: "",
         }));
         setLoading(false);
         console.log(res);
@@ -66,6 +76,7 @@ export default function CreateNewHotel() {
       }
     );
     console.log(finalObj);
+    console.log(form);
   };
 
   const getHotels = () => {
@@ -114,22 +125,27 @@ export default function CreateNewHotel() {
       </Row>
       <Row>
         <Col md={6}>
-          {/* <h5 className="app_title">Create New Agent/Supplier</h5> */}
-          {/* <label className="Label mt-2">Hotel Name</label> */}
-          {/* <InputForm
-                    className="app_input"
-                    label="Hotel Id"
-                    value={form.hotel_in}
-                    onChange={handleChange}
-                    name="hotel_in"
-                    type= 'number'
-                /> */}
           <InputForm
             className="app_input"
             label="Hotel Name"
             value={form.hotel_name}
             onChange={handleChange}
             name="hotel_name"
+          />
+          <InputForm
+            className="app_input"
+            label="phone No 2"
+            value={form.phone2}
+            onChange={handleChange}
+            name="phone2"
+          />
+          <InputForm
+            className="app_input"
+            label="Email 2"
+            type="email"
+            value={form.email2}
+            onChange={handleChange}
+            name="email2"
           />
           <InputForm
             className="app_input"
@@ -145,42 +161,12 @@ export default function CreateNewHotel() {
             onChange={handleChange}
             name="city"
           />
-          {/* <InputForm
-                    className="app_input"
-                    label="Room Number"
-                    value={form.room_number}
-                    onChange={handleChange}
-                    name="room_number"
-                    type= "number"
-                />
-                <InputForm
-                    className="app_input"
-                    label="Arrival Date"
-                    value={form.date_from}
-                    onChange={handleChange}
-                    name="date_from"
-                    type= 'date'
-                />
-                <InputForm
-                    className="app_input"
-                    label="Status"
-                    value={form.status}
-                    onChange={handleChange}
-                    name="status"
-                />
-                <InputForm
-                    className="app_input"
-                    label="Agent Image"
-                    value={file}
-                    onChange={(e)=> handleFileChange(e)}
-                    name="file"
-                    type= "file"
-                /> */}
         </Col>
         <Col md={6}>
           <InputForm
             className="app_input"
             label="Phone"
+            type="number"
             value={form.phone}
             onChange={handleChange}
             name="phone"
@@ -199,43 +185,20 @@ export default function CreateNewHotel() {
             onChange={handleChange}
             name="website"
           />
-          {/* <label className="Label mt-2">Room View</label>
-                <select
-                    id="exampleSelect"
-                    className="app_input"
-                    name="room_view"
-                    type="select"
-                    onChange={handleChange}
-                    value={form.room_view}
-                >
-                  {view&&view.map(i=><option>{i.view_name}</option>)}
-                </select>
-                <InputForm
-                    className="app_input"
-                    label="State"
-                    // value={form.state}
-                    // onChange={handleChange}
-                    name="state"
-                />
-                <InputForm
-                    className="app_input"
-                    label="Depature Date"
-                    value={form.date_to}
-                    onChange={handleChange}
-                    name="date_to"
-                    type= 'date'
-                />
-                <label className="Label mt-2">Meal</label>
-                <select
-                    id="exampleSelect"
-                    className="app_input"
-                    value={form.meal}
-                    name="meal"
-                    type="select"
-                    onChange={handleChange}
-                >
-                    {meal&&meal.map(i=><option>{i.meal_name}</option>)}
-                </select> */}
+          <InputForm
+            className="app_input"
+            label="Contact person"
+            value={form.contact_person}
+            onChange={handleChange}
+            name="contact_person"
+          />
+          <InputForm
+            className="app_input"
+            label="Country"
+            value={form.country}
+            onChange={handleChange}
+            name="country"
+          />
         </Col>
       </Row>
       <Row className="mt-3">

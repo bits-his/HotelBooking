@@ -28,7 +28,7 @@ export default function Location() {
     if (form.location_from && form.meal_type) {
       setForm({
         location_from: "",
-        meal_type: "",
+        city  : "",
       });
     }
     setLoading(true);
@@ -78,6 +78,16 @@ export default function Location() {
             type="text"
             onChange={handleChange}
             value={form.location}
+          />
+        </Col>
+        <Col md={6}>
+          <InputForm
+            className="app_input"
+            label="City"
+            name="city"
+            type="text"
+            onChange={handleChange}
+            value={form.city}
           />
         </Col>
         {/* <Col>

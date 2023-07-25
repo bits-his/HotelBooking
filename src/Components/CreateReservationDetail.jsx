@@ -219,6 +219,7 @@ export default function CreateReservationDetail() {
         }
         console.log(res);
         // setAgent(res.results)
+        navigate(-1);
       },
       (err) => {
         // setLoading(false)
@@ -253,7 +254,6 @@ export default function CreateReservationDetail() {
         if (resp.success) {
         setReservation(resp.results);
         setForm(p=>({...p, ...resp.results[0]}))
-        //  alert('dfasfsadf'+resp)
         }
       },
       (e) => {
