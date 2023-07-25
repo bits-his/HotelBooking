@@ -19,7 +19,8 @@ export default function TransportationTable() {
   const toggle = () => setModal(!modal);
   const toggle1 = () => setModal1(!modal1);
   const toggle2 = () => setModal2(!modal2);
-  const toggle3 = () => setModal3(p=>!p);
+  const toggle3 = () => setModal3((p) => !p);
+  const [city, setCity] = useState([]);
 
   const _form = {
     route: "",
@@ -53,6 +54,7 @@ export default function TransportationTable() {
   // },[])
   const [form, setForm] = useState(_form);
   const [data, setData] = useState([_form]);
+  const [transport, setTransport] = useState([_form]);
   const query = useQuery();
   const agent_name = query.get("agent_name");
   const transport_company = query.get("transport_company");
@@ -153,7 +155,10 @@ export default function TransportationTable() {
     setData(deleteRow);
   }
   const handleSubmiting = () => {
-    let completeData = data.map(a => ({...a, reservation_number: form.reservation_number }))
+    let completeData = data.map((a) => ({
+      ...a,
+      reservation_number: form.reservation_number,
+    }));
     _post(
       "api/new_reservation2?query_type=insert",
       completeData,
@@ -168,6 +173,35 @@ export default function TransportationTable() {
       }
     );
   };
+  useEffect(() => {
+    _get(
+      "api/get_locations?query_type=select_location",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setCity(res.results);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    _get(
+      "api/get_transport?query_type=select_transport_company",
+      (res) => {
+        //   navigate(`/agent`)
+        console.log(res);
+        setTransport(res.results);
+      },
+      (err) => {
+        // setLoading(false)
+        console.log(err);
+      }
+    );
+  }, []);
 
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3">
@@ -206,11 +240,14 @@ export default function TransportationTable() {
               />
               <CiSearch className="search_icon" onClick={toggle3} />
               <Modal isOpen={modal3} toggle={toggle3} size="xl">
-                <ReservationModal handleChange={(k,v)=>setForm(p=>({...p,[k]:v}))} toggle3={toggle3} />
+                <ReservationModal
+                  handleChange={(k, v) => setForm((p) => ({ ...p, [k]: v }))}
+                  toggle3={toggle3}
+                />
               </Modal>
             </div>
           </Col>
-
+          {/* {JSON.stringify(transport)} */}
           <table id="customers" className="mt-3">
             <thead>
               <th
@@ -434,19 +471,19 @@ export default function TransportationTable() {
                     </div>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
-                      <input
-                        style={{
-                          width: 150,
-                          border: "none",
-                        }}
-                        className="app_input3"
-                        value={item.mov_type}
-                        name="mov_type"
-                        onChange={(e) => {
-                          let val = e.target.value;
-                          handleChange("mov_type", val, idx);
-                        }}
-                      />
+                    <input
+                      style={{
+                        width: 150,
+                        border: "none",
+                      }}
+                      className="app_input3"
+                      value={item.mov_type}
+                      name="mov_type"
+                      onChange={(e) => {
+                        let val = e.target.value;
+                        handleChange("mov_type", val, idx);
+                      }}
+                    />
                     {/* <select
                       style={{
                         width: 150,
@@ -569,7 +606,6 @@ export default function TransportationTable() {
                         width: 150,
                         border: "none",
                       }}
-                      id="exampleSelect"
                       className="app_input_table"
                       value={item.transport_company}
                       name="transport_company"
@@ -580,10 +616,11 @@ export default function TransportationTable() {
                       }}
                     >
                       <option>----select-----</option>
-                      {/* <option value="direct ">Direct </option>
-                      <option value="allotment ">Allotment </option>
-                      <option value="broker ">Broker </option>
-                      <option value="agent ">Agent </option> */}
+                      {transport?.map((i) => (
+                        <option value={i.transport_company}>
+                          {i.transport_company}
+                        </option>
+                      ))}
                     </select>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
@@ -592,7 +629,6 @@ export default function TransportationTable() {
                         width: 150,
                         border: "none",
                       }}
-                      id="exampleSelect"
                       className="app_input_table"
                       value={item.transport_type}
                       name="transport_type"
@@ -603,10 +639,11 @@ export default function TransportationTable() {
                       }}
                     >
                       <option>----select-----</option>
-                      <option value="direct ">Direct </option>
-                      <option value="allotment ">Allotment </option>
-                      <option value="broker ">Broker </option>
-                      <option value="agent ">Agent </option>
+                      {transport?.map((i) => (
+                        <option value={i.transport_type}>
+                          {i.transport_type}
+                        </option>
+                      ))}
                     </select>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
@@ -793,19 +830,25 @@ export default function TransportationTable() {
                     />
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
-                    <InputForm
+                    <select
                       style={{
-                        width: 100,
+                        width: 150,
                         border: "none",
                       }}
-                      className="app_input"
+                      className="app_input_table"
                       value={item.city}
                       name="city"
+                      type="select"
                       onChange={(e) => {
                         let val = e.target.value;
                         handleChange("city", val, idx);
                       }}
-                    />
+                    >
+                      <option>----select-----</option>
+                      {city?.map((i) => (
+                        <option value={i.city}>{i.city}</option>
+                      ))}
+                    </select>
                   </td>
                   <td style={{ border: "1px solid #0d3a73" }}>
                     <InputForm
