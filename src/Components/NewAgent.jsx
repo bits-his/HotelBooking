@@ -5,7 +5,7 @@ import InputForm from "../CustomComponents/InputForm";
 import useQuery, { _get, _post } from "../Utils/Helper";
 import AgentModal from "./Modal/AgentModal";
 // import FormWrapper from '../tab-wrapper/FormaWrapper'
-export default function NewAgent({ form = {}, setForm = (f) => f }) {
+export default function NewAgent({ form={}, setForm = (f) => f }) {
   const [modal, setModal] = useState(false);
   const [country, setCountry] = useState([]);
   const query = useQuery();
@@ -14,25 +14,8 @@ export default function NewAgent({ form = {}, setForm = (f) => f }) {
     setForm((p) => ({ ...p, [name]: value }));
   };
   const [loading, setLoading] = useState(false);
-  const handleSubmit = () => {
-    setLoading(true);
-    _post(
-      "api/agent_supplier",
-      form,
-      (res) => {
-        // setForm((p) => ({ ...p, hotel: '', address: '', price: '' }))
-
-        setLoading(false);
-        console.log(res);
-      },
-      (err) => {
-        setLoading(false);
-        console.log(err);
-      }
-    );
-    // console.log(form)
-  };
   const toggle = () => setModal(!modal);
+
   useEffect(() => {
     _get(
       "api/get_countries",
@@ -47,6 +30,7 @@ export default function NewAgent({ form = {}, setForm = (f) => f }) {
       }
     );
   }, []);
+
   return (
     <Card className="app_card dashboard_card shadow p-3 m-3 mt-0">
       <Row>

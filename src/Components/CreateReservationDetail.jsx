@@ -267,6 +267,7 @@ export default function CreateReservationDetail() {
   useEffect(()=>{
     getReservations()
   },[getReservations])
+  
   return (
     <Card className="app_card dashboard_card shadow p-3 m-2 mt-2">
       <div className="">

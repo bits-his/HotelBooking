@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Card } from 'reactstrap'
 import FormWrapper from '../tab-wrapper/FormaWrapper'
-import { _get, _post } from '../Utils/Helper'
+import useQuery, { _get, _post } from '../Utils/Helper'
 import BankDetails from './BankDetails'
 import NewAgent from './NewAgent'
+import { useCallback } from 'react'
 
 export default function Master() {
   const params = useParams()
-  const agent_id = params.agent_id;
-  const type = agent_id? 'update':'create'
+  const query = useQuery()
+  const agent_id = query.get('agent_id');
+
+  const type = agent_id ? 'update':'create'
     const navigate = useNavigate()
     const [form,setForm]=useState({
         agent_name: '',
@@ -63,32 +66,48 @@ export default function Master() {
         // console.log(form)
       }
      
-      const [data,setData]=useState([])
-      const getAgents = ()=>{
-        _get(
+      // const [data,setData]=useState([])
+      // const getAgents = ()=>{
+      //   _get(
+      //       `api/get_agents?agent_id=${agent_id}`,
+      //       // {},
+      //       (res) => {
+      //         console.log(res)
+      //         setForm(res.results[0])
+      //       },
+      //       (err) => {
+      //         // setLoading(false)
+      //         console.log(err)
+      //       },
+      //     )
+      //     // console.log(form)
+      //   }
+
+        const getAgents = useCallback(() => {
+          _get(
             `api/get_agents?agent_id=${agent_id}`,
-            // {},
             (res) => {
-              console.log(res)
+              console.log(res, 'RRRRRRRRRRRRRRRRR')
               setForm(res.results[0])
             },
             (err) => {
               // setLoading(false)
               console.log(err)
             },
-          )
-          // console.log(form)
-        }
+          );
+        },[agent_id]);
       
       useEffect(() => {
         getAgents()
-      }, [])
+      }, [getAgents])
+      
       
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
+      {/* {JSON.stringify({form, agent_id})} */}
       <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}>
-        <NewAgent form={form} setForm={setForm} />
-        <BankDetails form={form} setForm={setForm}  />
+        <NewAgent form={form}  />
+        <BankDetails form={form}   />
       </FormWrapper>
     </Card>
   )
