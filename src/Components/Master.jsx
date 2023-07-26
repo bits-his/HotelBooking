@@ -8,7 +8,7 @@ import NewAgent from './NewAgent'
 import { useCallback } from 'react'
 
 export default function Master() {
-  const params = useParams()
+  // const params = useParams()
   const query = useQuery()
   const agent_id = query.get('agent_id');
 
@@ -45,7 +45,7 @@ export default function Master() {
         region: '',
         agent_type: '',
         cash_guarantee: '',
-        bank_guarantee: '',
+        bank_guarantee: '', 
         agent_supplier: ''
     })
     const handleSubmit = () => {
@@ -67,13 +67,13 @@ export default function Master() {
       }
      
       // const [data,setData]=useState([])
-      // const getAgents = ()=>{
+      // const getAgents = ()=>{  
       //   _get(
       //       `api/get_agents?agent_id=${agent_id}`,
       //       // {},
       //       (res) => {
       //         console.log(res)
-      //         setForm(res.results[0])
+      //         setForm(res.results[0])                                        
       //       },
       //       (err) => {
       //         // setLoading(false)
@@ -101,13 +101,15 @@ export default function Master() {
         getAgents()
       }, [getAgents])
       
-      
+      const handleChange = ({ target: { name, value } }) => {
+        setForm((p) => ({ ...p, [name]: value }));
+      };
   return (
     <Card className="app_card dashboard_card shadow p-0 m-3 mt-2">
       {/* {JSON.stringify({form, agent_id})} */}
       <FormWrapper steps={["Agent", "Bank Details",]}  handleSubmit={handleSubmit}>
-        <NewAgent form={form}  />
-        <BankDetails form={form}   />
+        <NewAgent form={form} handleChange={handleChange} />
+        <BankDetails form={form} handleChange={handleChange}  />
       </FormWrapper>
     </Card>
   )

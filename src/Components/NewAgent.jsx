@@ -5,14 +5,12 @@ import InputForm from "../CustomComponents/InputForm";
 import useQuery, { _get, _post } from "../Utils/Helper";
 import AgentModal from "./Modal/AgentModal";
 // import FormWrapper from '../tab-wrapper/FormaWrapper'
-export default function NewAgent({ form={}, setForm = (f) => f }) {
+export default function NewAgent({ form={}, handleChange = (f) => f }) {
   const [modal, setModal] = useState(false);
   const [country, setCountry] = useState([]);
   const query = useQuery();
   
-  const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-  };
+ 
   const [loading, setLoading] = useState(false);
   const toggle = () => setModal(!modal);
 

@@ -5,13 +5,11 @@ import InputForm from "../CustomComponents/InputForm";
 import useQuery, { _get, _post } from "../Utils/Helper";
 import { useEffect } from "react";
 
-export default function BankDetails({ form = {}, setForm = (f) => f }) {
+export default function BankDetails({ form = {}, handleChange = (f) => f }) {
   const [file, setFile] = useState();
   const query = useQuery();
   const agent_id = query.get("agent_id");
-  const handleChange = ({ target: { name, value } }) => {
-    setForm((p) => ({ ...p, [name]: value }));
-  };
+
 
   function handleFileChange(e) {
     console.log(e.target.file);
