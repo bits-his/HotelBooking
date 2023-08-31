@@ -1,36 +1,36 @@
-import React from 'react'
-import { Card, Col, Row } from 'reactstrap'
-import { AiFillCreditCard, AiOutlineCloseCircle } from 'react-icons/ai'
+import React from "react";
+import { Card, Col, Row } from "reactstrap";
+import { AiFillCreditCard, AiOutlineCloseCircle } from "react-icons/ai";
 import {
   IoIosExit,
   IoMdCar,
   IoMdClock,
   IoMdWarning,
   IoIosPeople,
-} from 'react-icons/io'
+} from "react-icons/io";
 import {
   GiBed,
   GiEntryDoor,
   GiAirplaneDeparture,
   GiAirplaneArrival,
-} from 'react-icons/gi'
-import { BsHouseFill, BsTruck, BsCheck2Circle } from 'react-icons/bs'
+} from "react-icons/gi";
+import { BsHouseFill, BsTruck, BsCheck2Circle } from "react-icons/bs";
 export default function SalesDashboard() {
   return (
     <div>
       <Row>
         <Col md={6}>
-          <Card className="p-3" style={{ height: '50vh' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <p style={{ fontWeight: 'bold' }}>Assetsand Allotment</p>
-              <p style={{ fontWeight: 'bold' }}>View Details</p>
+          <Card className="p-3" style={{ height: "50vh" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p style={{ fontWeight: "bold" }}>Assetsand Allotment</p>
+              <p style={{ fontWeight: "bold" }}>View Details</p>
             </div>
             <Row>
               <Col md={9}>
                 <p className="m-0">Total Allotment Today</p>
               </Col>
               <Col md={3}>
-                <button style={{ float: 'right' }} className="app_button mb-1">
+                <button style={{ float: "right" }} className="app_button mb-1">
                   212
                 </button>
               </Col>
@@ -39,7 +39,7 @@ export default function SalesDashboard() {
                 <p className="m-0">Total Room Sold</p>
               </Col>
               <Col md={3}>
-                <button style={{ float: 'right' }} className="app_button mb-1">
+                <button style={{ float: "right" }} className="app_button mb-1">
                   212
                 </button>
               </Col>
@@ -48,7 +48,7 @@ export default function SalesDashboard() {
                 <p className="m-0">Available Rooms Today</p>
               </Col>
               <Col md={3}>
-                <button style={{ float: 'right' }} className="app_button mb-1">
+                <button style={{ float: "right" }} className="app_button mb-1">
                   212
                 </button>
               </Col>
@@ -57,7 +57,7 @@ export default function SalesDashboard() {
                 <p className="m-0">Occupancy Percentage</p>
               </Col>
               <Col md={3}>
-                <button style={{ float: 'right' }} className="app_button mb-1">
+                <button style={{ float: "right" }} className="app_button mb-1">
                   212
                 </button>
               </Col>
@@ -66,9 +66,9 @@ export default function SalesDashboard() {
           </Card>
         </Col>
         <Col md={6}>
-          <Card className="p-3" style={{ height: '50vh' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <p style={{ fontWeight: 'bold' }}>Government Affairs</p>
+          <Card className="p-3" style={{ height: "50vh" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p style={{ fontWeight: "bold" }}>Government Affairs</p>
             </div>
             <Row>
               <Col md={6}>
@@ -78,7 +78,7 @@ export default function SalesDashboard() {
                     className="dashboard_icon mb-2"
                   />
                   <p>
-                    Visa Issued: <span style={{ fontWeight: 'bold' }}>0</span>
+                    Visa Issued: <span style={{ fontWeight: "bold" }}>0</span>
                   </p>
                 </Card>
               </Col>
@@ -86,7 +86,7 @@ export default function SalesDashboard() {
                 <Card className="gov_card shadow p-3 mb-3">
                   <GiEntryDoor size="2rem" className="dashboard_icon mb-2" />
                   <p>
-                    Entry: <span style={{ fontWeight: 'bold' }}>0</span>
+                    Entry: <span style={{ fontWeight: "bold" }}>0</span>
                   </p>
                 </Card>
               </Col>
@@ -94,7 +94,7 @@ export default function SalesDashboard() {
                 <Card className="gov_card shadow p-3 mb-3">
                   <IoIosExit size="2rem" className="dashboard_icon mb-2" />
                   <p>
-                    Exit: <span style={{ fontWeight: 'bold' }}>0</span>
+                    Exit: <span style={{ fontWeight: "bold" }}>0</span>
                   </p>
                 </Card>
               </Col>
@@ -102,7 +102,7 @@ export default function SalesDashboard() {
                 <Card className="gov_card shadow p-3 mb-3">
                   <BsHouseFill size="2rem" className="dashboard_icon mb-2" />
                   <p>
-                    In House: <span style={{ fontWeight: 'bold' }}>0</span>
+                    In House: <span style={{ fontWeight: "bold" }}>0</span>
                   </p>
                 </Card>
               </Col>
@@ -112,7 +112,7 @@ export default function SalesDashboard() {
       </Row>
       {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
       <Card className="mt-3 p-3">
-        <p style={{ fontWeight: 'bold' }}>Follow Up</p>
+        <p style={{ fontWeight: "bold" }}>Follow Up</p>
         <Row>
           <Col md={3} className="mb-3">
             <Card className="p-2 shadow gov_card">
@@ -123,7 +123,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <IoMdClock className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -131,8 +131,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Pending Purchase Request
@@ -150,7 +150,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <IoMdWarning className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -158,8 +158,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Option Date Warning
@@ -177,7 +177,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <GiBed className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -185,8 +185,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Hotel Not Confirmed
@@ -204,7 +204,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <IoMdCar className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -212,8 +212,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Transport Not Confirmed
@@ -231,14 +231,14 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}></span>
+                      <span style={{ float: "right" }}></span>
                     </Col>
                   </Row>
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Delay Count
@@ -256,14 +256,14 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>icon</span>
+                      <span style={{ float: "right" }}>icon</span>
                     </Col>
                   </Row>
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Executing Pending Count
@@ -276,7 +276,7 @@ export default function SalesDashboard() {
       </Card>
       {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
       <Card className="mt-3 p-3">
-        <p style={{ fontWeight: 'bold' }}>Logistics</p>
+        <p style={{ fontWeight: "bold" }}>Logistics</p>
         <Row>
           <Col md={3} className="mb-3">
             <Card className="p-2 shadow gov_card">
@@ -287,7 +287,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <GiAirplaneArrival
                           className="dashboard_icon"
                           size="2rem"
@@ -298,8 +298,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Arrival Count
@@ -317,7 +317,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <IoIosPeople className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -325,8 +325,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Arrival Count PAX
@@ -344,7 +344,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <GiAirplaneDeparture
                           className="dashboard_icon"
                           size="2rem"
@@ -355,8 +355,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Departure Count
@@ -374,7 +374,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <IoIosPeople className="dashboard_icon" size="2rem" />
                       </span>
                     </Col>
@@ -382,8 +382,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Departure Count
@@ -401,7 +401,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <BsCheck2Circle
                           className="dashboard_icon"
                           size="2rem"
@@ -412,8 +412,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Today Check in
@@ -431,7 +431,7 @@ export default function SalesDashboard() {
                       <h3>0</h3>
                     </Col>
                     <Col md={6}>
-                      <span style={{ float: 'right' }}>
+                      <span style={{ float: "right" }}>
                         <AiOutlineCloseCircle
                           className="dashboard_icon"
                           size="2rem"
@@ -442,8 +442,8 @@ export default function SalesDashboard() {
                   <p
                     style={{
                       fontSize: 13,
-                      color: '#0b3455',
-                      fontWeight: 'bold',
+                      color: "#0b3455",
+                      fontWeight: "bold",
                     }}
                   >
                     Today Check out
@@ -455,5 +455,5 @@ export default function SalesDashboard() {
         </Row>
       </Card>
     </div>
-  )
+  );
 }

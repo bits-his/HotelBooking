@@ -3,7 +3,7 @@ import React from 'react'
 export default function GuestMovement() {
   return (
     <div>
-      fdfd
+      Coming Soon!!!
     </div>
   )
 }
