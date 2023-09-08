@@ -25,6 +25,7 @@ export default function RoomType() {
         console.log(e);
         // setLoading(false)
         // alert(e)
+        navigate(-1);
       }
     );
   };

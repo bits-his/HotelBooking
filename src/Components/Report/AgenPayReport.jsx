@@ -15,6 +15,7 @@ export default function AgenPayReport() {
     date_frm: "",
     date_to: "",
     date_filter: "",
+    agent_name: ""
   });
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -55,9 +56,9 @@ export default function AgenPayReport() {
             <input
               id="exampleSelect"
               className="app_input3"
-              value={form.hotel}
+              value={form.agent_name}
               onClick={handleChange}
-              name="hotel"
+              name="agent_name"
             />
             <CiSearch className="search_icon" onClick={toggle} />
             <Modal isOpen={open} toggle={toggle} size="xl">
