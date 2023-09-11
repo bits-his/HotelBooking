@@ -6,8 +6,8 @@
 // ? 'http://yge.wvi.mybluehost.me:9090/api'
 // : 'https://yge.wvi.mybluehost.me:9090/api'
 import { useLocation } from "react-router";
-export const server_url = 'https://results-associates.co/server/new-hotel-server'
-// export const server_url = " http://localhost:6678";
+// export const server_url = 'https://results-associates.co/server/new-hotel-server'
+export const server_url = " http://localhost:6678";
 // export const server_url = 'https://hotelappnew-e05f332d45bf.herokuapp.com'
 
 export const _post = (url, data, success = (f) => f, error = (f) => f) => {
